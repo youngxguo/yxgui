@@ -28,6 +28,16 @@ export { Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export type { CheckboxProps } from './components/Checkbox/Checkbox';
+export {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from './components/Collapsible/Collapsible';
+export type {
+  CollapsibleContentProps,
+  CollapsibleProps,
+  CollapsibleTriggerProps
+} from './components/Collapsible/Collapsible';
 export { Label } from './components/Label/Label';
 export type { LabelProps } from './components/Label/Label';
 export { Typography } from './components/Typography/Typography';
