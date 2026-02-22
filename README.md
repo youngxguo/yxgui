@@ -8,6 +8,60 @@ Requires React 19+.
 pnpm add yxgui
 ```
 
+## Component API Conventions
+
+These conventions describe the library's public component APIs for external consumers.
+
+- Components generally accept native DOM props/events for the element they render (`id`, `title`, `data-*`, `aria-*`, `onClick`, `onChange`, `onFocus`, etc.)
+- Components use the React 19 `ref` prop pattern (no `forwardRef` wrapper required for consumers)
+- Some props are intentionally owned or overridden (for example trigger buttons that force `type="button"`, or custom `size` props on styled controls)
+- `className` and `style` are merged with component styles so you can layer custom styles on top
+
+Example: native event handlers and `aria-*` props are forwarded to form controls.
+
+```tsx
+<Input
+  id="email"
+  name="email"
+  aria-describedby="email-help"
+  aria-invalid
+  onChange={(event) => console.log(event.currentTarget.value)}
+  onFocus={() => console.log('focused')}
+/>
+```
+
+Example: `className` and `style` merge with library styling.
+
+```tsx
+<Button
+  className="marketing-cta"
+  style={{ minWidth: 160 }}
+  onClick={() => console.log('clicked')}
+>
+  Start trial
+</Button>
+```
+
+Controlled/uncontrolled naming conventions (used by interactive components):
+
+- `value` / `defaultValue` / `onValueChange`
+- `open` / `defaultOpen` / `onOpenChange`
+- `checked` / `defaultChecked` / `onCheckedChange`
+
+Examples:
+
+```tsx
+<Tabs value={tab} onValueChange={setTab} />
+<Tabs defaultValue="account" />
+<Dialog open={open} onOpenChange={setOpen} />
+<Switch checked={enabled} onCheckedChange={setEnabled} />
+```
+
+For contributor-facing implementation details and current edge cases, see:
+
+- `docs/core-prop-passthrough-contract.md`
+- `docs/accessibility-semantics-checklist.md`
+
 ## Button Props
 
 - `variant`: `'primary' | 'secondary' | 'ghost'` (default: `'primary'`)
