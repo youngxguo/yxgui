@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+exec node \
+  --disable-warning=ExperimentalWarning \
+  --experimental-strip-types \
+  "$repo_root/scripts/git-hooks/pre-push.ts" \
+  "$@"
