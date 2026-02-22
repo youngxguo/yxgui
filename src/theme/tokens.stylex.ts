@@ -10,7 +10,8 @@ export const paletteTokens = stylex.defineConsts({
 });
 
 export const typographyTokens = stylex.defineConsts({
-  fontFamily: "'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif",
+  fontFamily: "'Inter', sans-serif",
+  fontWeightMedium: 500,
   fontWeightStrong: 600,
   fontSizeSm: '0.8125rem',
   fontSizeMd: '0.9375rem',
@@ -62,14 +63,17 @@ export const variantTokens = stylex.defineConsts({
   secondaryBorder: '#cfcec5',
   secondaryHoverBorder: '#bcbab0',
   ghostForeground: '#161614',
-  ghostHoverBackground: 'rgba(22, 22, 20, 0.06)',
+  ghostHoverBackground: '#f0f0eb',
   outlineBorder: '#cfcec5',
   outlineForeground: '#161614'
 });
 
 export const buttonTokens = stylex.defineConsts({
-  primaryHoverShadow: '0 6px 16px rgba(22, 22, 20, 0.18)',
-  disabledOpacity: 0.55,
+  primaryShadow: '0 1px 2px #d9d7cc, 0 1px 1px #ebeae1',
+  primaryHoverShadow: '0 2px 4px #d3d1c4, 0 1px 2px #e4e2d7',
+  disabledBackground: '#f4f4ef',
+  disabledBorder: '#e3e1d7',
+  disabledForeground: '#76766b',
   activeOffset: '1px',
   paddingSm: '0.375rem 0.75rem',
   paddingMd: '0.45rem 0.875rem',
@@ -99,5 +103,6 @@ export const inputTokens = stylex.defineConsts({
 });
 
 export const cardTokens = stylex.defineConsts({
-  shadow: '0 8px 24px rgba(22, 22, 20, 0.06)'
+  shadow: '0 1px 2px #e7e5db, 0 1px 1px #f0efe8',
+  hoverShadow: '0 3px 8px #dfddd1, 0 1px 2px #eceadf'
 });

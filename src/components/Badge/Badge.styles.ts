@@ -27,7 +27,7 @@ const badgeStyles = stylex.create({
     borderWidth: '1px',
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
-    fontWeight: typographyTokens.fontWeightStrong,
+    fontWeight: typographyTokens.fontWeightMedium,
     lineHeight: typographyTokens.lineHeightTight,
     whiteSpace: 'nowrap'
   },

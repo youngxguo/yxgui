@@ -33,14 +33,17 @@ const buttonStyles = stylex.create({
     cursor: 'pointer',
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
-    fontWeight: typographyTokens.fontWeightStrong,
+    fontWeight: typographyTokens.fontWeightMedium,
     gap: spacingTokens.xs,
     justifyContent: 'center',
     lineHeight: typographyTokens.lineHeightTight
   },
   disabled: {
     ':disabled': {
-      opacity: buttonTokens.disabledOpacity
+      backgroundColor: buttonTokens.disabledBackground,
+      borderColor: buttonTokens.disabledBorder,
+      boxShadow: 'none',
+      color: buttonTokens.disabledForeground
     }
   },
   active: {
@@ -50,6 +53,7 @@ const buttonStyles = stylex.create({
   },
   primary: {
     backgroundColor: variantTokens.primaryBackground,
+    boxShadow: buttonTokens.primaryShadow,
     color: variantTokens.primaryForeground
   },
   primaryHover: {

@@ -26,7 +26,15 @@ const cardStyles = stylex.create({
     boxShadow: cardTokens.shadow,
     color: paletteTokens.foreground,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    transitionDuration: '140ms',
+    transitionProperty: 'box-shadow',
+    transitionTimingFunction: 'ease'
+  },
+  rootHover: {
+    ':hover': {
+      boxShadow: cardTokens.hoverShadow
+    }
   },
   header: {
     display: 'flex',
@@ -62,7 +70,7 @@ const cardStyles = stylex.create({
 });
 
 export function getCardRootStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([cardStyles.root], options);
+  return composeStyleProps([cardStyles.root, cardStyles.rootHover], options);
 }
 
 export function getCardHeaderStyleProps(options?: SlotStyleOptions) {
