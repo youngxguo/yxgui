@@ -13,7 +13,11 @@ import { Button } from 'yxgui';
 import 'yxgui/styles.css';
 
 export function Example() {
-  return <Button variant="primary" size="md">Click me</Button>;
+  return (
+    <Button variant="primary" size="md">
+      Click me
+    </Button>
+  );
 }
 ```
 
@@ -29,8 +33,10 @@ export function Example() {
 pnpm install
 pnpm storybook
 pnpm test
-pnpm build
 pnpm lint
+pnpm lint:fix
+pnpm format
+pnpm build
 ```
 
 ## Publish Checklist

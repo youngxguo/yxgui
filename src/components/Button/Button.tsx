@@ -19,21 +19,10 @@ const sizeClassNames: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    variant = 'primary',
-    size = 'md',
-    className,
-    type = 'button',
-    ...props
-  },
+  { variant = 'primary', size = 'md', className, type = 'button', ...props },
   ref
 ) {
-  const classes = [
-    'yx-button',
-    variantClassNames[variant],
-    sizeClassNames[size],
-    className
-  ]
+  const classes = ['yx-button', variantClassNames[variant], sizeClassNames[size], className]
     .filter(Boolean)
     .join(' ');
 
