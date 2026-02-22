@@ -11,12 +11,23 @@ export const paletteTokens = stylex.defineConsts({
 
 export const typographyTokens = stylex.defineConsts({
   fontFamily: "'Inter', sans-serif",
+  fontFamilyMono:
+    "'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightStrong: 600,
+  fontSizeXs: '0.75rem',
   fontSizeSm: '0.8125rem',
   fontSizeMd: '0.9375rem',
   fontSizeLg: '1.0625rem',
-  lineHeightTight: 1
+  fontSizeXl: '1.125rem',
+  fontSize2xl: '1.5rem',
+  fontSize3xl: '1.875rem',
+  lineHeightTight: 1,
+  lineHeightSnug: 1.25,
+  lineHeightNormal: 1.5,
+  lineHeightRelaxed: 1.7,
+  letterSpacingTight: '-0.02em'
 });
 
 export const radiusTokens = stylex.defineConsts({

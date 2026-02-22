@@ -3,11 +3,13 @@
 React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm@9.15.2`.
 
 ## Philosophy
+
 - Build opinionated, production-ready styled components first.
 - Keep APIs composable so headless primitives can be introduced later.
 - Separate behavior from styling when complexity grows (dialogs, menus, tabs).
 
 ## Commands
+
 - Install: `pnpm install`
 - Lint: `pnpm lint` (`pnpm lint:fix` to auto-fix)
 - Format: `pnpm format:check` (`pnpm format` to write)
@@ -18,6 +20,7 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - GitHub issues: use native `gh issue ...` commands directly
 
 ## GitHub Workflow
+
 - Prefer using the `gh` CLI directly (no custom wrapper scripts).
 - Use issues as the backlog for known follow-up work.
 - Typical loop:
@@ -32,6 +35,7 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - Prereq for agents/local automation: `gh` installed and authenticated via `gh auth login`.
 
 ## Issue Writing
+
 - Keep issues small and shippable: one component (or one focused enhancement) per issue.
 - Use clear titles: `feat(<component>): <outcome>`.
 - Keep bodies concise and concrete:
@@ -42,16 +46,20 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - If scope is ambiguous, split follow-up work into separate issues instead of expanding one issue.
 
 ## Completion Gate
+
 Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 
 ## Code Rules
+
 - Use function components, named exports, and explicit `Props` interfaces.
 - Use React 19 `ref` prop pattern; do not introduce `React.forwardRef`.
 - Prefer narrow prop unions and destructured default values (not `defaultProps`).
+- Prefer `Typography` for user-visible text in components/stories/docs examples instead of raw styled text tags; use semantic `as` + visual `variant` when they differ.
 - Keep components in `src/components/<ComponentName>/` with colocated `.tsx`, `.css`, `.stories.tsx`, and `.test.tsx`.
 - Export public API from `src/index.ts`.
 
 ## Testing Rules
+
 - Use Vitest + Testing Library.
 - Prefer accessible role/name queries.
 - Test user-visible behavior and public API contracts.
@@ -59,6 +67,7 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Only add test-only stories when the interaction itself is a documented scenario/variant.
 
 ## Commit Rules
+
 - Keep commits atomic: one logical change per commit; split refactors from behavior changes.
 - Do not mix unrelated files in the same commit.
 - Use clear conventional-style subjects: `<type>(<scope>): <summary>` (e.g. `feat(button): add loading state`).
@@ -73,6 +82,7 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Do not commit generated artifacts in `dist/`.
 
 ## Notes
+
 - Follow `eslint.config.mjs` and `.prettierrc.json`.
 - Update `README.md` when public API/usage changes.
 - Put agent/operator workflow details (GH CLI flows, release mechanics, local automation) in `AGENTS.md`, not `README.md`.

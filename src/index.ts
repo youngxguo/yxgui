@@ -14,6 +14,12 @@ export { Checkbox } from './components/Checkbox/Checkbox';
 export type { CheckboxProps } from './components/Checkbox/Checkbox';
 export { Label } from './components/Label/Label';
 export type { LabelProps } from './components/Label/Label';
+export { Typography } from './components/Typography/Typography';
+export type {
+  TypographyElement,
+  TypographyProps,
+  TypographyVariant
+} from './components/Typography/Typography';
 export { Separator } from './components/Separator/Separator';
 export type { SeparatorProps } from './components/Separator/Separator';
 export { Alert, AlertDescription, AlertTitle } from './components/Alert/Alert';

@@ -44,6 +44,7 @@ Current exported components include:
 - `Switch`
 - `Tabs` (`TabsList`, `TabsTrigger`, `TabsPanel`)
 - `Textarea`
+- `Typography`
 - `Tooltip`
 
 ## Tokens
