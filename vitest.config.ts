@@ -12,7 +12,8 @@ const dirname =
 const storybookConfigDir = path.join(dirname, '.storybook');
 
 export default defineConfig({
-  plugins: [stylex.vite({ runtimeInjection: true })],
+  // Vitest 4 currently types plugins against Vite 6 while this repo uses Vite 7.
+  plugins: [stylex.vite({ runtimeInjection: true })] as any,
   test: {
     globals: true,
     environment: 'jsdom',
@@ -26,13 +27,14 @@ export default defineConfig({
       },
       {
         extends: true,
-        plugins: [
-          react(),
-          storybookTest({
-            configDir: storybookConfigDir,
-            storybookScript: 'pnpm storybook --ci'
-          })
-        ],
+        plugins:
+          [
+            react(),
+            storybookTest({
+              configDir: storybookConfigDir,
+              storybookScript: 'pnpm storybook --ci'
+            })
+          ] as any,
         optimizeDeps: {
           include: ['@stylexjs/stylex/lib/stylex-inject']
         },

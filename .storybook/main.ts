@@ -13,9 +13,6 @@ const config: StorybookConfig = {
     viteConfig.plugins.unshift(stylex.vite({ runtimeInjection: true }));
 
     return viteConfig;
-  },
-  docs: {
-    autodocs: 'tag'
   }
 };
 

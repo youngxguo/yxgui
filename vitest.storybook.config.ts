@@ -16,14 +16,15 @@ export default defineConfig({
     projects: [
       {
         extends: true,
-        plugins: [
-          stylex.vite({ runtimeInjection: true }),
-          react(),
-          storybookTest({
-            configDir: storybookConfigDir,
-            storybookScript: 'pnpm storybook --ci'
-          })
-        ],
+        plugins:
+          [
+            stylex.vite({ runtimeInjection: true }),
+            react(),
+            storybookTest({
+              configDir: storybookConfigDir,
+              storybookScript: 'pnpm storybook --ci'
+            })
+          ] as any,
         optimizeDeps: {
           include: ['@stylexjs/stylex/lib/stylex-inject']
         },
