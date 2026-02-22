@@ -2,11 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
-  alertTokens,
   borderTokens,
   paletteTokens,
   radiusTokens,
   spacingTokens,
+  statusTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -28,20 +28,24 @@ const alertStyles = stylex.create({
     padding: spacingTokens.lg
   },
   info: {
-    backgroundColor: alertTokens.infoBackground,
-    borderColor: alertTokens.infoBorder
+    backgroundColor: statusTokens.infoBackground,
+    borderColor: statusTokens.infoBorder,
+    color: statusTokens.infoForeground
   },
   success: {
-    backgroundColor: alertTokens.successBackground,
-    borderColor: alertTokens.successBorder
+    backgroundColor: statusTokens.successBackground,
+    borderColor: statusTokens.successBorder,
+    color: statusTokens.successForeground
   },
   warning: {
-    backgroundColor: alertTokens.warningBackground,
-    borderColor: alertTokens.warningBorder
+    backgroundColor: statusTokens.warningBackground,
+    borderColor: statusTokens.warningBorder,
+    color: statusTokens.warningForeground
   },
   error: {
-    backgroundColor: alertTokens.errorBackground,
-    borderColor: alertTokens.errorBorder
+    backgroundColor: statusTokens.errorBackground,
+    borderColor: statusTokens.errorBorder,
+    color: statusTokens.errorForeground
   },
   title: {
     fontFamily: typographyTokens.fontFamily,

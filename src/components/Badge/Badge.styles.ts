@@ -8,6 +8,7 @@ import {
   paletteTokens,
   radiusTokens,
   spacingTokens,
+  statusTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -39,19 +40,19 @@ const badgeStyles = stylex.create({
     color: badgeTokens.neutralForeground
   },
   success: {
-    backgroundColor: badgeTokens.successBackground,
-    borderColor: badgeTokens.successBorder,
-    color: badgeTokens.successForeground
+    backgroundColor: statusTokens.successBackground,
+    borderColor: statusTokens.successBorder,
+    color: statusTokens.successForeground
   },
   warning: {
-    backgroundColor: badgeTokens.warningBackground,
-    borderColor: badgeTokens.warningBorder,
-    color: badgeTokens.warningForeground
+    backgroundColor: statusTokens.warningBackground,
+    borderColor: statusTokens.warningBorder,
+    color: statusTokens.warningForeground
   },
   error: {
-    backgroundColor: badgeTokens.errorBackground,
-    borderColor: badgeTokens.errorBorder,
-    color: badgeTokens.errorForeground
+    backgroundColor: statusTokens.errorBackground,
+    borderColor: statusTokens.errorBorder,
+    color: statusTokens.errorForeground
   },
   outline: {
     backgroundColor: controlTokens.background,

@@ -107,19 +107,25 @@ export const buttonTokens = stylex.defineConsts({
   activeOffset: '1px'
 });
 
-export const badgeTokens = stylex.defineConsts({
-  neutralBackground: '#f3f2ec',
-  neutralForeground: '#4e4d45',
-  neutralBorder: '#e4e2d7',
-  successBackground: '#ebf8f0',
+export const statusTokens = stylex.defineConsts({
+  infoBackground: '#dbeafe',
+  infoBorder: '#60a5fa',
+  infoForeground: '#1d4ed8',
+  successBackground: '#dcfce7',
+  successBorder: '#4ade80',
   successForeground: '#166534',
-  successBorder: '#b8e3c7',
-  warningBackground: '#fff5dc',
-  warningForeground: '#b45309',
-  warningBorder: '#f0d08a',
-  errorBackground: '#fef0f0',
-  errorForeground: '#b42318',
-  errorBorder: '#f4b6b3'
+  warningBackground: '#fef3c7',
+  warningBorder: '#f59e0b',
+  warningForeground: '#92400e',
+  errorBackground: '#fee2e2',
+  errorBorder: '#f87171',
+  errorForeground: '#991b1b'
+});
+
+export const badgeTokens = stylex.defineConsts({
+  neutralBackground: '#ebe9df',
+  neutralForeground: '#3f3d36',
+  neutralBorder: '#d2cfbf'
 });
 
 export const inputTokens = stylex.defineConsts({
@@ -129,15 +135,4 @@ export const inputTokens = stylex.defineConsts({
 export const cardTokens = stylex.defineConsts({
   shadow: '0 1px 2px #e7e5db, 0 1px 1px #f0efe8',
   hoverShadow: '0 3px 8px #dfddd1, 0 1px 2px #eceadf'
-});
-
-export const alertTokens = stylex.defineConsts({
-  infoBackground: '#eef3ff',
-  infoBorder: '#b8c7ff',
-  successBackground: '#eefbf3',
-  successBorder: '#8fd4ab',
-  warningBackground: '#fff7e8',
-  warningBorder: '#f2ca7a',
-  errorBackground: '#fff0f0',
-  errorBorder: '#efb3b3'
 });
