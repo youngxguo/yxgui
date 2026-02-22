@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 import { Button } from './Button';
-import { ThemeProvider } from '../../theme/ThemeProvider';
-import { createTheme } from '../../theme/createTheme';
 
 const meta = {
   title: 'Components/Button',
@@ -67,52 +65,4 @@ export const Disabled: Story = {
   args: {
     disabled: true
   }
-};
-
-const espressoTheme = createTheme({
-  palette: {
-    background: '#f7efe1',
-    foreground: '#2e1808',
-    border: '#b58f5f',
-    focusRing: '#7a4b1b'
-  },
-  components: {
-    button: {
-      primaryHoverShadow: '0 6px 16px rgba(74, 42, 18, 0.2)'
-    }
-  },
-  variants: {
-    primary: {
-      background: '#4a2a12',
-      foreground: '#fff4e8'
-    },
-    secondary: {
-      background: '#fdf4ea',
-      foreground: '#2e1808',
-      border: '#b58f5f',
-      hoverBorder: '#9f7540'
-    },
-    ghost: {
-      foreground: '#2e1808',
-      hoverBackground: 'rgba(74, 42, 18, 0.08)'
-    }
-  }
-});
-
-export const CustomTheme: Story = {
-  render: (args: ComponentProps<typeof Button>) => (
-    <ThemeProvider theme={espressoTheme}>
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
-        <Button {...args} variant="primary">
-          Primary
-        </Button>
-        <Button {...args} variant="secondary">
-          Secondary
-        </Button>
-        <Button {...args} variant="ghost">
-          Ghost
-        </Button>
-      </div>
-    </ThemeProvider>
-  )
 };

@@ -1,3 +1,5 @@
+import './theme/defaultTheme.css';
+
 export { Button } from './components/Button/Button';
 export type { ButtonProps } from './components/Button/Button';
 export { Badge } from './components/Badge/Badge';
@@ -20,27 +22,5 @@ export type {
   CardProps,
   CardTitleProps
 } from './components/Card/Card';
-export { createTheme } from './theme/createTheme';
-export { defaultTheme } from './theme/defaultTheme';
-export { ThemeProvider } from './theme/ThemeProvider';
-export { useTheme } from './theme/useTheme';
-export type {
-  BorderTokens,
-  ButtonThemeTokens,
-  CardThemeTokens,
-  ComponentTokens,
-  ControlTokens,
-  InputThemeTokens,
-  PaletteTokens,
-  RadiusTokens,
-  VariantTokens,
-  PrimaryVariantTokens,
-  SecondaryVariantTokens,
-  GhostVariantTokens,
-  OutlineVariantTokens,
-  SurfaceTokens,
-  SpacingTokens,
-  Theme,
-  ThemeOptions,
-  TypographyTokens
-} from './theme/types';
+export { cssVarNames, cssVarRefs } from './theme/vars.stylex';
+export type { ThemeCSSVariableName, ThemeCSSVariableRef } from './theme/vars.stylex';

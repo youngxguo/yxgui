@@ -1,0 +1,66 @@
+:root {
+  --yxgui-palette-background: #fcfcf9;
+  --yxgui-palette-foreground: #161614;
+  --yxgui-palette-border: #cfcec5;
+  --yxgui-palette-accent: #2855f2;
+  --yxgui-palette-focus-ring: #2855f2;
+  --yxgui-palette-muted-foreground: #59594f;
+
+  --yxgui-typography-font-family: 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+  --yxgui-typography-font-weight-strong: 600;
+  --yxgui-typography-font-size-sm: 0.8125rem;
+  --yxgui-typography-font-size-md: 0.9375rem;
+  --yxgui-typography-font-size-lg: 1.0625rem;
+  --yxgui-typography-line-height-tight: 1;
+
+  --yxgui-radius-sm: 0.375rem;
+  --yxgui-radius-md: 0.625rem;
+  --yxgui-radius-lg: 0.875rem;
+  --yxgui-radius-pill: 999px;
+
+  --yxgui-spacing-xs: 0.4rem;
+  --yxgui-spacing-sm: 0.45rem;
+  --yxgui-spacing-md: 0.6rem;
+  --yxgui-spacing-lg: 0.75rem;
+
+  --yxgui-surface-base: #fcfcf9;
+  --yxgui-surface-elevated: #ffffff;
+  --yxgui-surface-subtle: #f4f4ef;
+
+  --yxgui-border-default: #cfcec5;
+  --yxgui-border-muted: #e3e1d7;
+  --yxgui-border-strong: #aead9f;
+  --yxgui-border-focus: #2855f2;
+
+  --yxgui-control-background: #ffffff;
+  --yxgui-control-background-disabled: #f4f4ef;
+  --yxgui-control-foreground: #161614;
+  --yxgui-control-placeholder: #76766b;
+  --yxgui-control-border: #cfcec5;
+  --yxgui-control-border-focus: #2855f2;
+
+  --yxgui-variants-primary-background: #161614;
+  --yxgui-variants-primary-foreground: #fcfcf9;
+  --yxgui-variants-secondary-background: #fcfcf9;
+  --yxgui-variants-secondary-foreground: #161614;
+  --yxgui-variants-secondary-border: #cfcec5;
+  --yxgui-variants-secondary-hover-border: #bcbab0;
+  --yxgui-variants-ghost-foreground: #161614;
+  --yxgui-variants-ghost-hover-background: rgba(22, 22, 20, 0.06);
+  --yxgui-variants-outline-border: #cfcec5;
+  --yxgui-variants-outline-foreground: #161614;
+
+  --yxgui-components-button-primary-hover-shadow: 0 6px 16px rgba(22, 22, 20, 0.18);
+  --yxgui-components-button-disabled-opacity: 0.55;
+  --yxgui-components-button-active-offset: 1px;
+  --yxgui-components-button-padding-sm: 0.45rem 0.8rem;
+  --yxgui-components-button-padding-md: 0.6rem 1rem;
+  --yxgui-components-button-padding-lg: 0.75rem 1.2rem;
+  --yxgui-components-button-min-height-sm: 2rem;
+  --yxgui-components-button-min-height-md: 2.5rem;
+  --yxgui-components-button-min-height-lg: 2.9rem;
+
+  --yxgui-components-input-invalid-border: #c43d3d;
+
+  --yxgui-components-card-shadow: 0 8px 24px rgba(22, 22, 20, 0.06);
+}

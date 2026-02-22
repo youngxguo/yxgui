@@ -2,9 +2,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
-import { ThemeProvider } from '../../theme/ThemeProvider';
-import { createTheme } from '../../theme/createTheme';
-import { cssVarNames } from '../../theme/vars.stylex';
 
 describe('Button', () => {
   it('renders children text', () => {
@@ -69,25 +66,5 @@ describe('Button', () => {
     render(<Button ref={ref}>Launch</Button>);
 
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
-  });
-
-  it('uses ThemeProvider tokens for visual semantics', () => {
-    const theme = createTheme({
-      variants: {
-        primary: {
-          background: '#102a43'
-        }
-      }
-    });
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Button>Launch</Button>
-      </ThemeProvider>
-    );
-
-    expect(
-      document.documentElement.style.getPropertyValue(cssVarNames.variants.primary.background)
-    ).toBe('#102a43');
   });
 });

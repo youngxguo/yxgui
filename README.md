@@ -11,53 +11,49 @@ pnpm add yxgui
 ## Usage
 
 ```tsx
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Input,
-  ThemeProvider,
-  createTheme
-} from 'yxgui';
-
-const theme = createTheme({
-  palette: {
-    background: '#f7f7fb',
-    foreground: '#111827',
-    border: '#c9d0de',
-    focusRing: '#2563eb'
-  },
-  control: {
-    border: '#c9d0de',
-    borderFocus: '#2563eb',
-    placeholder: '#6b7280'
-  },
-  variants: {
-    primary: {
-      background: '#111827',
-      foreground: '#f9fafb'
-    },
-    secondary: {
-      background: '#f7f7fb',
-      foreground: '#111827',
-      border: '#c9d0de',
-      hoverBorder: '#9aa8bf'
-    }
-  },
-  components: {
-    button: {
-      primaryHoverShadow: '0 6px 16px rgba(17, 24, 39, 0.18)'
-    }
-  }
-});
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input } from 'yxgui';
 
 export function Example() {
   return (
-    <ThemeProvider theme={theme}>
+    <Card style={{ maxWidth: 360 }}>
+      <CardHeader>
+        <CardTitle>Account</CardTitle>
+        <CardDescription>Manage profile preferences</CardDescription>
+      </CardHeader>
+      <CardContent style={{ display: 'grid', gap: 12 }}>
+        <Badge variant="secondary">Beta</Badge>
+        <Input placeholder="Email" />
+        <Button variant="primary" size="md">
+          Save
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## CSS Variable Theming
+
+`yxgui` ships with a default token set (CSS custom properties) loaded automatically from the package entry.
+
+To customize, override variables in your app CSS (globally or on a wrapper):
+
+```css
+.coffee-theme {
+  --yxgui-variants-primary-background: #4a2a12;
+  --yxgui-variants-primary-foreground: #fff4e8;
+  --yxgui-control-border: #c8a47a;
+  --yxgui-control-border-focus: #7a4b1b;
+  --yxgui-components-input-invalid-border: #a63a2b;
+}
+```
+
+```tsx
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input } from 'yxgui';
+
+export function Example() {
+  return (
+    <div className="coffee-theme">
       <Card style={{ maxWidth: 360 }}>
         <CardHeader>
           <CardTitle>Account</CardTitle>
@@ -71,12 +67,17 @@ export function Example() {
           </Button>
         </CardContent>
       </Card>
-    </ThemeProvider>
+      <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
+        <Badge variant="outline">Roast</Badge>
+        <Button variant="secondary">Adjust</Button>
+      </div>
+      <Input placeholder="Brew name" style={{ marginTop: 12, maxWidth: 280 }} />
+    </div>
   );
 }
 ```
 
-No separate stylesheet import is required. Component styles are injected at runtime.
+No separate stylesheet import is required when importing from `yxgui` package root. Component styles are injected at runtime, and default tokens are loaded via the package entry CSS import.
 
 ## Button Props
 
@@ -91,12 +92,11 @@ No separate stylesheet import is required. Component styles are injected at runt
 - `Input`
 - `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`
 
-## Theming API
+## Theme Tokens
 
-- `createTheme(options)`: deep merges semantic token overrides with defaults.
-- `ThemeProvider`: applies theme tokens to the full app/library surface.
+The library exposes token names via `cssVarNames` and `var(...)` refs via `cssVarRefs` from the package root.
 
-Semantic token groups:
+Token groups:
 
 - `palette`
 - `typography`

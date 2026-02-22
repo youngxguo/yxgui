@@ -1,9 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, expect, it } from 'vitest';
-import { createTheme } from '../../theme/createTheme';
-import { ThemeProvider } from '../../theme/ThemeProvider';
-import { cssVarNames } from '../../theme/vars.stylex';
 import { Input } from './Input';
 
 describe('Input', () => {
@@ -32,25 +29,5 @@ describe('Input', () => {
     render(<Input ref={ref} placeholder="Email" />);
 
     expect(ref.current).toBeInstanceOf(HTMLInputElement);
-  });
-
-  it('uses ThemeProvider tokens for invalid border semantics', () => {
-    const theme = createTheme({
-      components: {
-        input: {
-          invalidBorder: '#8f1d1d'
-        }
-      }
-    });
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Input invalid placeholder="Email" />
-      </ThemeProvider>
-    );
-
-    expect(
-      document.documentElement.style.getPropertyValue(cssVarNames.components.input.invalidBorder)
-    ).toBe('#8f1d1d');
   });
 });
