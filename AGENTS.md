@@ -35,10 +35,32 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - `gh issue develop <number> --checkout` to start work on an issue branch (if supported by your GH CLI version)
 - Prereq for agents/local automation: `gh` installed and authenticated via `gh auth login`.
 
+## Emoji Conventions
+
+- Use matching emoji type prefixes across commits, issue titles, and GitHub labels.
+- Commit subjects and issue titles should use: `<emoji> <type>(<scope>): <summary>`.
+- Label names should use: `type: <emoji> <kind>` (for example `type: ✨ feat`, `type: 🐛 bug`).
+- `🐛` maps to commit/issue type `fix` and label kind `bug`.
+- Use `gh label create ... --force` to update labels if the shared set changes later.
+
+### Type Map
+
+- `✨ feat` for new components and user-visible enhancements
+- `🐛 fix` / `type: 🐛 bug` for defects and regressions
+- `🧹 chore` for maintenance and non-user-facing cleanup
+- `♻️ refactor` for structural code changes without behavior changes
+- `📝 docs` for documentation-only work
+- `✅ test` for test additions/updates
+- `🎨 style` for visual polish/formatting-only changes
+- `⚡ perf` for performance work
+- `♿ a11y` for accessibility improvements
+- `👷 ci` for CI automation changes
+- `🔧 build` for tooling/build configuration changes
+
 ## Issue Writing
 
 - Keep issues small and shippable: one component (or one focused enhancement) per issue.
-- Use clear titles: `feat(<component>): <outcome>`.
+- Use clear titles with emoji prefixes: `✨ feat(<component>): <outcome>`.
 - Keep bodies concise and concrete:
   - What to add/change (1-2 lines)
   - Acceptance checks (stories, tests, exports, a11y behavior as needed)
@@ -71,7 +93,7 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 
 - Keep commits atomic: one logical change per commit; split refactors from behavior changes.
 - Do not mix unrelated files in the same commit.
-- Use clear conventional-style subjects: `<type>(<scope>): <summary>` (e.g. `feat(button): add loading state`).
+- Use emoji-prefixed conventional subjects: `<emoji> <type>(<scope>): <summary>` (e.g. `✨ feat(button): add loading state`).
 - Keep subject lines imperative and under 72 characters.
 - Add a concise commit body that explains what changed and why (1-3 short lines).
 - Include the related issue number in the commit body when working from an issue (e.g. `Refs #123`).
