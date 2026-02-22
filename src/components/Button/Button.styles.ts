@@ -2,7 +2,14 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { stylexVars as vars } from '../../theme/stylexVars.stylex';
+import {
+  buttonTokens,
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  typographyTokens,
+  variantTokens
+} from '../../theme/tokens.stylex';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -19,70 +26,70 @@ const buttonStyles = stylex.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    borderRadius: vars.radiusMd,
+    borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: '1px',
-    color: vars.paletteForeground,
+    color: paletteTokens.foreground,
     cursor: 'pointer',
     display: 'inline-flex',
-    fontFamily: vars.typographyFontFamily,
-    fontWeight: vars.typographyFontWeightStrong,
-    gap: vars.spacingXs,
+    fontFamily: typographyTokens.fontFamily,
+    fontWeight: typographyTokens.fontWeightStrong,
+    gap: spacingTokens.xs,
     justifyContent: 'center',
-    lineHeight: vars.typographyLineHeightTight
+    lineHeight: typographyTokens.lineHeightTight
   },
   disabled: {
     ':disabled': {
-      opacity: vars.componentsButtonDisabledOpacity
+      opacity: buttonTokens.disabledOpacity
     }
   },
   active: {
     ':not(:disabled):active': {
-      transform: `translateY(${vars.componentsButtonActiveOffset})`
+      transform: `translateY(${buttonTokens.activeOffset})`
     }
   },
   primary: {
-    backgroundColor: vars.variantsPrimaryBackground,
-    color: vars.variantsPrimaryForeground
+    backgroundColor: variantTokens.primaryBackground,
+    color: variantTokens.primaryForeground
   },
   primaryHover: {
     ':not(:disabled):hover': {
-      boxShadow: vars.componentsButtonPrimaryHoverShadow
+      boxShadow: buttonTokens.primaryHoverShadow
     }
   },
   secondary: {
-    backgroundColor: vars.variantsSecondaryBackground,
-    borderColor: vars.variantsSecondaryBorder,
-    color: vars.variantsSecondaryForeground
+    backgroundColor: variantTokens.secondaryBackground,
+    borderColor: variantTokens.secondaryBorder,
+    color: variantTokens.secondaryForeground
   },
   secondaryHover: {
     ':not(:disabled):hover': {
-      borderColor: vars.variantsSecondaryHoverBorder
+      borderColor: variantTokens.secondaryHoverBorder
     }
   },
   ghost: {
     backgroundColor: 'transparent',
-    color: vars.variantsGhostForeground
+    color: variantTokens.ghostForeground
   },
   ghostHover: {
     ':not(:disabled):hover': {
-      backgroundColor: vars.variantsGhostHoverBackground
+      backgroundColor: variantTokens.ghostHoverBackground
     }
   },
   sm: {
-    fontSize: vars.typographyFontSizeSm,
-    minHeight: vars.componentsButtonMinHeightSm,
-    padding: vars.componentsButtonPaddingSm
+    fontSize: typographyTokens.fontSizeSm,
+    minHeight: buttonTokens.minHeightSm,
+    padding: buttonTokens.paddingSm
   },
   md: {
-    fontSize: vars.typographyFontSizeMd,
-    minHeight: vars.componentsButtonMinHeightMd,
-    padding: vars.componentsButtonPaddingMd
+    fontSize: typographyTokens.fontSizeMd,
+    minHeight: buttonTokens.minHeightMd,
+    padding: buttonTokens.paddingMd
   },
   lg: {
-    fontSize: vars.typographyFontSizeLg,
-    minHeight: vars.componentsButtonMinHeightLg,
-    padding: vars.componentsButtonPaddingLg
+    fontSize: typographyTokens.fontSizeLg,
+    minHeight: buttonTokens.minHeightLg,
+    padding: buttonTokens.paddingLg
   }
 });
 

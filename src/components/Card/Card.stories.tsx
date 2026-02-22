@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../Button/Button';
-import { cssVarRefs } from '../../theme/vars.stylex';
+import { paletteTokens } from '../../theme/tokens.stylex';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
 
 const meta = {
@@ -38,7 +38,7 @@ export const WithFooterActions: Story = {
         <CardDescription>Ship a rotating single-origin bag every two weeks.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div style={{ color: cssVarRefs.palette.mutedForeground }}>
+        <div style={{ color: paletteTokens.mutedForeground }}>
           Manage roast level, grind size, and delivery cadence in one place.
         </div>
       </CardContent>

@@ -1,5 +1,3 @@
-import './theme/defaultTheme.css';
-
 export { Button } from './components/Button/Button';
 export type { ButtonProps } from './components/Button/Button';
 export { Badge } from './components/Badge/Badge';
@@ -22,5 +20,16 @@ export type {
   CardProps,
   CardTitleProps
 } from './components/Card/Card';
-export { cssVarNames, cssVarRefs } from './theme/vars.stylex';
-export type { ThemeCSSVariableName, ThemeCSSVariableRef } from './theme/vars.stylex';
+export {
+  borderTokens,
+  buttonTokens,
+  cardTokens,
+  controlTokens,
+  inputTokens,
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  surfaceTokens,
+  typographyTokens,
+  variantTokens
+} from './theme/tokens.stylex';

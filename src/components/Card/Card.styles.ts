@@ -1,7 +1,15 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { stylexVars as vars } from '../../theme/stylexVars.stylex';
+import {
+  borderTokens,
+  cardTokens,
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  surfaceTokens,
+  typographyTokens
+} from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -10,46 +18,46 @@ interface SlotStyleOptions {
 
 const cardStyles = stylex.create({
   root: {
-    backgroundColor: vars.surfaceElevated,
-    borderColor: vars.borderDefault,
-    borderRadius: vars.radiusMd,
+    backgroundColor: surfaceTokens.elevated,
+    borderColor: borderTokens.default,
+    borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: '1px',
-    boxShadow: vars.componentsCardShadow,
-    color: vars.paletteForeground,
+    boxShadow: cardTokens.shadow,
+    color: paletteTokens.foreground,
     display: 'flex',
     flexDirection: 'column'
   },
   header: {
     display: 'flex',
     flexDirection: 'column',
-    gap: vars.spacingXs,
-    padding: vars.spacingLg
+    gap: spacingTokens.xs,
+    padding: spacingTokens.lg
   },
   title: {
-    fontFamily: vars.typographyFontFamily,
-    fontSize: vars.typographyFontSizeLg,
-    fontWeight: vars.typographyFontWeightStrong,
+    fontFamily: typographyTokens.fontFamily,
+    fontSize: typographyTokens.fontSizeLg,
+    fontWeight: typographyTokens.fontWeightStrong,
     lineHeight: '1.2',
     margin: 0
   },
   description: {
-    color: vars.paletteMutedForeground,
-    fontFamily: vars.typographyFontFamily,
-    fontSize: vars.typographyFontSizeSm,
+    color: paletteTokens.mutedForeground,
+    fontFamily: typographyTokens.fontFamily,
+    fontSize: typographyTokens.fontSizeSm,
     lineHeight: '1.4',
     margin: 0
   },
   content: {
-    fontFamily: vars.typographyFontFamily,
-    padding: `0 ${vars.spacingLg} ${vars.spacingLg}`
+    fontFamily: typographyTokens.fontFamily,
+    padding: `0 ${spacingTokens.lg} ${spacingTokens.lg}`
   },
   footer: {
     alignItems: 'center',
     display: 'flex',
-    gap: vars.spacingSm,
+    gap: spacingTokens.sm,
     justifyContent: 'flex-end',
-    padding: `0 ${vars.spacingLg} ${vars.spacingLg}`
+    padding: `0 ${spacingTokens.lg} ${spacingTokens.lg}`
   }
 });
 

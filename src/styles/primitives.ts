@@ -1,10 +1,16 @@
 import * as stylex from '@stylexjs/stylex';
-import { stylexVars as vars } from '../theme/stylexVars.stylex';
+import {
+  borderTokens,
+  controlTokens,
+  paletteTokens,
+  radiusTokens,
+  typographyTokens
+} from '../theme/tokens.stylex';
 
 export const uiPrimitives = stylex.create({
   focusVisibleRing: {
     ':focus-visible': {
-      outlineColor: vars.borderFocus,
+      outlineColor: borderTokens.focus,
       outlineOffset: '2px',
       outlineStyle: 'solid',
       outlineWidth: '2px'
@@ -22,20 +28,20 @@ export const uiPrimitives = stylex.create({
   },
   controlBase: {
     appearance: 'none',
-    backgroundColor: vars.controlBackground,
-    borderColor: vars.controlBorder,
-    borderRadius: vars.radiusMd,
+    backgroundColor: controlTokens.background,
+    borderColor: controlTokens.border,
+    borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: '1px',
-    color: vars.controlForeground,
-    fontFamily: vars.typographyFontFamily,
+    color: controlTokens.foreground,
+    fontFamily: typographyTokens.fontFamily,
     lineHeight: '1.2',
     width: '100%'
   },
   disabledControlSurface: {
     ':disabled': {
-      backgroundColor: vars.controlBackgroundDisabled,
-      color: vars.paletteMutedForeground
+      backgroundColor: controlTokens.backgroundDisabled,
+      color: paletteTokens.mutedForeground
     }
   }
 });

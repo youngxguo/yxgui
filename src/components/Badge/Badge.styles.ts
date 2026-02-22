@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { stylexVars as vars } from '../../theme/stylexVars.stylex';
+import { radiusTokens, typographyTokens, variantTokens } from '../../theme/tokens.stylex';
 
 export type BadgeVariant = 'primary' | 'secondary' | 'outline';
 export type BadgeSize = 'sm' | 'md';
@@ -16,37 +16,37 @@ interface GetBadgeStylePropsOptions {
 const badgeStyles = stylex.create({
   root: {
     alignItems: 'center',
-    borderRadius: vars.radiusSm,
+    borderRadius: radiusTokens.sm,
     borderStyle: 'solid',
     borderWidth: '1px',
     display: 'inline-flex',
-    fontFamily: vars.typographyFontFamily,
-    fontWeight: vars.typographyFontWeightStrong,
-    lineHeight: vars.typographyLineHeightTight,
+    fontFamily: typographyTokens.fontFamily,
+    fontWeight: typographyTokens.fontWeightStrong,
+    lineHeight: typographyTokens.lineHeightTight,
     whiteSpace: 'nowrap'
   },
   primary: {
-    backgroundColor: vars.variantsPrimaryBackground,
-    borderColor: vars.variantsPrimaryBackground,
-    color: vars.variantsPrimaryForeground
+    backgroundColor: variantTokens.primaryBackground,
+    borderColor: variantTokens.primaryBackground,
+    color: variantTokens.primaryForeground
   },
   secondary: {
-    backgroundColor: vars.variantsSecondaryBackground,
-    borderColor: vars.variantsSecondaryBackground,
-    color: vars.variantsSecondaryForeground
+    backgroundColor: variantTokens.secondaryBackground,
+    borderColor: variantTokens.secondaryBackground,
+    color: variantTokens.secondaryForeground
   },
   outline: {
     backgroundColor: 'transparent',
-    borderColor: vars.variantsOutlineBorder,
-    color: vars.variantsOutlineForeground
+    borderColor: variantTokens.outlineBorder,
+    color: variantTokens.outlineForeground
   },
   sm: {
-    fontSize: vars.typographyFontSizeSm,
+    fontSize: typographyTokens.fontSizeSm,
     minHeight: '1.4rem',
     padding: '0.15rem 0.5rem'
   },
   md: {
-    fontSize: vars.typographyFontSizeMd,
+    fontSize: typographyTokens.fontSizeMd,
     minHeight: '1.75rem',
     padding: '0.25rem 0.65rem'
   }

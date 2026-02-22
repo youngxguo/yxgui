@@ -4,9 +4,6 @@
   "description": "Minimal React component library",
   "license": "MIT",
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
   "packageManager": "pnpm@9.15.2",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
