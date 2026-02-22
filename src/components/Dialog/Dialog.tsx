@@ -211,7 +211,7 @@ export function DialogContent({
             assignRef(ref, node);
           }}
           id={context.contentId}
-          role="dialog"
+          role={props.role ?? 'dialog'}
           aria-modal="true"
           tabIndex={-1}
           onKeyDown={onKeyDown}

@@ -14,6 +14,28 @@ export type {
 } from './components/Accordion/Accordion';
 export { AspectRatio } from './components/AspectRatio/AspectRatio';
 export type { AspectRatioProps } from './components/AspectRatio/AspectRatio';
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger
+} from './components/AlertDialog/AlertDialog';
+export type {
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
+  AlertDialogContentProps,
+  AlertDialogDescriptionProps,
+  AlertDialogFooterProps,
+  AlertDialogHeaderProps,
+  AlertDialogProps,
+  AlertDialogTitleProps,
+  AlertDialogTriggerProps
+} from './components/AlertDialog/AlertDialog';
 export { Button } from './components/Button/Button';
 export type { ButtonProps } from './components/Button/Button';
 export { Badge } from './components/Badge/Badge';
@@ -36,12 +58,96 @@ export type {
   BreadcrumbProps,
   BreadcrumbSeparatorProps
 } from './components/Breadcrumb/Breadcrumb';
+export {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger
+} from './components/ContextMenu/ContextMenu';
+export type {
+  ContextMenuContentProps,
+  ContextMenuItemProps,
+  ContextMenuProps,
+  ContextMenuSeparatorProps,
+  ContextMenuTriggerProps
+} from './components/ContextMenu/ContextMenu';
+export {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger
+} from './components/Drawer/Drawer';
+export type {
+  DrawerCloseProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerFooterProps,
+  DrawerHeaderProps,
+  DrawerProps,
+  DrawerTitleProps,
+  DrawerTriggerProps
+} from './components/Drawer/Drawer';
+export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard/HoverCard';
+export type {
+  HoverCardContentProps,
+  HoverCardProps,
+  HoverCardTriggerProps
+} from './components/HoverCard/HoverCard';
 export { Avatar } from './components/Avatar/Avatar';
 export type { AvatarProps } from './components/Avatar/Avatar';
 export { Input } from './components/Input/Input';
 export type { InputProps } from './components/Input/Input';
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot
+} from './components/InputOTP/InputOTP';
+export type {
+  InputOTPGroupProps,
+  InputOTPProps,
+  InputOTPSeparatorProps,
+  InputOTPSlotProps
+} from './components/InputOTP/InputOTP';
 export { Textarea } from './components/Textarea/Textarea';
 export type { TextareaProps } from './components/Textarea/Textarea';
+export {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger
+} from './components/Menubar/Menubar';
+export type {
+  MenubarContentProps,
+  MenubarItemProps,
+  MenubarMenuProps,
+  MenubarProps,
+  MenubarSeparatorProps,
+  MenubarTriggerProps
+} from './components/Menubar/Menubar';
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from './components/Pagination/Pagination';
+export type {
+  PaginationContentProps,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationLinkProps,
+  PaginationProps
+} from './components/Pagination/Pagination';
 export { Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
 export { Checkbox } from './components/Checkbox/Checkbox';
@@ -72,12 +178,33 @@ export { Switch } from './components/Switch/Switch';
 export type { SwitchProps } from './components/Switch/Switch';
 export { Toggle } from './components/Toggle/Toggle';
 export type { ToggleProps } from './components/Toggle/Toggle';
+export { ToggleGroup, ToggleGroupItem } from './components/ToggleGroup/ToggleGroup';
+export type {
+  ToggleGroupItemProps,
+  ToggleGroupMultipleProps,
+  ToggleGroupProps,
+  ToggleGroupSingleProps
+} from './components/ToggleGroup/ToggleGroup';
 export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export type { RadioGroupProps, RadioProps } from './components/RadioGroup/RadioGroup';
 export { Progress } from './components/Progress/Progress';
 export type { ProgressProps } from './components/Progress/Progress';
+export {
+  ScrollArea,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaViewport
+} from './components/ScrollArea/ScrollArea';
+export type {
+  ScrollAreaProps,
+  ScrollAreaScrollbarProps,
+  ScrollAreaThumbProps,
+  ScrollAreaViewportProps
+} from './components/ScrollArea/ScrollArea';
 export { Skeleton } from './components/Skeleton/Skeleton';
 export type { SkeletonProps } from './components/Skeleton/Skeleton';
+export { Slider } from './components/Slider/Slider';
+export type { SliderProps } from './components/Slider/Slider';
 export {
   FormField,
   FormFieldControl,

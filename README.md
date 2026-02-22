@@ -82,6 +82,7 @@ Current exported components include:
 
 - `Accordion` (`AccordionItem`, `AccordionTrigger`, `AccordionContent`)
 - `Alert` (`AlertTitle`, `AlertDescription`)
+- `AlertDialog` (`AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogFooter`, `AlertDialogCancel`, `AlertDialogAction`)
 - `AspectRatio`
 - `Avatar`
 - `Badge`
@@ -90,19 +91,28 @@ Current exported components include:
 - `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
 - `Checkbox`
 - `Collapsible` (`CollapsibleTrigger`, `CollapsibleContent`)
+- `ContextMenu` (`ContextMenuTrigger`, `ContextMenuContent`, `ContextMenuItem`, `ContextMenuSeparator`)
+- `Drawer` (`DrawerTrigger`, `DrawerContent`, `DrawerHeader`, `DrawerTitle`, `DrawerDescription`, `DrawerFooter`, `DrawerClose`)
 - `Dialog` (`DialogTrigger`, `DialogContent`, `DialogTitle`, `DialogDescription`, `DialogFooter`, `DialogClose`)
 - `DropdownMenu` (`DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`)
 - `FormField` (`FormFieldLabel`, `FormFieldControl`, `FormFieldDescription`, `FormFieldError`)
+- `HoverCard` (`HoverCardTrigger`, `HoverCardContent`)
 - `Input`
+- `InputOTP` (`InputOTPGroup`, `InputOTPSlot`, `InputOTPSeparator`)
 - `Label`
+- `Menubar` (`MenubarMenu`, `MenubarTrigger`, `MenubarContent`, `MenubarItem`, `MenubarSeparator`)
+- `Pagination` (`PaginationContent`, `PaginationItem`, `PaginationLink`, `PaginationPrevious`, `PaginationNext`, `PaginationEllipsis`)
 - `Popover` (`PopoverTrigger`, `PopoverContent`)
 - `Progress`
 - `RadioGroup` (`Radio`)
+- `ScrollArea` (`ScrollAreaViewport`, `ScrollAreaScrollbar`, `ScrollAreaThumb`)
 - `Select`
 - `Separator`
 - `Skeleton`
+- `Slider`
 - `Switch`
 - `Toggle`
+- `ToggleGroup` (`ToggleGroupItem`)
 - `Tabs` (`TabsList`, `TabsTrigger`, `TabsPanel`)
 - `Textarea`
 - `Typography`
