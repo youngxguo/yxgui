@@ -11,7 +11,18 @@ pnpm add yxgui
 ## Usage
 
 ```tsx
-import { Button, ThemeProvider, createTheme } from 'yxgui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Input,
+  ThemeProvider,
+  createTheme
+} from 'yxgui';
 
 const theme = createTheme({
   palette: {
@@ -20,13 +31,26 @@ const theme = createTheme({
     border: '#c9d0de',
     focusRing: '#2563eb'
   },
+  control: {
+    border: '#c9d0de',
+    borderFocus: '#2563eb',
+    placeholder: '#6b7280'
+  },
+  variants: {
+    primary: {
+      background: '#111827',
+      foreground: '#f9fafb'
+    },
+    secondary: {
+      background: '#f7f7fb',
+      foreground: '#111827',
+      border: '#c9d0de',
+      hoverBorder: '#9aa8bf'
+    }
+  },
   components: {
     button: {
-      primaryBackground: '#111827',
-      primaryForeground: '#f9fafb',
-      secondaryBackground: '#f7f7fb',
-      secondaryBorder: '#c9d0de',
-      secondaryHoverBorder: '#9aa8bf'
+      primaryHoverShadow: '0 6px 16px rgba(17, 24, 39, 0.18)'
     }
   }
 });
@@ -34,9 +58,19 @@ const theme = createTheme({
 export function Example() {
   return (
     <ThemeProvider theme={theme}>
-      <Button variant="primary" size="md">
-        Click me
-      </Button>
+      <Card style={{ maxWidth: 360 }}>
+        <CardHeader>
+          <CardTitle>Account</CardTitle>
+          <CardDescription>Manage profile preferences</CardDescription>
+        </CardHeader>
+        <CardContent style={{ display: 'grid', gap: 12 }}>
+          <Badge variant="secondary">Beta</Badge>
+          <Input placeholder="Email" />
+          <Button variant="primary" size="md">
+            Save
+          </Button>
+        </CardContent>
+      </Card>
     </ThemeProvider>
   );
 }
@@ -50,6 +84,13 @@ No separate stylesheet import is required. Component styles are injected at runt
 - `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
 - Plus all native `button` props from `React.ButtonHTMLAttributes<HTMLButtonElement>`
 
+## Components
+
+- `Button`
+- `Badge`
+- `Input`
+- `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`
+
 ## Theming API
 
 - `createTheme(options)`: deep merges semantic token overrides with defaults.
@@ -61,7 +102,13 @@ Semantic token groups:
 - `typography`
 - `radius`
 - `spacing`
+- `surface`
+- `border`
+- `control`
+- `variants`
 - `components.button`
+- `components.input`
+- `components.card`
 
 ## Development
 
