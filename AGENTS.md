@@ -68,7 +68,7 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - When scripting commits, do not embed literal `\n` in a single `git commit -m` body string; use multiple `-m` flags (one per paragraph) or an editor so commit bodies contain real line breaks.
 - Before pushing, quickly verify the latest commit message renders correctly (e.g. `git log --format=medium -n 1`).
 - When behavior changes, include tests in the same commit.
-- The `pre-push` hook enforces commit-body quality checks.
+- The `pre-push` hook enforces commit-body quality checks and runs `pnpm check:prepush`.
 - CI enforces `pnpm check:quality` (`pnpm lint`, `pnpm test`, `pnpm build`).
 - Do not commit generated artifacts in `dist/`.
 
