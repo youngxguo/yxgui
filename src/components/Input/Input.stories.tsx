@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Input } from './Input';
 
 const meta = {
@@ -23,7 +24,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.type(input, 'person@example.com');
+    expect(input).toHaveValue('person@example.com');
+  }
+};
 
 export const Sizes: Story = {
   render: (args: ComponentProps<typeof Input>) => (

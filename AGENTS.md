@@ -30,6 +30,8 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Use Vitest + Testing Library.
 - Prefer accessible role/name queries.
 - Test user-visible behavior and public API contracts.
+- For Storybook interaction tests, prefer adding `play` assertions to the existing `Default` story so docs stay uncluttered.
+- Only add test-only stories when the interaction itself is a documented scenario/variant.
 
 ## Commit Rules
 - Keep commits atomic: one logical change per commit; split refactors from behavior changes.

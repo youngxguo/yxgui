@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { Separator } from './Separator';
 
@@ -22,7 +23,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Separator />
+  render: () => <Separator />,
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const separator = canvas.getByRole('separator');
+
+    expect(separator).toHaveAttribute('aria-orientation', 'horizontal');
+  }
 };
 
 export const InList: Story = {

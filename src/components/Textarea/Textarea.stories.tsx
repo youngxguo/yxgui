@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Textarea } from './Textarea';
 
 const meta = {
@@ -24,7 +25,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByRole('textbox');
+
+    await userEvent.type(textarea, 'Short note for testing.');
+    expect(textarea).toHaveValue('Short note for testing.');
+  }
+};
 
 export const Sizes: Story = {
   render: (args: ComponentProps<typeof Textarea>) => (

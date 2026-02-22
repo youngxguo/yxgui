@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { paletteTokens } from '../../theme/tokens.stylex';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
@@ -27,7 +28,13 @@ export const Default: Story = {
         </div>
       </CardContent>
     </Card>
-  )
+  ),
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    expect(canvas.getByRole('heading', { name: 'Starter Plan' })).toBeInTheDocument();
+    expect(canvas.getByText('Basic analytics')).toBeInTheDocument();
+  }
 };
 
 export const WithFooterActions: Story = {

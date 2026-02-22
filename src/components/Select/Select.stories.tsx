@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Select } from './Select';
 
 const meta = {
@@ -30,7 +31,15 @@ export const Default: Story = {
       <option value="mid">11-50 people</option>
       <option value="large">50+ people</option>
     </Select>
-  )
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole('combobox', { name: 'Team size' });
+
+    expect(select).toHaveValue('small');
+    await userEvent.selectOptions(select, 'mid');
+    expect(select).toHaveValue('mid');
+  }
 };
 
 export const Sizes: Story = {

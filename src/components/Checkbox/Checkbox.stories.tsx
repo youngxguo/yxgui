@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Label } from '../Label/Label';
 import { Checkbox } from './Checkbox';
 
@@ -25,7 +26,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox', { name: 'Receive release updates' });
+
+    expect(checkbox).not.toBeChecked();
+    await userEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+  }
+};
 
 export const WithLabel: Story = {
   render: (args: ComponentProps<typeof Checkbox>) => (

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Input } from '../Input/Input';
 import { Label } from './Label';
 
@@ -30,7 +31,15 @@ export const Default: Story = {
       <Label {...args} />
       <Input id="label-example-input" placeholder="you@example.com" />
     </div>
-  )
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Email address');
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.click(label);
+    expect(input).toHaveFocus();
+  }
 };
 
 export const Sizes: Story = {

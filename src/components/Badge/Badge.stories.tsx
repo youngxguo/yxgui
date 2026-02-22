@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, within } from 'storybook/test';
 import { Badge } from './Badge';
 
 const meta = {
@@ -26,7 +27,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    expect(canvas.getByText('Badge')).toBeInTheDocument();
+  }
+};
 
 export const Variants: Story = {
   render: (args: ComponentProps<typeof Badge>) => (
