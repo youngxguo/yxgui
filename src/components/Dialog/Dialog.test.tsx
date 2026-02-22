@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createRef } from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   Dialog,
   DialogClose,
@@ -62,6 +62,29 @@ describe('Dialog', () => {
 
     expect(contentRef.current).toBeInstanceOf(HTMLDivElement);
     fireEvent.mouseDown(screen.getByTestId('content').parentElement as HTMLElement);
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  });
+
+  it('fires DialogContent onMouseDown on the content element, not the overlay', async () => {
+    const onMouseDown = vi.fn();
+
+    render(
+      <Dialog defaultOpen>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent data-testid="content" onMouseDown={onMouseDown}>
+          Content
+        </DialogContent>
+      </Dialog>
+    );
+
+    const content = screen.getByTestId('content');
+    const overlay = content.parentElement as HTMLElement;
+
+    fireEvent.mouseDown(content);
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+
+    fireEvent.mouseDown(overlay);
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
   });
 });

@@ -201,7 +201,6 @@ export function DialogContent({
           if (event.target === event.currentTarget && closeOnOverlayClick) {
             context.setOpen(false);
           }
-          onMouseDown?.(event);
         }}
       >
         <div
@@ -216,6 +215,7 @@ export function DialogContent({
           aria-modal="true"
           tabIndex={-1}
           onKeyDown={onKeyDown}
+          onMouseDown={onMouseDown}
         >
           {children}
         </div>
