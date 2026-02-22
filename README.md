@@ -8,50 +8,6 @@ Requires React 19+.
 pnpm add yxgui
 ```
 
-## Usage
-
-```tsx
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Avatar,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Input
-} from 'yxgui';
-
-export function Example() {
-  return (
-    <Card style={{ maxWidth: 360 }}>
-      <CardHeader>
-        <CardTitle>Account</CardTitle>
-        <CardDescription>Manage profile preferences</CardDescription>
-      </CardHeader>
-      <CardContent style={{ display: 'grid', gap: 12 }}>
-        <Alert variant="info">
-          <AlertTitle>Preview Mode</AlertTitle>
-          <AlertDescription>New settings are available for testing.</AlertDescription>
-        </Alert>
-        <Avatar alt="Young Guo">YG</Avatar>
-        <Badge variant="neutral">Beta</Badge>
-        <Input placeholder="Email" />
-        <Button variant="primary" size="md">
-          Save
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-No separate stylesheet import is required. Styles are handled through StyleX.
-
 ## Button Props
 
 - `variant`: `'primary' | 'secondary' | 'ghost'` (default: `'primary'`)
