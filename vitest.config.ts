@@ -1,15 +1,6 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import stylex from '@stylexjs/unplugin';
-import { playwright } from '@vitest/browser-playwright';
-
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
-const storybookConfigDir = path.join(dirname, '.storybook');
+import { createStorybookProject, storybookCoverage } from './vitest.shared';
 
 export default defineConfig({
   plugins: [stylex.vite({ runtimeInjection: true })],
@@ -17,6 +8,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
+    coverage: storybookCoverage,
     projects: [
       {
         extends: true,
@@ -24,29 +16,7 @@ export default defineConfig({
           name: 'unit'
         }
       },
-      {
-        extends: true,
-        plugins: [
-          react(),
-          storybookTest({
-            configDir: storybookConfigDir,
-            storybookScript: 'pnpm storybook --ci'
-          })
-        ],
-        optimizeDeps: {
-          include: ['@stylexjs/stylex/lib/stylex-inject']
-        },
-        test: {
-          name: `storybook:${storybookConfigDir}`,
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [{ browser: 'chromium' }]
-          },
-          setupFiles: ['./.storybook/vitest.setup.ts']
-        }
-      }
+      createStorybookProject()
     ]
   }
 });
