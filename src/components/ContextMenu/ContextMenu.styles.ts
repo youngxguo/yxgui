@@ -1,10 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import {
-  getDropdownMenuContentStyleProps,
-  getDropdownMenuItemStyleProps
-} from '../DropdownMenu/DropdownMenu.styles';
+import { getMenuContentStyleProps, getMenuItemStyleProps } from '../../styles/menu';
 import { borderTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
@@ -39,11 +36,11 @@ export function getContextMenuTriggerStyleProps(options?: SlotStyleOptions) {
 }
 
 export function getContextMenuContentStyleProps(options?: SlotStyleOptions) {
-  return getDropdownMenuContentStyleProps(options);
+  return getMenuContentStyleProps(options);
 }
 
-export function getContextMenuItemStyleProps(disabled: boolean, options?: SlotStyleOptions) {
-  return getDropdownMenuItemStyleProps(disabled, options);
+export function getContextMenuItemStyleProps(options?: SlotStyleOptions) {
+  return getMenuItemStyleProps(options);
 }
 
 export function getContextMenuSeparatorStyleProps(options?: SlotStyleOptions) {

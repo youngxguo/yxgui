@@ -279,7 +279,7 @@ export function ContextMenuItem({
   ...props
 }: ContextMenuItemProps) {
   const context = useContextMenuContext('ContextMenuItem');
-  const styleProps = getContextMenuItemStyleProps(disabled, { className, style });
+  const styleProps = getContextMenuItemStyleProps({ className, style });
 
   return (
     <button

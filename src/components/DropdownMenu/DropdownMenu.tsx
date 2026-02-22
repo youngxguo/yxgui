@@ -271,7 +271,7 @@ export function DropdownMenuItem({
   ...props
 }: DropdownMenuItemProps) {
   const context = useDropdownMenuContext('DropdownMenuItem');
-  const styleProps = getDropdownMenuItemStyleProps(disabled, { className, style });
+  const styleProps = getDropdownMenuItemStyleProps({ className, style });
 
   return (
     <Button
