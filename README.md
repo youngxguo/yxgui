@@ -77,6 +77,10 @@ pnpm format
 pnpm build
 ```
 
+Note: `package.json` includes `pnpm.overrides` forcing `vitest`/`@vitest/mocker` to use Vite 7.
+This avoids a TypeScript type-identity mismatch when `pnpm` otherwise resolves a separate `vite@6`
+inside the Vitest dependency subtree.
+
 ## Publish Checklist
 
 ```bash
