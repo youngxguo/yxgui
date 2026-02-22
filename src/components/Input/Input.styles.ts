@@ -2,16 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { type ThemeCSSVariableRef } from '../../theme/vars.stylex';
-
-const varBorderStrong = 'var(--yxgui-border-strong)' as ThemeCSSVariableRef;
-const varComponentsInputInvalidBorder =
-  'var(--yxgui-components-input-invalid-border)' as ThemeCSSVariableRef;
-const varControlBorderFocus = 'var(--yxgui-control-border-focus)' as ThemeCSSVariableRef;
-const varControlPlaceholder = 'var(--yxgui-control-placeholder)' as ThemeCSSVariableRef;
-const varTypographyFontSizeLg = 'var(--yxgui-typography-font-size-lg)' as ThemeCSSVariableRef;
-const varTypographyFontSizeMd = 'var(--yxgui-typography-font-size-md)' as ThemeCSSVariableRef;
-const varTypographyFontSizeSm = 'var(--yxgui-typography-font-size-sm)' as ThemeCSSVariableRef;
+import { stylexVars as vars } from '../../theme/stylexVars.stylex';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 
@@ -31,40 +22,40 @@ const inputStyles = stylex.create({
   },
   placeholder: {
     '::placeholder': {
-      color: varControlPlaceholder
+      color: vars.controlPlaceholder
     }
   },
   hover: {
     ':not(:disabled):hover': {
-      borderColor: varBorderStrong
+      borderColor: vars.borderStrong
     }
   },
   focusVisible: {
     ':focus-visible': {
-      borderColor: varControlBorderFocus,
-      outlineColor: varControlBorderFocus
+      borderColor: vars.controlBorderFocus,
+      outlineColor: vars.controlBorderFocus
     }
   },
   invalid: {
-    borderColor: varComponentsInputInvalidBorder
+    borderColor: vars.componentsInputInvalidBorder
   },
   invalidFocusVisible: {
     ':focus-visible': {
-      outlineColor: varComponentsInputInvalidBorder
+      outlineColor: vars.componentsInputInvalidBorder
     }
   },
   sm: {
-    fontSize: varTypographyFontSizeSm,
+    fontSize: vars.typographyFontSizeSm,
     minHeight: '2rem',
     padding: '0.3rem 0.625rem'
   },
   md: {
-    fontSize: varTypographyFontSizeMd,
+    fontSize: vars.typographyFontSizeMd,
     minHeight: '2.25rem',
     padding: '0.375rem 0.75rem'
   },
   lg: {
-    fontSize: varTypographyFontSizeLg,
+    fontSize: vars.typographyFontSizeLg,
     minHeight: '2.5rem',
     padding: '0.5rem 0.875rem'
   }

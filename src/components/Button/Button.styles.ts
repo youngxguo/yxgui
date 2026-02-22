@@ -2,51 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { type ThemeCSSVariableRef } from '../../theme/vars.stylex';
-
-const varComponentsButtonActiveOffset =
-  'var(--yxgui-components-button-active-offset)' as ThemeCSSVariableRef;
-const varComponentsButtonDisabledOpacity =
-  'var(--yxgui-components-button-disabled-opacity)' as ThemeCSSVariableRef;
-const varComponentsButtonMinHeightLg =
-  'var(--yxgui-components-button-min-height-lg)' as ThemeCSSVariableRef;
-const varComponentsButtonMinHeightMd =
-  'var(--yxgui-components-button-min-height-md)' as ThemeCSSVariableRef;
-const varComponentsButtonMinHeightSm =
-  'var(--yxgui-components-button-min-height-sm)' as ThemeCSSVariableRef;
-const varComponentsButtonPaddingLg =
-  'var(--yxgui-components-button-padding-lg)' as ThemeCSSVariableRef;
-const varComponentsButtonPaddingMd =
-  'var(--yxgui-components-button-padding-md)' as ThemeCSSVariableRef;
-const varComponentsButtonPaddingSm =
-  'var(--yxgui-components-button-padding-sm)' as ThemeCSSVariableRef;
-const varComponentsButtonPrimaryHoverShadow =
-  'var(--yxgui-components-button-primary-hover-shadow)' as ThemeCSSVariableRef;
-const varPaletteForeground = 'var(--yxgui-palette-foreground)' as ThemeCSSVariableRef;
-const varRadiusMd = 'var(--yxgui-radius-md)' as ThemeCSSVariableRef;
-const varSpacingXs = 'var(--yxgui-spacing-xs)' as ThemeCSSVariableRef;
-const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
-const varTypographyFontSizeLg = 'var(--yxgui-typography-font-size-lg)' as ThemeCSSVariableRef;
-const varTypographyFontSizeMd = 'var(--yxgui-typography-font-size-md)' as ThemeCSSVariableRef;
-const varTypographyFontSizeSm = 'var(--yxgui-typography-font-size-sm)' as ThemeCSSVariableRef;
-const varTypographyFontWeightStrong =
-  'var(--yxgui-typography-font-weight-strong)' as ThemeCSSVariableRef;
-const varTypographyLineHeightTight =
-  'var(--yxgui-typography-line-height-tight)' as ThemeCSSVariableRef;
-const varVariantsGhostForeground = 'var(--yxgui-variants-ghost-foreground)' as ThemeCSSVariableRef;
-const varVariantsGhostHoverBackground =
-  'var(--yxgui-variants-ghost-hover-background)' as ThemeCSSVariableRef;
-const varVariantsPrimaryBackground =
-  'var(--yxgui-variants-primary-background)' as ThemeCSSVariableRef;
-const varVariantsPrimaryForeground =
-  'var(--yxgui-variants-primary-foreground)' as ThemeCSSVariableRef;
-const varVariantsSecondaryBackground =
-  'var(--yxgui-variants-secondary-background)' as ThemeCSSVariableRef;
-const varVariantsSecondaryBorder = 'var(--yxgui-variants-secondary-border)' as ThemeCSSVariableRef;
-const varVariantsSecondaryForeground =
-  'var(--yxgui-variants-secondary-foreground)' as ThemeCSSVariableRef;
-const varVariantsSecondaryHoverBorder =
-  'var(--yxgui-variants-secondary-hover-border)' as ThemeCSSVariableRef;
+import { stylexVars as vars } from '../../theme/stylexVars.stylex';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -63,70 +19,70 @@ const buttonStyles = stylex.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    borderRadius: varRadiusMd,
+    borderRadius: vars.radiusMd,
     borderStyle: 'solid',
     borderWidth: '1px',
-    color: varPaletteForeground,
+    color: vars.paletteForeground,
     cursor: 'pointer',
     display: 'inline-flex',
-    fontFamily: varTypographyFontFamily,
-    fontWeight: varTypographyFontWeightStrong,
-    gap: varSpacingXs,
+    fontFamily: vars.typographyFontFamily,
+    fontWeight: vars.typographyFontWeightStrong,
+    gap: vars.spacingXs,
     justifyContent: 'center',
-    lineHeight: varTypographyLineHeightTight
+    lineHeight: vars.typographyLineHeightTight
   },
   disabled: {
     ':disabled': {
-      opacity: varComponentsButtonDisabledOpacity
+      opacity: vars.componentsButtonDisabledOpacity
     }
   },
   active: {
     ':not(:disabled):active': {
-      transform: `translateY(${varComponentsButtonActiveOffset})`
+      transform: `translateY(${vars.componentsButtonActiveOffset})`
     }
   },
   primary: {
-    backgroundColor: varVariantsPrimaryBackground,
-    color: varVariantsPrimaryForeground
+    backgroundColor: vars.variantsPrimaryBackground,
+    color: vars.variantsPrimaryForeground
   },
   primaryHover: {
     ':not(:disabled):hover': {
-      boxShadow: varComponentsButtonPrimaryHoverShadow
+      boxShadow: vars.componentsButtonPrimaryHoverShadow
     }
   },
   secondary: {
-    backgroundColor: varVariantsSecondaryBackground,
-    borderColor: varVariantsSecondaryBorder,
-    color: varVariantsSecondaryForeground
+    backgroundColor: vars.variantsSecondaryBackground,
+    borderColor: vars.variantsSecondaryBorder,
+    color: vars.variantsSecondaryForeground
   },
   secondaryHover: {
     ':not(:disabled):hover': {
-      borderColor: varVariantsSecondaryHoverBorder
+      borderColor: vars.variantsSecondaryHoverBorder
     }
   },
   ghost: {
     backgroundColor: 'transparent',
-    color: varVariantsGhostForeground
+    color: vars.variantsGhostForeground
   },
   ghostHover: {
     ':not(:disabled):hover': {
-      backgroundColor: varVariantsGhostHoverBackground
+      backgroundColor: vars.variantsGhostHoverBackground
     }
   },
   sm: {
-    fontSize: varTypographyFontSizeSm,
-    minHeight: varComponentsButtonMinHeightSm,
-    padding: varComponentsButtonPaddingSm
+    fontSize: vars.typographyFontSizeSm,
+    minHeight: vars.componentsButtonMinHeightSm,
+    padding: vars.componentsButtonPaddingSm
   },
   md: {
-    fontSize: varTypographyFontSizeMd,
-    minHeight: varComponentsButtonMinHeightMd,
-    padding: varComponentsButtonPaddingMd
+    fontSize: vars.typographyFontSizeMd,
+    minHeight: vars.componentsButtonMinHeightMd,
+    padding: vars.componentsButtonPaddingMd
   },
   lg: {
-    fontSize: varTypographyFontSizeLg,
-    minHeight: varComponentsButtonMinHeightLg,
-    padding: varComponentsButtonPaddingLg
+    fontSize: vars.typographyFontSizeLg,
+    minHeight: vars.componentsButtonMinHeightLg,
+    padding: vars.componentsButtonPaddingLg
   }
 });
 

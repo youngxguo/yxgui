@@ -1,22 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { type ThemeCSSVariableRef } from '../../theme/vars.stylex';
-
-const varBorderDefault = 'var(--yxgui-border-default)' as ThemeCSSVariableRef;
-const varComponentsCardShadow = 'var(--yxgui-components-card-shadow)' as ThemeCSSVariableRef;
-const varPaletteForeground = 'var(--yxgui-palette-foreground)' as ThemeCSSVariableRef;
-const varPaletteMutedForeground = 'var(--yxgui-palette-muted-foreground)' as ThemeCSSVariableRef;
-const varRadiusMd = 'var(--yxgui-radius-md)' as ThemeCSSVariableRef;
-const varSpacingLg = 'var(--yxgui-spacing-lg)' as ThemeCSSVariableRef;
-const varSpacingSm = 'var(--yxgui-spacing-sm)' as ThemeCSSVariableRef;
-const varSpacingXs = 'var(--yxgui-spacing-xs)' as ThemeCSSVariableRef;
-const varSurfaceElevated = 'var(--yxgui-surface-elevated)' as ThemeCSSVariableRef;
-const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
-const varTypographyFontSizeLg = 'var(--yxgui-typography-font-size-lg)' as ThemeCSSVariableRef;
-const varTypographyFontSizeSm = 'var(--yxgui-typography-font-size-sm)' as ThemeCSSVariableRef;
-const varTypographyFontWeightStrong =
-  'var(--yxgui-typography-font-weight-strong)' as ThemeCSSVariableRef;
+import { stylexVars as vars } from '../../theme/stylexVars.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -25,46 +10,46 @@ interface SlotStyleOptions {
 
 const cardStyles = stylex.create({
   root: {
-    backgroundColor: varSurfaceElevated,
-    borderColor: varBorderDefault,
-    borderRadius: varRadiusMd,
+    backgroundColor: vars.surfaceElevated,
+    borderColor: vars.borderDefault,
+    borderRadius: vars.radiusMd,
     borderStyle: 'solid',
     borderWidth: '1px',
-    boxShadow: varComponentsCardShadow,
-    color: varPaletteForeground,
+    boxShadow: vars.componentsCardShadow,
+    color: vars.paletteForeground,
     display: 'flex',
     flexDirection: 'column'
   },
   header: {
     display: 'flex',
     flexDirection: 'column',
-    gap: varSpacingXs,
-    padding: varSpacingLg
+    gap: vars.spacingXs,
+    padding: vars.spacingLg
   },
   title: {
-    fontFamily: varTypographyFontFamily,
-    fontSize: varTypographyFontSizeLg,
-    fontWeight: varTypographyFontWeightStrong,
+    fontFamily: vars.typographyFontFamily,
+    fontSize: vars.typographyFontSizeLg,
+    fontWeight: vars.typographyFontWeightStrong,
     lineHeight: '1.2',
     margin: 0
   },
   description: {
-    color: varPaletteMutedForeground,
-    fontFamily: varTypographyFontFamily,
-    fontSize: varTypographyFontSizeSm,
+    color: vars.paletteMutedForeground,
+    fontFamily: vars.typographyFontFamily,
+    fontSize: vars.typographyFontSizeSm,
     lineHeight: '1.4',
     margin: 0
   },
   content: {
-    fontFamily: varTypographyFontFamily,
-    padding: `0 ${varSpacingLg} ${varSpacingLg}`
+    fontFamily: vars.typographyFontFamily,
+    padding: `0 ${vars.spacingLg} ${vars.spacingLg}`
   },
   footer: {
     alignItems: 'center',
     display: 'flex',
-    gap: varSpacingSm,
+    gap: vars.spacingSm,
     justifyContent: 'flex-end',
-    padding: `0 ${varSpacingLg} ${varSpacingLg}`
+    padding: `0 ${vars.spacingLg} ${vars.spacingLg}`
   }
 });
 

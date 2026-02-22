@@ -1,27 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { type ThemeCSSVariableRef } from '../../theme/vars.stylex';
-
-const varRadiusSm = 'var(--yxgui-radius-sm)' as ThemeCSSVariableRef;
-const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
-const varTypographyFontSizeMd = 'var(--yxgui-typography-font-size-md)' as ThemeCSSVariableRef;
-const varTypographyFontSizeSm = 'var(--yxgui-typography-font-size-sm)' as ThemeCSSVariableRef;
-const varTypographyFontWeightStrong =
-  'var(--yxgui-typography-font-weight-strong)' as ThemeCSSVariableRef;
-const varTypographyLineHeightTight =
-  'var(--yxgui-typography-line-height-tight)' as ThemeCSSVariableRef;
-const varVariantsOutlineBorder = 'var(--yxgui-variants-outline-border)' as ThemeCSSVariableRef;
-const varVariantsOutlineForeground =
-  'var(--yxgui-variants-outline-foreground)' as ThemeCSSVariableRef;
-const varVariantsPrimaryBackground =
-  'var(--yxgui-variants-primary-background)' as ThemeCSSVariableRef;
-const varVariantsPrimaryForeground =
-  'var(--yxgui-variants-primary-foreground)' as ThemeCSSVariableRef;
-const varVariantsSecondaryBackground =
-  'var(--yxgui-variants-secondary-background)' as ThemeCSSVariableRef;
-const varVariantsSecondaryForeground =
-  'var(--yxgui-variants-secondary-foreground)' as ThemeCSSVariableRef;
+import { stylexVars as vars } from '../../theme/stylexVars.stylex';
 
 export type BadgeVariant = 'primary' | 'secondary' | 'outline';
 export type BadgeSize = 'sm' | 'md';
@@ -36,37 +16,37 @@ interface GetBadgeStylePropsOptions {
 const badgeStyles = stylex.create({
   root: {
     alignItems: 'center',
-    borderRadius: varRadiusSm,
+    borderRadius: vars.radiusSm,
     borderStyle: 'solid',
     borderWidth: '1px',
     display: 'inline-flex',
-    fontFamily: varTypographyFontFamily,
-    fontWeight: varTypographyFontWeightStrong,
-    lineHeight: varTypographyLineHeightTight,
+    fontFamily: vars.typographyFontFamily,
+    fontWeight: vars.typographyFontWeightStrong,
+    lineHeight: vars.typographyLineHeightTight,
     whiteSpace: 'nowrap'
   },
   primary: {
-    backgroundColor: varVariantsPrimaryBackground,
-    borderColor: varVariantsPrimaryBackground,
-    color: varVariantsPrimaryForeground
+    backgroundColor: vars.variantsPrimaryBackground,
+    borderColor: vars.variantsPrimaryBackground,
+    color: vars.variantsPrimaryForeground
   },
   secondary: {
-    backgroundColor: varVariantsSecondaryBackground,
-    borderColor: varVariantsSecondaryBackground,
-    color: varVariantsSecondaryForeground
+    backgroundColor: vars.variantsSecondaryBackground,
+    borderColor: vars.variantsSecondaryBackground,
+    color: vars.variantsSecondaryForeground
   },
   outline: {
     backgroundColor: 'transparent',
-    borderColor: varVariantsOutlineBorder,
-    color: varVariantsOutlineForeground
+    borderColor: vars.variantsOutlineBorder,
+    color: vars.variantsOutlineForeground
   },
   sm: {
-    fontSize: varTypographyFontSizeSm,
+    fontSize: vars.typographyFontSizeSm,
     minHeight: '1.4rem',
     padding: '0.15rem 0.5rem'
   },
   md: {
-    fontSize: varTypographyFontSizeMd,
+    fontSize: vars.typographyFontSizeMd,
     minHeight: '1.75rem',
     padding: '0.25rem 0.65rem'
   }

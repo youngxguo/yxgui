@@ -1,20 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
-import { type ThemeCSSVariableRef } from '../theme/vars.stylex';
-
-const varBorderFocus = 'var(--yxgui-border-focus)' as ThemeCSSVariableRef;
-const varControlBackground = 'var(--yxgui-control-background)' as ThemeCSSVariableRef;
-const varControlBackgroundDisabled =
-  'var(--yxgui-control-background-disabled)' as ThemeCSSVariableRef;
-const varControlBorder = 'var(--yxgui-control-border)' as ThemeCSSVariableRef;
-const varControlForeground = 'var(--yxgui-control-foreground)' as ThemeCSSVariableRef;
-const varPaletteMutedForeground = 'var(--yxgui-palette-muted-foreground)' as ThemeCSSVariableRef;
-const varRadiusMd = 'var(--yxgui-radius-md)' as ThemeCSSVariableRef;
-const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
+import { stylexVars as vars } from '../theme/stylexVars.stylex';
 
 export const uiPrimitives = stylex.create({
   focusVisibleRing: {
     ':focus-visible': {
-      outlineColor: varBorderFocus,
+      outlineColor: vars.borderFocus,
       outlineOffset: '2px',
       outlineStyle: 'solid',
       outlineWidth: '2px'
@@ -32,20 +22,20 @@ export const uiPrimitives = stylex.create({
   },
   controlBase: {
     appearance: 'none',
-    backgroundColor: varControlBackground,
-    borderColor: varControlBorder,
-    borderRadius: varRadiusMd,
+    backgroundColor: vars.controlBackground,
+    borderColor: vars.controlBorder,
+    borderRadius: vars.radiusMd,
     borderStyle: 'solid',
     borderWidth: '1px',
-    color: varControlForeground,
-    fontFamily: varTypographyFontFamily,
+    color: vars.controlForeground,
+    fontFamily: vars.typographyFontFamily,
     lineHeight: '1.2',
     width: '100%'
   },
   disabledControlSurface: {
     ':disabled': {
-      backgroundColor: varControlBackgroundDisabled,
-      color: varPaletteMutedForeground
+      backgroundColor: vars.controlBackgroundDisabled,
+      color: vars.paletteMutedForeground
     }
   }
 });
