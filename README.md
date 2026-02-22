@@ -80,6 +80,7 @@ Current exported components include:
 
 - `Accordion` (`AccordionItem`, `AccordionTrigger`, `AccordionContent`)
 - `Alert` (`AlertTitle`, `AlertDescription`)
+- `AspectRatio`
 - `Avatar`
 - `Badge`
 - `Button`
