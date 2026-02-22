@@ -1,7 +1,13 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { borderTokens, paletteTokens, radiusTokens } from '../../theme/tokens.stylex';
+import {
+  borderTokens,
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  surfaceTokens
+} from '../../theme/tokens.stylex';
 
 export type ProgressSize = 'sm' | 'md' | 'lg';
 
@@ -12,18 +18,18 @@ interface SlotStyleOptions {
 
 const progressStyles = stylex.create({
   root: {
-    backgroundColor: '#ecebe4',
+    backgroundColor: surfaceTokens.soft,
     borderColor: borderTokens.muted,
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     overflow: 'hidden',
     position: 'relative',
     width: '100%'
   },
-  sm: { height: '0.375rem' },
-  md: { height: '0.5rem' },
-  lg: { height: '0.75rem' },
+  sm: { height: spacingTokens.xs },
+  md: { height: spacingTokens.half },
+  lg: { height: spacingTokens.lg },
   indicator: {
     backgroundColor: paletteTokens.accent,
     borderRadius: radiusTokens.pill,

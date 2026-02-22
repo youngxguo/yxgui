@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { inputTokens, paletteTokens, radiusTokens } from '../../theme/tokens.stylex';
+import { inputTokens, paletteTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 export type CheckboxSize = 'sm' | 'md';
 
@@ -25,12 +25,12 @@ const checkboxStyles = stylex.create({
     accentColor: inputTokens.invalidBorder
   },
   sm: {
-    height: '0.95rem',
-    width: '0.95rem'
+    height: spacingTokens.lg,
+    width: spacingTokens.lg
   },
   md: {
-    height: '1.05rem',
-    width: '1.05rem'
+    height: spacingTokens.xl,
+    width: spacingTokens.xl
   }
 });
 

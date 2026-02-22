@@ -38,24 +38,35 @@ export const radiusTokens = stylex.defineConsts({
 });
 
 export const spacingTokens = stylex.defineConsts({
+  xxxs: '0.125rem',
   xxs: '0.25rem',
+  half: '0.5rem',
   xs: '0.4rem',
   sm: '0.45rem',
   md: '0.6rem',
   lg: '0.75rem',
   xl: '1rem',
   xxl: '1.5rem',
-  xxxl: '2rem'
+  xxxl: '2rem',
+  xxxxl: '2.5rem',
+  xxxxxl: '3rem'
 });
 
 export const surfaceTokens = stylex.defineConsts({
   base: '#fcfcf9',
+  elevated: '#ffffff',
   subtle: '#f4f4ef',
+  soft: '#ecebe4',
+  softHover: '#efeee7',
+  softStrong: '#c9c7bc',
+  inset: '#d9d8cf',
+  accentMuted: '#e9eefc',
   hover: '#f1efe6',
   accentSubtle: '#eaf0ff'
 });
 
 export const borderTokens = stylex.defineConsts({
+  widthThin: '1px',
   default: '#cfcec5',
   muted: '#e3e1d7',
   strong: '#aead9f',
@@ -81,7 +92,10 @@ export const variantTokens = stylex.defineConsts({
   ghostForeground: '#161614',
   ghostHoverBackground: '#f0f0eb',
   outlineBorder: '#cfcec5',
-  outlineForeground: '#161614'
+  outlineForeground: '#161614',
+  destructiveBackground: '#dc2626',
+  destructiveBorder: '#b91c1c',
+  destructiveForeground: '#fff5f5'
 });
 
 export const buttonTokens = stylex.defineConsts({
@@ -90,28 +104,22 @@ export const buttonTokens = stylex.defineConsts({
   disabledBackground: '#f4f4ef',
   disabledBorder: '#e3e1d7',
   disabledForeground: '#76766b',
-  activeOffset: '1px',
-  paddingSm: '0.375rem 0.75rem',
-  paddingMd: '0.45rem 0.875rem',
-  paddingLg: '0.55rem 1rem',
-  minHeightSm: '2rem',
-  minHeightMd: '2.25rem',
-  minHeightLg: '2.5rem'
+  activeOffset: '1px'
 });
 
 export const badgeTokens = stylex.defineConsts({
-  neutralBackground: '#ecebe4',
-  neutralForeground: '#161614',
-  neutralBorder: '#d8d5c9',
-  successBackground: '#16a34a',
-  successForeground: '#f0fdf4',
-  successBorder: '#15803d',
-  warningBackground: '#f59e0b',
-  warningForeground: '#1f1300',
-  warningBorder: '#d97706',
-  errorBackground: '#dc2626',
-  errorForeground: '#fef2f2',
-  errorBorder: '#b91c1c'
+  neutralBackground: '#f3f2ec',
+  neutralForeground: '#4e4d45',
+  neutralBorder: '#e4e2d7',
+  successBackground: '#ebf8f0',
+  successForeground: '#166534',
+  successBorder: '#b8e3c7',
+  warningBackground: '#fff5dc',
+  warningForeground: '#b45309',
+  warningBorder: '#f0d08a',
+  errorBackground: '#fef0f0',
+  errorForeground: '#b42318',
+  errorBorder: '#f4b6b3'
 });
 
 export const inputTokens = stylex.defineConsts({
@@ -121,4 +129,15 @@ export const inputTokens = stylex.defineConsts({
 export const cardTokens = stylex.defineConsts({
   shadow: '0 1px 2px #e7e5db, 0 1px 1px #f0efe8',
   hoverShadow: '0 3px 8px #dfddd1, 0 1px 2px #eceadf'
+});
+
+export const alertTokens = stylex.defineConsts({
+  infoBackground: '#eef3ff',
+  infoBorder: '#b8c7ff',
+  successBackground: '#eefbf3',
+  successBorder: '#8fd4ab',
+  warningBackground: '#fff7e8',
+  warningBorder: '#f2ca7a',
+  errorBackground: '#fff0f0',
+  errorBorder: '#efb3b3'
 });

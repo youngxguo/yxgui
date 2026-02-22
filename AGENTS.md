@@ -7,6 +7,8 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - Build opinionated, production-ready styled components first.
 - Keep APIs composable so headless primitives can be introduced later.
 - Separate behavior from styling when complexity grows (dialogs, menus, tabs).
+- Prefer a small core token system (especially `spacingTokens`) for sizing and layout values; expand core tokens before adding component-local raw size values.
+- Avoid `calc(...)` for component sizing tokens/styles; pick a discrete, reusable token value instead.
 
 ## Commands
 

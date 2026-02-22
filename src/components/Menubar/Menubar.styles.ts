@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
+import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
   radiusTokens,
@@ -19,7 +20,7 @@ const menubarStyles = stylex.create({
   root: {
     alignItems: 'center',
     backgroundColor: surfaceTokens.base,
-    border: `1px solid ${borderTokens.default}`,
+    border: `${borderTokens.widthThin} solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     display: 'inline-flex',
     gap: 0,
@@ -27,13 +28,13 @@ const menubarStyles = stylex.create({
   },
   trigger: {
     backgroundColor: 'transparent',
-    border: '1px solid transparent',
+    border: `${borderTokens.widthThin} solid transparent`,
     borderRadius: radiusTokens.sm,
     color: paletteTokens.foreground,
     cursor: 'pointer',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '2rem',
+    minHeight: spacingTokens.xxxl,
     padding: `0 ${spacingTokens.sm}`
   },
   triggerHover: {
@@ -41,16 +42,8 @@ const menubarStyles = stylex.create({
       backgroundColor: surfaceTokens.subtle
     }
   },
-  triggerFocusVisible: {
-    ':focus-visible': {
-      outlineColor: borderTokens.focus,
-      outlineOffset: '2px',
-      outlineStyle: 'solid',
-      outlineWidth: '2px'
-    }
-  },
   separator: {
-    borderTop: `1px solid ${borderTokens.muted}`,
+    borderTop: `${borderTokens.widthThin} solid ${borderTokens.muted}`,
     margin: `${spacingTokens.xs} 0`
   }
 });
@@ -61,7 +54,7 @@ export function getMenubarRootStyleProps(options?: SlotStyleOptions) {
 
 export function getMenubarTriggerStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [menubarStyles.trigger, menubarStyles.triggerHover, menubarStyles.triggerFocusVisible],
+    [menubarStyles.trigger, menubarStyles.triggerHover, uiPrimitives.focusVisibleRing],
     options
   );
 }

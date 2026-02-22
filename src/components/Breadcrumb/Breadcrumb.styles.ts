@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
+import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
   paletteTokens,
@@ -50,14 +51,6 @@ const breadcrumbStyles = stylex.create({
       textDecoration: 'underline'
     }
   },
-  linkFocusVisible: {
-    ':focus-visible': {
-      outlineColor: borderTokens.focus,
-      outlineOffset: '2px',
-      outlineStyle: 'solid',
-      outlineWidth: '2px'
-    }
-  },
   page: {
     color: paletteTokens.foreground,
     fontWeight: typographyTokens.fontWeightMedium
@@ -74,13 +67,13 @@ const breadcrumbStyles = stylex.create({
     borderColor: borderTokens.muted,
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: paletteTokens.mutedForeground,
     display: 'inline-flex',
     fontSize: typographyTokens.fontSizeXs,
     lineHeight: 1,
-    minHeight: '1.25rem',
-    padding: '0 0.35rem',
+    minHeight: spacingTokens.xl,
+    padding: `0 ${spacingTokens.xs}`,
     userSelect: 'none'
   }
 });
@@ -99,7 +92,7 @@ export function getBreadcrumbItemStyleProps(options?: SlotStyleOptions) {
 
 export function getBreadcrumbLinkStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [breadcrumbStyles.link, breadcrumbStyles.linkHover, breadcrumbStyles.linkFocusVisible],
+    [breadcrumbStyles.link, breadcrumbStyles.linkHover, uiPrimitives.focusVisibleRing],
     options
   );
 }

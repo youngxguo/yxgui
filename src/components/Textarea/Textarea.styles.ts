@@ -6,6 +6,7 @@ import {
   borderTokens,
   controlTokens,
   inputTokens,
+  spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -53,18 +54,18 @@ const textareaStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '5.5rem',
-    padding: '0.4rem 0.625rem'
+    minHeight: '5rem',
+    padding: `${spacingTokens.xs} ${spacingTokens.md}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: '6.5rem',
-    padding: '0.5rem 0.75rem'
+    minHeight: '6rem',
+    padding: `${spacingTokens.half} ${spacingTokens.lg}`
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: '7.5rem',
-    padding: '0.6rem 0.875rem'
+    minHeight: '7rem',
+    padding: `${spacingTokens.sm} ${spacingTokens.xl}`
   }
 });
 

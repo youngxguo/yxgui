@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { radiusTokens } from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens, surfaceTokens } from '../../theme/tokens.stylex';
 
 export type SkeletonVariant = 'text' | 'rect' | 'circle';
 
@@ -14,12 +14,12 @@ interface GetSkeletonStylePropsOptions {
 
 const skeletonStyles = stylex.create({
   root: {
-    backgroundColor: '#ecebe4',
+    backgroundColor: surfaceTokens.soft,
     display: 'block',
     position: 'relative'
   },
   animated: {
-    backgroundImage: 'linear-gradient(90deg, #ecebe4 25%, #f5f4ee 37%, #ecebe4 63%)',
+    backgroundImage: `linear-gradient(90deg, ${surfaceTokens.soft} 25%, ${surfaceTokens.subtle} 37%, ${surfaceTokens.soft} 63%)`,
     backgroundSize: '400% 100%'
   },
   text: {
@@ -32,8 +32,8 @@ const skeletonStyles = stylex.create({
   },
   circle: {
     borderRadius: radiusTokens.pill,
-    height: '2.5rem',
-    width: '2.5rem'
+    height: spacingTokens.xxxxl,
+    width: spacingTokens.xxxxl
   }
 });
 

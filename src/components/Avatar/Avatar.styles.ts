@@ -5,6 +5,7 @@ import {
   borderTokens,
   paletteTokens,
   radiusTokens,
+  spacingTokens,
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
@@ -30,7 +31,7 @@ const avatarStyles = stylex.create({
     borderColor: borderTokens.muted,
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: paletteTokens.mutedForeground,
     display: 'inline-flex',
     flexShrink: 0,
@@ -45,18 +46,18 @@ const avatarStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    height: '2rem',
-    width: '2rem'
+    height: spacingTokens.xxxl,
+    width: spacingTokens.xxxl
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    height: '2.5rem',
-    width: '2.5rem'
+    height: spacingTokens.xxxxl,
+    width: spacingTokens.xxxxl
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    height: '3rem',
-    width: '3rem'
+    height: spacingTokens.xxxxxl,
+    width: spacingTokens.xxxxxl
   },
   circle: {
     borderRadius: radiusTokens.pill

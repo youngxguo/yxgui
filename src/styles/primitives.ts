@@ -4,6 +4,7 @@ import {
   controlTokens,
   paletteTokens,
   radiusTokens,
+  spacingTokens,
   typographyTokens
 } from '../theme/tokens.stylex';
 
@@ -11,9 +12,9 @@ export const uiPrimitives = stylex.create({
   focusVisibleRing: {
     ':focus-visible': {
       outlineColor: borderTokens.focus,
-      outlineOffset: '2px',
+      outlineOffset: spacingTokens.xxxs,
       outlineStyle: 'solid',
-      outlineWidth: '2px'
+      outlineWidth: spacingTokens.xxxs
     }
   },
   interactiveTransition: {
@@ -32,7 +33,7 @@ export const uiPrimitives = stylex.create({
     borderColor: controlTokens.border,
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: controlTokens.foreground,
     fontFamily: typographyTokens.fontFamily,
     lineHeight: '1.2',

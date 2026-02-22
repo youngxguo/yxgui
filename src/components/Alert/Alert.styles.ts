@@ -2,6 +2,8 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
+  alertTokens,
+  borderTokens,
   paletteTokens,
   radiusTokens,
   spacingTokens,
@@ -19,27 +21,27 @@ const alertStyles = stylex.create({
   root: {
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: paletteTokens.foreground,
     display: 'grid',
     gap: spacingTokens.xs,
     padding: spacingTokens.lg
   },
   info: {
-    backgroundColor: '#eef3ff',
-    borderColor: '#b8c7ff'
+    backgroundColor: alertTokens.infoBackground,
+    borderColor: alertTokens.infoBorder
   },
   success: {
-    backgroundColor: '#eefbf3',
-    borderColor: '#8fd4ab'
+    backgroundColor: alertTokens.successBackground,
+    borderColor: alertTokens.successBorder
   },
   warning: {
-    backgroundColor: '#fff7e8',
-    borderColor: '#f2ca7a'
+    backgroundColor: alertTokens.warningBackground,
+    borderColor: alertTokens.warningBorder
   },
   error: {
-    backgroundColor: '#fff0f0',
-    borderColor: '#efb3b3'
+    backgroundColor: alertTokens.errorBackground,
+    borderColor: alertTokens.errorBorder
   },
   title: {
     fontFamily: typographyTokens.fontFamily,

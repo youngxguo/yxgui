@@ -1,7 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { radiusTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import {
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  typographyTokens
+} from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -10,10 +15,10 @@ interface SlotStyleOptions {
 
 const tooltipStyles = stylex.create({
   content: {
-    backgroundColor: '#161614',
+    backgroundColor: paletteTokens.foreground,
     borderRadius: radiusTokens.sm,
     boxShadow: '0 6px 16px rgba(0,0,0,0.22)',
-    color: '#fcfcf9',
+    color: paletteTokens.background,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: '1.2',

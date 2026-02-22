@@ -33,15 +33,15 @@ const paginationStyles = stylex.create({
   link: {
     alignItems: 'center',
     backgroundColor: surfaceTokens.base,
-    border: `1px solid ${borderTokens.default}`,
+    border: `${borderTokens.widthThin} solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     color: paletteTokens.foreground,
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     justifyContent: 'center',
-    minHeight: '2rem',
-    minWidth: '2rem',
+    minHeight: spacingTokens.xxxl,
+    minWidth: spacingTokens.xxxl,
     padding: `0 ${spacingTokens.sm}`,
     textDecoration: 'none'
   },
@@ -51,7 +51,7 @@ const paginationStyles = stylex.create({
     }
   },
   active: {
-    backgroundColor: '#e9eefc',
+    backgroundColor: surfaceTokens.accentMuted,
     borderColor: borderTokens.focus,
     color: paletteTokens.foreground,
     fontWeight: typographyTokens.fontWeightMedium

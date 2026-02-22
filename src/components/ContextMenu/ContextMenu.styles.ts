@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
+import { uiPrimitives } from '../../styles/primitives';
 import { getMenuContentStyleProps, getMenuItemStyleProps } from '../../styles/menu';
 import { borderTokens, spacingTokens } from '../../theme/tokens.stylex';
 
@@ -14,25 +15,14 @@ const contextMenuStyles = stylex.create({
     display: 'inline-block',
     outline: 'none'
   },
-  triggerFocusVisible: {
-    ':focus-visible': {
-      outlineColor: borderTokens.focus,
-      outlineOffset: '2px',
-      outlineStyle: 'solid',
-      outlineWidth: '2px'
-    }
-  },
   separator: {
-    borderTop: `1px solid ${borderTokens.muted}`,
+    borderTop: `${borderTokens.widthThin} solid ${borderTokens.muted}`,
     margin: `${spacingTokens.xs} ${spacingTokens.xs}`
   }
 });
 
 export function getContextMenuTriggerStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps(
-    [contextMenuStyles.trigger, contextMenuStyles.triggerFocusVisible],
-    options
-  );
+  return composeStyleProps([contextMenuStyles.trigger, uiPrimitives.focusVisibleRing], options);
 }
 
 export function getContextMenuContentStyleProps(options?: SlotStyleOptions) {

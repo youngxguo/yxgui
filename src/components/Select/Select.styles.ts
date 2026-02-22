@@ -6,6 +6,7 @@ import {
   borderTokens,
   controlTokens,
   inputTokens,
+  spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -22,7 +23,7 @@ const selectStyles = stylex.create({
   root: {
     boxSizing: 'border-box',
     cursor: 'pointer',
-    paddingRight: '2rem'
+    paddingRight: spacingTokens.xxxl
   },
   hover: {
     ':not(:disabled):hover': {
@@ -45,24 +46,24 @@ const selectStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '2rem',
-    paddingBottom: '0.3rem',
-    paddingLeft: '0.625rem',
-    paddingTop: '0.3rem'
+    minHeight: spacingTokens.xxxl,
+    paddingBottom: spacingTokens.xxs,
+    paddingLeft: spacingTokens.half,
+    paddingTop: spacingTokens.xxs
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: '2.25rem',
-    paddingBottom: '0.375rem',
-    paddingLeft: '0.75rem',
-    paddingTop: '0.375rem'
+    minHeight: spacingTokens.xxxl,
+    paddingBottom: spacingTokens.xs,
+    paddingLeft: spacingTokens.lg,
+    paddingTop: spacingTokens.xs
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: '2.5rem',
-    paddingBottom: '0.5rem',
-    paddingLeft: '0.875rem',
-    paddingTop: '0.5rem'
+    minHeight: spacingTokens.xxxxl,
+    paddingBottom: spacingTokens.sm,
+    paddingLeft: spacingTokens.xl,
+    paddingTop: spacingTokens.sm
   }
 });
 

@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { borderTokens, paletteTokens } from '../../theme/tokens.stylex';
+import { uiPrimitives } from '../../styles/primitives';
+import { paletteTokens } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -19,20 +20,12 @@ const sliderStyles = stylex.create({
       cursor: 'not-allowed',
       opacity: 0.6
     }
-  },
-  focusVisible: {
-    ':focus-visible': {
-      outlineColor: borderTokens.focus,
-      outlineOffset: '2px',
-      outlineStyle: 'solid',
-      outlineWidth: '2px'
-    }
   }
 });
 
 export function getSliderStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [sliderStyles.root, sliderStyles.disabled, sliderStyles.focusVisible],
+    [sliderStyles.root, sliderStyles.disabled, uiPrimitives.focusVisibleRing],
     options
   );
 }

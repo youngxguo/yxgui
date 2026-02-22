@@ -1,7 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { borderTokens, radiusTokens, surfaceTokens } from '../../theme/tokens.stylex';
+import {
+  borderTokens,
+  radiusTokens,
+  spacingTokens,
+  surfaceTokens
+} from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -10,7 +15,7 @@ interface SlotStyleOptions {
 
 const scrollAreaStyles = stylex.create({
   root: {
-    border: `1px solid ${borderTokens.default}`,
+    border: `${borderTokens.widthThin} solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     backgroundColor: surfaceTokens.base,
     position: 'relative'
@@ -22,7 +27,7 @@ const scrollAreaStyles = stylex.create({
     outline: 'none'
   },
   scrollbar: {
-    backgroundColor: '#efeee7',
+    backgroundColor: surfaceTokens.softHover,
     borderRadius: radiusTokens.pill,
     display: 'flex',
     flexShrink: 0,
@@ -30,24 +35,24 @@ const scrollAreaStyles = stylex.create({
   },
   scrollbarVertical: {
     height: '100%',
-    minWidth: '10px',
-    padding: '2px',
+    minWidth: spacingTokens.md,
+    padding: spacingTokens.xxxs,
     position: 'absolute',
-    right: '2px',
-    top: '2px',
-    bottom: '2px'
+    right: spacingTokens.xxxs,
+    top: spacingTokens.xxxs,
+    bottom: spacingTokens.xxxs
   },
   scrollbarHorizontal: {
     width: '100%',
-    minHeight: '10px',
-    padding: '2px',
+    minHeight: spacingTokens.md,
+    padding: spacingTokens.xxxs,
     position: 'absolute',
-    left: '2px',
-    right: '2px',
-    bottom: '2px'
+    left: spacingTokens.xxxs,
+    right: spacingTokens.xxxs,
+    bottom: spacingTokens.xxxs
   },
   thumb: {
-    backgroundColor: '#c9c7bc',
+    backgroundColor: surfaceTokens.softStrong,
     borderRadius: radiusTokens.pill,
     flex: 1
   }

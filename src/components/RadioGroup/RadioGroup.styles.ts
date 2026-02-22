@@ -41,12 +41,12 @@ const radioStyles = stylex.create({
     margin: 0
   },
   inputSm: {
-    height: '0.95rem',
-    width: '0.95rem'
+    height: spacingTokens.lg,
+    width: spacingTokens.lg
   },
   inputMd: {
-    height: '1.05rem',
-    width: '1.05rem'
+    height: spacingTokens.xl,
+    width: spacingTokens.xl
   },
   textSm: {
     fontSize: typographyTokens.fontSizeSm

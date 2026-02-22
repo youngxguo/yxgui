@@ -2,7 +2,14 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { borderTokens, paletteTokens, radiusTokens } from '../../theme/tokens.stylex';
+import {
+  borderTokens,
+  controlTokens,
+  paletteTokens,
+  radiusTokens,
+  spacingTokens,
+  surfaceTokens
+} from '../../theme/tokens.stylex';
 
 export type SwitchSize = 'sm' | 'md';
 
@@ -17,15 +24,15 @@ interface GetSwitchStylePropsOptions {
 const switchStyles = stylex.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#d9d8cf',
+    backgroundColor: surfaceTokens.inset,
     borderColor: borderTokens.default,
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     cursor: 'pointer',
     display: 'inline-flex',
     margin: 0,
-    padding: '2px',
+    padding: spacingTokens.xxxs,
     position: 'relative'
   },
   checked: {
@@ -37,15 +44,15 @@ const switchStyles = stylex.create({
     opacity: 0.6
   },
   sm: {
-    height: '1.2rem',
-    width: '2rem'
+    height: spacingTokens.xl,
+    width: spacingTokens.xxxl
   },
   md: {
-    height: '1.45rem',
-    width: '2.45rem'
+    height: spacingTokens.xxl,
+    width: spacingTokens.xxxxl
   },
   thumb: {
-    backgroundColor: '#ffffff',
+    backgroundColor: controlTokens.background,
     borderRadius: radiusTokens.pill,
     boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
     display: 'block',
@@ -54,18 +61,18 @@ const switchStyles = stylex.create({
     transitionTimingFunction: 'ease'
   },
   thumbSm: {
-    height: '0.8rem',
-    width: '0.8rem'
+    height: spacingTokens.lg,
+    width: spacingTokens.lg
   },
   thumbMd: {
-    height: '1rem',
-    width: '1rem'
+    height: spacingTokens.xl,
+    width: spacingTokens.xl
   },
   thumbCheckedSm: {
-    transform: 'translateX(0.8rem)'
+    transform: `translateX(${spacingTokens.lg})`
   },
   thumbCheckedMd: {
-    transform: 'translateX(1rem)'
+    transform: `translateX(${spacingTokens.xl})`
   }
 });
 

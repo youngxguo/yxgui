@@ -21,7 +21,7 @@ const cardStyles = stylex.create({
     borderColor: borderTokens.default,
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: paletteTokens.foreground,
     display: 'flex',
     flexDirection: 'column'

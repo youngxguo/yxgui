@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
+  borderTokens,
   buttonTokens,
   paletteTokens,
   radiusTokens,
@@ -28,7 +29,7 @@ const buttonStyles = stylex.create({
     borderColor: 'transparent',
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     color: paletteTokens.foreground,
     cursor: 'pointer',
     display: 'inline-flex',
@@ -82,18 +83,18 @@ const buttonStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: buttonTokens.minHeightSm,
-    padding: buttonTokens.paddingSm
+    minHeight: spacingTokens.xxxl,
+    padding: `${spacingTokens.xxs} ${spacingTokens.half}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: buttonTokens.minHeightMd,
-    padding: buttonTokens.paddingMd
+    minHeight: spacingTokens.xxxl,
+    padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: buttonTokens.minHeightLg,
-    padding: buttonTokens.paddingLg
+    minHeight: spacingTokens.xxxxl,
+    padding: `${spacingTokens.half} ${spacingTokens.xl}`
   }
 });
 

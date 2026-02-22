@@ -2,10 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
 import {
+  borderTokens,
+  paletteTokens,
   radiusTokens,
   spacingTokens,
-  typographyTokens,
-  paletteTokens
+  typographyTokens
 } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
@@ -20,7 +21,7 @@ const dialogStyles = stylex.create({
     display: 'flex',
     inset: 0,
     justifyContent: 'center',
-    padding: '1rem',
+    padding: spacingTokens.xl,
     position: 'fixed',
     zIndex: 1000
   },
@@ -41,14 +42,14 @@ const dialogStyles = stylex.create({
   },
   closeButton: {
     backgroundColor: 'transparent',
-    border: '1px solid transparent',
+    border: `${borderTokens.widthThin} solid transparent`,
     borderRadius: radiusTokens.sm,
     color: paletteTokens.mutedForeground,
     cursor: 'pointer',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     marginLeft: 'auto',
-    padding: '0.25rem 0.4rem'
+    padding: `${spacingTokens.xxs} ${spacingTokens.xs}`
   }
 });
 

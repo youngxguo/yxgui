@@ -28,12 +28,12 @@ const alertDialogStyles = stylex.create({
   buttonBase: {
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     cursor: 'pointer',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '2rem',
-    padding: '0.4rem 0.8rem'
+    minHeight: spacingTokens.xxxl,
+    padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   },
   cancel: {
     backgroundColor: variantTokens.secondaryBackground,
@@ -46,9 +46,9 @@ const alertDialogStyles = stylex.create({
     color: variantTokens.primaryForeground
   },
   destructive: {
-    backgroundColor: '#dc2626',
-    borderColor: '#b91c1c',
-    color: '#fff5f5'
+    backgroundColor: variantTokens.destructiveBackground,
+    borderColor: variantTokens.destructiveBorder,
+    color: variantTokens.destructiveForeground
   },
   actionHover: {
     ':hover': {

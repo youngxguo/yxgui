@@ -4,8 +4,10 @@ import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
   badgeTokens,
   borderTokens,
+  controlTokens,
   paletteTokens,
   radiusTokens,
+  spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -22,9 +24,9 @@ interface GetBadgeStylePropsOptions {
 const badgeStyles = stylex.create({
   root: {
     alignItems: 'center',
-    borderRadius: radiusTokens.sm,
+    borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
-    borderWidth: '1px',
+    borderWidth: borderTokens.widthThin,
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
     fontWeight: typographyTokens.fontWeightMedium,
@@ -52,19 +54,19 @@ const badgeStyles = stylex.create({
     color: badgeTokens.errorForeground
   },
   outline: {
-    backgroundColor: 'transparent',
+    backgroundColor: controlTokens.background,
     borderColor: borderTokens.default,
-    color: paletteTokens.foreground
+    color: paletteTokens.mutedForeground
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '1.4rem',
-    padding: '0.15rem 0.5rem'
+    minHeight: spacingTokens.xl,
+    padding: `${spacingTokens.xxxs} ${spacingTokens.half}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: '1.75rem',
-    padding: '0.25rem 0.65rem'
+    minHeight: spacingTokens.xxl,
+    padding: `${spacingTokens.xxxs} ${spacingTokens.md}`
   }
 });
 
