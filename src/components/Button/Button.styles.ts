@@ -23,7 +23,7 @@ const varComponentsButtonPaddingSm =
 const varComponentsButtonPrimaryHoverShadow =
   'var(--yxgui-components-button-primary-hover-shadow)' as ThemeCSSVariableRef;
 const varPaletteForeground = 'var(--yxgui-palette-foreground)' as ThemeCSSVariableRef;
-const varRadiusPill = 'var(--yxgui-radius-pill)' as ThemeCSSVariableRef;
+const varRadiusMd = 'var(--yxgui-radius-md)' as ThemeCSSVariableRef;
 const varSpacingXs = 'var(--yxgui-spacing-xs)' as ThemeCSSVariableRef;
 const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
 const varTypographyFontSizeLg = 'var(--yxgui-typography-font-size-lg)' as ThemeCSSVariableRef;
@@ -63,7 +63,7 @@ const buttonStyles = stylex.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    borderRadius: varRadiusPill,
+    borderRadius: varRadiusMd,
     borderStyle: 'solid',
     borderWidth: '1px',
     color: varPaletteForeground,

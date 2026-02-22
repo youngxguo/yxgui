@@ -13,9 +13,9 @@
   --yxgui-typography-font-size-lg: 1.0625rem;
   --yxgui-typography-line-height-tight: 1;
 
-  --yxgui-radius-sm: 0.375rem;
-  --yxgui-radius-md: 0.625rem;
-  --yxgui-radius-lg: 0.875rem;
+  --yxgui-radius-sm: 0.25rem;
+  --yxgui-radius-md: 0.375rem;
+  --yxgui-radius-lg: 0.5rem;
   --yxgui-radius-pill: 999px;
 
   --yxgui-spacing-xs: 0.4rem;
@@ -53,12 +53,12 @@
   --yxgui-components-button-primary-hover-shadow: 0 6px 16px rgba(22, 22, 20, 0.18);
   --yxgui-components-button-disabled-opacity: 0.55;
   --yxgui-components-button-active-offset: 1px;
-  --yxgui-components-button-padding-sm: 0.45rem 0.8rem;
-  --yxgui-components-button-padding-md: 0.6rem 1rem;
-  --yxgui-components-button-padding-lg: 0.75rem 1.2rem;
+  --yxgui-components-button-padding-sm: 0.375rem 0.75rem;
+  --yxgui-components-button-padding-md: 0.45rem 0.875rem;
+  --yxgui-components-button-padding-lg: 0.55rem 1rem;
   --yxgui-components-button-min-height-sm: 2rem;
-  --yxgui-components-button-min-height-md: 2.5rem;
-  --yxgui-components-button-min-height-lg: 2.9rem;
+  --yxgui-components-button-min-height-md: 2.25rem;
+  --yxgui-components-button-min-height-lg: 2.5rem;
 
   --yxgui-components-input-invalid-border: #c43d3d;
 

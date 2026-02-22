@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { type ThemeCSSVariableRef } from '../../theme/vars.stylex';
 
-const varRadiusPill = 'var(--yxgui-radius-pill)' as ThemeCSSVariableRef;
+const varRadiusSm = 'var(--yxgui-radius-sm)' as ThemeCSSVariableRef;
 const varTypographyFontFamily = 'var(--yxgui-typography-font-family)' as ThemeCSSVariableRef;
 const varTypographyFontSizeMd = 'var(--yxgui-typography-font-size-md)' as ThemeCSSVariableRef;
 const varTypographyFontSizeSm = 'var(--yxgui-typography-font-size-sm)' as ThemeCSSVariableRef;
@@ -36,7 +36,7 @@ interface GetBadgeStylePropsOptions {
 const badgeStyles = stylex.create({
   root: {
     alignItems: 'center',
-    borderRadius: varRadiusPill,
+    borderRadius: varRadiusSm,
     borderStyle: 'solid',
     borderWidth: '1px',
     display: 'inline-flex',

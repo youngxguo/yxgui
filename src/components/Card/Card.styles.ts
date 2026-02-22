@@ -7,7 +7,7 @@ const varBorderDefault = 'var(--yxgui-border-default)' as ThemeCSSVariableRef;
 const varComponentsCardShadow = 'var(--yxgui-components-card-shadow)' as ThemeCSSVariableRef;
 const varPaletteForeground = 'var(--yxgui-palette-foreground)' as ThemeCSSVariableRef;
 const varPaletteMutedForeground = 'var(--yxgui-palette-muted-foreground)' as ThemeCSSVariableRef;
-const varRadiusLg = 'var(--yxgui-radius-lg)' as ThemeCSSVariableRef;
+const varRadiusMd = 'var(--yxgui-radius-md)' as ThemeCSSVariableRef;
 const varSpacingLg = 'var(--yxgui-spacing-lg)' as ThemeCSSVariableRef;
 const varSpacingSm = 'var(--yxgui-spacing-sm)' as ThemeCSSVariableRef;
 const varSpacingXs = 'var(--yxgui-spacing-xs)' as ThemeCSSVariableRef;
@@ -27,7 +27,7 @@ const cardStyles = stylex.create({
   root: {
     backgroundColor: varSurfaceElevated,
     borderColor: varBorderDefault,
-    borderRadius: varRadiusLg,
+    borderRadius: varRadiusMd,
     borderStyle: 'solid',
     borderWidth: '1px',
     boxShadow: varComponentsCardShadow,

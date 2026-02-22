@@ -56,17 +56,17 @@ const inputStyles = stylex.create({
   sm: {
     fontSize: varTypographyFontSizeSm,
     minHeight: '2rem',
-    padding: '0.35rem 0.65rem'
+    padding: '0.3rem 0.625rem'
   },
   md: {
     fontSize: varTypographyFontSizeMd,
-    minHeight: '2.5rem',
-    padding: '0.5rem 0.8rem'
+    minHeight: '2.25rem',
+    padding: '0.375rem 0.75rem'
   },
   lg: {
     fontSize: varTypographyFontSizeLg,
-    minHeight: '2.9rem',
-    padding: '0.65rem 0.9rem'
+    minHeight: '2.5rem',
+    padding: '0.5rem 0.875rem'
   }
 });
 
