@@ -47,6 +47,7 @@ Controlled/uncontrolled naming conventions (used by interactive components):
 - `value` / `defaultValue` / `onValueChange`
 - `open` / `defaultOpen` / `onOpenChange`
 - `checked` / `defaultChecked` / `onCheckedChange`
+- `pressed` / `defaultPressed` / `onPressedChange`
 
 Examples:
 
@@ -55,6 +56,7 @@ Examples:
 <Tabs defaultValue="account" />
 <Dialog open={open} onOpenChange={setOpen} />
 <Switch checked={enabled} onCheckedChange={setEnabled} />
+<Toggle pressed={pinned} onPressedChange={setPinned} />
 ```
 
 For contributor-facing implementation details and current edge cases, see:
@@ -99,6 +101,7 @@ Current exported components include:
 - `Separator`
 - `Skeleton`
 - `Switch`
+- `Toggle`
 - `Tabs` (`TabsList`, `TabsTrigger`, `TabsPanel`)
 - `Textarea`
 - `Typography`

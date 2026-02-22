@@ -52,6 +52,8 @@ export { Alert, AlertDescription, AlertTitle } from './components/Alert/Alert';
 export type { AlertDescriptionProps, AlertProps, AlertTitleProps } from './components/Alert/Alert';
 export { Switch } from './components/Switch/Switch';
 export type { SwitchProps } from './components/Switch/Switch';
+export { Toggle } from './components/Toggle/Toggle';
+export type { ToggleProps } from './components/Toggle/Toggle';
 export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export type { RadioGroupProps, RadioProps } from './components/RadioGroup/RadioGroup';
 export { Progress } from './components/Progress/Progress';
