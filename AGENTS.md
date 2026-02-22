@@ -26,6 +26,17 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Prefer accessible role/name queries.
 - Test user-visible behavior and public API contracts.
 
+## Commit Rules
+- Keep commits atomic: one logical change per commit; split refactors from behavior changes.
+- Do not mix unrelated files in the same commit.
+- Use clear conventional-style subjects: `<type>(<scope>): <summary>` (e.g. `feat(button): add loading state`).
+- Keep subject lines imperative and under 72 characters.
+- Add a concise commit body that explains what changed and why (1-3 short lines).
+- When behavior changes, include tests in the same commit.
+- The `pre-push` hook enforces commit-body quality checks.
+- CI enforces `pnpm check:quality` (`pnpm lint`, `pnpm test`, `pnpm build`).
+- Do not commit generated artifacts in `dist/`.
+
 ## Notes
 - Follow `.oxlintrc.json` and `.prettierrc.json`.
 - Update `README.md` when public API/usage changes.
