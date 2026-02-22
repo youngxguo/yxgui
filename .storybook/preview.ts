@@ -1,12 +1,23 @@
 import type { Preview } from '@storybook/react';
-import { createElement } from 'react';
-import { ThemeProvider } from '../src/theme/ThemeProvider';
 import { defaultTheme } from '../src/theme/defaultTheme';
+import { themeToCSSVariables } from '../src/theme/cssVariables';
+
+function applyStorybookDefaultTheme() {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const root = document.documentElement;
+  const variables = themeToCSSVariables(defaultTheme);
+
+  for (const [name, value] of Object.entries(variables)) {
+    root.style.setProperty(name, String(value));
+  }
+}
+
+applyStorybookDefaultTheme();
 
 const preview: Preview = {
-  decorators: [
-    (Story) => createElement(ThemeProvider, { theme: defaultTheme }, createElement(Story))
-  ],
   parameters: {
     controls: {
       matchers: {
