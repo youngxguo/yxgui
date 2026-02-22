@@ -38,16 +38,22 @@ export const radiusTokens = stylex.defineConsts({
 });
 
 export const spacingTokens = stylex.defineConsts({
+  xxs: '0.25rem',
   xs: '0.4rem',
   sm: '0.45rem',
   md: '0.6rem',
-  lg: '0.75rem'
+  lg: '0.75rem',
+  xl: '1rem',
+  xxl: '1.5rem',
+  xxxl: '2rem'
 });
 
 export const surfaceTokens = stylex.defineConsts({
   base: '#fcfcf9',
-  elevated: '#ffffff',
-  subtle: '#f4f4ef'
+  elevated: '#fffdf7',
+  subtle: '#f4f4ef',
+  hover: '#f1efe6',
+  accentSubtle: '#eaf0ff'
 });
 
 export const borderTokens = stylex.defineConsts({

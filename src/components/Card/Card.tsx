@@ -1,11 +1,10 @@
 import type { CSSProperties, HTMLAttributes, Ref } from 'react';
+import { Typography } from '../Typography/Typography';
 import {
   getCardContentStyleProps,
-  getCardDescriptionStyleProps,
   getCardFooterStyleProps,
   getCardHeaderStyleProps,
-  getCardRootStyleProps,
-  getCardTitleStyleProps
+  getCardRootStyleProps
 } from './Card.styles';
 
 interface CardBaseProps {
@@ -52,13 +51,29 @@ export function CardHeader({ ref, className, style, ...props }: CardHeaderProps)
 }
 
 export function CardTitle({ ref, className, style, ...props }: CardTitleProps) {
-  const styleProps = getCardTitleStyleProps(slotStyleOptions({ className, style }));
-  return <h3 {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography
+      {...props}
+      ref={ref as Ref<HTMLElement>}
+      as="h3"
+      variant="h4"
+      className={className}
+      style={style}
+    />
+  );
 }
 
 export function CardDescription({ ref, className, style, ...props }: CardDescriptionProps) {
-  const styleProps = getCardDescriptionStyleProps(slotStyleOptions({ className, style }));
-  return <p {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography
+      {...props}
+      ref={ref as Ref<HTMLElement>}
+      as="p"
+      variant="muted"
+      className={className}
+      style={style}
+    />
+  );
 }
 
 export function CardContent({ ref, className, style, ...props }: CardContentProps) {

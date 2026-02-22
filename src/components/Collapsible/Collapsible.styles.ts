@@ -5,7 +5,6 @@ import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
   paletteTokens,
-  radiusTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -18,9 +17,6 @@ interface SlotStyleOptions {
 
 const collapsibleStyles = stylex.create({
   root: {
-    backgroundColor: surfaceTokens.elevated,
-    border: `1px solid ${borderTokens.default}`,
-    borderRadius: radiusTokens.md,
     display: 'grid',
     overflow: 'hidden'
   },

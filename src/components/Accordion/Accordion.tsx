@@ -3,12 +3,13 @@ import {
   useContext,
   useId,
   useRef,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getAccordionContentInnerStyleProps,
@@ -107,8 +108,7 @@ export interface AccordionItemProps extends HTMLAttributes<HTMLDivElement>, Base
   disabled?: boolean;
 }
 
-export interface AccordionTriggerProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
+export interface AccordionTriggerProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -128,7 +128,7 @@ function AccordionProviderRoot({
 
   return (
     <AccordionContext.Provider value={contextValue}>
-      <div
+      <Card
         {...props}
         {...styleProps}
         ref={(node) => {
@@ -138,7 +138,7 @@ function AccordionProviderRoot({
         data-accordion-type={contextValue.type}
       >
         {children}
-      </div>
+      </Card>
     </AccordionContext.Provider>
   );
 }
@@ -277,6 +277,8 @@ export function AccordionTrigger({
   ref,
   className,
   style,
+  variant = 'ghost',
+  size = 'sm',
   disabled: triggerDisabled = false,
   onClick,
   onKeyDown,
@@ -292,9 +294,11 @@ export function AccordionTrigger({
 
   return (
     <h3 {...headerStyleProps}>
-      <button
+      <Button
         {...props}
         {...styleProps}
+        variant={variant}
+        size={size}
         ref={ref}
         type="button"
         id={item.triggerId}
@@ -355,7 +359,7 @@ export function AccordionTrigger({
         <span {...indicatorStyleProps} aria-hidden="true">
           {item.open ? '-' : '+'}
         </span>
-      </button>
+      </Button>
     </h3>
   );
 }

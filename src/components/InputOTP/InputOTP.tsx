@@ -12,6 +12,8 @@ import {
   type ReactNode,
   type Ref
 } from 'react';
+import { Input } from '../Input/Input';
+import { Typography } from '../Typography/Typography';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getInputOtpGroupStyleProps,
@@ -232,9 +234,10 @@ export function InputOTPSlot({
   };
 
   return (
-    <input
+    <Input
       {...props}
       {...styleProps}
+      size="lg"
       ref={(node) => {
         context.registerSlot(index, node);
         if (typeof ref === 'function') {
@@ -278,8 +281,15 @@ export function InputOTPSeparator({
 }: InputOTPSeparatorProps) {
   const styleProps = getInputOtpSeparatorStyleProps(getStyleOptions({ className, style }));
   return (
-    <span {...props} {...styleProps} ref={ref} aria-hidden={props['aria-hidden'] ?? true}>
+    <Typography
+      {...props}
+      {...styleProps}
+      ref={ref as Ref<HTMLElement>}
+      as="span"
+      variant="muted"
+      aria-hidden={props['aria-hidden'] ?? true}
+    >
       {children}
-    </span>
+    </Typography>
   );
 }

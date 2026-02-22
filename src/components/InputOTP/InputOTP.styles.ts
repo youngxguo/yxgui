@@ -1,14 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import {
-  borderTokens,
-  paletteTokens,
-  radiusTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -27,32 +20,13 @@ const inputOtpStyles = stylex.create({
     gap: spacingTokens.xs
   },
   slot: {
-    backgroundColor: surfaceTokens.elevated,
-    border: `1px solid ${borderTokens.default}`,
-    borderRadius: radiusTokens.md,
-    color: paletteTokens.foreground,
     fontFamily: typographyTokens.fontFamilyMono,
-    fontSize: typographyTokens.fontSizeLg,
     fontWeight: typographyTokens.fontWeightMedium,
-    height: '2.5rem',
+    padding: 0,
     textAlign: 'center',
     width: '2.25rem'
   },
-  slotFocusVisible: {
-    ':focus-visible': {
-      borderColor: borderTokens.focus,
-      outline: 'none'
-    }
-  },
-  slotDisabled: {
-    ':disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.6
-    }
-  },
   separator: {
-    color: paletteTokens.mutedForeground,
-    fontFamily: typographyTokens.fontFamily,
     userSelect: 'none'
   }
 });
@@ -66,10 +40,7 @@ export function getInputOtpGroupStyleProps(options?: SlotStyleOptions) {
 }
 
 export function getInputOtpSlotStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps(
-    [inputOtpStyles.slot, inputOtpStyles.slotFocusVisible, inputOtpStyles.slotDisabled],
-    options
-  );
+  return composeStyleProps([inputOtpStyles.slot], options);
 }
 
 export function getInputOtpSeparatorStyleProps(options?: SlotStyleOptions) {

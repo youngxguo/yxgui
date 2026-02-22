@@ -3,7 +3,6 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
 import {
   borderTokens,
-  cardTokens,
   paletteTokens,
   radiusTokens,
   spacingTokens,
@@ -23,38 +22,15 @@ const cardStyles = stylex.create({
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: '1px',
-    boxShadow: cardTokens.shadow,
     color: paletteTokens.foreground,
     display: 'flex',
-    flexDirection: 'column',
-    transitionDuration: '140ms',
-    transitionProperty: 'box-shadow',
-    transitionTimingFunction: 'ease'
-  },
-  rootHover: {
-    ':hover': {
-      boxShadow: cardTokens.hoverShadow
-    }
+    flexDirection: 'column'
   },
   header: {
     display: 'flex',
     flexDirection: 'column',
     gap: spacingTokens.xs,
     padding: spacingTokens.lg
-  },
-  title: {
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeLg,
-    fontWeight: typographyTokens.fontWeightStrong,
-    lineHeight: '1.2',
-    margin: 0
-  },
-  description: {
-    color: paletteTokens.mutedForeground,
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeSm,
-    lineHeight: '1.4',
-    margin: 0
   },
   content: {
     fontFamily: typographyTokens.fontFamily,
@@ -70,19 +46,11 @@ const cardStyles = stylex.create({
 });
 
 export function getCardRootStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([cardStyles.root, cardStyles.rootHover], options);
+  return composeStyleProps([cardStyles.root], options);
 }
 
 export function getCardHeaderStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps([cardStyles.header], options);
-}
-
-export function getCardTitleStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([cardStyles.title], options);
-}
-
-export function getCardDescriptionStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([cardStyles.description], options);
 }
 
 export function getCardContentStyleProps(options?: SlotStyleOptions) {

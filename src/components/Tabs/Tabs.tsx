@@ -7,6 +7,8 @@ import {
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getTabsListStyleProps,
@@ -51,7 +53,7 @@ export interface TabsListProps extends HTMLAttributes<HTMLDivElement>, BaseStyle
   ref?: Ref<HTMLDivElement>;
 }
 
-export interface TabsTriggerProps extends HTMLAttributes<HTMLButtonElement>, BaseStyleProps {
+export interface TabsTriggerProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
   value: string;
   disabled?: boolean;
@@ -97,7 +99,7 @@ export function TabsList({ ref, className, style, onKeyDown, ...props }: TabsLis
   const styleProps = getTabsListStyleProps(context.orientation, { className, style });
 
   return (
-    <div
+    <Card
       {...props}
       {...styleProps}
       ref={ref}
@@ -150,6 +152,8 @@ export function TabsTrigger({
   ref,
   value,
   disabled = false,
+  variant = 'ghost',
+  size = 'sm',
   className,
   style,
   onClick,
@@ -162,9 +166,11 @@ export function TabsTrigger({
   const panelId = `${context.baseId}-panel-${value}`;
 
   return (
-    <button
+    <Button
       {...props}
       {...styleProps}
+      variant={variant}
+      size={size}
       ref={ref}
       type="button"
       role="tab"
@@ -192,7 +198,7 @@ export function TabsPanel({ ref, value, className, style, hidden, ...props }: Ta
   const panelId = `${context.baseId}-panel-${value}`;
 
   return (
-    <div
+    <Card
       {...props}
       {...styleProps}
       ref={ref}

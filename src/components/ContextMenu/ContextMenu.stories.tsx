@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
+import { Card, CardHeader } from '../Card/Card';
+import { Typography } from '../Typography/Typography';
 import {
   ContextMenu,
   ContextMenuContent,
@@ -11,7 +13,10 @@ import {
 const meta = {
   title: 'Components/ContextMenu',
   component: ContextMenu,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered'
+  }
 } satisfies Meta<typeof ContextMenu>;
 
 export default meta;
@@ -20,10 +25,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger
-        style={{ border: '1px dashed #cfcec5', borderRadius: 8, padding: '2rem' }}
-      >
-        Right-click this area
+      <ContextMenuTrigger>
+        <Card>
+          <CardHeader>
+            <Typography as="span" variant="muted">
+              Right-click this area
+            </Typography>
+          </CardHeader>
+        </Card>
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem>Open</ContextMenuItem>

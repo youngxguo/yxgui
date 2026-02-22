@@ -2,12 +2,13 @@ import {
   createContext,
   useContext,
   useId,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getCollapsibleContentInnerStyleProps,
@@ -49,8 +50,7 @@ export interface CollapsibleProps extends HTMLAttributes<HTMLDivElement>, BaseSt
   children?: ReactNode;
 }
 
-export interface CollapsibleTriggerProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
+export interface CollapsibleTriggerProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -87,7 +87,7 @@ export function Collapsible({
         contentId: `${baseId}-content`
       }}
     >
-      <div
+      <Card
         {...props}
         {...rootStyleProps}
         ref={ref}
@@ -95,7 +95,7 @@ export function Collapsible({
         data-disabled={disabled ? '' : undefined}
       >
         {children}
-      </div>
+      </Card>
     </CollapsibleContext.Provider>
   );
 }
@@ -104,6 +104,8 @@ export function CollapsibleTrigger({
   ref,
   className,
   style,
+  variant = 'ghost',
+  size = 'sm',
   disabled: disabledProp = false,
   onClick,
   children,
@@ -118,9 +120,11 @@ export function CollapsibleTrigger({
   const indicatorStyleProps = getCollapsibleIndicatorStyleProps();
 
   return (
-    <button
+    <Button
       {...props}
       {...triggerStyleProps}
+      variant={variant}
+      size={size}
       ref={ref}
       type="button"
       id={context.triggerId}
@@ -140,7 +144,7 @@ export function CollapsibleTrigger({
       <span {...indicatorStyleProps} aria-hidden="true">
         {context.open ? '-' : '+'}
       </span>
-    </button>
+    </Button>
   );
 }
 

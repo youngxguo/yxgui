@@ -4,12 +4,13 @@ import {
   useEffect,
   useId,
   useRef,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
 import { useControllableState } from '../_internal/useControllableState';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
@@ -48,10 +49,7 @@ export interface HoverCardProps {
   children?: ReactNode;
 }
 
-export interface HoverCardTriggerProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  'type'
-> {
+export interface HoverCardTriggerProps extends Omit<ButtonProps, 'type'> {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -166,6 +164,8 @@ function useHoverCardActions(componentName: string) {
 
 export function HoverCardTrigger({
   ref,
+  variant = 'ghost',
+  size = 'sm',
   onMouseEnter,
   onMouseLeave,
   onFocus,
@@ -176,8 +176,10 @@ export function HoverCardTrigger({
   const actions = useHoverCardActions('HoverCardTrigger');
 
   return (
-    <button
+    <Button
       {...props}
+      variant={variant}
+      size={size}
       ref={(node) => {
         context.setTriggerNode(node);
         assignRef(ref, node);
@@ -269,7 +271,7 @@ export function HoverCardContent({
 
   return (
     <Portal>
-      <div
+      <Card
         {...props}
         {...styleProps}
         ref={(node) => {
@@ -289,7 +291,7 @@ export function HoverCardContent({
         }}
       >
         {children}
-      </div>
+      </Card>
     </Portal>
   );
 }

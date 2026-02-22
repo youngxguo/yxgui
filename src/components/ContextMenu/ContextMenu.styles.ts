@@ -27,7 +27,7 @@ const contextMenuStyles = stylex.create({
   },
   separator: {
     borderTop: `1px solid ${borderTokens.muted}`,
-    margin: `${spacingTokens.xs} ${spacingTokens.sm}`
+    margin: `${spacingTokens.xs} ${spacingTokens.xs}`
   }
 });
 

@@ -4,12 +4,13 @@ import {
   useEffect,
   useId,
   useRef,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
 import { useControllableState } from '../_internal/useControllableState';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
@@ -48,10 +49,7 @@ export interface DropdownMenuProps {
   children?: ReactNode;
 }
 
-export interface DropdownMenuTriggerProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  'type'
-> {
+export interface DropdownMenuTriggerProps extends Omit<ButtonProps, 'type'> {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -60,8 +58,7 @@ export interface DropdownMenuContentProps extends HTMLAttributes<HTMLDivElement>
   offset?: number;
 }
 
-export interface DropdownMenuItemProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
+export interface DropdownMenuItemProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
   onSelect?: () => void;
 }
@@ -115,6 +112,8 @@ export function DropdownMenu({
 
 export function DropdownMenuTrigger({
   ref,
+  variant = 'secondary',
+  size = 'sm',
   onClick,
   onKeyDown,
   ...props
@@ -122,8 +121,10 @@ export function DropdownMenuTrigger({
   const context = useDropdownMenuContext('DropdownMenuTrigger');
 
   return (
-    <button
+    <Button
       {...props}
+      variant={variant}
+      size={size}
       ref={(node) => {
         context.setTriggerNode(node);
         assignRef(ref, node);
@@ -213,7 +214,7 @@ export function DropdownMenuContent({
 
   return (
     <Portal>
-      <div
+      <Card
         {...props}
         {...contentStyleProps}
         ref={(node) => {
@@ -253,7 +254,7 @@ export function DropdownMenuContent({
         }}
       >
         {children}
-      </div>
+      </Card>
     </Portal>
   );
 }
@@ -261,6 +262,8 @@ export function DropdownMenuContent({
 export function DropdownMenuItem({
   ref,
   disabled = false,
+  variant = 'ghost',
+  size = 'sm',
   className,
   style,
   onClick,
@@ -271,9 +274,11 @@ export function DropdownMenuItem({
   const styleProps = getDropdownMenuItemStyleProps(disabled, { className, style });
 
   return (
-    <button
+    <Button
       {...props}
       {...styleProps}
+      variant={variant}
+      size={size}
       ref={ref}
       type="button"
       role="menuitem"

@@ -1,14 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import {
-  borderTokens,
-  paletteTokens,
-  radiusTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -17,12 +10,9 @@ interface SlotStyleOptions {
 
 const popoverStyles = stylex.create({
   content: {
-    backgroundColor: surfaceTokens.elevated,
-    border: `1px solid ${borderTokens.default}`,
-    borderRadius: radiusTokens.md,
-    boxShadow: '0 8px 20px rgba(22,22,20,0.14)',
-    color: paletteTokens.foreground,
+    display: 'grid',
     fontFamily: typographyTokens.fontFamily,
+    gap: spacingTokens.sm,
     maxWidth: '20rem',
     padding: spacingTokens.lg,
     position: 'fixed',

@@ -4,12 +4,13 @@ import {
   useEffect,
   useId,
   useRef,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
 import { useControllableState } from '../_internal/useControllableState';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
@@ -45,7 +46,7 @@ export interface PopoverProps {
   children?: ReactNode;
 }
 
-export interface PopoverTriggerProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+export interface PopoverTriggerProps extends Omit<ButtonProps, 'type'> {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -92,12 +93,20 @@ export function Popover({ open, defaultOpen = false, onOpenChange, children }: P
   );
 }
 
-export function PopoverTrigger({ ref, onClick, ...props }: PopoverTriggerProps) {
+export function PopoverTrigger({
+  ref,
+  variant = 'secondary',
+  size = 'sm',
+  onClick,
+  ...props
+}: PopoverTriggerProps) {
   const context = usePopoverContext('PopoverTrigger');
 
   return (
-    <button
+    <Button
       {...props}
+      variant={variant}
+      size={size}
       ref={(node) => {
         context.setTriggerNode(node);
         assignRef(ref, node);
@@ -176,7 +185,7 @@ export function PopoverContent({
 
   return (
     <Portal>
-      <div
+      <Card
         {...props}
         {...contentStyleProps}
         ref={(node) => {
@@ -189,7 +198,7 @@ export function PopoverContent({
         onKeyDown={onKeyDown}
       >
         {children}
-      </div>
+      </Card>
     </Portal>
   );
 }

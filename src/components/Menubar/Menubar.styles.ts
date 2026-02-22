@@ -22,8 +22,8 @@ const menubarStyles = stylex.create({
     border: `1px solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     display: 'inline-flex',
-    gap: spacingTokens.xs,
-    padding: spacingTokens.xs
+    gap: 0,
+    padding: spacingTokens.xxs
   },
   trigger: {
     backgroundColor: 'transparent',
@@ -51,7 +51,7 @@ const menubarStyles = stylex.create({
   },
   separator: {
     borderTop: `1px solid ${borderTokens.muted}`,
-    margin: `${spacingTokens.xs} ${spacingTokens.xs}`
+    margin: `${spacingTokens.xs} 0`
   }
 });
 

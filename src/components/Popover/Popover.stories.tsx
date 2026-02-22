@@ -1,11 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from 'storybook/test';
+import { Typography } from '../Typography/Typography';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 const meta = {
   title: 'Components/Popover',
   component: Popover,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered'
+  }
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -13,17 +17,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div style={{ minHeight: 180, paddingTop: 24 }}>
-      <Popover>
-        <PopoverTrigger>Open popover</PopoverTrigger>
-        <PopoverContent>
-          <div style={{ display: 'grid', gap: 8 }}>
-            <strong>Workspace</strong>
-            <span>Manage sharing, members, and permissions.</span>
-          </div>
-        </PopoverContent>
-      </Popover>
-    </div>
+    <Popover>
+      <PopoverTrigger>Open popover</PopoverTrigger>
+      <PopoverContent>
+        <Typography as="h3" variant="h4">
+          Workspace
+        </Typography>
+        <Typography as="p" variant="muted">
+          Manage sharing, members, and permissions.
+        </Typography>
+      </PopoverContent>
+    </Popover>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

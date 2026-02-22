@@ -4,21 +4,21 @@ import {
   useEffect,
   useId,
   useRef,
-  type ButtonHTMLAttributes,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
   type Ref
 } from 'react';
+import { Button, type ButtonProps } from '../Button/Button';
+import { Card } from '../Card/Card';
+import { Typography } from '../Typography/Typography';
 import { Portal } from '../_internal/Portal';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getDialogCloseStyleProps,
   getDialogContentStyleProps,
-  getDialogDescriptionStyleProps,
   getDialogFooterStyleProps,
-  getDialogOverlayStyleProps,
-  getDialogTitleStyleProps
+  getDialogOverlayStyleProps
 } from './Dialog.styles';
 
 const focusableSelector =
@@ -54,8 +54,7 @@ export interface DialogProps {
   children?: ReactNode;
 }
 
-export interface DialogTriggerProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
+export interface DialogTriggerProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -77,8 +76,7 @@ export interface DialogFooterProps extends HTMLAttributes<HTMLDivElement>, BaseS
   ref?: Ref<HTMLDivElement>;
 }
 
-export interface DialogCloseProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
+export interface DialogCloseProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -119,12 +117,20 @@ export function Dialog({ open, defaultOpen = false, onOpenChange, children }: Di
   );
 }
 
-export function DialogTrigger({ ref, onClick, ...props }: DialogTriggerProps) {
+export function DialogTrigger({
+  ref,
+  variant = 'secondary',
+  size = 'sm',
+  onClick,
+  ...props
+}: DialogTriggerProps) {
   const context = useDialogContext('DialogTrigger');
 
   return (
-    <button
+    <Button
       {...props}
+      variant={variant}
+      size={size}
       ref={(node) => {
         context.setTriggerNode(node);
         assignRef(ref, node);
@@ -203,7 +209,7 @@ export function DialogContent({
           }
         }}
       >
-        <div
+        <Card
           {...props}
           {...contentStyleProps}
           ref={(node) => {
@@ -218,20 +224,36 @@ export function DialogContent({
           onMouseDown={onMouseDown}
         >
           {children}
-        </div>
+        </Card>
       </div>
     </Portal>
   );
 }
 
 export function DialogTitle({ ref, className, style, ...props }: DialogTitleProps) {
-  const styleProps = getDialogTitleStyleProps({ className, style });
-  return <h2 {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography
+      {...props}
+      ref={ref as Ref<HTMLElement>}
+      as="h2"
+      variant="h4"
+      className={className}
+      style={style}
+    />
+  );
 }
 
 export function DialogDescription({ ref, className, style, ...props }: DialogDescriptionProps) {
-  const styleProps = getDialogDescriptionStyleProps({ className, style });
-  return <p {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography
+      {...props}
+      ref={ref as Ref<HTMLElement>}
+      as="p"
+      variant="muted"
+      className={className}
+      style={style}
+    />
+  );
 }
 
 export function DialogFooter({ ref, className, style, ...props }: DialogFooterProps) {
@@ -244,9 +266,11 @@ export function DialogClose({ ref, className, style, onClick, ...props }: Dialog
   const styleProps = getDialogCloseStyleProps({ className, style });
 
   return (
-    <button
+    <Button
       {...props}
       {...styleProps}
+      variant="ghost"
+      size="sm"
       ref={ref}
       type="button"
       onClick={(event) => {

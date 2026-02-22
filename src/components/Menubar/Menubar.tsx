@@ -97,6 +97,8 @@ export function MenubarTrigger({
   ref,
   className,
   style,
+  variant = 'ghost',
+  size = 'sm',
   onKeyDown,
   ...props
 }: MenubarTriggerProps) {
@@ -106,6 +108,8 @@ export function MenubarTrigger({
   return (
     <DropdownMenuTrigger
       {...props}
+      variant={variant}
+      size={size}
       {...styleProps}
       ref={(node) => {
         context.registerTrigger(node);

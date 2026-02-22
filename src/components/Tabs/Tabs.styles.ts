@@ -1,14 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import {
-  borderTokens,
-  paletteTokens,
-  radiusTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { borderTokens, spacingTokens, surfaceTokens } from '../../theme/tokens.stylex';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
 
@@ -23,12 +16,9 @@ const tabsStyles = stylex.create({
     gap: spacingTokens.md
   },
   list: {
-    backgroundColor: surfaceTokens.subtle,
-    border: `1px solid ${borderTokens.muted}`,
-    borderRadius: radiusTokens.md,
     display: 'inline-flex',
-    gap: '0.25rem',
-    padding: '0.25rem'
+    gap: spacingTokens.xxs,
+    padding: spacingTokens.xxs
   },
   listVertical: {
     alignItems: 'stretch',
@@ -36,35 +26,13 @@ const tabsStyles = stylex.create({
     width: 'fit-content'
   },
   trigger: {
-    backgroundColor: 'transparent',
-    border: 'none',
-    borderRadius: radiusTokens.sm,
-    color: paletteTokens.foreground,
-    cursor: 'pointer',
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeSm,
-    fontWeight: typographyTokens.fontWeightMedium,
-    lineHeight: '1.2',
-    padding: '0.45rem 0.7rem'
-  },
-  triggerHover: {
-    ':hover': {
-      backgroundColor: '#efeee8'
-    }
+    justifyContent: 'flex-start'
   },
   triggerSelected: {
-    backgroundColor: '#ffffff',
-    boxShadow: '0 1px 2px rgba(0,0,0,0.08)'
-  },
-  triggerDisabled: {
-    cursor: 'not-allowed',
-    opacity: 0.5
+    backgroundColor: surfaceTokens.base
   },
   panel: {
-    border: `1px solid ${borderTokens.muted}`,
-    borderRadius: radiusTokens.md,
-    color: paletteTokens.foreground,
-    fontFamily: typographyTokens.fontFamily,
+    borderColor: borderTokens.muted,
     padding: spacingTokens.lg
   }
 });
@@ -87,18 +55,10 @@ export function getTabsListStyleProps(orientation: TabsOrientation, options?: Sl
 
 export function getTabsTriggerStyleProps(
   selected: boolean,
-  disabled: boolean,
+  _disabled: boolean,
   options?: SlotStyleOptions
 ) {
-  return composeStyleProps(
-    [
-      tabsStyles.trigger,
-      !disabled && tabsStyles.triggerHover,
-      selected && tabsStyles.triggerSelected,
-      disabled && tabsStyles.triggerDisabled
-    ],
-    options
-  );
+  return composeStyleProps([tabsStyles.trigger, selected && tabsStyles.triggerSelected], options);
 }
 
 export function getTabsPanelStyleProps(options?: SlotStyleOptions) {

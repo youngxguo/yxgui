@@ -10,7 +10,10 @@ import {
 const meta = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered'
+  }
 } satisfies Meta<typeof DropdownMenu>;
 
 export default meta;
@@ -18,17 +21,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div style={{ minHeight: 180, paddingTop: 24 }}>
-      <DropdownMenu>
-        <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>Open</DropdownMenuItem>
-          <DropdownMenuItem>Duplicate</DropdownMenuItem>
-          <DropdownMenuItem disabled>Archive</DropdownMenuItem>
-          <DropdownMenuItem>Delete</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Open</DropdownMenuItem>
+        <DropdownMenuItem>Duplicate</DropdownMenuItem>
+        <DropdownMenuItem disabled>Archive</DropdownMenuItem>
+        <DropdownMenuItem>Delete</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
