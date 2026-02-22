@@ -21,7 +21,7 @@ export function Example() {
         <CardDescription>Manage profile preferences</CardDescription>
       </CardHeader>
       <CardContent style={{ display: 'grid', gap: 12 }}>
-        <Badge variant="secondary">Beta</Badge>
+        <Badge variant="neutral">Beta</Badge>
         <Input placeholder="Email" />
         <Button variant="primary" size="md">
           Save
@@ -42,10 +42,11 @@ No separate stylesheet import is required. Styles are handled through StyleX.
 
 ## Components
 
-- `Button`
-- `Badge`
-- `Input`
-- `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`
+Use Storybook for the current component catalog and examples:
+
+```bash
+pnpm storybook
+```
 
 ## Tokens
 
