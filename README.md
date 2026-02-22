@@ -85,6 +85,7 @@ Current exported components include:
 - `AspectRatio`
 - `Avatar`
 - `Badge`
+- `Breadcrumb` (`BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbPage`, `BreadcrumbSeparator`, `BreadcrumbEllipsis`)
 - `Button`
 - `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
 - `Checkbox`
