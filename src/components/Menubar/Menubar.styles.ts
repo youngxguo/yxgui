@@ -18,7 +18,7 @@ interface SlotStyleOptions {
 const menubarStyles = stylex.create({
   root: {
     alignItems: 'center',
-    backgroundColor: surfaceTokens.elevated,
+    backgroundColor: surfaceTokens.base,
     border: `1px solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     display: 'inline-flex',

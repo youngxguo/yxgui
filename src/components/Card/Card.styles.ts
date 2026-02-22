@@ -17,7 +17,7 @@ interface SlotStyleOptions {
 
 const cardStyles = stylex.create({
   root: {
-    backgroundColor: surfaceTokens.elevated,
+    backgroundColor: surfaceTokens.base,
     borderColor: borderTokens.default,
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',

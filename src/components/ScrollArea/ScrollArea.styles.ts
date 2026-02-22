@@ -12,7 +12,7 @@ const scrollAreaStyles = stylex.create({
   root: {
     border: `1px solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
-    backgroundColor: surfaceTokens.elevated,
+    backgroundColor: surfaceTokens.base,
     position: 'relative'
   },
   viewport: {

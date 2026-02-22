@@ -50,7 +50,6 @@ export const spacingTokens = stylex.defineConsts({
 
 export const surfaceTokens = stylex.defineConsts({
   base: '#fcfcf9',
-  elevated: '#fffdf7',
   subtle: '#f4f4ef',
   hover: '#f1efe6',
   accentSubtle: '#eaf0ff'

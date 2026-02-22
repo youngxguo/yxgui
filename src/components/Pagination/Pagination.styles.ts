@@ -32,7 +32,7 @@ const paginationStyles = stylex.create({
   },
   link: {
     alignItems: 'center',
-    backgroundColor: surfaceTokens.elevated,
+    backgroundColor: surfaceTokens.base,
     border: `1px solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     color: paletteTokens.foreground,
