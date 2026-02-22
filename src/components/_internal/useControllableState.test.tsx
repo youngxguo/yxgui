@@ -1,71 +1,97 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { useControllableState } from './useControllableState';
 
-interface HookHarnessProps {
+interface HookProps {
   value?: string;
   defaultValue: string;
   onChange?: (value: string) => void;
 }
 
-function HookHarness({ value, defaultValue, onChange }: HookHarnessProps) {
-  const [currentValue, setCurrentValue] = useControllableState({
-    value,
-    defaultValue,
-    onChange
-  });
-
-  return (
-    <div>
-      <output data-testid="value">{currentValue}</output>
-      <button type="button" onClick={() => setCurrentValue('next')}>
-        Set next
-      </button>
-      <button type="button" onClick={() => setCurrentValue('final')}>
-        Set final
-      </button>
-    </div>
-  );
-}
-
 describe('useControllableState', () => {
   it('uses defaultValue for uncontrolled state and updates internal state', () => {
     const onChange = vi.fn();
+    const { result } = renderHook(
+      ({ value, defaultValue, onChange: onChangeProp }: HookProps) =>
+        useControllableState({
+          value,
+          defaultValue,
+          onChange: onChangeProp
+        }),
+      {
+        initialProps: {
+          defaultValue: 'initial',
+          onChange
+        }
+      }
+    );
 
-    render(<HookHarness defaultValue="initial" onChange={onChange} />);
+    expect(result.current[0]).toBe('initial');
+    act(() => {
+      result.current[1]('next');
+    });
 
-    expect(screen.getByTestId('value')).toHaveTextContent('initial');
-
-    fireEvent.click(screen.getByRole('button', { name: 'Set next' }));
-
-    expect(screen.getByTestId('value')).toHaveTextContent('next');
+    expect(result.current[0]).toBe('next');
     expect(onChange).toHaveBeenCalledWith('next');
   });
 
   it('supports controlled usage by calling onChange without mutating visible value until rerender', () => {
     const onChange = vi.fn();
-    const { rerender } = render(
-      <HookHarness value="controlled" defaultValue="fallback" onChange={onChange} />
+    const { result, rerender } = renderHook(
+      ({ value, defaultValue, onChange: onChangeProp }: HookProps) =>
+        useControllableState({
+          value,
+          defaultValue,
+          onChange: onChangeProp
+        }),
+      {
+        initialProps: {
+          value: 'controlled',
+          defaultValue: 'fallback',
+          onChange
+        }
+      }
     );
 
-    expect(screen.getByTestId('value')).toHaveTextContent('controlled');
-
-    fireEvent.click(screen.getByRole('button', { name: 'Set next' }));
+    expect(result.current[0]).toBe('controlled');
+    act(() => {
+      result.current[1]('next');
+    });
 
     expect(onChange).toHaveBeenCalledWith('next');
-    expect(screen.getByTestId('value')).toHaveTextContent('controlled');
+    expect(result.current[0]).toBe('controlled');
 
-    rerender(<HookHarness value="next" defaultValue="fallback" onChange={onChange} />);
-    expect(screen.getByTestId('value')).toHaveTextContent('next');
+    rerender({
+      value: 'next',
+      defaultValue: 'fallback',
+      onChange
+    });
+    expect(result.current[0]).toBe('next');
   });
 
   it('does not reset uncontrolled state when defaultValue changes after mount', () => {
-    const { rerender } = render(<HookHarness defaultValue="initial" />);
+    const { result, rerender } = renderHook(
+      ({ value, defaultValue, onChange }: HookProps) =>
+        useControllableState({
+          value,
+          defaultValue,
+          onChange
+        }),
+      {
+        initialProps: {
+          defaultValue: 'initial'
+        }
+      }
+    );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Set final' }));
-    expect(screen.getByTestId('value')).toHaveTextContent('final');
+    act(() => {
+      result.current[1]('final');
+    });
+    expect(result.current[0]).toBe('final');
 
-    rerender(<HookHarness defaultValue="new-default" />);
-    expect(screen.getByTestId('value')).toHaveTextContent('final');
+    rerender({
+      defaultValue: 'new-default'
+    });
+    expect(result.current[0]).toBe('final');
   });
 });
