@@ -2,6 +2,11 @@
 
 React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm@9.15.2`.
 
+## Philosophy
+- Build opinionated, production-ready styled components first.
+- Keep APIs composable so headless primitives can be introduced later.
+- Separate behavior from styling when complexity grows (dialogs, menus, tabs).
+
 ## Commands
 - Install: `pnpm install`
 - Lint: `pnpm lint` (`pnpm lint:fix` to auto-fix)
