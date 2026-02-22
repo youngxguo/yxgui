@@ -21,6 +21,7 @@ export type {
   CardTitleProps
 } from './components/Card/Card';
 export {
+  badgeTokens,
   borderTokens,
   buttonTokens,
   cardTokens,

@@ -8,13 +8,13 @@ const meta = {
   tags: ['autodocs'],
   args: {
     children: 'Badge',
-    variant: 'primary',
+    variant: 'neutral',
     size: 'md'
   },
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline']
+      options: ['neutral', 'success', 'warning', 'error', 'outline']
     },
     size: {
       control: 'select',
@@ -31,11 +31,17 @@ export const Default: Story = {};
 export const Variants: Story = {
   render: (args: ComponentProps<typeof Badge>) => (
     <div style={{ display: 'flex', gap: '0.75rem' }}>
-      <Badge {...args} variant="primary">
-        Primary
+      <Badge {...args} variant="neutral">
+        Neutral
       </Badge>
-      <Badge {...args} variant="secondary">
-        Secondary
+      <Badge {...args} variant="success">
+        Success
+      </Badge>
+      <Badge {...args} variant="warning">
+        Warning
+      </Badge>
+      <Badge {...args} variant="error">
+        Error
       </Badge>
       <Badge {...args} variant="outline">
         Outline

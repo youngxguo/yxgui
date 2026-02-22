@@ -1,9 +1,15 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { radiusTokens, typographyTokens, variantTokens } from '../../theme/tokens.stylex';
+import {
+  badgeTokens,
+  borderTokens,
+  paletteTokens,
+  radiusTokens,
+  typographyTokens
+} from '../../theme/tokens.stylex';
 
-export type BadgeVariant = 'primary' | 'secondary' | 'outline';
+export type BadgeVariant = 'neutral' | 'success' | 'warning' | 'error' | 'outline';
 export type BadgeSize = 'sm' | 'md';
 
 interface GetBadgeStylePropsOptions {
@@ -25,20 +31,30 @@ const badgeStyles = stylex.create({
     lineHeight: typographyTokens.lineHeightTight,
     whiteSpace: 'nowrap'
   },
-  primary: {
-    backgroundColor: variantTokens.primaryBackground,
-    borderColor: variantTokens.primaryBackground,
-    color: variantTokens.primaryForeground
+  neutral: {
+    backgroundColor: badgeTokens.neutralBackground,
+    borderColor: badgeTokens.neutralBorder,
+    color: badgeTokens.neutralForeground
   },
-  secondary: {
-    backgroundColor: variantTokens.secondaryBackground,
-    borderColor: variantTokens.secondaryBackground,
-    color: variantTokens.secondaryForeground
+  success: {
+    backgroundColor: badgeTokens.successBackground,
+    borderColor: badgeTokens.successBorder,
+    color: badgeTokens.successForeground
+  },
+  warning: {
+    backgroundColor: badgeTokens.warningBackground,
+    borderColor: badgeTokens.warningBorder,
+    color: badgeTokens.warningForeground
+  },
+  error: {
+    backgroundColor: badgeTokens.errorBackground,
+    borderColor: badgeTokens.errorBorder,
+    color: badgeTokens.errorForeground
   },
   outline: {
     backgroundColor: 'transparent',
-    borderColor: variantTokens.outlineBorder,
-    color: variantTokens.outlineForeground
+    borderColor: borderTokens.default,
+    color: paletteTokens.foreground
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
@@ -53,8 +69,10 @@ const badgeStyles = stylex.create({
 });
 
 const badgeVariantStyles: Record<BadgeVariant, unknown> = {
-  primary: badgeStyles.primary,
-  secondary: badgeStyles.secondary,
+  neutral: badgeStyles.neutral,
+  success: badgeStyles.success,
+  warning: badgeStyles.warning,
+  error: badgeStyles.error,
   outline: badgeStyles.outline
 };
 

@@ -9,7 +9,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 export function Badge({
   ref,
-  variant = 'primary',
+  variant = 'neutral',
   size = 'md',
   className,
   style,

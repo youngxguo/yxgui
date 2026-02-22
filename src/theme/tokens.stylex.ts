@@ -79,6 +79,21 @@ export const buttonTokens = stylex.defineConsts({
   minHeightLg: '2.5rem'
 });
 
+export const badgeTokens = stylex.defineConsts({
+  neutralBackground: '#ecebe4',
+  neutralForeground: '#161614',
+  neutralBorder: '#d8d5c9',
+  successBackground: '#16a34a',
+  successForeground: '#f0fdf4',
+  successBorder: '#15803d',
+  warningBackground: '#f59e0b',
+  warningForeground: '#1f1300',
+  warningBorder: '#d97706',
+  errorBackground: '#dc2626',
+  errorForeground: '#fef2f2',
+  errorBorder: '#b91c1c'
+});
+
 export const inputTokens = stylex.defineConsts({
   invalidBorder: '#c43d3d'
 });

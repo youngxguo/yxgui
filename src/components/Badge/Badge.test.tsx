@@ -12,7 +12,7 @@ describe('Badge', () => {
 
   it('changes style class composition with variant and size', () => {
     const { rerender } = render(
-      <Badge variant="primary" size="sm">
+      <Badge variant="success" size="sm">
         New
       </Badge>
     );
@@ -21,7 +21,7 @@ describe('Badge', () => {
     const baseClassName = badge.className;
 
     rerender(
-      <Badge variant="outline" size="md">
+      <Badge variant="error" size="md">
         New
       </Badge>
     );
