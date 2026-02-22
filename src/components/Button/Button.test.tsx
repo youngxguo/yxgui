@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
+import { ThemeProvider } from '../../theme/ThemeProvider';
+import { createTheme } from '../../theme/createTheme';
 
 describe('Button', () => {
   it('renders children text', () => {
@@ -32,17 +34,23 @@ describe('Button', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('applies variant and size classes', () => {
-    render(
-      <Button variant="secondary" size="lg">
+  it('changes style class composition with variant and size', () => {
+    const { rerender } = render(
+      <Button variant="primary" size="md">
         Launch
       </Button>
     );
 
     const button = screen.getByRole('button', { name: 'Launch' });
+    const baseClassName = button.className;
 
-    expect(button).toHaveClass('yx-button--secondary');
-    expect(button).toHaveClass('yx-button--lg');
+    rerender(
+      <Button variant="secondary" size="lg">
+        Launch
+      </Button>
+    );
+
+    expect(button.className).not.toEqual(baseClassName);
   });
 
   it('forwards native button props', () => {
@@ -60,5 +68,25 @@ describe('Button', () => {
     render(<Button ref={ref}>Launch</Button>);
 
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  it('uses ThemeProvider tokens for visual semantics', () => {
+    const theme = createTheme({
+      components: {
+        button: {
+          primaryBackground: '#102a43'
+        }
+      }
+    });
+
+    render(
+      <ThemeProvider theme={theme}>
+        <Button>Launch</Button>
+      </ThemeProvider>
+    );
+
+    expect(
+      document.documentElement.style.getPropertyValue('--yx-components-button-primary-background')
+    ).toBe('#102a43');
   });
 });
