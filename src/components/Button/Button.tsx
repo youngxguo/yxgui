@@ -1,7 +1,8 @@
-import * as React from 'react';
+import type { ButtonHTMLAttributes, Ref } from 'react';
 import './Button.css';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  ref?: Ref<HTMLButtonElement>;
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
 }
@@ -18,13 +19,17 @@ const sizeClassNames: Record<NonNullable<ButtonProps['size']>, string> = {
   lg: 'yx-button--lg'
 };
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = 'primary', size = 'md', className, type = 'button', ...props },
-  ref
-) {
+export function Button({
+  ref,
+  variant = 'primary',
+  size = 'md',
+  className,
+  type = 'button',
+  ...props
+}: ButtonProps) {
   const classes = ['yx-button', variantClassNames[variant], sizeClassNames[size], className]
     .filter(Boolean)
     .join(' ');
 
   return <button ref={ref} type={type} className={classes} {...props} />;
-});
+}

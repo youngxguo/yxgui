@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
 
@@ -52,5 +53,12 @@ describe('Button', () => {
     );
 
     expect(screen.getByTestId('submit-btn')).toHaveAttribute('type', 'submit');
+  });
+
+  it('accepts a ref prop', () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(<Button ref={ref}>Launch</Button>);
+
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
 });
