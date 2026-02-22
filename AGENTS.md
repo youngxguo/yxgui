@@ -23,6 +23,7 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 
 - Prefer using the `gh` CLI directly (no custom wrapper scripts).
 - Use issues as the backlog for known follow-up work.
+- When implementing work tied to an existing issue, agents should close the issue automatically after a successful push (do not wait for a separate prompt).
 - Typical loop:
   - `gh issue create` to capture future work
   - `gh issue list` / `gh issue status` to review backlog and assignments
