@@ -2,6 +2,8 @@
 
 ## Install
 
+Requires React 19+.
+
 ```bash
 pnpm add yxgui
 ```
