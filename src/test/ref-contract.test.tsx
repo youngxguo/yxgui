@@ -67,7 +67,11 @@ function expectRefForTestId<T extends Element>(
   });
 }
 
-function runSimpleRefCase<T extends Element>({ name, constructor, render: renderCase }: SimpleRefCase<T>) {
+function runSimpleRefCase<T extends Element>({
+  name,
+  constructor,
+  render: renderCase
+}: SimpleRefCase<T>) {
   it(name, () => {
     const ref = createRef<T>();
     render(renderCase(ref));
@@ -400,14 +404,12 @@ describe('public ref contracts', () => {
   });
 
   it('documents public components without a direct DOM ref contract', () => {
-    expect(
-      [
-        'Dialog',
-        'DropdownMenu',
-        'FormFieldControl',
-        'Popover',
-        'Tooltip'
-      ]
-    ).toEqual(['Dialog', 'DropdownMenu', 'FormFieldControl', 'Popover', 'Tooltip']);
+    expect(['Dialog', 'DropdownMenu', 'FormFieldControl', 'Popover', 'Tooltip']).toEqual([
+      'Dialog',
+      'DropdownMenu',
+      'FormFieldControl',
+      'Popover',
+      'Tooltip'
+    ]);
   });
 });
