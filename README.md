@@ -11,7 +11,17 @@ pnpm add yxgui
 ## Usage
 
 ```tsx
-import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input } from 'yxgui';
+import {
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Input
+} from 'yxgui';
 
 export function Example() {
   return (
@@ -21,6 +31,7 @@ export function Example() {
         <CardDescription>Manage profile preferences</CardDescription>
       </CardHeader>
       <CardContent style={{ display: 'grid', gap: 12 }}>
+        <Avatar alt="Young Guo">YG</Avatar>
         <Badge variant="neutral">Beta</Badge>
         <Input placeholder="Email" />
         <Button variant="primary" size="md">

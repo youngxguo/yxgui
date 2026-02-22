@@ -2,6 +2,8 @@ export { Button } from './components/Button/Button';
 export type { ButtonProps } from './components/Button/Button';
 export { Badge } from './components/Badge/Badge';
 export type { BadgeProps } from './components/Badge/Badge';
+export { Avatar } from './components/Avatar/Avatar';
+export type { AvatarProps } from './components/Avatar/Avatar';
 export { Input } from './components/Input/Input';
 export type { InputProps } from './components/Input/Input';
 export { Textarea } from './components/Textarea/Textarea';
