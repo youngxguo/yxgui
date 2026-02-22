@@ -38,6 +38,6 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Do not commit generated artifacts in `dist/`.
 
 ## Notes
-- Follow `.oxlintrc.json` and `.prettierrc.json`.
+- Follow `eslint.config.mjs` and `.prettierrc.json`.
 - Update `README.md` when public API/usage changes.
 - Do not hand-edit `dist/` artifacts.
