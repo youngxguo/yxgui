@@ -108,8 +108,7 @@ export interface AccordionItemProps extends HTMLAttributes<HTMLDivElement>, Base
 }
 
 export interface AccordionTriggerProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>,
-    BaseStyleProps {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
@@ -166,7 +165,6 @@ function AccordionSingleImpl({
     <AccordionProviderRoot
       {...props}
       ref={ref}
-      children={children}
       contextValue={{
         baseId,
         type: 'single',
@@ -186,7 +184,9 @@ function AccordionSingleImpl({
           setCurrentValue(itemValue);
         }
       }}
-    />
+    >
+      {children}
+    </AccordionProviderRoot>
   );
 }
 
@@ -211,7 +211,6 @@ function AccordionMultipleImpl({
     <AccordionProviderRoot
       {...props}
       ref={ref}
-      children={children}
       contextValue={{
         baseId,
         type: 'multiple',
@@ -229,7 +228,9 @@ function AccordionMultipleImpl({
           setCurrentValue([...currentValue, itemValue]);
         }
       }}
-    />
+    >
+      {children}
+    </AccordionProviderRoot>
   );
 }
 
@@ -305,9 +306,9 @@ export function AccordionTrigger({
         aria-controls={item.contentId}
         onClick={(event) => {
           if (!disabled) {
-            const itemValue = event.currentTarget
-              .closest<HTMLElement>('[data-accordion-item-value]')
-              ?.dataset.accordionItemValue;
+            const itemValue = event.currentTarget.closest<HTMLElement>(
+              '[data-accordion-item-value]'
+            )?.dataset.accordionItemValue;
             if (itemValue) {
               accordion.toggleItem(itemValue);
             }
