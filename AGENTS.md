@@ -24,6 +24,10 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
   - `gh issue create` to capture future work
   - `gh issue list` / `gh issue status` to review backlog and assignments
   - `gh issue view <number>` to read context before implementation
+  - implement + validate (`pnpm lint`, `pnpm test`, `pnpm build`)
+  - commit with the issue number in the commit body (e.g. `Refs #123`)
+  - `git push` the branch
+  - `gh issue close <number>` after the push lands
 - `gh issue develop <number> --checkout` to start work on an issue branch (if supported by your GH CLI version)
 - Prereq for agents/local automation: `gh` installed and authenticated via `gh auth login`.
 
@@ -60,6 +64,7 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Use clear conventional-style subjects: `<type>(<scope>): <summary>` (e.g. `feat(button): add loading state`).
 - Keep subject lines imperative and under 72 characters.
 - Add a concise commit body that explains what changed and why (1-3 short lines).
+- Include the related issue number in the commit body when working from an issue (e.g. `Refs #123`).
 - When behavior changes, include tests in the same commit.
 - The `pre-push` hook enforces commit-body quality checks.
 - CI enforces `pnpm check:quality` (`pnpm lint`, `pnpm test`, `pnpm build`).
