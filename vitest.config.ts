@@ -2,12 +2,17 @@ import { defineConfig } from 'vitest/config';
 import stylex from '@stylexjs/unplugin';
 import { storybookCoverage } from './vitest.coverage';
 
+const stylexVitestPlugin = stylex.vite({ runtimeInjection: true, devMode: 'off' });
+// `@stylexjs/unplugin` starts a Vite dev-server interval that Vitest doesn't fully
+// clean up. `devMode: 'off'` removes that hook, and overriding `apply` keeps the
+// StyleX Babel transform active for unit tests.
+stylexVitestPlugin.apply = () => true;
+
 export default defineConfig({
-  plugins: [stylex.vite({ runtimeInjection: true })],
+  plugins: [stylexVitestPlugin],
   test: {
     globals: true,
     environment: 'jsdom',
-    teardownTimeout: 1000,
     setupFiles: ['./src/test/setup.ts'],
     coverage: storybookCoverage,
     projects: [
