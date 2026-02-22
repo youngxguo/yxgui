@@ -15,6 +15,27 @@ React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm
 - Test: `pnpm test` (`pnpm test:watch` for watch mode)
 - Build: `pnpm build`
 - Storybook: `pnpm storybook` / `pnpm build-storybook`
+- GitHub issues: use native `gh issue ...` commands directly
+
+## GitHub Workflow
+- Prefer using the `gh` CLI directly (no custom wrapper scripts).
+- Use issues as the backlog for known follow-up work.
+- Typical loop:
+  - `gh issue create` to capture future work
+  - `gh issue list` / `gh issue status` to review backlog and assignments
+  - `gh issue view <number>` to read context before implementation
+- `gh issue develop <number> --checkout` to start work on an issue branch (if supported by your GH CLI version)
+- Prereq for agents/local automation: `gh` installed and authenticated via `gh auth login`.
+
+## Issue Writing
+- Keep issues small and shippable: one component (or one focused enhancement) per issue.
+- Use clear titles: `feat(<component>): <outcome>`.
+- Keep bodies concise and concrete:
+  - What to add/change (1-2 lines)
+  - Acceptance checks (stories, tests, exports, a11y behavior as needed)
+  - Dependency note only when it materially affects ordering (e.g. Popover before DropdownMenu)
+- Prefer observable behavior and API expectations over implementation details.
+- If scope is ambiguous, split follow-up work into separate issues instead of expanding one issue.
 
 ## Completion Gate
 Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
@@ -47,4 +68,5 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 ## Notes
 - Follow `eslint.config.mjs` and `.prettierrc.json`.
 - Update `README.md` when public API/usage changes.
+- Put agent/operator workflow details (GH CLI flows, release mechanics, local automation) in `AGENTS.md`, not `README.md`.
 - Do not hand-edit `dist/` artifacts.
