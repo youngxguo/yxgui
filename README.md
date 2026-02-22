@@ -12,6 +12,9 @@ pnpm add yxgui
 
 ```tsx
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Avatar,
   Badge,
   Button,
@@ -31,6 +34,10 @@ export function Example() {
         <CardDescription>Manage profile preferences</CardDescription>
       </CardHeader>
       <CardContent style={{ display: 'grid', gap: 12 }}>
+        <Alert variant="info">
+          <AlertTitle>Preview Mode</AlertTitle>
+          <AlertDescription>New settings are available for testing.</AlertDescription>
+        </Alert>
         <Avatar alt="Young Guo">YG</Avatar>
         <Badge variant="neutral">Beta</Badge>
         <Input placeholder="Email" />
@@ -58,6 +65,30 @@ Use Storybook for the current component catalog and examples:
 ```bash
 pnpm storybook
 ```
+
+Current exported components include:
+
+- `Alert` (`AlertTitle`, `AlertDescription`)
+- `Avatar`
+- `Badge`
+- `Button`
+- `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
+- `Checkbox`
+- `Dialog` (`DialogTrigger`, `DialogContent`, `DialogTitle`, `DialogDescription`, `DialogFooter`, `DialogClose`)
+- `DropdownMenu` (`DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`)
+- `FormField` (`FormFieldLabel`, `FormFieldControl`, `FormFieldDescription`, `FormFieldError`)
+- `Input`
+- `Label`
+- `Popover` (`PopoverTrigger`, `PopoverContent`)
+- `Progress`
+- `RadioGroup` (`Radio`)
+- `Select`
+- `Separator`
+- `Skeleton`
+- `Switch`
+- `Tabs` (`TabsList`, `TabsTrigger`, `TabsPanel`)
+- `Textarea`
+- `Tooltip`
 
 ## Tokens
 
