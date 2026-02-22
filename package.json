@@ -8,21 +8,16 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
-  "style": "./dist/yxgui.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
-    },
-    "./styles.css": "./dist/yxgui.css"
+    }
   },
   "files": [
     "dist",
     "README.md"
-  ],
-  "sideEffects": [
-    "**/*.css"
   ],
   "scripts": {
     "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true",
@@ -47,6 +42,7 @@
     "@storybook/addon-docs": "10.2.10",
     "@storybook/react": "10.2.10",
     "@storybook/react-vite": "^10.2.10",
+    "@stylexjs/unplugin": "^0.17.5",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -61,8 +57,12 @@
     "react-dom": "^19.2.4",
     "storybook": "^10.2.10",
     "typescript": "^5.9.3",
+    "unplugin": "^2.3.11",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "^0.17.5"
   }
 }

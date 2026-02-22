@@ -1,13 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import stylex from '@stylexjs/unplugin';
 import dts from 'vite-plugin-dts';
 
 const isStorybook = process.argv.some((arg: string) => arg.includes('storybook'));
 
 export default defineConfig({
   plugins: isStorybook
-    ? [react()]
+    ? [stylex.vite({ runtimeInjection: true }), react()]
     : [
+        stylex.vite({ runtimeInjection: true }),
         react(),
         dts({
           include: ['src'],
