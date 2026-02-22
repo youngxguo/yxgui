@@ -12,6 +12,8 @@ export type {
   AccordionSingleProps,
   AccordionTriggerProps
 } from './components/Accordion/Accordion';
+export { AspectRatio } from './components/AspectRatio/AspectRatio';
+export type { AspectRatioProps } from './components/AspectRatio/AspectRatio';
 export { Button } from './components/Button/Button';
 export type { ButtonProps } from './components/Button/Button';
 export { Badge } from './components/Badge/Badge';
