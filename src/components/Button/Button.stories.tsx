@@ -78,12 +78,23 @@ const espressoTheme = createTheme({
   },
   components: {
     button: {
-      primaryBackground: '#4a2a12',
-      primaryForeground: '#fff4e8',
-      secondaryBackground: '#fdf4ea',
-      secondaryBorder: '#b58f5f',
-      secondaryHoverBorder: '#9f7540',
-      ghostHoverBackground: 'rgba(74, 42, 18, 0.08)'
+      primaryHoverShadow: '0 6px 16px rgba(74, 42, 18, 0.2)'
+    }
+  },
+  variants: {
+    primary: {
+      background: '#4a2a12',
+      foreground: '#fff4e8'
+    },
+    secondary: {
+      background: '#fdf4ea',
+      foreground: '#2e1808',
+      border: '#b58f5f',
+      hoverBorder: '#9f7540'
+    },
+    ghost: {
+      foreground: '#2e1808',
+      hoverBackground: 'rgba(74, 42, 18, 0.08)'
     }
   }
 });

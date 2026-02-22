@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
 import { ThemeProvider } from '../../theme/ThemeProvider';
 import { createTheme } from '../../theme/createTheme';
+import { cssVarNames } from '../../theme/vars.stylex';
 
 describe('Button', () => {
   it('renders children text', () => {
@@ -72,9 +73,9 @@ describe('Button', () => {
 
   it('uses ThemeProvider tokens for visual semantics', () => {
     const theme = createTheme({
-      components: {
-        button: {
-          primaryBackground: '#102a43'
+      variants: {
+        primary: {
+          background: '#102a43'
         }
       }
     });
@@ -86,7 +87,7 @@ describe('Button', () => {
     );
 
     expect(
-      document.documentElement.style.getPropertyValue('--yx-components-button-primary-background')
+      document.documentElement.style.getPropertyValue(cssVarNames.variants.primary.background)
     ).toBe('#102a43');
   });
 });

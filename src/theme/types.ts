@@ -17,6 +17,9 @@ export interface TypographyTokens {
 }
 
 export interface RadiusTokens {
+  sm: string;
+  md: string;
+  lg: string;
   pill: string;
 }
 
@@ -27,16 +30,59 @@ export interface SpacingTokens {
   lg: string;
 }
 
+export interface SurfaceTokens {
+  base: string;
+  elevated: string;
+  subtle: string;
+}
+
+export interface BorderTokens {
+  default: string;
+  muted: string;
+  strong: string;
+  focus: string;
+}
+
+export interface ControlTokens {
+  background: string;
+  backgroundDisabled: string;
+  foreground: string;
+  placeholder: string;
+  border: string;
+  borderFocus: string;
+}
+
+export interface PrimaryVariantTokens {
+  background: string;
+  foreground: string;
+}
+
+export interface SecondaryVariantTokens {
+  background: string;
+  foreground: string;
+  border: string;
+  hoverBorder: string;
+}
+
+export interface GhostVariantTokens {
+  foreground: string;
+  hoverBackground: string;
+}
+
+export interface OutlineVariantTokens {
+  border: string;
+  foreground: string;
+}
+
+export interface VariantTokens {
+  primary: PrimaryVariantTokens;
+  secondary: SecondaryVariantTokens;
+  ghost: GhostVariantTokens;
+  outline: OutlineVariantTokens;
+}
+
 export interface ButtonThemeTokens {
-  primaryBackground: string;
-  primaryForeground: string;
   primaryHoverShadow: string;
-  secondaryBackground: string;
-  secondaryForeground: string;
-  secondaryBorder: string;
-  secondaryHoverBorder: string;
-  ghostForeground: string;
-  ghostHoverBackground: string;
   disabledOpacity: number;
   activeOffset: string;
   paddingSm: string;
@@ -47,8 +93,18 @@ export interface ButtonThemeTokens {
   minHeightLg: string;
 }
 
+export interface InputThemeTokens {
+  invalidBorder: string;
+}
+
+export interface CardThemeTokens {
+  shadow: string;
+}
+
 export interface ComponentTokens {
   button: ButtonThemeTokens;
+  input: InputThemeTokens;
+  card: CardThemeTokens;
 }
 
 export interface Theme {
@@ -56,6 +112,10 @@ export interface Theme {
   typography: TypographyTokens;
   radius: RadiusTokens;
   spacing: SpacingTokens;
+  surface: SurfaceTokens;
+  border: BorderTokens;
+  control: ControlTokens;
+  variants: VariantTokens;
   components: ComponentTokens;
 }
 
