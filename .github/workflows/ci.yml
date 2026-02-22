@@ -6,7 +6,7 @@ on:
 
 jobs:
   checks:
-    name: Lint, Test, Build
+    name: Quality Checks
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -28,11 +28,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm lint
-
-      - name: Test
-        run: pnpm test
-
-      - name: Build
-        run: pnpm build
+      - name: Quality checks
+        run: pnpm check:quality
