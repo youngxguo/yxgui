@@ -65,6 +65,8 @@ Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
 - Keep subject lines imperative and under 72 characters.
 - Add a concise commit body that explains what changed and why (1-3 short lines).
 - Include the related issue number in the commit body when working from an issue (e.g. `Refs #123`).
+- When scripting commits, do not embed literal `\n` in a single `git commit -m` body string; use multiple `-m` flags (one per paragraph) or an editor so commit bodies contain real line breaks.
+- Before pushing, quickly verify the latest commit message renders correctly (e.g. `git log --format=medium -n 1`).
 - When behavior changes, include tests in the same commit.
 - The `pre-push` hook enforces commit-body quality checks.
 - CI enforces `pnpm check:quality` (`pnpm lint`, `pnpm test`, `pnpm build`).
