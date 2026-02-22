@@ -24,6 +24,7 @@ pnpm storybook
 
 Current exported components include:
 
+- `Accordion` (`AccordionItem`, `AccordionTrigger`, `AccordionContent`)
 - `Alert` (`AlertTitle`, `AlertDescription`)
 - `Avatar`
 - `Badge`
