@@ -84,7 +84,7 @@ export function getTextareaStyleProps({
   return composeStyleProps(
     [
       uiPrimitives.controlBase,
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       uiPrimitives.disabledCursor,
       uiPrimitives.disabledControlSurface,

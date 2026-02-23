@@ -47,7 +47,7 @@ export function getCheckboxStyleProps({
 }: GetCheckboxStylePropsOptions) {
   return composeStyleProps(
     [
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       uiPrimitives.disabledCursor,
       checkboxStyles.root,

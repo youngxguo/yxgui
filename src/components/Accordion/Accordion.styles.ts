@@ -105,7 +105,7 @@ export function getAccordionTriggerStyleProps(
     [
       accordionStyles.trigger,
       accordionStyles.triggerHover,
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       open && accordionStyles.triggerOpen,
       disabled && accordionStyles.triggerDisabled

@@ -92,7 +92,7 @@ export function getBreadcrumbItemStyleProps(options?: SlotStyleOptions) {
 
 export function getBreadcrumbLinkStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [breadcrumbStyles.link, breadcrumbStyles.linkHover, uiPrimitives.focusVisibleRing],
+    [breadcrumbStyles.link, breadcrumbStyles.linkHover, uiPrimitives.focusVisibleOutline],
     options
   );
 }

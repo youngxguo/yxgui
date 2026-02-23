@@ -9,7 +9,7 @@ import {
 } from '../theme/tokens.stylex';
 
 export const uiPrimitives = stylex.create({
-  focusVisibleRing: {
+  focusVisibleOutline: {
     ':focus-visible': {
       outlineColor: borderTokens.focus,
       outlineOffset: spacingTokens.xxxs,

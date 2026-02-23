@@ -22,7 +22,7 @@ const contextMenuStyles = stylex.create({
 });
 
 export function getContextMenuTriggerStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([contextMenuStyles.trigger, uiPrimitives.focusVisibleRing], options);
+  return composeStyleProps([contextMenuStyles.trigger, uiPrimitives.focusVisibleOutline], options);
 }
 
 export function getContextMenuContentStyleProps(options?: SlotStyleOptions) {

@@ -1,7 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
   radiusTokens,
@@ -42,6 +41,12 @@ const menubarStyles = stylex.create({
       backgroundColor: surfaceTokens.subtle
     }
   },
+  triggerFocusVisible: {
+    ':focus-visible': {
+      backgroundColor: surfaceTokens.subtle,
+      outline: 'none'
+    }
+  },
   separator: {
     borderTop: `${borderTokens.widthThin} solid ${borderTokens.muted}`,
     margin: `${spacingTokens.xs} 0`
@@ -54,7 +59,7 @@ export function getMenubarRootStyleProps(options?: SlotStyleOptions) {
 
 export function getMenubarTriggerStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [menubarStyles.trigger, menubarStyles.triggerHover, uiPrimitives.focusVisibleRing],
+    [menubarStyles.trigger, menubarStyles.triggerHover, menubarStyles.triggerFocusVisible],
     options
   );
 }

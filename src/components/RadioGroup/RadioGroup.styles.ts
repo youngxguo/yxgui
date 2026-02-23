@@ -87,7 +87,7 @@ export function getRadioLabelStyleProps(disabled: boolean, options?: SlotStyleOp
 
 export function getRadioInputStyleProps(size: RadioSize, options?: SlotStyleOptions) {
   return composeStyleProps(
-    [uiPrimitives.focusVisibleRing, radioStyles.input, pickStyle(inputSizeStyles, size)],
+    [uiPrimitives.focusVisibleOutline, radioStyles.input, pickStyle(inputSizeStyles, size)],
     options
   );
 }

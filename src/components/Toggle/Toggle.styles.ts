@@ -141,7 +141,7 @@ export function getToggleStyleProps({
   return composeStyleProps(
     [
       toggleStyles.root,
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       uiPrimitives.disabledCursor,
       toggleStyles.disabled,

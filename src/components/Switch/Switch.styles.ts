@@ -100,7 +100,7 @@ export function getSwitchRootStyleProps({
 }: GetSwitchStylePropsOptions) {
   return composeStyleProps(
     [
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       switchStyles.root,
       pickStyle(sizeStyles, size),

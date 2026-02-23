@@ -25,7 +25,7 @@ const sliderStyles = stylex.create({
 
 export function getSliderStyleProps(options?: SlotStyleOptions) {
   return composeStyleProps(
-    [sliderStyles.root, sliderStyles.disabled, uiPrimitives.focusVisibleRing],
+    [sliderStyles.root, sliderStyles.disabled, uiPrimitives.focusVisibleOutline],
     options
   );
 }

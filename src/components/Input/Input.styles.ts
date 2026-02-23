@@ -77,7 +77,7 @@ export function getInputStyleProps({ size, invalid, className, style }: GetInput
   return composeStyleProps(
     [
       uiPrimitives.controlBase,
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       uiPrimitives.disabledCursor,
       uiPrimitives.disabledControlSurface,

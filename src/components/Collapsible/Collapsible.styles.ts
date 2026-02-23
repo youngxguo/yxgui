@@ -78,7 +78,7 @@ export function getCollapsibleTriggerStyleProps(
     [
       collapsibleStyles.trigger,
       collapsibleStyles.triggerHover,
-      uiPrimitives.focusVisibleRing,
+      uiPrimitives.focusVisibleOutline,
       uiPrimitives.interactiveTransition,
       open && collapsibleStyles.triggerOpen,
       disabled && collapsibleStyles.triggerDisabled

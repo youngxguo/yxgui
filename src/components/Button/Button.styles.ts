@@ -39,6 +39,14 @@ const buttonStyles = stylex.create({
     justifyContent: 'center',
     lineHeight: typographyTokens.lineHeightTight
   },
+  focusVisible: {
+    ':focus-visible:not([role="menuitem"])': {
+      outlineColor: borderTokens.focus,
+      outlineOffset: spacingTokens.xxxs,
+      outlineStyle: 'solid',
+      outlineWidth: spacingTokens.xxxs
+    }
+  },
   disabled: {
     ':disabled': {
       backgroundColor: buttonTokens.disabledBackground,
@@ -119,7 +127,7 @@ export function getButtonStyleProps({
   return composeStyleProps(
     [
       buttonStyles.root,
-      uiPrimitives.focusVisibleRing,
+      buttonStyles.focusVisible,
       uiPrimitives.interactiveTransition,
       uiPrimitives.disabledCursor,
       buttonStyles.disabled,
