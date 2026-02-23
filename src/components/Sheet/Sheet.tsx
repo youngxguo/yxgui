@@ -1,0 +1,20 @@
+export {
+  Drawer as Sheet,
+  DrawerClose as SheetClose,
+  DrawerContent as SheetContent,
+  DrawerDescription as SheetDescription,
+  DrawerFooter as SheetFooter,
+  DrawerHeader as SheetHeader,
+  DrawerTitle as SheetTitle,
+  DrawerTrigger as SheetTrigger
+} from '../Drawer/Drawer';
+export type {
+  DrawerCloseProps as SheetCloseProps,
+  DrawerContentProps as SheetContentProps,
+  DrawerDescriptionProps as SheetDescriptionProps,
+  DrawerFooterProps as SheetFooterProps,
+  DrawerHeaderProps as SheetHeaderProps,
+  DrawerProps as SheetProps,
+  DrawerTitleProps as SheetTitleProps,
+  DrawerTriggerProps as SheetTriggerProps
+} from '../Drawer/Drawer';

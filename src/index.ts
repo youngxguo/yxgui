@@ -150,6 +150,26 @@ export type {
 } from './components/Pagination/Pagination';
 export { Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from './components/Sheet/Sheet';
+export type {
+  SheetCloseProps,
+  SheetContentProps,
+  SheetDescriptionProps,
+  SheetFooterProps,
+  SheetHeaderProps,
+  SheetProps,
+  SheetTitleProps,
+  SheetTriggerProps
+} from './components/Sheet/Sheet';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export type { CheckboxProps } from './components/Checkbox/Checkbox';
 export {
@@ -205,6 +225,26 @@ export { Skeleton } from './components/Skeleton/Skeleton';
 export type { SkeletonProps } from './components/Skeleton/Skeleton';
 export { Slider } from './components/Slider/Slider';
 export type { SliderProps } from './components/Slider/Slider';
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow
+} from './components/Table/Table';
+export type {
+  TableBodyProps,
+  TableCaptionProps,
+  TableCellProps,
+  TableFooterProps,
+  TableHeadProps,
+  TableHeaderProps,
+  TableProps,
+  TableRowProps
+} from './components/Table/Table';
 export {
   FormField,
   FormFieldControl,

@@ -109,8 +109,10 @@ Current exported components include:
 - `ScrollArea` (`ScrollAreaViewport`, `ScrollAreaScrollbar`, `ScrollAreaThumb`)
 - `Select`
 - `Separator`
+- `Sheet` (`SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`)
 - `Skeleton`
 - `Slider`
+- `Table` (`TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption`)
 - `Switch`
 - `Toggle`
 - `ToggleGroup` (`ToggleGroupItem`)
