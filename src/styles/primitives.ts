@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import {
   borderTokens,
   controlTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   typographyTokens
@@ -48,7 +48,7 @@ const controlBase = {
 const disabledControlSurface = {
   ':disabled': {
     backgroundColor: controlTokens.backgroundDisabled,
-    color: paletteTokens.mutedForeground
+    color: colorTokens.mutedForeground
   }
 } as const;
 

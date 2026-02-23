@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { floatingPrimitives } from '../../styles/floating';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens,
@@ -11,10 +11,10 @@ import {
 
 const tooltipStyles = stylex.create({
   content: {
-    backgroundColor: paletteTokens.foreground,
+    backgroundColor: colorTokens.foreground,
     borderRadius: radiusTokens.sm,
     boxShadow: shadowTokens.floating,
-    color: paletteTokens.background,
+    color: colorTokens.background,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: '1.2',

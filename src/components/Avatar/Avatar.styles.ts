@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens,
@@ -32,7 +32,7 @@ const avatarStyles = stylex.create({
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     display: 'inline-flex',
     flexShrink: 0,
     fontFamily: typographyTokens.fontFamily,

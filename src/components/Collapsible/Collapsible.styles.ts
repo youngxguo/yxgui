@@ -6,7 +6,7 @@ import {
 } from '../../styles/disclosure';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
@@ -23,7 +23,7 @@ const collapsibleStyles = stylex.create({
     opacity: 0.65
   },
   content: {
-    color: paletteTokens.foreground
+    color: colorTokens.foreground
   },
   contentInner: {
     fontFamily: typographyTokens.fontFamily,

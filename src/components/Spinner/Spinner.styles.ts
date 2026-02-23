@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { paletteTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { colorTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 export type SpinnerSize = 'sm' | 'md' | 'lg';
 
@@ -14,7 +14,7 @@ interface GetSpinnerRootStylePropsOptions {
 const spinnerStyles = stylex.create({
   root: {
     alignItems: 'center',
-    color: paletteTokens.accent,
+    color: colorTokens.accent,
     display: 'inline-flex',
     flexShrink: 0,
     justifyContent: 'center',

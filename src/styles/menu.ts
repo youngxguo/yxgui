@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { floatingPrimitives } from './floating';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
-import { borderTokens, paletteTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
+import { borderTokens, colorTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
 
 // Shared menu surface/item recipes used by menu-like components (dropdown, context menu, etc.).
 const menuStyles = stylex.create({
@@ -22,7 +22,7 @@ const menuStyles = stylex.create({
     borderRadius: 0,
     borderStyle: 'solid',
     borderWidth: '1px',
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'flex-start',
@@ -35,7 +35,7 @@ const menuStyles = stylex.create({
     ':disabled': {
       backgroundColor: 'transparent',
       borderColor: 'transparent',
-      color: paletteTokens.mutedForeground
+      color: colorTokens.mutedForeground
     }
   },
   itemFocusVisible: {

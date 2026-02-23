@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  inputTokens,
-  paletteTokens,
+  validationTokens,
+  colorTokens,
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
@@ -16,14 +16,14 @@ const formFieldStyles = stylex.create({
     display: 'block'
   },
   description: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: '1.4',
     margin: 0
   },
   error: {
-    color: inputTokens.invalidForeground,
+    color: validationTokens.invalidForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     fontWeight: typographyTokens.fontWeightMedium,

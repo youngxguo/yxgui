@@ -3,7 +3,7 @@ import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recip
 import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens,
@@ -17,7 +17,7 @@ const breadcrumbStyles = stylex.create({
   },
   list: {
     alignItems: 'center',
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     display: 'flex',
     flexWrap: 'wrap',
     fontFamily: typographyTokens.fontFamily,
@@ -35,23 +35,23 @@ const breadcrumbStyles = stylex.create({
   },
   link: {
     borderRadius: radiusTokens.sm,
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     outline: 'none',
     textDecoration: 'none'
   },
   linkHover: {
     ':hover': {
-      color: paletteTokens.foreground,
+      color: colorTokens.foreground,
       textDecoration: 'underline'
     }
   },
   page: {
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     fontWeight: typographyTokens.fontWeightMedium
   },
   separator: {
     alignItems: 'center',
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     display: 'inline-flex',
     userSelect: 'none'
   },
@@ -62,7 +62,7 @@ const breadcrumbStyles = stylex.create({
     borderRadius: radiusTokens.pill,
     borderStyle: 'solid',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     display: 'inline-flex',
     fontSize: typographyTokens.fontSizeXs,
     lineHeight: 1,

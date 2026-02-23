@@ -4,9 +4,9 @@ import { pickStyle } from '../../styles/recipes';
 import { getButtonLikeStyleProps, type ButtonLikeSize } from '../../styles/buttonLike';
 import {
   borderTokens,
-  buttonTokens,
+  buttonInteractionTokens,
   surfaceTokens,
-  variantTokens
+  buttonVariantTokens
 } from '../../theme/tokens.stylex';
 
 export type ToggleVariant = 'primary' | 'secondary' | 'ghost';
@@ -23,15 +23,15 @@ interface GetToggleStylePropsOptions {
 
 const toggleStyles = stylex.create({
   primaryPressed: {
-    boxShadow: buttonTokens.primaryPressedShadow
+    boxShadow: buttonInteractionTokens.primaryPressedShadow
   },
   secondaryPressed: {
     backgroundColor: surfaceTokens.subtle,
     borderColor: borderTokens.strong
   },
   ghostPressed: {
-    backgroundColor: variantTokens.ghostHoverBackground,
-    borderColor: variantTokens.outlineBorder
+    backgroundColor: buttonVariantTokens.ghostHoverBackground,
+    borderColor: buttonVariantTokens.outlineBorder
   }
 });
 

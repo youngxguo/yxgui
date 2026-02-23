@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   statusTokens,
@@ -16,7 +16,7 @@ const alertStyles = stylex.create({
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     display: 'grid',
     gap: spacingTokens.xs,
     padding: spacingTokens.lg
@@ -49,7 +49,7 @@ const alertStyles = stylex.create({
     margin: 0
   },
   description: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: '1.4',

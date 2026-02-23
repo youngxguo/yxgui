@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens,
@@ -16,7 +16,7 @@ const cardStyles = stylex.create({
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     display: 'flex',
     flexDirection: 'column'
   },

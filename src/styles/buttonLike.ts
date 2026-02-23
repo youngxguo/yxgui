@@ -4,12 +4,12 @@ import { composeStyleProps, pickStyle } from './recipes';
 import { uiPrimitives } from './primitives';
 import {
   borderTokens,
-  buttonTokens,
-  paletteTokens,
+  buttonInteractionTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   typographyTokens,
-  variantTokens
+  buttonVariantTokens
 } from '../theme/tokens.stylex';
 
 export type ButtonLikeVariant = 'primary' | 'secondary' | 'ghost' | 'destructive';
@@ -34,7 +34,7 @@ const buttonLikeStyles = stylex.create({
     borderRadius: radiusTokens.md,
     borderStyle: 'solid',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     cursor: 'pointer',
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
@@ -53,55 +53,55 @@ const buttonLikeStyles = stylex.create({
   },
   disabled: {
     ':disabled': {
-      backgroundColor: buttonTokens.disabledBackground,
-      borderColor: buttonTokens.disabledBorder,
+      backgroundColor: buttonInteractionTokens.disabledBackground,
+      borderColor: buttonInteractionTokens.disabledBorder,
       boxShadow: 'none',
-      color: buttonTokens.disabledForeground
+      color: buttonInteractionTokens.disabledForeground
     }
   },
   active: {
     ':not(:disabled):active': {
-      transform: `translateY(${buttonTokens.activeOffset})`
+      transform: `translateY(${buttonInteractionTokens.activeOffset})`
     }
   },
   primary: {
-    backgroundColor: variantTokens.primaryBackground,
-    boxShadow: buttonTokens.primaryShadow,
-    color: variantTokens.primaryForeground
+    backgroundColor: buttonVariantTokens.primaryBackground,
+    boxShadow: buttonInteractionTokens.primaryShadow,
+    color: buttonVariantTokens.primaryForeground
   },
   primaryHover: {
     ':not(:disabled):hover': {
-      boxShadow: buttonTokens.primaryHoverShadow
+      boxShadow: buttonInteractionTokens.primaryHoverShadow
     }
   },
   secondary: {
-    backgroundColor: variantTokens.secondaryBackground,
-    borderColor: variantTokens.secondaryBorder,
-    color: variantTokens.secondaryForeground
+    backgroundColor: buttonVariantTokens.secondaryBackground,
+    borderColor: buttonVariantTokens.secondaryBorder,
+    color: buttonVariantTokens.secondaryForeground
   },
   secondaryHover: {
     ':not(:disabled):hover': {
-      borderColor: variantTokens.secondaryHoverBorder
+      borderColor: buttonVariantTokens.secondaryHoverBorder
     }
   },
   ghost: {
     backgroundColor: 'transparent',
-    color: variantTokens.ghostForeground
+    color: buttonVariantTokens.ghostForeground
   },
   ghostHover: {
     ':not(:disabled):hover': {
-      backgroundColor: variantTokens.ghostHoverBackground
+      backgroundColor: buttonVariantTokens.ghostHoverBackground
     }
   },
   destructive: {
-    backgroundColor: variantTokens.destructiveBackground,
-    borderColor: variantTokens.destructiveBorder,
-    boxShadow: buttonTokens.primaryShadow,
-    color: variantTokens.destructiveForeground
+    backgroundColor: buttonVariantTokens.destructiveBackground,
+    borderColor: buttonVariantTokens.destructiveBorder,
+    boxShadow: buttonInteractionTokens.primaryShadow,
+    color: buttonVariantTokens.destructiveForeground
   },
   destructiveHover: {
     ':not(:disabled):hover': {
-      boxShadow: buttonTokens.primaryHoverShadow
+      boxShadow: buttonInteractionTokens.primaryHoverShadow
     }
   },
   sm: {

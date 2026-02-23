@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from './recipes';
 import { uiPrimitives } from './primitives';
-import { borderTokens, controlTokens, inputTokens } from '../theme/tokens.stylex';
+import { borderTokens, controlTokens, validationTokens } from '../theme/tokens.stylex';
 
 export type ControlLikeSize = 'sm' | 'md' | 'lg';
 
@@ -41,11 +41,11 @@ const controlLikeStyles = stylex.create({
     }
   },
   invalid: {
-    borderColor: inputTokens.invalidBorder
+    borderColor: validationTokens.invalidBorder
   },
   invalidFocusVisible: {
     ':focus-visible': {
-      outlineColor: inputTokens.invalidBorder
+      outlineColor: validationTokens.invalidBorder
     }
   }
 });

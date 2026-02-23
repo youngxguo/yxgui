@@ -3,14 +3,14 @@ import type { ToastClassnames } from 'sonner';
 import { composeStyleProps } from '../../styles/recipes';
 import {
   borderTokens,
-  cardTokens,
-  paletteTokens,
+  cardElevationTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   statusTokens,
   surfaceTokens,
   typographyTokens,
-  variantTokens
+  buttonVariantTokens
 } from '../../theme/tokens.stylex';
 
 const sonnerStyles = stylex.create({
@@ -19,7 +19,7 @@ const sonnerStyles = stylex.create({
   },
   toast: {
     borderRadius: radiusTokens.md,
-    boxShadow: cardTokens.shadow
+    boxShadow: cardElevationTokens.shadow
   },
   title: {
     fontFamily: typographyTokens.fontFamily,
@@ -28,7 +28,7 @@ const sonnerStyles = stylex.create({
     lineHeight: typographyTokens.lineHeightNormal
   },
   description: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: typographyTokens.lineHeightNormal
@@ -47,7 +47,7 @@ const sonnerStyles = stylex.create({
   },
   closeButton: {
     borderRadius: radiusTokens.pill,
-    color: paletteTokens.foreground
+    color: colorTokens.foreground
   }
 });
 
@@ -75,7 +75,7 @@ export function getSonnerThemeVariables() {
     '--border-radius': radiusTokens.md,
     '--normal-bg': surfaceTokens.elevated,
     '--normal-border': borderTokens.default,
-    '--normal-text': paletteTokens.foreground,
+    '--normal-text': colorTokens.foreground,
     '--success-bg': statusTokens.successBackground,
     '--success-border': statusTokens.successBorder,
     '--success-text': statusTokens.successForeground,
@@ -94,17 +94,17 @@ export function getSonnerThemeVariables() {
 
 export function getSonnerToastBaseStyle() {
   return {
-    boxShadow: cardTokens.shadow,
-    color: paletteTokens.foreground
+    boxShadow: cardElevationTokens.shadow,
+    color: colorTokens.foreground
   } as const;
 }
 
 export function getSonnerButtonStyles() {
   return {
     action: {
-      background: variantTokens.primaryBackground,
+      background: buttonVariantTokens.primaryBackground,
       borderRadius: radiusTokens.sm,
-      color: variantTokens.primaryForeground,
+      color: buttonVariantTokens.primaryForeground,
       fontFamily: typographyTokens.fontFamily,
       fontWeight: typographyTokens.fontWeightMedium,
       padding: `${spacingTokens.xxs} ${spacingTokens.half}`
@@ -112,7 +112,7 @@ export function getSonnerButtonStyles() {
     cancel: {
       background: surfaceTokens.soft,
       borderRadius: radiusTokens.sm,
-      color: paletteTokens.foreground,
+      color: colorTokens.foreground,
       fontFamily: typographyTokens.fontFamily,
       fontWeight: typographyTokens.fontWeightMedium,
       padding: `${spacingTokens.xxs} ${spacingTokens.half}`
@@ -120,7 +120,7 @@ export function getSonnerButtonStyles() {
     close: {
       background: surfaceTokens.elevated,
       borderColor: borderTokens.default,
-      color: paletteTokens.foreground
+      color: colorTokens.foreground
     }
   } as const;
 }

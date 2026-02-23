@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens
@@ -15,7 +15,7 @@ const emptyStyles = stylex.create({
     borderRadius: radiusTokens.md,
     borderStyle: 'dashed',
     borderWidth: borderTokens.widthThin,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     display: 'grid',
     gap: spacingTokens.lg,
     justifyItems: 'center',
@@ -27,7 +27,7 @@ const emptyStyles = stylex.create({
     alignItems: 'center',
     backgroundColor: surfaceTokens.accentMuted,
     borderRadius: radiusTokens.pill,
-    color: paletteTokens.accent,
+    color: colorTokens.accent,
     display: 'inline-flex',
     justifyContent: 'center',
     minHeight: spacingTokens.xxxxxl,

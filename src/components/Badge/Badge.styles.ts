@@ -2,10 +2,10 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
-  badgeTokens,
+  badgeStyleTokens,
   borderTokens,
   controlTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   statusTokens,
@@ -35,9 +35,9 @@ const badgeStyles = stylex.create({
     whiteSpace: 'nowrap'
   },
   neutral: {
-    backgroundColor: badgeTokens.neutralBackground,
-    borderColor: badgeTokens.neutralBorder,
-    color: badgeTokens.neutralForeground
+    backgroundColor: badgeStyleTokens.neutralBackground,
+    borderColor: badgeStyleTokens.neutralBorder,
+    color: badgeStyleTokens.neutralForeground
   },
   success: {
     backgroundColor: statusTokens.successBackground,
@@ -57,7 +57,7 @@ const badgeStyles = stylex.create({
   outline: {
     backgroundColor: controlTokens.background,
     borderColor: borderTokens.default,
-    color: paletteTokens.mutedForeground
+    color: colorTokens.mutedForeground
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,

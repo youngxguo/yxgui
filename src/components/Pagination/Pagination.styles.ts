@@ -3,7 +3,7 @@ import { getButtonLikeStyleProps } from '../../styles/buttonLike';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -42,17 +42,17 @@ const paginationStyles = stylex.create({
   active: {
     backgroundColor: surfaceTokens.accentMuted,
     borderColor: borderTokens.focus,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     fontWeight: typographyTokens.fontWeightMedium
   },
   disabled: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     cursor: 'not-allowed',
     opacity: 0.6,
     pointerEvents: 'none'
   },
   ellipsis: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     padding: `0 ${spacingTokens.sm}`

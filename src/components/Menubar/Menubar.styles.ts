@@ -6,7 +6,7 @@ import {
   spacingTokens,
   surfaceTokens,
   typographyTokens,
-  paletteTokens
+  colorTokens
 } from '../../theme/tokens.stylex';
 
 const menubarStyles = stylex.create({
@@ -23,7 +23,7 @@ const menubarStyles = stylex.create({
     backgroundColor: 'transparent',
     border: `${borderTokens.widthThin} solid transparent`,
     borderRadius: radiusTokens.sm,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     cursor: 'pointer',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,

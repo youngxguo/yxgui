@@ -6,7 +6,7 @@ import {
 } from '../../styles/disclosure';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -39,7 +39,7 @@ const accordionStyles = stylex.create({
     lineHeight: '1'
   },
   content: {
-    color: paletteTokens.mutedForeground
+    color: colorTokens.mutedForeground
   },
   contentInner: {
     fontFamily: typographyTokens.fontFamily,

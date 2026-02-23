@@ -1,11 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { paletteTokens } from '../../theme/tokens.stylex';
+import { colorTokens } from '../../theme/tokens.stylex';
 
 const sliderStyles = stylex.create({
   root: {
-    accentColor: paletteTokens.accent,
+    accentColor: colorTokens.accent,
     cursor: 'pointer',
     width: '100%'
   },

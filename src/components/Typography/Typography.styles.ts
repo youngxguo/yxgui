@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens,
@@ -30,7 +30,7 @@ interface GetTypographyStylePropsOptions {
 
 const typographyStyles = stylex.create({
   root: {
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     fontFamily: typographyTokens.fontFamily,
     margin: 0
   },
@@ -65,12 +65,12 @@ const typographyStyles = stylex.create({
     lineHeight: typographyTokens.lineHeightRelaxed
   },
   lead: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontSize: typographyTokens.fontSizeXl,
     lineHeight: typographyTokens.lineHeightRelaxed
   },
   muted: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: typographyTokens.lineHeightNormal
   },

@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { paletteTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { colorTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 export type LabelSize = 'sm' | 'md';
 
@@ -13,7 +13,7 @@ interface GetLabelStylePropsOptions {
 
 const labelStyles = stylex.create({
   root: {
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
     fontWeight: typographyTokens.fontWeightMedium,

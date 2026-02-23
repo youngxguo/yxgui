@@ -5,7 +5,7 @@ import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
   controlTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens,
@@ -37,8 +37,8 @@ const switchStyles = stylex.create({
     position: 'relative'
   },
   checked: {
-    backgroundColor: paletteTokens.accent,
-    borderColor: paletteTokens.accent
+    backgroundColor: colorTokens.accent,
+    borderColor: colorTokens.accent
   },
   disabled: {
     cursor: 'not-allowed',

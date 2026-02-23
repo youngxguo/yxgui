@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { paletteTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { colorTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 export type RadioGroupOrientation = 'vertical' | 'horizontal';
 export type RadioSize = 'sm' | 'md';
@@ -19,7 +19,7 @@ const radioStyles = stylex.create({
   },
   itemLabel: {
     alignItems: 'center',
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     cursor: 'pointer',
     display: 'inline-flex',
     fontFamily: typographyTokens.fontFamily,
@@ -31,7 +31,7 @@ const radioStyles = stylex.create({
     opacity: 0.6
   },
   input: {
-    accentColor: paletteTokens.accent,
+    accentColor: colorTokens.accent,
     margin: 0
   },
   inputSm: {

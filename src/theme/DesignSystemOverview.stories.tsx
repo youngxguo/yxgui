@@ -25,20 +25,23 @@ import {
   Typography
 } from '../index';
 import { uiPrimitiveDefinitions } from '../styles/primitives';
-import { statusTokens } from './tokens.stylex';
 import {
-  badgeTokens,
+  badgeStyleTokens,
   borderTokens,
-  buttonTokens,
-  cardTokens,
+  colorTokens,
+  buttonInteractionTokens,
+  buttonVariantTokens,
+  cardElevationTokens,
   controlTokens,
-  inputTokens,
-  paletteTokens,
+  layerTokens,
+  overlayTokens,
   radiusTokens,
+  shadowTokens,
   spacingTokens,
+  statusTokens,
   surfaceTokens,
   typographyTokens,
-  variantTokens
+  validationTokens
 } from '../index';
 
 type TokenValue = string | number;
@@ -68,16 +71,22 @@ interface DuplicateCluster {
 
 const tokenGroups: TokenGroup[] = [
   {
-    id: 'palette',
-    name: 'Palette',
-    description: 'Core neutrals and accent colors reused across semantic groups.',
-    tokens: paletteTokens as TokenMap
+    id: 'color',
+    name: 'Color',
+    description: 'Core semantic text and accent colors used across components.',
+    tokens: colorTokens as TokenMap
   },
   {
     id: 'surface',
     name: 'Surface',
     description: 'Layered surface fills for cards, hover states, insets, and subtle emphasis.',
     tokens: surfaceTokens as TokenMap
+  },
+  {
+    id: 'overlay',
+    name: 'Overlay',
+    description: 'Scrim and overlay colors used behind modal and floating layers.',
+    tokens: overlayTokens as TokenMap
   },
   {
     id: 'border',
@@ -92,40 +101,28 @@ const tokenGroups: TokenGroup[] = [
     tokens: controlTokens as TokenMap
   },
   {
-    id: 'variant',
-    name: 'Variants',
-    description: 'Semantic button-like foreground/background/border combinations.',
-    tokens: variantTokens as TokenMap
-  },
-  {
-    id: 'button',
-    name: 'Button Details',
-    description: 'Button-specific shadows, disabled colors, and pressed offset values.',
-    tokens: buttonTokens as TokenMap
-  },
-  {
     id: 'status',
     name: 'Status',
     description: 'Feedback colors for info, success, warning, and error states.',
     tokens: statusTokens as TokenMap
   },
   {
-    id: 'badge',
-    name: 'Badge',
-    description: 'Badge-specific semantic defaults.',
-    tokens: badgeTokens as TokenMap
+    id: 'validation',
+    name: 'Validation',
+    description: 'Validation accents shared by form controls and field messaging.',
+    tokens: validationTokens as TokenMap
   },
   {
-    id: 'input',
-    name: 'Input Validation',
-    description: 'Narrow validation token set for form error accents.',
-    tokens: inputTokens as TokenMap
+    id: 'layer',
+    name: 'Layer',
+    description: 'Stacking layers for local UI and floating overlays.',
+    tokens: layerTokens as TokenMap
   },
   {
-    id: 'card',
-    name: 'Card',
-    description: 'Card-only elevation/shadow tuning so card changes remain isolated.',
-    tokens: cardTokens as TokenMap
+    id: 'shadow',
+    name: 'Shadow',
+    description: 'Shared elevation shadows for floating surfaces and controls.',
+    tokens: shadowTokens as TokenMap
   },
   {
     id: 'spacing',
@@ -144,6 +141,30 @@ const tokenGroups: TokenGroup[] = [
     name: 'Typography',
     description: 'Font families, weights, type scale, line heights, and letter spacing.',
     tokens: typographyTokens as TokenMap
+  },
+  {
+    id: 'buttonVariant',
+    name: 'Button Variants',
+    description: 'Semantic button-like foreground/background/border combinations.',
+    tokens: buttonVariantTokens as TokenMap
+  },
+  {
+    id: 'buttonInteraction',
+    name: 'Button Interaction',
+    description: 'Button-specific shadows, disabled colors, and pressed offset values.',
+    tokens: buttonInteractionTokens as TokenMap
+  },
+  {
+    id: 'badgeStyle',
+    name: 'Badge Style',
+    description: 'Badge-specific semantic defaults.',
+    tokens: badgeStyleTokens as TokenMap
+  },
+  {
+    id: 'cardElevation',
+    name: 'Card Elevation',
+    description: 'Card-only elevation/shadow tuning so card changes remain isolated.',
+    tokens: cardElevationTokens as TokenMap
   }
 ];
 

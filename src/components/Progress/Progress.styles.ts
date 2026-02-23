@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens
@@ -25,7 +25,7 @@ const progressStyles = stylex.create({
   md: { height: spacingTokens.half },
   lg: { height: spacingTokens.lg },
   indicator: {
-    backgroundColor: paletteTokens.accent,
+    backgroundColor: colorTokens.accent,
     borderRadius: radiusTokens.pill,
     height: '100%',
     transitionDuration: '160ms',

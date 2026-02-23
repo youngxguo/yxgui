@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
-  paletteTokens,
+  colorTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -11,7 +11,7 @@ import {
 const tableStyles = stylex.create({
   root: {
     borderCollapse: 'collapse',
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     fontFamily: typographyTokens.fontFamily,
     width: '100%'
   },
@@ -30,7 +30,7 @@ const tableStyles = stylex.create({
     borderBottomColor: borderTokens.default,
     borderBottomStyle: 'solid',
     borderBottomWidth: borderTokens.widthThin,
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     fontSize: typographyTokens.fontSizeSm,
     fontWeight: typographyTokens.fontWeightStrong,
     lineHeight: typographyTokens.lineHeightNormal,
@@ -49,7 +49,7 @@ const tableStyles = stylex.create({
   },
   caption: {
     captionSide: 'bottom',
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     fontSize: typographyTokens.fontSizeSm,
     lineHeight: typographyTokens.lineHeightNormal,
     paddingTop: spacingTokens.md,

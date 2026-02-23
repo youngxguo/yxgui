@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { uiPrimitives } from './primitives';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
 import {
-  paletteTokens,
+  colorTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -13,7 +13,7 @@ const disclosureStyles = stylex.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     border: 'none',
-    color: paletteTokens.foreground,
+    color: colorTokens.foreground,
     cursor: 'pointer',
     display: 'flex',
     fontFamily: typographyTokens.fontFamily,
@@ -37,7 +37,7 @@ const disclosureStyles = stylex.create({
     cursor: 'not-allowed'
   },
   indicator: {
-    color: paletteTokens.mutedForeground,
+    color: colorTokens.mutedForeground,
     flexShrink: 0,
     fontFamily: typographyTokens.fontFamilyMono,
     fontSize: typographyTokens.fontSizeSm
