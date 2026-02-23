@@ -18,6 +18,7 @@ import {
 } from './Toast.styles';
 
 export type ToastOptions = ExternalToast;
+export type ToastApi = typeof import('sonner').toast;
 export type ToasterProps = SonnerPrimitiveToasterProps & {
   ref?: Ref<HTMLElement>;
 };
@@ -105,5 +106,5 @@ export function Toaster({
   );
 }
 
-export const toast = sonnerToastPrimitive;
+export const toast: ToastApi = sonnerToastPrimitive;
 export const useToasts = useSonner;
