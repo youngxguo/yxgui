@@ -225,6 +225,8 @@ export type {
 } from './components/ScrollArea/ScrollArea';
 export { Skeleton } from './components/Skeleton/Skeleton';
 export type { SkeletonProps } from './components/Skeleton/Skeleton';
+export { Spinner } from './components/Spinner/Spinner';
+export type { SpinnerProps, SpinnerSize } from './components/Spinner/Spinner';
 export { Slider } from './components/Slider/Slider';
 export type { SliderProps } from './components/Slider/Slider';
 export {
