@@ -1,16 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
-import {
-  borderTokens,
-  controlTokens,
-  inputTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
+import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
-export type TextareaSize = 'sm' | 'md' | 'lg';
+export type TextareaSize = ControlLikeSize;
 
 interface GetTextareaStylePropsOptions {
   size: TextareaSize;
@@ -21,36 +14,8 @@ interface GetTextareaStylePropsOptions {
 
 const textareaStyles = stylex.create({
   root: {
-    boxSizing: 'border-box',
     minWidth: 0,
     resize: 'vertical'
-  },
-  text: {
-    fontWeight: 400
-  },
-  placeholder: {
-    '::placeholder': {
-      color: controlTokens.placeholder
-    }
-  },
-  hover: {
-    ':not(:disabled):hover': {
-      borderColor: borderTokens.strong
-    }
-  },
-  focusVisible: {
-    ':focus-visible': {
-      borderColor: controlTokens.borderFocus,
-      outlineColor: controlTokens.borderFocus
-    }
-  },
-  invalid: {
-    borderColor: inputTokens.invalidBorder
-  },
-  invalidFocusVisible: {
-    ':focus-visible': {
-      outlineColor: inputTokens.invalidBorder
-    }
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
@@ -81,22 +46,14 @@ export function getTextareaStyleProps({
   className,
   style
 }: GetTextareaStylePropsOptions) {
-  return composeStyleProps(
-    [
-      uiPrimitives.controlBase,
-      uiPrimitives.focusVisibleOutline,
-      uiPrimitives.interactiveTransition,
-      uiPrimitives.disabledCursor,
-      uiPrimitives.disabledControlSurface,
-      textareaStyles.root,
-      textareaStyles.text,
-      textareaStyles.placeholder,
-      textareaStyles.hover,
-      textareaStyles.focusVisible,
-      pickStyle(textareaSizeStyles, size),
-      invalid && textareaStyles.invalid,
-      invalid && textareaStyles.invalidFocusVisible
-    ],
-    { className, style }
-  );
+  return getControlLikeStyleProps({
+    size,
+    sizeStyles: textareaSizeStyles,
+    invalid,
+    baseStyles: [textareaStyles.root],
+    includeText: true,
+    includePlaceholder: true,
+    className,
+    style
+  });
 }

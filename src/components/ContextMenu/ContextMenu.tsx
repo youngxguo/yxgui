@@ -12,8 +12,10 @@ import {
 } from 'react';
 import { Portal } from '../_internal/Portal';
 import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
 import { Separator } from '../Separator/Separator';
 import { useControllableState } from '../_internal/useControllableState';
+import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import {
   getContextMenuContentStyleProps,
   getContextMenuItemStyleProps,
@@ -74,16 +76,6 @@ export interface ContextMenuItemProps
 
 export interface ContextMenuSeparatorProps extends HTMLAttributes<HTMLDivElement>, BaseStyleProps {
   ref?: Ref<HTMLDivElement>;
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-  if (ref) {
-    (ref as { current: T }).current = value;
-  }
 }
 
 function getEnabledMenuItems(container: HTMLElement) {
@@ -191,30 +183,20 @@ export function ContextMenuContent({
     const content = contentRef.current;
     const firstItem = content ? getEnabledMenuItems(content)[0] : undefined;
     firstItem?.focus();
+  }, [context.open]);
 
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (contentRef.current?.contains(target) || context.triggerRef.current?.contains(target)) {
-        return;
-      }
+  useDismissableLayer({
+    open: context.open,
+    layerRef: contentRef,
+    branchRefs: [context.triggerRef],
+    onPointerDownOutside: () => {
       context.setOpen(false);
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        context.setOpen(false);
-        context.triggerRef.current?.focus();
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [context]);
+    },
+    onEscapeKeyDown: () => {
+      context.setOpen(false);
+      context.triggerRef.current?.focus();
+    }
+  });
 
   if (!context.open) {
     return null;

@@ -1,16 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
-import {
-  borderTokens,
-  controlTokens,
-  inputTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
+import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
-export type InputSize = 'sm' | 'md' | 'lg';
+export type InputSize = ControlLikeSize;
 
 interface GetInputStylePropsOptions {
   size: InputSize;
@@ -20,36 +13,6 @@ interface GetInputStylePropsOptions {
 }
 
 const inputStyles = stylex.create({
-  root: {
-    boxSizing: 'border-box'
-  },
-  text: {
-    fontWeight: 400
-  },
-  placeholder: {
-    '::placeholder': {
-      color: controlTokens.placeholder
-    }
-  },
-  hover: {
-    ':not(:disabled):hover': {
-      borderColor: borderTokens.strong
-    }
-  },
-  focusVisible: {
-    ':focus-visible': {
-      borderColor: controlTokens.borderFocus,
-      outlineColor: controlTokens.borderFocus
-    }
-  },
-  invalid: {
-    borderColor: inputTokens.invalidBorder
-  },
-  invalidFocusVisible: {
-    ':focus-visible': {
-      outlineColor: inputTokens.invalidBorder
-    }
-  },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
     minHeight: spacingTokens.xxxl,
@@ -74,22 +37,13 @@ const inputSizeStyles: Record<InputSize, unknown> = {
 };
 
 export function getInputStyleProps({ size, invalid, className, style }: GetInputStylePropsOptions) {
-  return composeStyleProps(
-    [
-      uiPrimitives.controlBase,
-      uiPrimitives.focusVisibleOutline,
-      uiPrimitives.interactiveTransition,
-      uiPrimitives.disabledCursor,
-      uiPrimitives.disabledControlSurface,
-      inputStyles.root,
-      inputStyles.text,
-      inputStyles.placeholder,
-      inputStyles.hover,
-      inputStyles.focusVisible,
-      pickStyle(inputSizeStyles, size),
-      invalid && inputStyles.invalid,
-      invalid && inputStyles.invalidFocusVisible
-    ],
-    { className, style }
-  );
+  return getControlLikeStyleProps({
+    size,
+    sizeStyles: inputSizeStyles,
+    invalid,
+    includeText: true,
+    includePlaceholder: true,
+    className,
+    style
+  });
 }

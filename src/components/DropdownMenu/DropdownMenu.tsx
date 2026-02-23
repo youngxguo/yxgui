@@ -13,7 +13,9 @@ import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
 import { getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import {
   getDropdownMenuContentStyleProps,
@@ -62,16 +64,6 @@ export interface DropdownMenuContentProps extends HTMLAttributes<HTMLDivElement>
 export interface DropdownMenuItemProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
   onSelect?: () => void;
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-  if (ref) {
-    (ref as { current: T }).current = value;
-  }
 }
 
 function getEnabledMenuItems(container: HTMLElement) {
@@ -176,30 +168,20 @@ export function DropdownMenuContent({
     const content = contentRef.current;
     const firstItem = content ? getEnabledMenuItems(content)[0] : undefined;
     firstItem?.focus();
+  }, [context.open]);
 
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (contentRef.current?.contains(target) || context.triggerRef.current?.contains(target)) {
-        return;
-      }
+  useDismissableLayer({
+    open: context.open,
+    layerRef: contentRef,
+    branchRefs: [context.triggerRef],
+    onPointerDownOutside: () => {
       context.setOpen(false);
-    };
-
-    const handleDocumentKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        context.setOpen(false);
-        context.triggerRef.current?.focus();
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleDocumentKeyDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleDocumentKeyDown);
-    };
-  }, [context]);
+    },
+    onEscapeKeyDown: () => {
+      context.setOpen(false);
+      context.triggerRef.current?.focus();
+    }
+  });
 
   if (!context.open) {
     return null;

@@ -1,16 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
-import {
-  borderTokens,
-  controlTokens,
-  inputTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
+import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
-export type SelectSize = 'sm' | 'md' | 'lg';
+export type SelectSize = ControlLikeSize;
 
 interface GetSelectStylePropsOptions {
   size: SelectSize;
@@ -21,28 +14,8 @@ interface GetSelectStylePropsOptions {
 
 const selectStyles = stylex.create({
   root: {
-    boxSizing: 'border-box',
     cursor: 'pointer',
     paddingRight: spacingTokens.xxxl
-  },
-  hover: {
-    ':not(:disabled):hover': {
-      borderColor: borderTokens.strong
-    }
-  },
-  focusVisible: {
-    ':focus-visible': {
-      borderColor: controlTokens.borderFocus,
-      outlineColor: controlTokens.borderFocus
-    }
-  },
-  invalid: {
-    borderColor: inputTokens.invalidBorder
-  },
-  invalidFocusVisible: {
-    ':focus-visible': {
-      outlineColor: inputTokens.invalidBorder
-    }
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
@@ -79,20 +52,12 @@ export function getSelectStyleProps({
   className,
   style
 }: GetSelectStylePropsOptions) {
-  return composeStyleProps(
-    [
-      uiPrimitives.controlBase,
-      uiPrimitives.focusVisibleOutline,
-      uiPrimitives.interactiveTransition,
-      uiPrimitives.disabledCursor,
-      uiPrimitives.disabledControlSurface,
-      selectStyles.root,
-      selectStyles.hover,
-      selectStyles.focusVisible,
-      pickStyle(selectSizeStyles, size),
-      invalid && selectStyles.invalid,
-      invalid && selectStyles.invalidFocusVisible
-    ],
-    { className, style }
-  );
+  return getControlLikeStyleProps({
+    size,
+    sizeStyles: selectSizeStyles,
+    invalid,
+    baseStyles: [selectStyles.root],
+    className,
+    style
+  });
 }

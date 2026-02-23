@@ -14,7 +14,9 @@ import { Card } from '../Card/Card';
 import { Typography } from '../Typography/Typography';
 import { Portal } from '../_internal/Portal';
 import { getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import {
   getDialogCloseStyleProps,
   getDialogContentStyleProps,
@@ -79,17 +81,7 @@ export interface DialogFooterProps extends HTMLAttributes<HTMLDivElement>, BaseS
 
 export interface DialogCloseProps extends Omit<ButtonProps, 'type'>, BaseStyleProps {
   ref?: Ref<HTMLButtonElement>;
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-
-  if (ref) {
-    (ref as { current: T }).current = value;
-  }
+  autoAlign?: boolean;
 }
 
 export function Dialog({ open, defaultOpen = false, onOpenChange, children }: DialogProps) {
@@ -172,16 +164,7 @@ export function DialogContent({
     const content = contentRef.current;
     const focusTarget = content?.querySelector<HTMLElement>(focusableSelector) ?? content;
     focusTarget?.focus();
-
-    const handleDocumentKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        context.setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleDocumentKeyDown);
     return () => {
-      document.removeEventListener('keydown', handleDocumentKeyDown);
       if (context.triggerRef.current) {
         context.triggerRef.current.focus();
         return;
@@ -193,6 +176,15 @@ export function DialogContent({
       }
     };
   }, [context]);
+
+  useDismissableLayer({
+    open: context.open,
+    layerRef: contentRef,
+    dismissOnPointerDownOutside: false,
+    onEscapeKeyDown: () => {
+      context.setOpen(false);
+    }
+  });
 
   if (!context.open) {
     return null;
@@ -265,16 +257,27 @@ export function DialogFooter({ ref, className, style, ...props }: DialogFooterPr
   return <div {...props} {...styleProps} ref={ref} />;
 }
 
-export function DialogClose({ ref, className, style, onClick, ...props }: DialogCloseProps) {
+export function DialogClose({
+  ref,
+  variant = 'ghost',
+  size = 'sm',
+  autoAlign = true,
+  className,
+  style,
+  onClick,
+  ...props
+}: DialogCloseProps) {
   const context = useDialogContext('DialogClose');
-  const styleProps = getDialogCloseStyleProps({ className, style });
+  const styleProps = autoAlign
+    ? getDialogCloseStyleProps({ className, style })
+    : { className, style };
 
   return (
     <Button
       {...props}
       {...styleProps}
-      variant="ghost"
-      size="sm"
+      variant={variant}
+      size={size}
       ref={ref}
       type="button"
       onClick={(event) => {

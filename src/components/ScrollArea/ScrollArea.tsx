@@ -8,6 +8,7 @@ import {
   type HTMLAttributes,
   type Ref
 } from 'react';
+import { assignRef } from '../_internal/refs';
 import {
   getScrollAreaRootStyleProps,
   getScrollAreaScrollbarStyleProps,
@@ -50,17 +51,6 @@ export interface ScrollAreaThumbProps extends HTMLAttributes<HTMLDivElement>, Ba
 
 function getStyleOptions({ className, style }: BaseStyleProps) {
   return { className, style };
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T | null) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-
-  if (ref) {
-    (ref as { current: T | null }).current = value;
-  }
 }
 
 function getNumericStyleValue(value: string) {

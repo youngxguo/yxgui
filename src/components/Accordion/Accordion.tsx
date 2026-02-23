@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getAccordionContentInnerStyleProps,
@@ -62,16 +63,6 @@ function useAccordionItemContext(componentName: string) {
     throw new Error(`${componentName} must be used within AccordionItem`);
   }
   return context;
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-  if (ref) {
-    (ref as { current: T }).current = value;
-  }
 }
 
 function getEnabledAccordionTriggers(container: HTMLElement) {

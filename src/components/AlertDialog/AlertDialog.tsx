@@ -22,12 +22,7 @@ import {
   type DialogTitleProps,
   type DialogTriggerProps
 } from '../Dialog/Dialog';
-import {
-  getAlertDialogActionStyleProps,
-  getAlertDialogCancelStyleProps,
-  getAlertDialogFooterStyleProps,
-  getAlertDialogHeaderStyleProps
-} from './AlertDialog.styles';
+import { getAlertDialogHeaderStyleProps } from './AlertDialog.styles';
 
 interface AlertDialogIdsContextValue {
   titleId: string;
@@ -114,13 +109,20 @@ export function AlertDialogDescription(props: AlertDialogDescriptionProps) {
 }
 
 export function AlertDialogFooter({ className, style, ...props }: AlertDialogFooterProps) {
-  const styleProps = getAlertDialogFooterStyleProps({ className, style });
-  return <DialogFooter {...props} {...styleProps} />;
+  return <DialogFooter {...props} className={className} style={style} />;
 }
 
 export function AlertDialogCancel({ className, style, ...props }: AlertDialogCancelProps) {
-  const styleProps = getAlertDialogCancelStyleProps({ className, style });
-  return <DialogClose {...props} {...styleProps} />;
+  return (
+    <DialogClose
+      {...props}
+      autoAlign={false}
+      variant={props.variant ?? 'secondary'}
+      size={props.size ?? 'md'}
+      className={className}
+      style={style}
+    />
+  );
 }
 
 export function AlertDialogAction({
@@ -129,6 +131,14 @@ export function AlertDialogAction({
   style,
   ...props
 }: AlertDialogActionProps) {
-  const styleProps = getAlertDialogActionStyleProps(destructive, { className, style });
-  return <DialogClose {...props} {...styleProps} />;
+  return (
+    <DialogClose
+      {...props}
+      autoAlign={false}
+      variant={props.variant ?? (destructive ? 'destructive' : 'primary')}
+      size={props.size ?? 'md'}
+      className={className}
+      style={style}
+    />
+  );
 }

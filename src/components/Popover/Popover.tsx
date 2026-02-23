@@ -1,7 +1,6 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useId,
   useRef,
   type CSSProperties,
@@ -13,7 +12,9 @@ import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
 import { getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getPopoverContentStyleProps } from './Popover.styles';
 
@@ -55,17 +56,6 @@ export interface PopoverContentProps extends HTMLAttributes<HTMLDivElement>, Bas
   ref?: Ref<HTMLDivElement>;
   matchTriggerWidth?: boolean;
   offset?: number;
-}
-
-function assignRef<T>(ref: Ref<T> | undefined, value: T) {
-  if (typeof ref === 'function') {
-    ref(value);
-    return;
-  }
-
-  if (ref) {
-    (ref as { current: T }).current = value;
-  }
 }
 
 export function Popover({ open, defaultOpen = false, onOpenChange, children }: PopoverProps) {
@@ -144,32 +134,12 @@ export function PopoverContent({
     matchWidth: matchTriggerWidth
   });
 
-  useEffect(() => {
-    if (!context.open) {
-      return;
-    }
-
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (contentRef.current?.contains(target) || context.triggerRef.current?.contains(target)) {
-        return;
-      }
-      context.setOpen(false);
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        context.setOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [context]);
+  useDismissableLayer({
+    open: context.open,
+    layerRef: contentRef,
+    branchRefs: [context.triggerRef],
+    onDismiss: () => context.setOpen(false)
+  });
 
   if (!context.open) {
     return null;

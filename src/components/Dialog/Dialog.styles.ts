@@ -1,13 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps } from '../../styles/recipes';
-import {
-  borderTokens,
-  paletteTokens,
-  radiusTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 interface SlotStyleOptions {
   className?: string;
@@ -41,15 +35,7 @@ const dialogStyles = stylex.create({
     justifyContent: 'flex-end'
   },
   closeButton: {
-    backgroundColor: 'transparent',
-    border: `${borderTokens.widthThin} solid transparent`,
-    borderRadius: radiusTokens.sm,
-    color: paletteTokens.mutedForeground,
-    cursor: 'pointer',
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeSm,
-    marginLeft: 'auto',
-    padding: `${spacingTokens.xxs} ${spacingTokens.xs}`
+    marginLeft: 'auto'
   }
 });
 
