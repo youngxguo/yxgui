@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { ScrollArea, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from './ScrollArea';
 
 const meta = {
-  title: 'Components/ScrollArea',
+  title: 'Layout/ScrollArea',
   component: ScrollArea,
   tags: ['autodocs']
 } satisfies Meta<typeof ScrollArea>;

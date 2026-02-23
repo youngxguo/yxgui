@@ -12,7 +12,7 @@ import {
 } from './FormField';
 
 const meta = {
-  title: 'Components/FormField',
+  title: 'Forms/FormField',
   component: FormField,
   tags: ['autodocs']
 } satisfies Meta<typeof FormField>;

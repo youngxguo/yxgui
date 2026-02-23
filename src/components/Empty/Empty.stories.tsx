@@ -12,7 +12,7 @@ import {
 } from './Empty';
 
 const meta = {
-  title: 'Components/Empty',
+  title: 'Feedback/Empty',
   component: Empty,
   tags: ['autodocs']
 } satisfies Meta<typeof Empty>;

@@ -5,7 +5,7 @@ import { Typography } from '../Typography/Typography';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Layout/Card',
   component: Card,
   tags: ['autodocs']
 } satisfies Meta<typeof Card>;

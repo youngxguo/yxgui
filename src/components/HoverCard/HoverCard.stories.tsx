@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './HoverCard';
 
 const meta = {
-  title: 'Components/HoverCard',
+  title: 'Overlays/HoverCard',
   component: HoverCard,
   tags: ['autodocs']
 } satisfies Meta<typeof HoverCard>;

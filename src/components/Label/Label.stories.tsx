@@ -5,7 +5,7 @@ import { Input } from '../Input/Input';
 import { Label } from './Label';
 
 const meta = {
-  title: 'Components/Label',
+  title: 'Forms/Label',
   component: Label,
   tags: ['autodocs'],
   args: {

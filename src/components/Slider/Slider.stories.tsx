@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Slider } from './Slider';
 
 const meta = {
-  title: 'Components/Slider',
+  title: 'Forms/Slider',
   component: Slider,
   tags: ['autodocs'],
   args: {

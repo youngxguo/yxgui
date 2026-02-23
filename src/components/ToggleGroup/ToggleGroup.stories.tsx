@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
 
 const meta = {
-  title: 'Components/ToggleGroup',
+  title: 'Actions/ToggleGroup',
   component: ToggleGroup,
   tags: ['autodocs'],
   args: {

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Tooltip } from './Tooltip';
 
 const meta = {
-  title: 'Components/Tooltip',
+  title: 'Overlays/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
   args: {

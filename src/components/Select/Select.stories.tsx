@@ -4,7 +4,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Select } from './Select';
 
 const meta = {
-  title: 'Components/Select',
+  title: 'Forms/Select',
   component: Select,
   tags: ['autodocs'],
   args: {

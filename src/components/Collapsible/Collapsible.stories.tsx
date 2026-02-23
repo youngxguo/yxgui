@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible';
 
 const meta = {
-  title: 'Components/Collapsible',
+  title: 'Disclosure/Collapsible',
   component: Collapsible,
   tags: ['autodocs']
 } satisfies Meta<typeof Collapsible>;

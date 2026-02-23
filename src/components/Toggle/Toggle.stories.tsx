@@ -4,7 +4,7 @@ import { expect, fn, userEvent, within } from 'storybook/test';
 import { Toggle } from './Toggle';
 
 const meta = {
-  title: 'Components/Toggle',
+  title: 'Actions/Toggle',
   component: Toggle,
   tags: ['autodocs'],
   args: {

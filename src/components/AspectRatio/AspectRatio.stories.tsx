@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { AspectRatio } from './AspectRatio';
 
 const meta = {
-  title: 'Components/AspectRatio',
+  title: 'Layout/AspectRatio',
   component: AspectRatio,
   tags: ['autodocs']
 } satisfies Meta<typeof AspectRatio>;

@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { Typography } from './Typography';
 
 const meta = {
-  title: 'Components/Typography',
+  title: 'Foundations/Typography',
   component: Typography,
   tags: ['autodocs'],
   args: {

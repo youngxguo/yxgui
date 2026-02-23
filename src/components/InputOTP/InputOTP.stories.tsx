@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from './InputOTP';
 
 const meta = {
-  title: 'Components/InputOTP',
+  title: 'Forms/InputOTP',
   component: InputOTP,
   tags: ['autodocs'],
   args: {

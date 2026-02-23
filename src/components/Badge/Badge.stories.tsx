@@ -4,7 +4,7 @@ import { expect, within } from 'storybook/test';
 import { Badge } from './Badge';
 
 const meta = {
-  title: 'Components/Badge',
+  title: 'Content/Badge',
   component: Badge,
   tags: ['autodocs'],
   args: {

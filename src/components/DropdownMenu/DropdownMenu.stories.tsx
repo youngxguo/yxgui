@@ -8,7 +8,7 @@ import {
 } from './DropdownMenu';
 
 const meta = {
-  title: 'Components/DropdownMenu',
+  title: 'Overlays/DropdownMenu',
   component: DropdownMenu,
   tags: ['autodocs'],
   parameters: {

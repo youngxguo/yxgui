@@ -14,7 +14,7 @@ import {
 } from './Carousel';
 
 const meta = {
-  title: 'Components/Carousel',
+  title: 'Content/Carousel',
   component: Carousel,
   tags: ['autodocs']
 } satisfies Meta<typeof Carousel>;

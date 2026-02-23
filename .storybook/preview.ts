@@ -2,6 +2,21 @@ import type { Preview } from '@storybook/react';
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Foundations',
+          'Actions',
+          'Forms',
+          'Layout',
+          'Navigation',
+          'Disclosure',
+          'Overlays',
+          'Feedback',
+          'Content'
+        ]
+      }
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './Accordion';
 
 const meta = {
-  title: 'Components/Accordion',
+  title: 'Disclosure/Accordion',
   component: Accordion,
   tags: ['autodocs']
 } satisfies Meta<typeof Accordion>;

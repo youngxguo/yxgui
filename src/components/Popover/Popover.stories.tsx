@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 const meta = {
-  title: 'Components/Popover',
+  title: 'Overlays/Popover',
   component: Popover,
   tags: ['autodocs'],
   parameters: {

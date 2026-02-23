@@ -5,7 +5,7 @@ import { Typography } from '../Typography/Typography';
 import { Separator } from './Separator';
 
 const meta = {
-  title: 'Components/Separator',
+  title: 'Layout/Separator',
   component: Separator,
   tags: ['autodocs'],
   args: {

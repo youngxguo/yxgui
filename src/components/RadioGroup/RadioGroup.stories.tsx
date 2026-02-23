@@ -4,7 +4,7 @@ import { Typography } from '../Typography/Typography';
 import { Radio, RadioGroup } from './RadioGroup';
 
 const meta = {
-  title: 'Components/RadioGroup',
+  title: 'Forms/RadioGroup',
   component: RadioGroup,
   tags: ['autodocs']
 } satisfies Meta<typeof RadioGroup>;

@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { Alert, AlertDescription, AlertTitle } from './Alert';
 
 const meta = {
-  title: 'Components/Alert',
+  title: 'Feedback/Alert',
   component: Alert,
   tags: ['autodocs'],
   args: {
