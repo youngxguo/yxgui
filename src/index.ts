@@ -150,6 +150,8 @@ export type {
 } from './components/Pagination/Pagination';
 export { Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
+export { Toaster, toast, useToasts } from './components/Toast/Toast';
+export type { ToasterProps, ToastOptions } from './components/Toast/Toast';
 export {
   Sheet,
   SheetClose,

@@ -112,6 +112,7 @@ Current exported components include:
 - `Sheet` (`SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`)
 - `Skeleton`
 - `Slider`
+- `Toast` (`Toaster`, `toast`)
 - `Table` (`TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption`)
 - `Switch`
 - `Toggle`
@@ -153,6 +154,26 @@ pnpm build
 Note: `package.json` includes `pnpm.overrides` forcing `vitest`/`@vitest/mocker` to use Vite 7.
 This avoids a TypeScript type-identity mismatch when `pnpm` otherwise resolves a separate `vite@6`
 inside the Vitest dependency subtree.
+
+## Toast Notifications
+
+```tsx
+import { Toaster, toast } from 'yxgui';
+
+function App() {
+  return (
+    <>
+      <Toaster />
+      <button
+        type="button"
+        onClick={() => toast.success('Saved', { description: 'Your settings were updated.' })}
+      >
+        Save
+      </button>
+    </>
+  );
+}
+```
 
 ## Publishing
 
