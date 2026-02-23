@@ -19,6 +19,8 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 - Install: `pnpm install`
 - Done gate: `pnpm lint`, `pnpm test`, `pnpm build`
 - Common: `pnpm storybook`, `pnpm test:watch`, `pnpm typecheck`, `pnpm format`, `pnpm format:check`, `pnpm lint:fix`, `pnpm build-storybook`
+- Publish (npm): `npm publish` (pass `--otp <code>` when npm 2FA requires it)
+- Publish dry-run: `npm publish --dry-run`
 
 ## GitHub / Commits
 
@@ -47,3 +49,4 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 - Update `README.md` for public API/usage changes.
 - Keep workflow/automation details in `AGENTS.md`, not `README.md`.
 - Do not commit or hand-edit `dist/`.
+- Before publish, confirm auth with `npm whoami` and verify the tarball with `npm publish --dry-run`.

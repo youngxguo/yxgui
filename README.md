@@ -6,6 +6,7 @@ Requires React 19+.
 
 ```bash
 pnpm add yxgui
+npm install yxgui
 ```
 
 ## Component API Conventions
@@ -151,11 +152,6 @@ Note: `package.json` includes `pnpm.overrides` forcing `vitest`/`@vitest/mocker`
 This avoids a TypeScript type-identity mismatch when `pnpm` otherwise resolves a separate `vite@6`
 inside the Vitest dependency subtree.
 
-## Publish Checklist
+## Publishing
 
-```bash
-pnpm lint
-pnpm test
-pnpm build
-pnpm publish --access public
-```
+Package publishing and release workflow notes live in `AGENTS.md`.

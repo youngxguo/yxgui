@@ -2,7 +2,22 @@
   "name": "yxgui",
   "version": "0.0.1",
   "description": "Minimal React component library",
+  "keywords": [
+    "react",
+    "ui",
+    "component-library",
+    "typescript",
+    "design-system"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngxguo/yxgui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/youngxguo/yxgui/issues"
+  },
+  "homepage": "https://github.com/youngxguo/yxgui#readme",
   "type": "module",
   "packageManager": "pnpm@9.15.2",
   "main": "./dist/index.cjs.js",
@@ -17,8 +32,12 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true",
     "check:quality": "pnpm lint && pnpm test && pnpm build",
