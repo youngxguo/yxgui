@@ -24,14 +24,20 @@ const scrollAreaStyles = stylex.create({
     overflow: 'auto',
     maxWidth: '100%',
     maxHeight: '100%',
-    outline: 'none'
+    outline: 'none',
+    scrollbarWidth: 'none',
+    msOverflowStyle: 'none',
+    '::-webkit-scrollbar': {
+      display: 'none'
+    }
   },
   scrollbar: {
     backgroundColor: surfaceTokens.softHover,
     borderRadius: radiusTokens.pill,
-    display: 'flex',
+    display: 'block',
     flexShrink: 0,
-    userSelect: 'none'
+    userSelect: 'none',
+    overflow: 'hidden'
   },
   scrollbarVertical: {
     width: spacingTokens.md,
@@ -51,8 +57,13 @@ const scrollAreaStyles = stylex.create({
   },
   thumb: {
     backgroundColor: surfaceTokens.softStrong,
-    borderRadius: radiusTokens.pill,
-    flex: 1
+    borderRadius: radiusTokens.pill
+  },
+  thumbVertical: {
+    width: '100%'
+  },
+  thumbHorizontal: {
+    height: '100%'
   }
 });
 
@@ -81,6 +92,15 @@ export function getScrollAreaScrollbarStyleProps(
   );
 }
 
-export function getScrollAreaThumbStyleProps(options?: SlotStyleOptions) {
-  return composeStyleProps([scrollAreaStyles.thumb], options);
+export function getScrollAreaThumbStyleProps(
+  orientation: ScrollbarOrientation,
+  options?: SlotStyleOptions
+) {
+  return composeStyleProps(
+    [
+      scrollAreaStyles.thumb,
+      orientation === 'vertical' ? scrollAreaStyles.thumbVertical : scrollAreaStyles.thumbHorizontal
+    ],
+    options
+  );
 }
