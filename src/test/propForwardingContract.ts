@@ -11,6 +11,9 @@ interface ForwardedCorePropsExpectation {
   styleColor?: string;
 }
 
+/**
+ * Shared assertions for verifying that components forward common DOM props to their root element.
+ */
 export function expectForwardedCoreProps({
   element,
   id,

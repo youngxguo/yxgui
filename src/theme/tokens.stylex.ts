@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
+/** Base palette values used directly by shared recipes and semantic token groups. */
 export const paletteTokens = stylex.defineConsts({
   background: '#fcfcf9',
   foreground: '#161614',
@@ -9,6 +10,7 @@ export const paletteTokens = stylex.defineConsts({
   mutedForeground: '#59594f'
 });
 
+/** Global type scale, weights, and font families used by component styles. */
 export const typographyTokens = stylex.defineConsts({
   fontFamily: "'Inter', sans-serif",
   fontFamilyMono:
@@ -30,6 +32,7 @@ export const typographyTokens = stylex.defineConsts({
   letterSpacingTight: '-0.02em'
 });
 
+/** Reusable corner radius scale for controls, surfaces, and pills. */
 export const radiusTokens = stylex.defineConsts({
   sm: '0.25rem',
   md: '0.375rem',
@@ -37,6 +40,7 @@ export const radiusTokens = stylex.defineConsts({
   pill: '999px'
 });
 
+/** Primary spacing scale used for layout gaps, padding, and compact control heights. */
 export const spacingTokens = stylex.defineConsts({
   xxxs: '0.125rem',
   xxs: '0.25rem',
@@ -52,6 +56,7 @@ export const spacingTokens = stylex.defineConsts({
   xxxxxl: '3rem'
 });
 
+/** Surface colors for layered containers, hover states, and subtle emphasis. */
 export const surfaceTokens = stylex.defineConsts({
   base: '#fcfcf9',
   elevated: '#ffffff',
@@ -65,6 +70,7 @@ export const surfaceTokens = stylex.defineConsts({
   accentSubtle: '#eaf0ff'
 });
 
+/** Border widths plus neutral/focus border colors shared across components. */
 export const borderTokens = stylex.defineConsts({
   widthThin: '1px',
   default: '#cfcec5',
@@ -73,6 +79,7 @@ export const borderTokens = stylex.defineConsts({
   focus: '#2855f2'
 });
 
+/** Default form-control colors, including disabled and focus-border states. */
 export const controlTokens = stylex.defineConsts({
   background: '#ffffff',
   backgroundDisabled: '#f4f4ef',
@@ -82,6 +89,7 @@ export const controlTokens = stylex.defineConsts({
   borderFocus: '#2855f2'
 });
 
+/** Semantic foreground/background/border sets for button-like component variants. */
 export const variantTokens = stylex.defineConsts({
   primaryBackground: '#161614',
   primaryForeground: '#fcfcf9',
@@ -98,6 +106,7 @@ export const variantTokens = stylex.defineConsts({
   destructiveForeground: '#fff5f5'
 });
 
+/** Button interaction details (shadows/pressed offset) kept separate from shared variants. */
 export const buttonTokens = stylex.defineConsts({
   primaryShadow: '0 1px 2px #d9d7cc, 0 1px 1px #ebeae1',
   primaryHoverShadow: '0 2px 4px #d3d1c4, 0 1px 2px #e4e2d7',
@@ -107,6 +116,7 @@ export const buttonTokens = stylex.defineConsts({
   activeOffset: '1px'
 });
 
+/** Status color sets used by alert-like feedback components. */
 export const statusTokens = stylex.defineConsts({
   infoBackground: '#dbeafe',
   infoBorder: '#60a5fa',
@@ -122,16 +132,19 @@ export const statusTokens = stylex.defineConsts({
   errorForeground: '#991b1b'
 });
 
+/** Neutral badge defaults kept separate until more badge variants need tokenization. */
 export const badgeTokens = stylex.defineConsts({
   neutralBackground: '#ebe9df',
   neutralForeground: '#3f3d36',
   neutralBorder: '#d2cfbf'
 });
 
+/** Form validation accents that are intentionally narrower than `statusTokens`. */
 export const inputTokens = stylex.defineConsts({
   invalidBorder: '#c43d3d'
 });
 
+/** Card elevation shadows so card tuning does not affect other surface components. */
 export const cardTokens = stylex.defineConsts({
   shadow: '0 1px 2px #e7e5db, 0 1px 1px #f0efe8',
   hoverShadow: '0 3px 8px #dfddd1, 0 1px 2px #eceadf'

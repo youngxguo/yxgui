@@ -9,6 +9,7 @@ interface RefTargetExpectation<T extends Element> {
   ref: RefObject<T | null>;
 }
 
+/** Verifies that a component ref resolves to the expected DOM node and element type. */
 export function expectRefTarget<T extends Element>({
   constructor,
   element,

@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
 import { borderTokens, paletteTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
 
+// Shared menu surface/item recipes used by menu-like components (dropdown, context menu, etc.).
 const menuStyles = stylex.create({
   content: {
     backgroundColor: surfaceTokens.base,
@@ -46,10 +47,12 @@ const menuStyles = stylex.create({
   }
 });
 
+/** Returns style props for floating menu content surfaces. */
 export function getMenuContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([menuStyles.content], options);
 }
 
+/** Returns style props for interactive menu items, including disabled and focus-visible states. */
 export function getMenuItemStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [menuStyles.item, menuStyles.itemDisabled, menuStyles.itemFocusVisible],

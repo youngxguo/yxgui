@@ -8,6 +8,9 @@ import {
   typographyTokens
 } from '../theme/tokens.stylex';
 
+/**
+ * Reusable low-level StyleX primitives shared across component style recipes.
+ */
 export const uiPrimitives = stylex.create({
   focusVisibleOutline: {
     ':focus-visible': {
