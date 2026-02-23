@@ -6,6 +6,11 @@ import type {
   Ref
 } from 'react';
 import {
+  getDataPresenceAttribute,
+  getDataStateAttribute,
+  isAriaBooleanTrue
+} from '../_internal/dataAttributes';
+import {
   getPaginationEllipsisStyleProps,
   getPaginationItemStyleProps,
   getPaginationLinkStyleProps,
@@ -75,7 +80,7 @@ export function PaginationLink({
   onClick,
   ...props
 }: PaginationLinkProps) {
-  const disabled = ariaDisabledProp === true || ariaDisabledProp === 'true';
+  const disabled = isAriaBooleanTrue(ariaDisabledProp);
   const styleProps = getPaginationLinkStyleProps(
     isActive,
     disabled,
@@ -90,6 +95,8 @@ export function PaginationLink({
       ref={ref}
       aria-current={ariaCurrent}
       aria-disabled={ariaDisabledProp}
+      data-state={getDataStateAttribute(isActive, 'active', 'inactive')}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onClick={(event) => {
         if (disabled) {
           event.preventDefault();

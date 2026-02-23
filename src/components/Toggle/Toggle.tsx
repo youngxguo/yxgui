@@ -1,4 +1,5 @@
 import { useState, type ButtonHTMLAttributes, type Ref } from 'react';
+import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
 import { getToggleStyleProps, type ToggleSize, type ToggleVariant } from './Toggle.styles';
 
 export interface ToggleProps extends Omit<
@@ -59,7 +60,8 @@ export function Toggle({
       type="button"
       disabled={disabled}
       aria-pressed={isPressed}
-      data-state={isPressed ? 'on' : 'off'}
+      data-state={getDataStateAttribute(isPressed, 'on', 'off')}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onClick={(event) => {
         handleToggle();
         onClick?.(event);

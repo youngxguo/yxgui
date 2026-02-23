@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
+import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getTabsListStyleProps,
@@ -87,7 +88,7 @@ export function Tabs({
     <TabsContext.Provider
       value={{ baseId, value: currentValue, setValue: setCurrentValue, orientation }}
     >
-      <div {...props} {...styleProps} ref={ref}>
+      <div {...props} {...styleProps} ref={ref} data-orientation={orientation}>
         {children}
       </div>
     </TabsContext.Provider>
@@ -105,6 +106,7 @@ export function TabsList({ ref, className, style, onKeyDown, ...props }: TabsLis
       ref={ref}
       role="tablist"
       aria-orientation={context.orientation}
+      data-orientation={context.orientation}
       onKeyDown={(event) => {
         const isHorizontal = context.orientation === 'horizontal';
         const nextKey = isHorizontal ? 'ArrowRight' : 'ArrowDown';
@@ -180,6 +182,8 @@ export function TabsTrigger({
       aria-controls={panelId}
       tabIndex={selected ? 0 : -1}
       disabled={disabled}
+      data-state={getDataStateAttribute(selected, 'active', 'inactive')}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onClick={(event) => {
         if (!disabled) {
           context.setValue(value);
@@ -207,6 +211,7 @@ export function TabsPanel({ ref, value, className, style, hidden, ...props }: Ta
       aria-labelledby={triggerId}
       hidden={hidden ?? !selected}
       tabIndex={0}
+      data-state={getDataStateAttribute(selected, 'active', 'inactive')}
     />
   );
 }

@@ -11,6 +11,7 @@ import {
   type ReactNode,
   type Ref
 } from 'react';
+import { getDataPresenceAttribute, isAriaBooleanTrue } from '../_internal/dataAttributes';
 import { Label } from '../Label/Label';
 import {
   getFormFieldControlStyleProps,
@@ -114,7 +115,7 @@ export function FormField({
 
   return (
     <FormFieldContext.Provider value={contextValue}>
-      <div {...props} {...styleProps} ref={ref}>
+      <div {...props} {...styleProps} ref={ref} data-invalid={getDataPresenceAttribute(invalid)}>
         {children}
       </div>
     </FormFieldContext.Provider>
@@ -156,7 +157,10 @@ export function FormFieldControl({ children, className, style }: FormFieldContro
     required: (childProps.required as boolean | undefined) ?? context.required,
     invalid: (childProps.invalid as boolean | undefined) ?? context.invalid,
     'aria-invalid':
-      context.invalid || (childProps['aria-invalid'] as boolean | undefined) ? true : undefined,
+      context.invalid ||
+      isAriaBooleanTrue(childProps['aria-invalid'] as boolean | string | undefined)
+        ? true
+        : undefined,
     'aria-describedby': describedBy || undefined
   });
 }

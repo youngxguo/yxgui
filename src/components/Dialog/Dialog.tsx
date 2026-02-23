@@ -13,6 +13,7 @@ import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Typography } from '../Typography/Typography';
 import { Portal } from '../_internal/Portal';
+import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getDialogCloseStyleProps,
@@ -139,6 +140,7 @@ export function DialogTrigger({
       aria-haspopup="dialog"
       aria-expanded={context.open}
       aria-controls={context.contentId}
+      data-state={getDataStateAttribute(context.open, 'open', 'closed')}
       onClick={(event) => {
         context.setOpen(!context.open);
         onClick?.(event);
@@ -203,6 +205,7 @@ export function DialogContent({
     <Portal>
       <div
         {...overlayStyleProps}
+        data-state="open"
         onMouseDown={(event) => {
           if (event.target === event.currentTarget && closeOnOverlayClick) {
             context.setOpen(false);
@@ -220,6 +223,7 @@ export function DialogContent({
           role={props.role ?? 'dialog'}
           aria-modal="true"
           tabIndex={-1}
+          data-state="open"
           onKeyDown={onKeyDown}
           onMouseDown={onMouseDown}
         >

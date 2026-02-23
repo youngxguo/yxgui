@@ -11,6 +11,7 @@ import {
   type Ref
 } from 'react';
 import { Portal } from '../_internal/Portal';
+import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getContextMenuContentStyleProps,
@@ -150,6 +151,7 @@ export function ContextMenuTrigger({
       aria-haspopup="menu"
       aria-expanded={context.open}
       aria-controls={context.contentId}
+      data-state={getDataStateAttribute(context.open, 'open', 'closed')}
       onContextMenu={(event) => {
         event.preventDefault();
         context.setPosition({ x: event.clientX, y: event.clientY });
@@ -238,6 +240,7 @@ export function ContextMenuContent({
         id={context.contentId}
         role="menu"
         tabIndex={-1}
+        data-state="open"
         onKeyDown={(event) => {
           const items = getEnabledMenuItems(event.currentTarget);
           if (!items.length) {
@@ -290,6 +293,7 @@ export function ContextMenuItem({
       role="menuitem"
       disabled={disabled}
       aria-disabled={disabled}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onClick={(event) => {
         if (disabled) {
           event.preventDefault();
