@@ -1,12 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
 import {
-  borderTokens,
-  controlTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
   typographyTokens
-} from '../theme/tokens.stylex';
+} from '../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, controlTokens } from '../theme/tokens/semanticTokens.stylex';
 
 /**
  * Reusable low-level StyleX primitives shared across component style recipes.

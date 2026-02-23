@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
 
 const toggleGroupStyles = stylex.create({
   root: {

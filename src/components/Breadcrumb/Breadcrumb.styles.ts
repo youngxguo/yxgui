@@ -2,13 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
-  borderTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
-  surfaceTokens,
   typographyTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const breadcrumbStyles = stylex.create({
   root: {

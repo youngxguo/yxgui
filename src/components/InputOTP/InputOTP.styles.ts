@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
 
 const inputOtpStyles = stylex.create({
   root: {

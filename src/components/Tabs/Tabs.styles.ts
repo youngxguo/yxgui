@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
-import { borderTokens, spacingTokens, surfaceTokens } from '../../theme/tokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
 

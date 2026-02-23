@@ -2,15 +2,17 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
-  badgeStyleTokens,
-  borderTokens,
-  controlTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
-  statusTokens,
   typographyTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/foundationTokens.stylex';
+import {
+  borderTokens,
+  colorTokens,
+  controlTokens,
+  statusTokens
+} from '../../theme/tokens/semanticTokens.stylex';
+import { badgeStyleTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type BadgeVariant = 'neutral' | 'success' | 'warning' | 'error' | 'outline';
 export type BadgeSize = 'sm' | 'md';

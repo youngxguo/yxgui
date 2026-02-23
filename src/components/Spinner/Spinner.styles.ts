@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { colorTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type SpinnerSize = 'sm' | 'md' | 'lg';
 

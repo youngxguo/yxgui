@@ -1,5 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
-import { layerTokens, spacingTokens, typographyTokens } from '../theme/tokens.stylex';
+import {
+  layerTokens,
+  spacingTokens,
+  typographyTokens
+} from '../theme/tokens/foundationTokens.stylex';
 
 const floatingLayer = {
   position: 'fixed',

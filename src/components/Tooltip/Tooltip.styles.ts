@@ -2,12 +2,12 @@ import * as stylex from '@stylexjs/stylex';
 import { floatingPrimitives } from '../../styles/floating';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  colorTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens,
   typographyTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const tooltipStyles = stylex.create({
   content: {

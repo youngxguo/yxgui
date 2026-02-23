@@ -1,7 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { layerTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import {
+  layerTokens,
+  radiusTokens,
+  spacingTokens
+} from '../../theme/tokens/foundationTokens.stylex';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselControlDirection = 'previous' | 'next';

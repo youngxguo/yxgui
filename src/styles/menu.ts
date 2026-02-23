@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { floatingPrimitives } from './floating';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
-import { borderTokens, colorTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
+import { spacingTokens } from '../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../theme/tokens/semanticTokens.stylex';
 
 // Shared menu surface/item recipes used by menu-like components (dropdown, context menu, etc.).
 const menuStyles = stylex.create({

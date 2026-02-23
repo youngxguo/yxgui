@@ -1,11 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import {
-  validationTokens,
-  colorTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens, validationTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const formFieldStyles = stylex.create({
   root: {

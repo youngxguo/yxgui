@@ -2,13 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import {
-  borderTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
-  surfaceTokens,
   typographyTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type AvatarSize = 'sm' | 'md' | 'lg';
 export type AvatarShape = 'circle' | 'rounded' | 'square';

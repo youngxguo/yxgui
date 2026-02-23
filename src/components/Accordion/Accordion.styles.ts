@@ -4,13 +4,8 @@ import {
   getDisclosureIndicatorStyleProps,
   getDisclosureTriggerStyleProps
 } from '../../styles/disclosure';
-import {
-  borderTokens,
-  colorTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const accordionStyles = stylex.create({
   root: {

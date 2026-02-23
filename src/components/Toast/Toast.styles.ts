@@ -2,16 +2,20 @@ import * as stylex from '@stylexjs/stylex';
 import type { ToastClassnames } from 'sonner';
 import { composeStyleProps } from '../../styles/recipes';
 import {
-  borderTokens,
-  cardElevationTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
+  typographyTokens
+} from '../../theme/tokens/foundationTokens.stylex';
+import {
+  borderTokens,
+  colorTokens,
   statusTokens,
-  surfaceTokens,
-  typographyTokens,
-  buttonVariantTokens
-} from '../../theme/tokens.stylex';
+  surfaceTokens
+} from '../../theme/tokens/semanticTokens.stylex';
+import {
+  buttonVariantTokens,
+  cardElevationTokens
+} from '../../theme/tokens/componentTokens.stylex';
 
 const sonnerStyles = stylex.create({
   toaster: {

@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { colorTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type LabelSize = 'sm' | 'md';
 

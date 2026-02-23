@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { colorTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type RadioGroupOrientation = 'vertical' | 'horizontal';
 export type RadioSize = 'sm' | 'md';

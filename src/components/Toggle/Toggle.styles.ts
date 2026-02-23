@@ -2,12 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { pickStyle } from '../../styles/recipes';
 import { getButtonLikeStyleProps, type ButtonLikeSize } from '../../styles/buttonLike';
+import { borderTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 import {
-  borderTokens,
   buttonInteractionTokens,
-  surfaceTokens,
   buttonVariantTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/componentTokens.stylex';
 
 export type ToggleVariant = 'primary' | 'secondary' | 'ghost';
 export type ToggleSize = ButtonLikeSize;

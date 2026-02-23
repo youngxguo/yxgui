@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { radiusTokens, spacingTokens, surfaceTokens } from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type SkeletonVariant = 'text' | 'rect' | 'circle';
 

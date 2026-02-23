@@ -1,13 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  borderTokens,
   radiusTokens,
   spacingTokens,
-  surfaceTokens,
-  typographyTokens,
-  colorTokens
-} from '../../theme/tokens.stylex';
+  typographyTokens
+} from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const menubarStyles = stylex.create({
   root: {

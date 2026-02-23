@@ -1,13 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  borderTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
-  statusTokens,
   typographyTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, statusTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type AlertVariant = 'info' | 'success' | 'warning' | 'error';
 

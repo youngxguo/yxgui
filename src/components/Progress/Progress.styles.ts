@@ -1,12 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
-import {
-  borderTokens,
-  colorTokens,
-  radiusTokens,
-  spacingTokens,
-  surfaceTokens
-} from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type ProgressSize = 'sm' | 'md' | 'lg';
 

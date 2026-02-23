@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { floatingPrimitives } from '../../styles/floating';
-import { overlayTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { overlayTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const dialogStyles = stylex.create({
   overlay: {

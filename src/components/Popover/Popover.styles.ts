@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { floatingPrimitives } from '../../styles/floating';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { spacingTokens } from '../../theme/tokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
 
 const popoverStyles = stylex.create({
   content: {

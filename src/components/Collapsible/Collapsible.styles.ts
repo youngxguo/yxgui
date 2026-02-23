@@ -4,12 +4,8 @@ import {
   getDisclosureIndicatorStyleProps,
   getDisclosureTriggerStyleProps
 } from '../../styles/disclosure';
-import {
-  borderTokens,
-  colorTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const collapsibleStyles = stylex.create({
   root: {

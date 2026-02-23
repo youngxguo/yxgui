@@ -1,11 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import {
-  borderTokens,
-  radiusTokens,
-  spacingTokens,
-  surfaceTokens
-} from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const scrollAreaStyles = stylex.create({
   root: {

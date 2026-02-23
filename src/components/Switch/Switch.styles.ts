@@ -3,14 +3,16 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
-  borderTokens,
-  controlTokens,
-  colorTokens,
   radiusTokens,
   shadowTokens,
-  spacingTokens,
+  spacingTokens
+} from '../../theme/tokens/foundationTokens.stylex';
+import {
+  borderTokens,
+  colorTokens,
+  controlTokens,
   surfaceTokens
-} from '../../theme/tokens.stylex';
+} from '../../theme/tokens/semanticTokens.stylex';
 
 export type SwitchSize = 'sm' | 'md';
 

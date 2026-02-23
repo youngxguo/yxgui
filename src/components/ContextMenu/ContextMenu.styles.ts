@@ -2,7 +2,8 @@ import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import { getMenuContentStyleProps, getMenuItemStyleProps } from '../../styles/menu';
-import { borderTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const contextMenuStyles = stylex.create({
   trigger: {

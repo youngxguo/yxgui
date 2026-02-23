@@ -1,12 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import {
-  borderTokens,
-  colorTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const tableStyles = stylex.create({
   root: {

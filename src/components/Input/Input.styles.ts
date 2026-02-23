@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
-import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
 
 export type InputSize = ControlLikeSize;
 

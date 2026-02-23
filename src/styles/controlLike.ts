@@ -2,7 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from './recipes';
 import { uiPrimitives } from './primitives';
-import { borderTokens, controlTokens, validationTokens } from '../theme/tokens.stylex';
+import {
+  borderTokens,
+  controlTokens,
+  validationTokens
+} from '../theme/tokens/semanticTokens.stylex';
 
 export type ControlLikeSize = 'sm' | 'md' | 'lg';
 

@@ -1,12 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { uiPrimitives } from './primitives';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
-import {
-  colorTokens,
-  spacingTokens,
-  surfaceTokens,
-  typographyTokens
-} from '../theme/tokens.stylex';
+import { spacingTokens, typographyTokens } from '../theme/tokens/foundationTokens.stylex';
+import { colorTokens, surfaceTokens } from '../theme/tokens/semanticTokens.stylex';
 
 const disclosureStyles = stylex.create({
   trigger: {

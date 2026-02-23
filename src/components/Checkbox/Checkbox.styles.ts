@@ -2,12 +2,8 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import {
-  validationTokens,
-  colorTokens,
-  radiusTokens,
-  spacingTokens
-} from '../../theme/tokens.stylex';
+import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { colorTokens, validationTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type CheckboxSize = 'sm' | 'md';
 

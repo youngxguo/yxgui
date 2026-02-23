@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
-import { borderTokens } from '../../theme/tokens.stylex';
+import { borderTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type SeparatorOrientation = 'horizontal' | 'vertical';
 

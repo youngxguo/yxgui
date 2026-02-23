@@ -3,14 +3,15 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from './recipes';
 import { uiPrimitives } from './primitives';
 import {
-  borderTokens,
-  buttonInteractionTokens,
-  colorTokens,
   radiusTokens,
   spacingTokens,
-  typographyTokens,
+  typographyTokens
+} from '../theme/tokens/foundationTokens.stylex';
+import { borderTokens, colorTokens } from '../theme/tokens/semanticTokens.stylex';
+import {
+  buttonInteractionTokens,
   buttonVariantTokens
-} from '../theme/tokens.stylex';
+} from '../theme/tokens/componentTokens.stylex';
 
 export type ButtonLikeVariant = 'primary' | 'secondary' | 'ghost' | 'destructive';
 export type ButtonLikeSize = 'sm' | 'md' | 'lg';

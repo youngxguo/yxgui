@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { spacingTokens } from '../../theme/tokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
 
 export type DrawerSide = 'bottom' | 'right' | 'left';
 
