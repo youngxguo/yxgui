@@ -1,114 +1,49 @@
 # AGENTS
 
-React 19 + TypeScript component library using Vite, Vitest, Storybook, and `pnpm@9.15.2`.
+React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`).
 
-## Philosophy
+## Rules
 
-- Build opinionated, production-ready styled components first.
-- Keep APIs composable so headless primitives can be introduced later.
-- Separate behavior from styling when complexity grows (dialogs, menus, tabs).
-- Prefer a small core token system (especially `spacingTokens`) for sizing and layout values; expand core tokens before adding component-local raw size values.
-- Avoid `calc(...)` for component sizing tokens/styles; pick a discrete, reusable token value instead.
+- Build styled, production-ready components first; keep APIs composable.
+- Split behavior/styling when complexity grows.
+- Prefer shared tokens (`spacingTokens`) over raw sizes; no `calc(...)` sizing.
+- Use function components, named exports, explicit `Props`.
+- React 19 `ref` prop pattern only; no `React.forwardRef`.
+- Prefer narrow unions + destructured defaults; no `defaultProps`.
+- Prefer `Typography` for user-visible text.
+- Component files: `src/components/<ComponentName>/` with `.tsx`, `.css`, `.stories.tsx`, `.test.tsx`.
+- Export public API from `src/index.ts`.
 
 ## Commands
 
 - Install: `pnpm install`
-- Lint: `pnpm lint` (`pnpm lint:fix` to auto-fix)
-- Format: `pnpm format:check` (`pnpm format` to write)
-- Typecheck: `pnpm typecheck`
-- Test: `pnpm test` (`pnpm test:watch` for watch mode)
-- Build: `pnpm build`
-- Storybook: `pnpm storybook` / `pnpm build-storybook`
-- GitHub issues: use native `gh issue ...` commands directly
+- Done gate: `pnpm lint`, `pnpm test`, `pnpm build`
+- Common: `pnpm storybook`, `pnpm test:watch`, `pnpm typecheck`, `pnpm format`, `pnpm format:check`, `pnpm lint:fix`, `pnpm build-storybook`
 
-## GitHub Workflow
+## GitHub / Commits
 
-- Prefer using the `gh` CLI directly (no custom wrapper scripts).
-- Use issues as the backlog for known follow-up work.
-- When implementing work tied to an existing issue, agents should close the issue automatically after a successful push (do not wait for a separate prompt).
-- Typical loop:
-  - `gh issue create` to capture future work
-  - `gh issue list` / `gh issue status` to review backlog and assignments
-  - `gh issue view <number>` to read context before implementation
-  - implement + validate (`pnpm lint`, `pnpm test`, `pnpm build`)
-  - commit with the issue number in the commit body (e.g. `Refs #123`)
-  - `git push` the branch
-  - `gh issue close <number>` after the push lands
-- `gh issue develop <number> --checkout` to start work on an issue branch (if supported by your GH CLI version)
-- Prereq for agents/local automation: `gh` installed and authenticated via `gh auth login`.
+- Use native `gh` CLI only (`gh auth login` if needed); no wrappers.
+- Keep issues small; use issues as backlog.
+- Issue/commit format: `<emoji> <type>(<scope>): <summary>`.
+- Issue body: change + acceptance checks.
+- Types: `✨ feat`, `🐛 fix`, `🧹 chore`, `♻️ refactor`, `📝 docs`, `✅ test`, `🎨 style`, `⚡ perf`, `♿ a11y`, `👷 ci`, `🔧 build`.
+- Labels: `type: <emoji> <kind>`; update with `gh label create ... --force`.
+- Flow: `gh issue view` -> implement -> validate -> commit (`Refs #123`) -> push -> `gh issue close`.
+- Optional: `gh issue develop <number> --checkout`.
+- Commits: atomic, imperative subject (<72 chars), 1-3 line body, no literal `\n` in scripted commits (use multiple `-m` flags).
+- Include tests with behavior changes; verify message before push: `git log --format=medium -n 1`.
+- `pre-push`: `pnpm check:prepush`; CI: `pnpm check:quality`.
 
-## Emoji Conventions
+## Testing
 
-- Use matching emoji type prefixes across commits, issue titles, and GitHub labels.
-- Commit subjects and issue titles should use: `<emoji> <type>(<scope>): <summary>`.
-- Label names should use: `type: <emoji> <kind>` (for example `type: ✨ feat`, `type: 🐛 bug`).
-- `🐛` maps to commit/issue type `fix` and label kind `bug`.
-- Use `gh label create ... --force` to update labels if the shared set changes later.
-
-### Type Map
-
-- `✨ feat` for new components and user-visible enhancements
-- `🐛 fix` / `type: 🐛 bug` for defects and regressions
-- `🧹 chore` for maintenance and non-user-facing cleanup
-- `♻️ refactor` for structural code changes without behavior changes
-- `📝 docs` for documentation-only work
-- `✅ test` for test additions/updates
-- `🎨 style` for visual polish/formatting-only changes
-- `⚡ perf` for performance work
-- `♿ a11y` for accessibility improvements
-- `👷 ci` for CI automation changes
-- `🔧 build` for tooling/build configuration changes
-
-## Issue Writing
-
-- Keep issues small and shippable: one component (or one focused enhancement) per issue.
-- Use clear titles with emoji prefixes: `✨ feat(<component>): <outcome>`.
-- Keep bodies concise and concrete:
-  - What to add/change (1-2 lines)
-  - Acceptance checks (stories, tests, exports, a11y behavior as needed)
-  - Dependency note only when it materially affects ordering (e.g. Popover before DropdownMenu)
-- Prefer observable behavior and API expectations over implementation details.
-- If scope is ambiguous, split follow-up work into separate issues instead of expanding one issue.
-
-## Completion Gate
-
-Run: `pnpm lint`, `pnpm test`, and `pnpm build`.
-
-## Code Rules
-
-- Use function components, named exports, and explicit `Props` interfaces.
-- Use React 19 `ref` prop pattern; do not introduce `React.forwardRef`.
-- Prefer narrow prop unions and destructured default values (not `defaultProps`).
-- Prefer `Typography` for user-visible text in components/stories/docs examples instead of raw styled text tags; use semantic `as` + visual `variant` when they differ.
-- Keep components in `src/components/<ComponentName>/` with colocated `.tsx`, `.css`, `.stories.tsx`, and `.test.tsx`.
-- Export public API from `src/index.ts`.
-
-## Testing Rules
-
-- Use Vitest + Testing Library.
-- Prefer accessible role/name queries.
-- Test user-visible behavior and public API contracts.
-- For Storybook interaction tests, prefer adding `play` assertions to the existing `Default` story so docs stay uncluttered.
-- Only add test-only stories when the interaction itself is a documented scenario/variant.
-
-## Commit Rules
-
-- Keep commits atomic: one logical change per commit; split refactors from behavior changes.
-- Do not mix unrelated files in the same commit.
-- Use emoji-prefixed conventional subjects: `<emoji> <type>(<scope>): <summary>` (e.g. `✨ feat(button): add loading state`).
-- Keep subject lines imperative and under 72 characters.
-- Add a concise commit body that explains what changed and why (1-3 short lines).
-- Include the related issue number in the commit body when working from an issue (e.g. `Refs #123`).
-- When scripting commits, do not embed literal `\n` in a single `git commit -m` body string; use multiple `-m` flags (one per paragraph) or an editor so commit bodies contain real line breaks.
-- Before pushing, quickly verify the latest commit message renders correctly (e.g. `git log --format=medium -n 1`).
-- When behavior changes, include tests in the same commit.
-- The `pre-push` hook enforces commit-body quality checks and runs `pnpm check:prepush`.
-- CI enforces `pnpm check:quality` (`pnpm lint`, `pnpm test`, `pnpm build`).
-- Do not commit generated artifacts in `dist/`.
+- Vitest + Testing Library; prefer accessible role/name queries.
+- Test behavior + public API.
+- Prefer `play` assertions in existing `Default` story.
+- Test-only stories only when also documented.
 
 ## Notes
 
 - Follow `eslint.config.mjs` and `.prettierrc.json`.
-- Update `README.md` when public API/usage changes.
-- Put agent/operator workflow details (GH CLI flows, release mechanics, local automation) in `AGENTS.md`, not `README.md`.
-- Do not hand-edit `dist/` artifacts.
+- Update `README.md` for public API/usage changes.
+- Keep workflow/automation details in `AGENTS.md`, not `README.md`.
+- Do not commit or hand-edit `dist/`.
