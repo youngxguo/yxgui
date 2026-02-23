@@ -1,4 +1,5 @@
 import { useId, useState, type ButtonHTMLAttributes, type Ref } from 'react';
+import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
 import {
   getSwitchRootStyleProps,
   getSwitchThumbStyleProps,
@@ -65,6 +66,8 @@ export function Switch({
       role="switch"
       aria-checked={isChecked}
       disabled={disabled}
+      data-state={getDataStateAttribute(isChecked, 'checked', 'unchecked')}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onClick={(event) => {
         handleToggle();
         onClick?.(event);

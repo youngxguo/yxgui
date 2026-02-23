@@ -9,6 +9,7 @@ import {
   type ReactNode,
   type Ref
 } from 'react';
+import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import { getToggleStyleProps, type ToggleSize, type ToggleVariant } from '../Toggle/Toggle.styles';
 import {
@@ -136,7 +137,14 @@ export function ToggleGroup({
     <ToggleGroupContext.Provider
       value={{ type, value: currentValue, setValue, disabled, variant, size, orientation }}
     >
-      <div {...props} {...styleProps} ref={ref} role="group" data-orientation={orientation}>
+      <div
+        {...props}
+        {...styleProps}
+        ref={ref}
+        role="group"
+        data-orientation={orientation}
+        data-disabled={getDataPresenceAttribute(disabled)}
+      >
         {children}
       </div>
     </ToggleGroupContext.Provider>
@@ -210,7 +218,8 @@ export function ToggleGroupItem({
         }
       }}
       data-toggle-group-item="true"
-      data-state={pressed ? 'on' : 'off'}
+      data-state={getDataStateAttribute(pressed, 'on', 'off')}
+      data-disabled={getDataPresenceAttribute(isDisabled)}
       aria-pressed={pressed}
       disabled={isDisabled}
       type="button"

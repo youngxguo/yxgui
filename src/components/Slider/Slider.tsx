@@ -1,4 +1,5 @@
 import type { CSSProperties, InputHTMLAttributes, KeyboardEvent, Ref } from 'react';
+import { getDataPresenceAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import { getSliderStyleProps } from './Slider.styles';
 
@@ -89,6 +90,7 @@ export function Slider({
       step={safeStep}
       disabled={disabled}
       value={currentValue}
+      data-disabled={getDataPresenceAttribute(disabled)}
       onChange={(event) => {
         handleRangeChange(event.currentTarget.value);
         onChange?.(event);

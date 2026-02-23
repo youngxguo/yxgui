@@ -18,6 +18,7 @@ import {
   type RadioGroupOrientation,
   type RadioSize
 } from './RadioGroup.styles';
+import { getDataPresenceAttribute, isAriaBooleanTrue } from '../_internal/dataAttributes';
 
 interface RadioGroupContextValue {
   name?: string;
@@ -104,7 +105,16 @@ export function RadioGroup({
 
   return (
     <RadioGroupContext.Provider value={contextValue}>
-      <div {...props} {...styleProps} ref={ref} role="radiogroup" aria-invalid={invalid}>
+      <div
+        {...props}
+        {...styleProps}
+        ref={ref}
+        role="radiogroup"
+        aria-invalid={invalid || undefined}
+        data-orientation={orientation}
+        data-disabled={getDataPresenceAttribute(disabled)}
+        data-invalid={getDataPresenceAttribute(invalid)}
+      >
         {children}
       </div>
     </RadioGroupContext.Provider>
@@ -127,6 +137,7 @@ export function Radio({
   const resolvedSize = size ?? group?.size ?? 'md';
   const resolvedDisabled = Boolean(disabled ?? group?.disabled);
   const checked = group ? group.value === value : props.checked;
+  const invalid = Boolean(group?.invalid || isAriaBooleanTrue(props['aria-invalid']));
   const inputStyleProps = getRadioInputStyleProps(resolvedSize);
   const labelStyleProps = getRadioLabelStyleProps(resolvedDisabled, { className, style });
   const textStyleProps = getRadioTextStyleProps(resolvedSize);
@@ -143,7 +154,9 @@ export function Radio({
         name={group?.name ?? props.name}
         checked={checked}
         disabled={resolvedDisabled}
-        aria-invalid={group?.invalid || props['aria-invalid'] ? true : undefined}
+        aria-invalid={invalid || undefined}
+        data-disabled={getDataPresenceAttribute(resolvedDisabled)}
+        data-invalid={getDataPresenceAttribute(invalid)}
         onChange={(event) => {
           if (group) {
             group.setValue(event.currentTarget.value);

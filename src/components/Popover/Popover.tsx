@@ -12,6 +12,7 @@ import {
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
+import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getPopoverContentStyleProps } from './Popover.styles';
@@ -115,6 +116,7 @@ export function PopoverTrigger({
       aria-haspopup="dialog"
       aria-expanded={context.open}
       aria-controls={context.contentId}
+      data-state={getDataStateAttribute(context.open, 'open', 'closed')}
       onClick={(event) => {
         context.setOpen(!context.open);
         onClick?.(event);
@@ -195,6 +197,7 @@ export function PopoverContent({
         id={context.contentId}
         role="dialog"
         tabIndex={-1}
+        data-state="open"
         onKeyDown={onKeyDown}
       >
         {children}

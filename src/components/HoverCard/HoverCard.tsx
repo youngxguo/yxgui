@@ -12,6 +12,7 @@ import {
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Portal } from '../_internal/Portal';
+import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getHoverCardContentStyleProps } from './HoverCard.styles';
@@ -189,6 +190,7 @@ export function HoverCardTrigger({
       aria-expanded={context.open}
       aria-controls={context.contentId}
       aria-describedby={context.open ? context.contentId : undefined}
+      data-state={getDataStateAttribute(context.open, 'open', 'closed')}
       onMouseEnter={(event) => {
         actions.scheduleOpen();
         onMouseEnter?.(event);
@@ -281,6 +283,7 @@ export function HoverCardContent({
         id={context.contentId}
         role="dialog"
         tabIndex={-1}
+        data-state="open"
         onMouseEnter={(event) => {
           actions.clearTimers();
           onMouseEnter?.(event);

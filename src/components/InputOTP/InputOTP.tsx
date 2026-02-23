@@ -14,6 +14,7 @@ import {
 } from 'react';
 import { Input } from '../Input/Input';
 import { Typography } from '../Typography/Typography';
+import { getDataPresenceAttribute } from '../_internal/dataAttributes';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getInputOtpGroupStyleProps,
@@ -152,7 +153,7 @@ export function InputOTP({
 
   return (
     <InputOtpContext.Provider value={contextValue}>
-      <div {...props} {...styleProps} ref={ref}>
+      <div {...props} {...styleProps} ref={ref} data-disabled={getDataPresenceAttribute(disabled)}>
         {children ?? (
           <InputOTPGroup>
             {Array.from({ length: normalizedLength }, (_, index) => (

@@ -12,6 +12,7 @@ import {
   type Ref
 } from 'react';
 import { Portal } from '../_internal/Portal';
+import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getTooltipContentStyleProps, getTooltipTriggerWrapStyleProps } from './Tooltip.styles';
 
@@ -124,6 +125,7 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
       <span
         {...wrapStyleProps}
         ref={wrapperRef}
+        data-state={getDataStateAttribute(open, 'open', 'closed')}
         onMouseEnter={openTooltip}
         onMouseLeave={closeTooltip}
         onFocus={openTooltip}
@@ -133,7 +135,7 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
       </span>
       {open ? (
         <Portal>
-          <div {...contentStyleProps} id={id} role="tooltip">
+          <div {...contentStyleProps} id={id} role="tooltip" data-state="open">
             {content}
           </div>
         </Portal>
@@ -144,5 +146,7 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
 
 export function TooltipContent({ ref, className, style, ...props }: TooltipContentProps) {
   const styleProps = getTooltipContentStyleProps({ className, style });
-  return <div {...props} {...styleProps} ref={ref} role={props.role ?? 'tooltip'} />;
+  return (
+    <div {...props} {...styleProps} ref={ref} role={props.role ?? 'tooltip'} data-state="open" />
+  );
 }
