@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config';
 import stylex from '@stylexjs/unplugin';
 import { storybookCoverage } from './vitest.coverage';
+import { createStorybookProject } from './vitest.shared';
 
 const stylexVitestPlugin = stylex.vite({ runtimeInjection: true, devMode: 'off' });
 // `@stylexjs/unplugin` starts a Vite dev-server interval that Vitest doesn't fully
@@ -21,7 +22,13 @@ export default defineConfig({
         test: {
           name: 'unit'
         }
-      }
+      },
+      // Storybook's @storybook/addon-vitest "Run tests" UI only auto-discovers
+      // Storybook test projects from standard Vitest config filenames.
+      createStorybookProject({
+        includeStylexPlugin: true,
+        storybookScript: 'pnpm storybook --ci'
+      })
     ]
   }
 });
