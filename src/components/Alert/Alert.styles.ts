@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -11,11 +10,6 @@ import {
 } from '../../theme/tokens.stylex';
 
 export type AlertVariant = 'info' | 'success' | 'warning' | 'error';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const alertStyles = stylex.create({
   root: {
@@ -70,14 +64,14 @@ const variantStyles: Record<AlertVariant, unknown> = {
   error: alertStyles.error
 };
 
-export function getAlertRootStyleProps(variant: AlertVariant, options?: SlotStyleOptions) {
+export function getAlertRootStyleProps(variant: AlertVariant, options?: StyleRecipeOverrides) {
   return composeStyleProps([alertStyles.root, pickStyle(variantStyles, variant)], options);
 }
 
-export function getAlertTitleStyleProps(options?: SlotStyleOptions) {
+export function getAlertTitleStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([alertStyles.title], options);
 }
 
-export function getAlertDescriptionStyleProps(options?: SlotStyleOptions) {
+export function getAlertDescriptionStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([alertStyles.description], options);
 }

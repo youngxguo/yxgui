@@ -1,11 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 
 const aspectRatioStyles = stylex.create({
   root: {
@@ -23,14 +17,14 @@ const aspectRatioStyles = stylex.create({
   }
 });
 
-export function getAspectRatioRootStyleProps(options?: SlotStyleOptions) {
+export function getAspectRatioRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([aspectRatioStyles.root], options);
 }
 
-export function getAspectRatioSpacerStyleProps(options?: SlotStyleOptions) {
+export function getAspectRatioSpacerStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([aspectRatioStyles.spacer], options);
 }
 
-export function getAspectRatioContentStyleProps(options?: SlotStyleOptions) {
+export function getAspectRatioContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([aspectRatioStyles.content], options);
 }

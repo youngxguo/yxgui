@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const popoverStyles = stylex.create({
   content: {
@@ -20,6 +14,6 @@ const popoverStyles = stylex.create({
   }
 });
 
-export function getPopoverContentStyleProps(options?: SlotStyleOptions) {
+export function getPopoverContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([popoverStyles.content], options);
 }

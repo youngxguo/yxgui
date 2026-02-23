@@ -1,17 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   radiusTokens,
   spacingTokens,
   surfaceTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const scrollAreaStyles = stylex.create({
   root: {
@@ -69,17 +63,17 @@ const scrollAreaStyles = stylex.create({
 
 export type ScrollbarOrientation = 'vertical' | 'horizontal';
 
-export function getScrollAreaRootStyleProps(options?: SlotStyleOptions) {
+export function getScrollAreaRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([scrollAreaStyles.root], options);
 }
 
-export function getScrollAreaViewportStyleProps(options?: SlotStyleOptions) {
+export function getScrollAreaViewportStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([scrollAreaStyles.viewport], options);
 }
 
 export function getScrollAreaScrollbarStyleProps(
   orientation: ScrollbarOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [
@@ -94,7 +88,7 @@ export function getScrollAreaScrollbarStyleProps(
 
 export function getScrollAreaThumbStyleProps(
   orientation: ScrollbarOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [

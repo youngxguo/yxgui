@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { paletteTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const formFieldStyles = stylex.create({
   root: {
@@ -33,18 +27,18 @@ const formFieldStyles = stylex.create({
   }
 });
 
-export function getFormFieldRootStyleProps(options?: SlotStyleOptions) {
+export function getFormFieldRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([formFieldStyles.root], options);
 }
 
-export function getFormFieldControlStyleProps(options?: SlotStyleOptions) {
+export function getFormFieldControlStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([formFieldStyles.control], options);
 }
 
-export function getFormFieldDescriptionStyleProps(options?: SlotStyleOptions) {
+export function getFormFieldDescriptionStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([formFieldStyles.description], options);
 }
 
-export function getFormFieldErrorStyleProps(options?: SlotStyleOptions) {
+export function getFormFieldErrorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([formFieldStyles.error], options);
 }

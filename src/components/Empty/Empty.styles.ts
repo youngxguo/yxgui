@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -8,11 +7,6 @@ import {
   spacingTokens,
   surfaceTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const emptyStyles = stylex.create({
   root: {
@@ -60,26 +54,26 @@ const emptyStyles = stylex.create({
   }
 });
 
-export function getEmptyRootStyleProps(options?: SlotStyleOptions) {
+export function getEmptyRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.root], options);
 }
 
-export function getEmptyMediaStyleProps(options?: SlotStyleOptions) {
+export function getEmptyMediaStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.media], options);
 }
 
-export function getEmptyHeaderStyleProps(options?: SlotStyleOptions) {
+export function getEmptyHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.header], options);
 }
 
-export function getEmptyTitleStyleProps(options?: SlotStyleOptions) {
+export function getEmptyTitleStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.title], options);
 }
 
-export function getEmptyDescriptionStyleProps(options?: SlotStyleOptions) {
+export function getEmptyDescriptionStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.description], options);
 }
 
-export function getEmptyActionsStyleProps(options?: SlotStyleOptions) {
+export function getEmptyActionsStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([emptyStyles.actions], options);
 }

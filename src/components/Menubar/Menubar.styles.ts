@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   radiusTokens,
@@ -9,11 +8,6 @@ import {
   typographyTokens,
   paletteTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const menubarStyles = stylex.create({
   root: {
@@ -53,17 +47,17 @@ const menubarStyles = stylex.create({
   }
 });
 
-export function getMenubarRootStyleProps(options?: SlotStyleOptions) {
+export function getMenubarRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([menubarStyles.root], options);
 }
 
-export function getMenubarTriggerStyleProps(options?: SlotStyleOptions) {
+export function getMenubarTriggerStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [menubarStyles.trigger, menubarStyles.triggerHover, menubarStyles.triggerFocusVisible],
     options
   );
 }
 
-export function getMenubarSeparatorStyleProps(options?: SlotStyleOptions) {
+export function getMenubarSeparatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([menubarStyles.separator], options);
 }

@@ -1,16 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import { paletteTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 export type RadioGroupOrientation = 'vertical' | 'horizontal';
 export type RadioSize = 'sm' | 'md';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const radioStyles = stylex.create({
   group: {
@@ -73,25 +67,25 @@ const textSizeStyles: Record<RadioSize, unknown> = {
 
 export function getRadioGroupStyleProps(
   orientation: RadioGroupOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps([radioStyles.group, pickStyle(orientationStyles, orientation)], options);
 }
 
-export function getRadioLabelStyleProps(disabled: boolean, options?: SlotStyleOptions) {
+export function getRadioLabelStyleProps(disabled: boolean, options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [radioStyles.itemLabel, disabled && radioStyles.itemLabelDisabled],
     options
   );
 }
 
-export function getRadioInputStyleProps(size: RadioSize, options?: SlotStyleOptions) {
+export function getRadioInputStyleProps(size: RadioSize, options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [uiPrimitives.focusVisibleOutline, radioStyles.input, pickStyle(inputSizeStyles, size)],
     options
   );
 }
 
-export function getRadioTextStyleProps(size: RadioSize, options?: SlotStyleOptions) {
+export function getRadioTextStyleProps(size: RadioSize, options?: StyleRecipeOverrides) {
   return composeStyleProps([pickStyle(textSizeStyles, size)], options);
 }

@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const hoverCardStyles = stylex.create({
   content: {
@@ -18,6 +12,6 @@ const hoverCardStyles = stylex.create({
   }
 });
 
-export function getHoverCardContentStyleProps(options?: SlotStyleOptions) {
+export function getHoverCardContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([hoverCardStyles.content], options);
 }

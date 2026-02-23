@@ -1,14 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { borderTokens, spacingTokens, surfaceTokens } from '../../theme/tokens.stylex';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const tabsStyles = stylex.create({
   root: {
@@ -42,11 +36,14 @@ const orientationListStyles: Record<TabsOrientation, unknown> = {
   vertical: tabsStyles.listVertical
 };
 
-export function getTabsRootStyleProps(options?: SlotStyleOptions) {
+export function getTabsRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tabsStyles.root], options);
 }
 
-export function getTabsListStyleProps(orientation: TabsOrientation, options?: SlotStyleOptions) {
+export function getTabsListStyleProps(
+  orientation: TabsOrientation,
+  options?: StyleRecipeOverrides
+) {
   return composeStyleProps(
     [tabsStyles.list, pickStyle(orientationListStyles, orientation)],
     options
@@ -56,11 +53,11 @@ export function getTabsListStyleProps(orientation: TabsOrientation, options?: Sl
 export function getTabsTriggerStyleProps(
   selected: boolean,
   _disabled: boolean,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps([tabsStyles.trigger, selected && tabsStyles.triggerSelected], options);
 }
 
-export function getTabsPanelStyleProps(options?: SlotStyleOptions) {
+export function getTabsPanelStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tabsStyles.panel], options);
 }

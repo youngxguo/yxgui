@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -9,11 +8,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const cardStyles = stylex.create({
   root: {
@@ -45,18 +39,18 @@ const cardStyles = stylex.create({
   }
 });
 
-export function getCardRootStyleProps(options?: SlotStyleOptions) {
+export function getCardRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([cardStyles.root], options);
 }
 
-export function getCardHeaderStyleProps(options?: SlotStyleOptions) {
+export function getCardHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([cardStyles.header], options);
 }
 
-export function getCardContentStyleProps(options?: SlotStyleOptions) {
+export function getCardContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([cardStyles.content], options);
 }
 
-export function getCardFooterStyleProps(options?: SlotStyleOptions) {
+export function getCardFooterStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([cardStyles.footer], options);
 }

@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -8,11 +7,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const tableStyles = stylex.create({
   root: {
@@ -63,34 +57,34 @@ const tableStyles = stylex.create({
   }
 });
 
-export function getTableRootStyleProps(options?: SlotStyleOptions) {
+export function getTableRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.root], options);
 }
 
-export function getTableHeaderStyleProps(options?: SlotStyleOptions) {
+export function getTableHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.header], options);
 }
 
-export function getTableBodyStyleProps(options?: SlotStyleOptions) {
+export function getTableBodyStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.body], options);
 }
 
-export function getTableFooterStyleProps(options?: SlotStyleOptions) {
+export function getTableFooterStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.footer], options);
 }
 
-export function getTableRowStyleProps(options?: SlotStyleOptions) {
+export function getTableRowStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.row], options);
 }
 
-export function getTableHeadCellStyleProps(options?: SlotStyleOptions) {
+export function getTableHeadCellStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.headCell], options);
 }
 
-export function getTableCellStyleProps(options?: SlotStyleOptions) {
+export function getTableCellStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.cell], options);
 }
 
-export function getTableCaptionStyleProps(options?: SlotStyleOptions) {
+export function getTableCaptionStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tableStyles.caption], options);
 }

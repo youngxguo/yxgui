@@ -1,13 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import { paletteTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const sliderStyles = stylex.create({
   root: {
@@ -23,7 +17,7 @@ const sliderStyles = stylex.create({
   }
 });
 
-export function getSliderStyleProps(options?: SlotStyleOptions) {
+export function getSliderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [sliderStyles.root, sliderStyles.disabled, uiPrimitives.focusVisibleOutline],
     options

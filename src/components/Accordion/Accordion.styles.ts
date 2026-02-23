@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
@@ -9,11 +8,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const accordionStyles = stylex.create({
   root: {
@@ -81,25 +75,25 @@ const accordionStyles = stylex.create({
   }
 });
 
-export function getAccordionRootStyleProps(options?: SlotStyleOptions) {
+export function getAccordionRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([accordionStyles.root], options);
 }
 
-export function getAccordionItemStyleProps(disabled: boolean, options?: SlotStyleOptions) {
+export function getAccordionItemStyleProps(disabled: boolean, options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [accordionStyles.item, accordionStyles.itemLast, disabled && accordionStyles.itemDisabled],
     options
   );
 }
 
-export function getAccordionHeaderStyleProps(options?: SlotStyleOptions) {
+export function getAccordionHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([accordionStyles.header], options);
 }
 
 export function getAccordionTriggerStyleProps(
   open: boolean,
   disabled: boolean,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [
@@ -114,14 +108,14 @@ export function getAccordionTriggerStyleProps(
   );
 }
 
-export function getAccordionIndicatorStyleProps(options?: SlotStyleOptions) {
+export function getAccordionIndicatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([accordionStyles.indicator], options);
 }
 
-export function getAccordionContentStyleProps(options?: SlotStyleOptions) {
+export function getAccordionContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([accordionStyles.content], options);
 }
 
-export function getAccordionContentInnerStyleProps(options?: SlotStyleOptions) {
+export function getAccordionContentInnerStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([accordionStyles.contentInner], options);
 }

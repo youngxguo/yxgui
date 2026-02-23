@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 export type DrawerSide = 'bottom' | 'right' | 'left';
 
@@ -49,7 +43,7 @@ const drawerStyles = stylex.create({
   }
 });
 
-export function getDrawerContentStyleProps(side: DrawerSide, options?: SlotStyleOptions) {
+export function getDrawerContentStyleProps(side: DrawerSide, options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [
       drawerStyles.contentBase,
@@ -61,10 +55,10 @@ export function getDrawerContentStyleProps(side: DrawerSide, options?: SlotStyle
   );
 }
 
-export function getDrawerHeaderStyleProps(options?: SlotStyleOptions) {
+export function getDrawerHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([drawerStyles.header], options);
 }
 
-export function getDrawerFooterStyleProps(options?: SlotStyleOptions) {
+export function getDrawerFooterStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([drawerStyles.footer], options);
 }

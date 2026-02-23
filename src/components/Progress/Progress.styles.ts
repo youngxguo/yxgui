@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -10,11 +9,6 @@ import {
 } from '../../theme/tokens.stylex';
 
 export type ProgressSize = 'sm' | 'md' | 'lg';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const progressStyles = stylex.create({
   root: {
@@ -46,10 +40,10 @@ const sizeStyles: Record<ProgressSize, unknown> = {
   lg: progressStyles.lg
 };
 
-export function getProgressRootStyleProps(size: ProgressSize, options?: SlotStyleOptions) {
+export function getProgressRootStyleProps(size: ProgressSize, options?: StyleRecipeOverrides) {
   return composeStyleProps([progressStyles.root, pickStyle(sizeStyles, size)], options);
 }
 
-export function getProgressIndicatorStyleProps(options?: SlotStyleOptions) {
+export function getProgressIndicatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([progressStyles.indicator], options);
 }

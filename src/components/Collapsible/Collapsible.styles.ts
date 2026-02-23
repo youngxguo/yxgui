@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
@@ -9,11 +8,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const collapsibleStyles = stylex.create({
   root: {
@@ -65,14 +59,14 @@ const collapsibleStyles = stylex.create({
   }
 });
 
-export function getCollapsibleRootStyleProps(options?: SlotStyleOptions) {
+export function getCollapsibleRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([collapsibleStyles.root], options);
 }
 
 export function getCollapsibleTriggerStyleProps(
   open: boolean,
   disabled: boolean,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [
@@ -87,14 +81,14 @@ export function getCollapsibleTriggerStyleProps(
   );
 }
 
-export function getCollapsibleIndicatorStyleProps(options?: SlotStyleOptions) {
+export function getCollapsibleIndicatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([collapsibleStyles.indicator], options);
 }
 
-export function getCollapsibleContentStyleProps(options?: SlotStyleOptions) {
+export function getCollapsibleContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([collapsibleStyles.content], options);
 }
 
-export function getCollapsibleContentInnerStyleProps(options?: SlotStyleOptions) {
+export function getCollapsibleContentInnerStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([collapsibleStyles.contentInner], options);
 }

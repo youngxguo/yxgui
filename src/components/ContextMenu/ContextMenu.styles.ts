@@ -1,14 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import { getMenuContentStyleProps, getMenuItemStyleProps } from '../../styles/menu';
 import { borderTokens, spacingTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const contextMenuStyles = stylex.create({
   trigger: {
@@ -21,18 +15,18 @@ const contextMenuStyles = stylex.create({
   }
 });
 
-export function getContextMenuTriggerStyleProps(options?: SlotStyleOptions) {
+export function getContextMenuTriggerStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([contextMenuStyles.trigger, uiPrimitives.focusVisibleOutline], options);
 }
 
-export function getContextMenuContentStyleProps(options?: SlotStyleOptions) {
+export function getContextMenuContentStyleProps(options?: StyleRecipeOverrides) {
   return getMenuContentStyleProps(options);
 }
 
-export function getContextMenuItemStyleProps(options?: SlotStyleOptions) {
+export function getContextMenuItemStyleProps(options?: StyleRecipeOverrides) {
   return getMenuItemStyleProps(options);
 }
 
-export function getContextMenuSeparatorStyleProps(options?: SlotStyleOptions) {
+export function getContextMenuSeparatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([contextMenuStyles.separator], options);
 }

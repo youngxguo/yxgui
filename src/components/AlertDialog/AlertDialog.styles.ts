@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const alertDialogStyles = stylex.create({
   header: {
@@ -15,6 +9,6 @@ const alertDialogStyles = stylex.create({
   }
 });
 
-export function getAlertDialogHeaderStyleProps(options?: SlotStyleOptions) {
+export function getAlertDialogHeaderStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([alertDialogStyles.header], options);
 }

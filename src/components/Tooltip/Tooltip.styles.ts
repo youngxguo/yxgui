@@ -1,17 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   paletteTokens,
   radiusTokens,
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const tooltipStyles = stylex.create({
   content: {
@@ -33,10 +27,10 @@ const tooltipStyles = stylex.create({
   }
 });
 
-export function getTooltipContentStyleProps(options?: SlotStyleOptions) {
+export function getTooltipContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tooltipStyles.content], options);
 }
 
-export function getTooltipTriggerWrapStyleProps(options?: SlotStyleOptions) {
+export function getTooltipTriggerWrapStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([tooltipStyles.triggerWrap], options);
 }

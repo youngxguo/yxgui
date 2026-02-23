@@ -1,16 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselControlDirection = 'previous' | 'next';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const carouselStyles = stylex.create({
   root: {
@@ -72,17 +66,17 @@ const controlDirectionStyles: Record<CarouselControlDirection, unknown> = {
   next: carouselStyles.controlNext
 };
 
-export function getCarouselRootStyleProps(options?: SlotStyleOptions) {
+export function getCarouselRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([carouselStyles.root], options);
 }
 
-export function getCarouselViewportStyleProps(options?: SlotStyleOptions) {
+export function getCarouselViewportStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([carouselStyles.viewport, uiPrimitives.focusVisibleOutline], options);
 }
 
 export function getCarouselContentStyleProps(
   orientation: CarouselOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [carouselStyles.content, pickStyle(contentOrientationStyles, orientation)],
@@ -92,7 +86,7 @@ export function getCarouselContentStyleProps(
 
 export function getCarouselItemStyleProps(
   orientation: CarouselOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [carouselStyles.item, pickStyle(itemOrientationStyles, orientation)],
@@ -102,7 +96,7 @@ export function getCarouselItemStyleProps(
 
 export function getCarouselControlStyleProps(
   direction: CarouselControlDirection,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [carouselStyles.control, pickStyle(controlDirectionStyles, direction)],

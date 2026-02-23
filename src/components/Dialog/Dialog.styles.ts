@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const dialogStyles = stylex.create({
   overlay: {
@@ -39,18 +33,18 @@ const dialogStyles = stylex.create({
   }
 });
 
-export function getDialogOverlayStyleProps(options?: SlotStyleOptions) {
+export function getDialogOverlayStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([dialogStyles.overlay], options);
 }
 
-export function getDialogContentStyleProps(options?: SlotStyleOptions) {
+export function getDialogContentStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([dialogStyles.content], options);
 }
 
-export function getDialogFooterStyleProps(options?: SlotStyleOptions) {
+export function getDialogFooterStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([dialogStyles.footer], options);
 }
 
-export function getDialogCloseStyleProps(options?: SlotStyleOptions) {
+export function getDialogCloseStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([dialogStyles.closeButton], options);
 }

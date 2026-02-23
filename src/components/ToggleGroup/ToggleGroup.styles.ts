@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const toggleGroupStyles = stylex.create({
   root: {
@@ -27,7 +21,7 @@ export type ToggleGroupOrientation = 'horizontal' | 'vertical';
 
 export function getToggleGroupRootStyleProps(
   orientation: ToggleGroupOrientation,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [toggleGroupStyles.root, orientation === 'vertical' && toggleGroupStyles.rootVertical],
@@ -35,6 +29,6 @@ export function getToggleGroupRootStyleProps(
   );
 }
 
-export function getToggleGroupItemStyleProps(options?: SlotStyleOptions) {
+export function getToggleGroupItemStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([toggleGroupStyles.item], options);
 }

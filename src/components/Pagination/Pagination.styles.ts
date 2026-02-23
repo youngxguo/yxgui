@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
@@ -9,11 +8,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const paginationStyles = stylex.create({
   nav: {
@@ -70,22 +64,22 @@ const paginationStyles = stylex.create({
   }
 });
 
-export function getPaginationNavStyleProps(options?: SlotStyleOptions) {
+export function getPaginationNavStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([paginationStyles.nav], options);
 }
 
-export function getPaginationListStyleProps(options?: SlotStyleOptions) {
+export function getPaginationListStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([paginationStyles.list], options);
 }
 
-export function getPaginationItemStyleProps(options?: SlotStyleOptions) {
+export function getPaginationItemStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([paginationStyles.item], options);
 }
 
 export function getPaginationLinkStyleProps(
   isActive: boolean,
   disabled: boolean,
-  options?: SlotStyleOptions
+  options?: StyleRecipeOverrides
 ) {
   return composeStyleProps(
     [
@@ -98,6 +92,6 @@ export function getPaginationLinkStyleProps(
   );
 }
 
-export function getPaginationEllipsisStyleProps(options?: SlotStyleOptions) {
+export function getPaginationEllipsisStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([paginationStyles.ellipsis], options);
 }

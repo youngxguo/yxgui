@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import type { CSSProperties } from 'react';
-import { composeStyleProps } from '../../styles/recipes';
+import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
   borderTokens,
@@ -10,11 +9,6 @@ import {
   surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
-
-interface SlotStyleOptions {
-  className?: string;
-  style?: CSSProperties;
-}
 
 const breadcrumbStyles = stylex.create({
   root: {
@@ -78,33 +72,33 @@ const breadcrumbStyles = stylex.create({
   }
 });
 
-export function getBreadcrumbRootStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbRootStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.root], options);
 }
 
-export function getBreadcrumbListStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbListStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.list], options);
 }
 
-export function getBreadcrumbItemStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbItemStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.item], options);
 }
 
-export function getBreadcrumbLinkStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbLinkStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps(
     [breadcrumbStyles.link, breadcrumbStyles.linkHover, uiPrimitives.focusVisibleOutline],
     options
   );
 }
 
-export function getBreadcrumbPageStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbPageStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.page], options);
 }
 
-export function getBreadcrumbSeparatorStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbSeparatorStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.separator], options);
 }
 
-export function getBreadcrumbEllipsisStyleProps(options?: SlotStyleOptions) {
+export function getBreadcrumbEllipsisStyleProps(options?: StyleRecipeOverrides) {
   return composeStyleProps([breadcrumbStyles.ellipsis], options);
 }
