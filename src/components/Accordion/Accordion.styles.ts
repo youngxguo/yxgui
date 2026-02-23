@@ -1,6 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
+import {
+  getDisclosureIndicatorStyleProps,
+  getDisclosureTriggerStyleProps
+} from '../../styles/disclosure';
 import {
   borderTokens,
   paletteTokens,
@@ -29,39 +32,10 @@ const accordionStyles = stylex.create({
   header: {
     margin: 0
   },
-  trigger: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: paletteTokens.foreground,
-    cursor: 'pointer',
-    display: 'flex',
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeMd,
-    fontWeight: typographyTokens.fontWeightMedium,
-    gap: spacingTokens.sm,
-    justifyContent: 'space-between',
-    lineHeight: '1.25',
-    padding: `${spacingTokens.md} ${spacingTokens.lg}`,
-    textAlign: 'left',
-    width: '100%'
-  },
-  triggerHover: {
-    ':not(:disabled):hover': {
-      backgroundColor: surfaceTokens.subtle
-    }
-  },
   triggerOpen: {
     backgroundColor: surfaceTokens.selected
   },
-  triggerDisabled: {
-    cursor: 'not-allowed'
-  },
-  indicator: {
-    color: paletteTokens.mutedForeground,
-    flexShrink: 0,
-    fontFamily: typographyTokens.fontFamilyMono,
-    fontSize: typographyTokens.fontSizeSm,
+  indicatorLineHeight: {
     lineHeight: '1'
   },
   content: {
@@ -95,21 +69,17 @@ export function getAccordionTriggerStyleProps(
   disabled: boolean,
   options?: StyleRecipeOverrides
 ) {
-  return composeStyleProps(
-    [
-      accordionStyles.trigger,
-      accordionStyles.triggerHover,
-      uiPrimitives.focusVisibleOutline,
-      uiPrimitives.interactiveTransition,
-      open && accordionStyles.triggerOpen,
-      disabled && accordionStyles.triggerDisabled
-    ],
-    options
-  );
+  return getDisclosureTriggerStyleProps({
+    open,
+    disabled,
+    openStyle: accordionStyles.triggerOpen,
+    includeGap: true,
+    overrides: options
+  });
 }
 
 export function getAccordionIndicatorStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([accordionStyles.indicator], options);
+  return getDisclosureIndicatorStyleProps([accordionStyles.indicatorLineHeight], options);
 }
 
 export function getAccordionContentStyleProps(options?: StyleRecipeOverrides) {

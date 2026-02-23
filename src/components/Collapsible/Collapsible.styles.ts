@@ -1,11 +1,13 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { uiPrimitives } from '../../styles/primitives';
+import {
+  getDisclosureIndicatorStyleProps,
+  getDisclosureTriggerStyleProps
+} from '../../styles/disclosure';
 import {
   borderTokens,
   paletteTokens,
   spacingTokens,
-  surfaceTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
 
@@ -14,39 +16,11 @@ const collapsibleStyles = stylex.create({
     display: 'grid',
     overflow: 'hidden'
   },
-  trigger: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: paletteTokens.foreground,
-    cursor: 'pointer',
-    display: 'flex',
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeMd,
-    fontWeight: typographyTokens.fontWeightMedium,
-    justifyContent: 'space-between',
-    lineHeight: '1.25',
-    padding: `${spacingTokens.md} ${spacingTokens.lg}`,
-    textAlign: 'left',
-    width: '100%'
-  },
-  triggerHover: {
-    ':not(:disabled):hover': {
-      backgroundColor: surfaceTokens.subtle
-    }
-  },
   triggerOpen: {
     borderBottom: `1px solid ${borderTokens.muted}`
   },
   triggerDisabled: {
-    cursor: 'not-allowed',
     opacity: 0.65
-  },
-  indicator: {
-    color: paletteTokens.mutedForeground,
-    flexShrink: 0,
-    fontFamily: typographyTokens.fontFamilyMono,
-    fontSize: typographyTokens.fontSizeSm
   },
   content: {
     color: paletteTokens.foreground
@@ -68,21 +42,17 @@ export function getCollapsibleTriggerStyleProps(
   disabled: boolean,
   options?: StyleRecipeOverrides
 ) {
-  return composeStyleProps(
-    [
-      collapsibleStyles.trigger,
-      collapsibleStyles.triggerHover,
-      uiPrimitives.focusVisibleOutline,
-      uiPrimitives.interactiveTransition,
-      open && collapsibleStyles.triggerOpen,
-      disabled && collapsibleStyles.triggerDisabled
-    ],
-    options
-  );
+  return getDisclosureTriggerStyleProps({
+    open,
+    disabled,
+    openStyle: collapsibleStyles.triggerOpen,
+    disabledStyle: collapsibleStyles.triggerDisabled,
+    overrides: options
+  });
 }
 
 export function getCollapsibleIndicatorStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([collapsibleStyles.indicator], options);
+  return getDisclosureIndicatorStyleProps([], options);
 }
 
 export function getCollapsibleContentStyleProps(options?: StyleRecipeOverrides) {
