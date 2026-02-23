@@ -1,17 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { layerTokens, overlayTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { floatingPrimitives } from '../../styles/floating';
+import { overlayTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 const dialogStyles = stylex.create({
   overlay: {
-    alignItems: 'center',
     backgroundColor: overlayTokens.scrim,
-    display: 'flex',
-    inset: 0,
-    justifyContent: 'center',
-    padding: spacingTokens.xl,
-    position: 'fixed',
-    zIndex: layerTokens.floating
+    padding: spacingTokens.xl
   },
   content: {
     borderRadius: radiusTokens.lg,
@@ -34,7 +29,7 @@ const dialogStyles = stylex.create({
 });
 
 export function getDialogOverlayStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([dialogStyles.overlay], options);
+  return composeStyleProps([floatingPrimitives.modalOverlayLayout, dialogStyles.overlay], options);
 }
 
 export function getDialogContentStyleProps(options?: StyleRecipeOverrides) {

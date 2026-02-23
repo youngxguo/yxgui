@@ -1,12 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
+import { floatingPrimitives } from './floating';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
-import {
-  borderTokens,
-  layerTokens,
-  paletteTokens,
-  spacingTokens,
-  surfaceTokens
-} from '../theme/tokens.stylex';
+import { borderTokens, paletteTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
 
 // Shared menu surface/item recipes used by menu-like components (dropdown, context menu, etc.).
 const menuStyles = stylex.create({
@@ -17,9 +12,7 @@ const menuStyles = stylex.create({
     gap: 0,
     minWidth: '10.75rem',
     overflow: 'hidden',
-    padding: `${spacingTokens.xxs} 0`,
-    position: 'fixed',
-    zIndex: layerTokens.floating
+    padding: `${spacingTokens.xxs} 0`
   },
   item: {
     appearance: 'none',
@@ -55,7 +48,7 @@ const menuStyles = stylex.create({
 
 /** Returns style props for floating menu content surfaces. */
 export function getMenuContentStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([menuStyles.content], options);
+  return composeStyleProps([floatingPrimitives.floatingLayer, menuStyles.content], options);
 }
 
 /** Returns style props for interactive menu items, including disabled and focus-visible states. */

@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
+import { floatingPrimitives } from '../../styles/floating';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
-  layerTokens,
   paletteTokens,
   radiusTokens,
   shadowTokens,
@@ -20,9 +20,7 @@ const tooltipStyles = stylex.create({
     lineHeight: '1.2',
     maxWidth: '16rem',
     padding: `${spacingTokens.xs} ${spacingTokens.sm}`,
-    pointerEvents: 'none',
-    position: 'fixed',
-    zIndex: layerTokens.floating
+    pointerEvents: 'none'
   },
   triggerWrap: {
     display: 'inline-flex'
@@ -30,7 +28,7 @@ const tooltipStyles = stylex.create({
 });
 
 export function getTooltipContentStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([tooltipStyles.content], options);
+  return composeStyleProps([floatingPrimitives.floatingLayer, tooltipStyles.content], options);
 }
 
 export function getTooltipTriggerWrapStyleProps(options?: StyleRecipeOverrides) {
