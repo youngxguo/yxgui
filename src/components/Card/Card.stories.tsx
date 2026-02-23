@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../Button/Button';
-import { paletteTokens } from '../../theme/tokens.stylex';
+import { Typography } from '../Typography/Typography';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
 
 const meta = {
@@ -22,9 +22,9 @@ export const Default: Story = {
       </CardHeader>
       <CardContent>
         <div style={{ display: 'grid', gap: '0.35rem' }}>
-          <div>5 projects</div>
-          <div>Basic analytics</div>
-          <div>Email support</div>
+          <Typography as="div">5 projects</Typography>
+          <Typography as="div">Basic analytics</Typography>
+          <Typography as="div">Email support</Typography>
         </div>
       </CardContent>
     </Card>
@@ -45,9 +45,9 @@ export const WithFooterActions: Story = {
         <CardDescription>Ship a rotating single-origin bag every two weeks.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div style={{ color: paletteTokens.mutedForeground }}>
+        <Typography variant="muted">
           Manage roast level, grind size, and delivery cadence in one place.
-        </div>
+        </Typography>
       </CardContent>
       <CardFooter>
         <Button variant="ghost">Cancel</Button>

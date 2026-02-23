@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes, Ref } from 'react';
+import { Typography } from '../Typography/Typography';
 import {
   getAlertDescriptionStyleProps,
   getAlertRootStyleProps,
@@ -44,10 +45,14 @@ export function Alert({
 
 export function AlertTitle({ ref, className, style, ...props }: AlertTitleProps) {
   const styleProps = getAlertTitleStyleProps(slotOptions({ className, style }));
-  return <p {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography {...props} {...styleProps} ref={ref as Ref<HTMLElement>} as="p" variant="text" />
+  );
 }
 
 export function AlertDescription({ ref, className, style, ...props }: AlertDescriptionProps) {
   const styleProps = getAlertDescriptionStyleProps(slotOptions({ className, style }));
-  return <p {...props} {...styleProps} ref={ref} />;
+  return (
+    <Typography {...props} {...styleProps} ref={ref as Ref<HTMLElement>} as="p" variant="muted" />
+  );
 }

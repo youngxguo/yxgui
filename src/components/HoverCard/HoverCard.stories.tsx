@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from 'storybook/test';
+import { Typography } from '../Typography/Typography';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './HoverCard';
 
 const meta = {
@@ -17,8 +18,12 @@ export const Default: Story = {
       <HoverCardTrigger>Hover profile</HoverCardTrigger>
       <HoverCardContent>
         <div style={{ display: 'grid', gap: 4 }}>
-          <strong>@young</strong>
-          <span>Frontend component library maintainer</span>
+          <Typography as="div" variant="small">
+            @young
+          </Typography>
+          <Typography as="div" variant="muted">
+            Frontend component library maintainer
+          </Typography>
         </div>
       </HoverCardContent>
     </HoverCard>

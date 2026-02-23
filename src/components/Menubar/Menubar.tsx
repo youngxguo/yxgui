@@ -16,6 +16,7 @@ import {
   type DropdownMenuProps,
   type DropdownMenuTriggerProps
 } from '../DropdownMenu/DropdownMenu';
+import { Separator } from '../Separator/Separator';
 import {
   getMenubarRootStyleProps,
   getMenubarSeparatorStyleProps,
@@ -144,5 +145,5 @@ export function MenubarItem(props: MenubarItemProps) {
 
 export function MenubarSeparator({ ref, className, style, ...props }: MenubarSeparatorProps) {
   const styleProps = getMenubarSeparatorStyleProps(getStyleOptions({ className, style }));
-  return <div {...props} {...styleProps} ref={ref} role="separator" />;
+  return <Separator {...props} {...styleProps} ref={ref} />;
 }

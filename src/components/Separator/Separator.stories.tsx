@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../Button/Button';
+import { Typography } from '../Typography/Typography';
 import { Separator } from './Separator';
 
 const meta = {
@@ -35,11 +36,11 @@ export const Default: Story = {
 export const InList: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: '0.75rem', maxWidth: 320 }}>
-      <div>Profile</div>
+      <Typography as="div">Profile</Typography>
       <Separator decorative />
-      <div>Notifications</div>
+      <Typography as="div">Notifications</Typography>
       <Separator decorative />
-      <div>Billing</div>
+      <Typography as="div">Billing</Typography>
     </div>
   )
 };

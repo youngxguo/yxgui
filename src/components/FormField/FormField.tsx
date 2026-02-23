@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { getDataPresenceAttribute, isAriaBooleanTrue } from '../_internal/dataAttributes';
 import { Label } from '../Label/Label';
+import { Typography } from '../Typography/Typography';
 import {
   getFormFieldControlStyleProps,
   getFormFieldDescriptionStyleProps,
@@ -174,12 +175,31 @@ export function FormFieldDescription({
   const context = useFormFieldContext('FormFieldDescription');
   const styleProps = getFormFieldDescriptionStyleProps({ className, style });
 
-  return <p {...props} {...styleProps} ref={ref} id={props.id ?? context.descriptionId} />;
+  return (
+    <Typography
+      {...props}
+      {...styleProps}
+      ref={ref as Ref<HTMLElement>}
+      as="p"
+      variant="muted"
+      id={props.id ?? context.descriptionId}
+    />
+  );
 }
 
 export function FormFieldError({ ref, className, style, ...props }: FormFieldErrorProps) {
   const context = useFormFieldContext('FormFieldError');
   const styleProps = getFormFieldErrorStyleProps({ className, style });
 
-  return <p {...props} {...styleProps} ref={ref} id={props.id ?? context.errorId} role="alert" />;
+  return (
+    <Typography
+      {...props}
+      {...styleProps}
+      ref={ref as Ref<HTMLElement>}
+      as="p"
+      variant="small"
+      id={props.id ?? context.errorId}
+      role="alert"
+    />
+  );
 }

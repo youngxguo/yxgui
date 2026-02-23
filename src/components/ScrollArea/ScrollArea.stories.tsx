@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
+import { Typography } from '../Typography/Typography';
 import { ScrollArea, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from './ScrollArea';
 
 const meta = {
@@ -20,7 +21,9 @@ export const Default: Story = {
       >
         <div style={{ display: 'grid', gap: '0.5rem' }}>
           {Array.from({ length: 16 }, (_, index) => (
-            <div key={index}>Activity item {index + 1}</div>
+            <Typography key={index} as="div">
+              Activity item {index + 1}
+            </Typography>
           ))}
         </div>
       </ScrollAreaViewport>
@@ -41,12 +44,14 @@ export const HorizontalContent: Story = {
       <ScrollAreaViewport aria-label="Horizontal tags" style={{ width: 320, height: 100 }}>
         <div style={{ display: 'flex', gap: 8, width: 720, padding: '0.5rem' }}>
           {Array.from({ length: 20 }, (_, index) => (
-            <div
+            <Typography
               key={index}
+              as="div"
+              variant="small"
               style={{ border: '1px solid #cfcec5', borderRadius: 8, padding: '0.25rem 0.5rem' }}
             >
               Tag {index + 1}
-            </div>
+            </Typography>
           ))}
         </div>
       </ScrollAreaViewport>

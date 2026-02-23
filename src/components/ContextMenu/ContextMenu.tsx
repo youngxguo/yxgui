@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { Portal } from '../_internal/Portal';
 import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
+import { Separator } from '../Separator/Separator';
 import { useControllableState } from '../_internal/useControllableState';
 import {
   getContextMenuContentStyleProps,
@@ -315,5 +316,5 @@ export function ContextMenuSeparator({
   ...props
 }: ContextMenuSeparatorProps) {
   const styleProps = getContextMenuSeparatorStyleProps({ className, style });
-  return <div {...props} {...styleProps} ref={ref} role="separator" />;
+  return <Separator {...props} {...styleProps} ref={ref} />;
 }

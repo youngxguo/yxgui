@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Typography } from '../Typography/Typography';
 import { Radio, RadioGroup } from './RadioGroup';
 
 const meta = {
@@ -23,7 +24,9 @@ function ControlledRadioGroupDemo() {
           Push
         </Radio>
       </RadioGroup>
-      <div>Selected: {value}</div>
+      <Typography as="div" variant="muted">
+        Selected: {value}
+      </Typography>
     </div>
   );
 }
