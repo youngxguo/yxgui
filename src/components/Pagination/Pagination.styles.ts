@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex';
+import { getButtonLikeStyleProps } from '../../styles/buttonLike';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
   borderTokens,
   paletteTokens,
-  radiusTokens,
   spacingTokens,
   surfaceTokens,
   typographyTokens
@@ -24,17 +24,7 @@ const paginationStyles = stylex.create({
   item: {
     display: 'inline-flex'
   },
-  link: {
-    alignItems: 'center',
-    backgroundColor: surfaceTokens.base,
-    border: `${borderTokens.widthThin} solid ${borderTokens.default}`,
-    borderRadius: radiusTokens.md,
-    color: paletteTokens.foreground,
-    display: 'inline-flex',
-    fontFamily: typographyTokens.fontFamily,
-    fontSize: typographyTokens.fontSizeSm,
-    justifyContent: 'center',
-    minHeight: spacingTokens.xxxl,
+  linkAdjustments: {
     minWidth: spacingTokens.xxxl,
     padding: `0 ${spacingTokens.sm}`,
     textDecoration: 'none'
@@ -42,6 +32,11 @@ const paginationStyles = stylex.create({
   linkHover: {
     ':hover': {
       backgroundColor: surfaceTokens.subtle
+    }
+  },
+  noActiveTransform: {
+    ':active': {
+      transform: 'none'
     }
   },
   active: {
@@ -81,15 +76,19 @@ export function getPaginationLinkStyleProps(
   disabled: boolean,
   options?: StyleRecipeOverrides
 ) {
-  return composeStyleProps(
-    [
-      paginationStyles.link,
+  return getButtonLikeStyleProps({
+    variant: 'secondary',
+    size: 'sm',
+    extraStyles: [
+      paginationStyles.linkAdjustments,
+      paginationStyles.noActiveTransform,
       !disabled && paginationStyles.linkHover,
       isActive && paginationStyles.active,
       disabled && paginationStyles.disabled
     ],
-    options
-  );
+    className: options?.className,
+    style: options?.style
+  });
 }
 
 export function getPaginationEllipsisStyleProps(options?: StyleRecipeOverrides) {
