@@ -2,7 +2,12 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { pickStyle } from '../../styles/recipes';
 import { getButtonLikeStyleProps, type ButtonLikeSize } from '../../styles/buttonLike';
-import { borderTokens, surfaceTokens, variantTokens } from '../../theme/tokens.stylex';
+import {
+  borderTokens,
+  buttonTokens,
+  surfaceTokens,
+  variantTokens
+} from '../../theme/tokens.stylex';
 
 export type ToggleVariant = 'primary' | 'secondary' | 'ghost';
 export type ToggleSize = ButtonLikeSize;
@@ -18,7 +23,7 @@ interface GetToggleStylePropsOptions {
 
 const toggleStyles = stylex.create({
   primaryPressed: {
-    boxShadow: 'inset 0 0 0 1px #4c4b45, 0 1px 1px #11110f'
+    boxShadow: buttonTokens.primaryPressedShadow
   },
   secondaryPressed: {
     backgroundColor: surfaceTokens.subtle,

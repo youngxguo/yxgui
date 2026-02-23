@@ -7,6 +7,7 @@ import {
   controlTokens,
   paletteTokens,
   radiusTokens,
+  shadowTokens,
   spacingTokens,
   surfaceTokens
 } from '../../theme/tokens.stylex';
@@ -54,7 +55,7 @@ const switchStyles = stylex.create({
   thumb: {
     backgroundColor: controlTokens.background,
     borderRadius: radiusTokens.pill,
-    boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
+    boxShadow: shadowTokens.controlThumb,
     display: 'block',
     transitionDuration: '120ms',
     transitionProperty: 'transform',

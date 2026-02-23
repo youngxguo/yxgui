@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import { layerTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
 
 const popoverStyles = stylex.create({
   content: {
@@ -10,7 +10,7 @@ const popoverStyles = stylex.create({
     maxWidth: '20rem',
     padding: spacingTokens.lg,
     position: 'fixed',
-    zIndex: 1000
+    zIndex: layerTokens.floating
   }
 });
 

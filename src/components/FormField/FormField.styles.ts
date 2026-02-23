@@ -1,6 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { paletteTokens, spacingTokens, typographyTokens } from '../../theme/tokens.stylex';
+import {
+  inputTokens,
+  paletteTokens,
+  spacingTokens,
+  typographyTokens
+} from '../../theme/tokens.stylex';
 
 const formFieldStyles = stylex.create({
   root: {
@@ -18,7 +23,7 @@ const formFieldStyles = stylex.create({
     margin: 0
   },
   error: {
-    color: '#b42318',
+    color: inputTokens.invalidForeground,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
     fontWeight: typographyTokens.fontWeightMedium,

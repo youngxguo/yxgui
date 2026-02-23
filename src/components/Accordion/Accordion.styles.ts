@@ -52,7 +52,7 @@ const accordionStyles = stylex.create({
     }
   },
   triggerOpen: {
-    backgroundColor: '#fafaf5'
+    backgroundColor: surfaceTokens.selected
   },
   triggerDisabled: {
     cursor: 'not-allowed'

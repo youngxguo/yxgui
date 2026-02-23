@@ -1,6 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from './recipes';
-import { borderTokens, paletteTokens, spacingTokens, surfaceTokens } from '../theme/tokens.stylex';
+import {
+  borderTokens,
+  layerTokens,
+  paletteTokens,
+  spacingTokens,
+  surfaceTokens
+} from '../theme/tokens.stylex';
 
 // Shared menu surface/item recipes used by menu-like components (dropdown, context menu, etc.).
 const menuStyles = stylex.create({
@@ -13,7 +19,7 @@ const menuStyles = stylex.create({
     overflow: 'hidden',
     padding: `${spacingTokens.xxs} 0`,
     position: 'fixed',
-    zIndex: 1000
+    zIndex: layerTokens.floating
   },
   item: {
     appearance: 'none',

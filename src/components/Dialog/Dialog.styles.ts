@@ -1,17 +1,17 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { layerTokens, overlayTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 const dialogStyles = stylex.create({
   overlay: {
     alignItems: 'center',
-    backgroundColor: 'rgba(14, 14, 12, 0.45)',
+    backgroundColor: overlayTokens.scrim,
     display: 'flex',
     inset: 0,
     justifyContent: 'center',
     padding: spacingTokens.xl,
     position: 'fixed',
-    zIndex: 1000
+    zIndex: layerTokens.floating
   },
   content: {
     borderRadius: radiusTokens.lg,

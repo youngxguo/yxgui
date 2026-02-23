@@ -1,8 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import {
+  layerTokens,
   paletteTokens,
   radiusTokens,
+  shadowTokens,
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens.stylex';
@@ -11,7 +13,7 @@ const tooltipStyles = stylex.create({
   content: {
     backgroundColor: paletteTokens.foreground,
     borderRadius: radiusTokens.sm,
-    boxShadow: '0 6px 16px rgba(0,0,0,0.22)',
+    boxShadow: shadowTokens.floating,
     color: paletteTokens.background,
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
@@ -20,7 +22,7 @@ const tooltipStyles = stylex.create({
     padding: `${spacingTokens.xs} ${spacingTokens.sm}`,
     pointerEvents: 'none',
     position: 'fixed',
-    zIndex: 1000
+    zIndex: layerTokens.floating
   },
   triggerWrap: {
     display: 'inline-flex'

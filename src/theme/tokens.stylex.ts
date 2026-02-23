@@ -61,6 +61,7 @@ export const surfaceTokens = stylex.defineConsts({
   base: '#fcfcf9',
   elevated: '#ffffff',
   subtle: '#f4f4ef',
+  selected: '#fafaf5',
   soft: '#ecebe4',
   softHover: '#efeee7',
   softStrong: '#c9c7bc',
@@ -68,6 +69,17 @@ export const surfaceTokens = stylex.defineConsts({
   accentMuted: '#e9eefc',
   hover: '#f1efe6',
   accentSubtle: '#eaf0ff'
+});
+
+/** Shared stacking layers for floating UI and local positioned elements. */
+export const layerTokens = stylex.defineConsts({
+  local: 1,
+  floating: 1000
+});
+
+/** Overlay/scrim colors used behind modal surfaces. */
+export const overlayTokens = stylex.defineConsts({
+  scrim: 'rgba(14, 14, 12, 0.45)'
 });
 
 /** Border widths plus neutral/focus border colors shared across components. */
@@ -110,10 +122,17 @@ export const variantTokens = stylex.defineConsts({
 export const buttonTokens = stylex.defineConsts({
   primaryShadow: '0 1px 2px #d9d7cc, 0 1px 1px #ebeae1',
   primaryHoverShadow: '0 2px 4px #d3d1c4, 0 1px 2px #e4e2d7',
+  primaryPressedShadow: 'inset 0 0 0 1px #4c4b45, 0 1px 1px #11110f',
   disabledBackground: '#f4f4ef',
   disabledBorder: '#e3e1d7',
   disabledForeground: '#76766b',
   activeOffset: '1px'
+});
+
+/** Reusable elevation shadows for controls and floating surfaces. */
+export const shadowTokens = stylex.defineConsts({
+  floating: '0 6px 16px rgba(0,0,0,0.22)',
+  controlThumb: '0 1px 2px rgba(0,0,0,0.15)'
 });
 
 /** Status color sets used by alert-like feedback components. */
@@ -141,7 +160,8 @@ export const badgeTokens = stylex.defineConsts({
 
 /** Form validation accents that are intentionally narrower than `statusTokens`. */
 export const inputTokens = stylex.defineConsts({
-  invalidBorder: '#c43d3d'
+  invalidBorder: '#c43d3d',
+  invalidForeground: '#b42318'
 });
 
 /** Card elevation shadows so card tuning does not affect other surface components. */

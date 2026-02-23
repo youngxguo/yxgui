@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
-import { radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
+import { layerTokens, radiusTokens, spacingTokens } from '../../theme/tokens.stylex';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselControlDirection = 'previous' | 'next';
@@ -41,7 +41,7 @@ const carouselStyles = stylex.create({
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    zIndex: 1
+    zIndex: layerTokens.local
   },
   controlPrevious: {
     left: spacingTokens.xs
