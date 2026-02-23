@@ -34,8 +34,7 @@ const scrollAreaStyles = stylex.create({
     userSelect: 'none'
   },
   scrollbarVertical: {
-    height: '100%',
-    minWidth: spacingTokens.md,
+    width: spacingTokens.md,
     padding: spacingTokens.xxxs,
     position: 'absolute',
     right: spacingTokens.xxxs,
@@ -43,8 +42,7 @@ const scrollAreaStyles = stylex.create({
     bottom: spacingTokens.xxxs
   },
   scrollbarHorizontal: {
-    width: '100%',
-    minHeight: spacingTokens.md,
+    height: spacingTokens.md,
     padding: spacingTokens.xxxs,
     position: 'absolute',
     left: spacingTokens.xxxs,
