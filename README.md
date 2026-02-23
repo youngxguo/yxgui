@@ -89,6 +89,7 @@ Current exported components include:
 - `Badge`
 - `Breadcrumb` (`BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbPage`, `BreadcrumbSeparator`, `BreadcrumbEllipsis`)
 - `Button`
+- `Carousel` (`CarouselViewport`, `CarouselContent`, `CarouselItem`, `CarouselPrevious`, `CarouselNext`)
 - `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
 - `Checkbox`
 - `Collapsible` (`CollapsibleTrigger`, `CollapsibleContent`)

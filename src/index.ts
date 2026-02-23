@@ -325,6 +325,23 @@ export type {
 export { Tooltip, TooltipContent } from './components/Tooltip/Tooltip';
 export type { TooltipContentProps, TooltipProps } from './components/Tooltip/Tooltip';
 export {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselViewport
+} from './components/Carousel/Carousel';
+export type {
+  CarouselContentProps,
+  CarouselItemProps,
+  CarouselNextProps,
+  CarouselOrientation,
+  CarouselPreviousProps,
+  CarouselProps,
+  CarouselViewportProps
+} from './components/Carousel/Carousel';
+export {
   Card,
   CardContent,
   CardDescription,
