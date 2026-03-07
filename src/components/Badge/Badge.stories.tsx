@@ -36,21 +36,21 @@ export const Default: Story = {
 };
 
 export const Variants: Story = {
-  render: (args: ComponentProps<typeof Badge>) => (
+  render: ({ size = 'md' }: ComponentProps<typeof Badge>) => (
     <div style={{ display: 'flex', gap: '0.75rem' }}>
-      <Badge {...args} variant="neutral">
-        Neutral
+      <Badge size={size} variant="neutral">
+        Default
       </Badge>
-      <Badge {...args} variant="success">
+      <Badge size={size} variant="success">
         Success
       </Badge>
-      <Badge {...args} variant="warning">
+      <Badge size={size} variant="warning">
         Warning
       </Badge>
-      <Badge {...args} variant="error">
-        Error
+      <Badge size={size} variant="error">
+        Destructive
       </Badge>
-      <Badge {...args} variant="outline">
+      <Badge size={size} variant="outline">
         Outline
       </Badge>
     </div>

@@ -33,17 +33,17 @@ export const radiusTokens = stylex.defineConsts({
 /** Primary spacing scale used for layout gaps, padding, and compact control heights. */
 export const spacingTokens = stylex.defineConsts({
   xxxs: '0.125rem',
-  xxs: '0.25rem',
-  half: '0.5rem',
-  xs: '0.4rem',
-  sm: '0.45rem',
-  md: '0.6rem',
-  lg: '0.75rem',
-  xl: '1rem',
-  xxl: '1.5rem',
-  xxxl: '2rem',
-  xxxxl: '2.5rem',
-  xxxxxl: '3rem'
+  xxs: '0.2rem',
+  half: '0.4375rem',
+  xs: '0.333rem',
+  sm: '0.4rem',
+  md: '0.5rem',
+  lg: '0.625rem',
+  xl: '0.875rem',
+  xxl: '1.25rem',
+  xxxl: '1.75rem',
+  xxxxl: '2.25rem',
+  xxxxxl: '2.75rem'
 });
 
 /** Shared stacking layers for floating UI and local positioned elements. */

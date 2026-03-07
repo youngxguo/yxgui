@@ -2,69 +2,69 @@ import * as stylex from '@stylexjs/stylex';
 
 /** Core semantic colors used across text, accents, and neutral UI ink. */
 export const colorTokens = stylex.defineConsts({
-  background: '#fcfcf9',
-  foreground: '#161614',
-  accent: '#2855f2',
-  mutedForeground: '#59594f'
+  background: '#f6f8ff',
+  foreground: '#111827',
+  accent: '#0b5fff',
+  mutedForeground: '#4b5563'
 });
 
 /** Surface colors for layered containers, hover states, and subtle emphasis. */
 export const surfaceTokens = stylex.defineConsts({
-  base: '#fcfcf9',
+  base: '#f6f8ff',
   elevated: '#ffffff',
-  subtle: '#f4f4ef',
-  selected: '#fafaf5',
-  soft: '#ecebe4',
-  softHover: '#efeee7',
-  softStrong: '#c9c7bc',
-  inset: '#d9d8cf',
-  accentMuted: '#e9eefc',
-  hover: '#f1efe6',
-  accentSubtle: '#eaf0ff'
+  subtle: '#edf2ff',
+  selected: '#e7eeff',
+  soft: '#dfe8ff',
+  softHover: '#d5e1ff',
+  softStrong: '#9db3f9',
+  inset: '#c7d4f7',
+  accentMuted: '#dbe7ff',
+  hover: '#e7eeff',
+  accentSubtle: '#edf3ff'
 });
 
 /** Overlay/scrim colors used behind modal surfaces. */
 export const overlayTokens = stylex.defineConsts({
-  scrim: 'rgba(14, 14, 12, 0.45)'
+  scrim: 'rgba(10, 23, 58, 0.5)'
 });
 
 /** Border widths plus neutral/focus border colors shared across components. */
 export const borderTokens = stylex.defineConsts({
   widthThin: '1px',
-  default: '#cfcec5',
-  muted: '#e3e1d7',
-  strong: '#aead9f',
-  focus: '#2855f2'
+  default: '#c0cdee',
+  muted: '#dce5fb',
+  strong: '#8ca2dd',
+  focus: '#0b5fff'
 });
 
 /** Default form-control colors, including disabled and focus-border states. */
 export const controlTokens = stylex.defineConsts({
   background: '#ffffff',
-  backgroundDisabled: '#f4f4ef',
-  foreground: '#161614',
-  placeholder: '#76766b',
-  border: '#cfcec5',
-  borderFocus: '#2855f2'
+  backgroundDisabled: '#edf2ff',
+  foreground: '#111827',
+  placeholder: '#667085',
+  border: '#c0cdee',
+  borderFocus: '#0b5fff'
 });
 
 /** Status color sets used by alert-like feedback components. */
 export const statusTokens = stylex.defineConsts({
   infoBackground: '#dbeafe',
-  infoBorder: '#60a5fa',
+  infoBorder: '#3b82f6',
   infoForeground: '#1d4ed8',
   successBackground: '#dcfce7',
-  successBorder: '#4ade80',
+  successBorder: '#22c55e',
   successForeground: '#166534',
   warningBackground: '#fef3c7',
   warningBorder: '#f59e0b',
   warningForeground: '#92400e',
   errorBackground: '#fee2e2',
-  errorBorder: '#f87171',
-  errorForeground: '#991b1b'
+  errorBorder: '#ef4444',
+  errorForeground: '#b91c1c'
 });
 
 /** Form validation accents shared across control and field messaging styles. */
 export const validationTokens = stylex.defineConsts({
-  invalidBorder: '#c43d3d',
+  invalidBorder: '#dc2626',
   invalidForeground: '#b42318'
 });

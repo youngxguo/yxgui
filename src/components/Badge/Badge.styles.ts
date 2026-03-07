@@ -6,12 +6,7 @@ import {
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens/foundationTokens.stylex';
-import {
-  borderTokens,
-  colorTokens,
-  controlTokens,
-  statusTokens
-} from '../../theme/tokens/semanticTokens.stylex';
+import { borderTokens } from '../../theme/tokens/semanticTokens.stylex';
 import { badgeStyleTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type BadgeVariant = 'neutral' | 'success' | 'warning' | 'error' | 'outline';
@@ -42,34 +37,34 @@ const badgeStyles = stylex.create({
     color: badgeStyleTokens.neutralForeground
   },
   success: {
-    backgroundColor: statusTokens.successBackground,
-    borderColor: statusTokens.successBorder,
-    color: statusTokens.successForeground
+    backgroundColor: badgeStyleTokens.successBackground,
+    borderColor: badgeStyleTokens.successBorder,
+    color: badgeStyleTokens.successForeground
   },
   warning: {
-    backgroundColor: statusTokens.warningBackground,
-    borderColor: statusTokens.warningBorder,
-    color: statusTokens.warningForeground
+    backgroundColor: badgeStyleTokens.warningBackground,
+    borderColor: badgeStyleTokens.warningBorder,
+    color: badgeStyleTokens.warningForeground
   },
   error: {
-    backgroundColor: statusTokens.errorBackground,
-    borderColor: statusTokens.errorBorder,
-    color: statusTokens.errorForeground
+    backgroundColor: badgeStyleTokens.errorBackground,
+    borderColor: badgeStyleTokens.errorBorder,
+    color: badgeStyleTokens.errorForeground
   },
   outline: {
-    backgroundColor: controlTokens.background,
-    borderColor: borderTokens.default,
-    color: colorTokens.mutedForeground
+    backgroundColor: 'transparent',
+    borderColor: badgeStyleTokens.outlineBorder,
+    color: badgeStyleTokens.outlineForeground
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
     minHeight: spacingTokens.xl,
-    padding: `${spacingTokens.xxxs} ${spacingTokens.half}`
+    padding: `${spacingTokens.xxs} ${spacingTokens.md}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
     minHeight: spacingTokens.xxl,
-    padding: `${spacingTokens.xxxs} ${spacingTokens.md}`
+    padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   }
 });
 
