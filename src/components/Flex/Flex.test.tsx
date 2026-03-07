@@ -24,7 +24,7 @@ describe('Flex', () => {
     render(<Flex data-testid="flex" gap="lg" rowGap="md" columnGap="xxl" />);
 
     const flex = screen.getByTestId('flex');
-    expect(flex).toHaveStyle({ gap: '0.75rem', rowGap: '0.6rem', columnGap: '1.5rem' });
+    expect(flex).toHaveStyle({ gap: '0.625rem', rowGap: '0.5rem', columnGap: '1.25rem' });
   });
 
   it('updates style composition when direction and wrap change', () => {
