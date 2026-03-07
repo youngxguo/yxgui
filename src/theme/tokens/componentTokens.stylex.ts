@@ -29,20 +29,20 @@ export const buttonInteractionTokens = stylex.defineConsts({
 
 /** Badge-specific semantic colors tuned for stronger chroma than generic status surfaces. */
 export const badgeStyleTokens = stylex.defineConsts({
-  neutralBackground: '#e9edf2',
-  neutralForeground: '#344054',
-  neutralBorder: '#c2cad6',
-  successBackground: '#e5f5eb',
-  successForeground: '#207a4f',
-  successBorder: '#bbdfcc',
-  warningBackground: '#fdf1e0',
-  warningForeground: '#975b1a',
-  warningBorder: '#efcfaa',
-  errorBackground: '#fbe8ec',
-  errorForeground: '#aa3e57',
-  errorBorder: '#eebecd',
-  outlineForeground: '#344054',
-  outlineBorder: '#aeb8c6'
+  neutralBackground: '#3b82f6',
+  neutralForeground: '#dbeafe',
+  neutralBorder: '#dbeafe',
+  successBackground: '#22c55e',
+  successForeground: '#dcfce7',
+  successBorder: '#dcfce7',
+  warningBackground: '#f59e0b',
+  warningForeground: '#ffedd5',
+  warningBorder: '#ffedd5',
+  errorBackground: '#ef4444',
+  errorForeground: '#fee2e2',
+  errorBorder: '#fee2e2',
+  outlineForeground: '#2563eb',
+  outlineBorder: '#2563eb'
 });
 
 /** Card elevation shadows so card tuning does not affect other surface components. */
