@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 
 /** Core semantic colors used across text, accents, and neutral UI ink. */
 export const colorTokens = stylex.defineConsts({
-  background: '#f4f5f7',
+  background: '#ffffff',
   foreground: '#111827',
   accent: '#2563eb',
   mutedForeground: '#4b5563'
@@ -10,17 +10,17 @@ export const colorTokens = stylex.defineConsts({
 
 /** Surface colors for layered containers, hover states, and subtle emphasis. */
 export const surfaceTokens = stylex.defineConsts({
-  base: '#f4f5f7',
+  base: '#ffffff',
   elevated: '#ffffff',
-  subtle: '#e9edf2',
-  selected: '#dfe5ec',
-  soft: '#d3dae4',
-  softHover: '#c9d2de',
+  subtle: '#ffffff',
+  selected: '#ffffff',
+  soft: '#ffffff',
+  softHover: '#ffffff',
   softStrong: '#919db0',
-  inset: '#bec9d8',
-  accentMuted: '#e3e8ef',
-  hover: '#e2e7ee',
-  accentSubtle: '#e9edf3'
+  inset: '#ffffff',
+  accentMuted: '#ffffff',
+  hover: '#ffffff',
+  accentSubtle: '#ffffff'
 });
 
 /** Overlay/scrim colors used behind modal surfaces. */
@@ -40,7 +40,7 @@ export const borderTokens = stylex.defineConsts({
 /** Default form-control colors, including disabled and focus-border states. */
 export const controlTokens = stylex.defineConsts({
   background: '#ffffff',
-  backgroundDisabled: '#e9edf2',
+  backgroundDisabled: '#ffffff',
   foreground: '#111827',
   placeholder: '#667085',
   border: '#aeb8c6',

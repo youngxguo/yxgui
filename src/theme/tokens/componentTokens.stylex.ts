@@ -4,12 +4,12 @@ import * as stylex from '@stylexjs/stylex';
 export const buttonVariantTokens = stylex.defineConsts({
   primaryBackground: '#2563eb',
   primaryForeground: '#f8fbff',
-  secondaryBackground: '#e9edf2',
+  secondaryBackground: '#ffffff',
   secondaryForeground: '#0f172a',
   secondaryBorder: '#aeb8c6',
   secondaryHoverBorder: '#7d8ca3',
   ghostForeground: '#0f172a',
-  ghostHoverBackground: '#e2e7ee',
+  ghostHoverBackground: '#ffffff',
   outlineBorder: '#aeb8c6',
   destructiveBackground: '#e11d48',
   destructiveBorder: '#be123c',
@@ -21,7 +21,7 @@ export const buttonInteractionTokens = stylex.defineConsts({
   primaryShadow: 'none',
   primaryHoverShadow: 'none',
   primaryPressedShadow: 'none',
-  disabledBackground: '#e9edf2',
+  disabledBackground: '#ffffff',
   disabledBorder: '#c2cad6',
   disabledForeground: '#667085',
   activeOffset: '1px'
