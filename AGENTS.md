@@ -19,7 +19,8 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 - Install: `pnpm install`
 - Done gate: `pnpm lint`, `pnpm test`, `pnpm build`
 - Common: `pnpm storybook`, `pnpm test:watch`, `pnpm typecheck`, `pnpm format`, `pnpm format:check`, `pnpm lint:fix`, `pnpm build-storybook`
-- Publish (npm): `npm publish` (pass `--otp <code>` when npm 2FA requires it)
+- Release publish (npm + tag + GitHub): `pnpm release:publish` (pass npm 2FA with `pnpm release:publish -- --otp <code>`)
+- Publish (npm only/manual): `npm publish` (pass `--otp <code>` when npm 2FA requires it)
 - Publish dry-run: `npm publish --dry-run`
 
 ## GitHub / Commits
@@ -46,6 +47,7 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 ## Release Runbook
 
 - Goal: keep npm package, git tag, and GitHub release aligned to the same version and commit.
+- Preferred path: after version bump commit, run `pnpm release:publish` to execute quality checks, dry-run, npm publish, tag push, and GitHub release creation in one flow.
 - Preflight:
   - `git status --short` must be clean (or commit/stash unrelated work first).
   - `npm whoami` should return the expected npm account.

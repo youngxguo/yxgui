@@ -55,6 +55,7 @@
     "build": "pnpm typecheck && vite build",
     "storybook": "node ./scripts/storybook-worktree.mjs",
     "build-storybook": "storybook build",
+    "release:publish": "bash ./scripts/release-publish.sh",
     "prepublishOnly": "pnpm check:quality"
   },
   "peerDependencies": {
