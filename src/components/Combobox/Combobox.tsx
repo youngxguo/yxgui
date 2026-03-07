@@ -1,20 +1,13 @@
-import {
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-  type ButtonHTMLAttributes,
-  type Ref
-} from 'react';
+import { useId, useMemo, useRef, useState, type InputHTMLAttributes, type Ref } from 'react';
+import { Card } from '../Card/Card';
 import { Input } from '../Input/Input';
 import { Typography } from '../Typography/Typography';
-import { Portal } from '../_internal/Portal';
 import {
   getDataPresenceAttribute,
   getDataStateAttribute,
   isAriaBooleanTrue
 } from '../_internal/dataAttributes';
+import { Portal } from '../_internal/Portal';
 import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
@@ -26,9 +19,10 @@ import {
   getComboboxListStyleProps,
   getComboboxOptionMetaStyleProps,
   getComboboxOptionStyleProps,
+  getComboboxTriggerIndicatorIconStyleProps,
   getComboboxTriggerIndicatorStyleProps,
-  getComboboxTriggerLabelStyleProps,
-  getComboboxTriggerStyleProps,
+  getComboboxTriggerInputStyleProps,
+  getComboboxTriggerRootStyleProps,
   type ComboboxSize
 } from './Combobox.styles';
 
@@ -58,10 +52,10 @@ export interface ComboboxOption {
 }
 
 export interface ComboboxProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
+  InputHTMLAttributes<HTMLInputElement>,
+  'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > {
-  ref?: Ref<HTMLButtonElement>;
+  ref?: Ref<HTMLInputElement>;
   options: ReadonlyArray<ComboboxOption>;
   value?: string | null;
   defaultValue?: string | null;
@@ -118,12 +112,15 @@ export function Combobox({
   style,
   id: idProp,
   onClick,
+  onFocus,
+  onBlur,
   onKeyDown,
   'aria-invalid': ariaInvalidProp,
+  'aria-label': ariaLabelProp,
   ...props
 }: ComboboxProps) {
   const generatedId = useId();
-  const triggerId = idProp ?? `${generatedId}-trigger`;
+  const inputId = idProp ?? `${generatedId}-input`;
   const listboxId = `${generatedId}-listbox`;
 
   const [isOpen, setIsOpen] = useControllableState({
@@ -139,9 +136,8 @@ export function Combobox({
   const [searchQuery, setSearchQuery] = useState('');
   const [activeItemIdOverride, setActiveItemIdOverride] = useState<string | null>(null);
 
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const invalid = invalidProp || isAriaBooleanTrue(ariaInvalidProp);
   const ariaInvalid = invalid ? true : undefined;
@@ -215,9 +211,13 @@ export function Combobox({
       triggerRef.current?.focus();
     }
   };
-  const openCombobox = () => {
+
+  const openCombobox = (resetQuery = true) => {
     setIsOpen(true);
     setActiveItemIdOverride(null);
+    if (resetQuery) {
+      setSearchQuery('');
+    }
   };
 
   useDismissableLayer({
@@ -226,19 +226,6 @@ export function Combobox({
     branchRefs: [triggerRef],
     onPointerDownOutside: () => closeCombobox(false),
     onEscapeKeyDown: () => closeCombobox(true)
-  });
-
-  useEffect(() => {
-    if (isOpen) {
-      searchInputRef.current?.focus();
-    }
-  }, [isOpen]);
-
-  const triggerStyleProps = getComboboxTriggerStyleProps({
-    size,
-    invalid,
-    className,
-    style
   });
 
   const moveActiveItem = (step: number) => {
@@ -264,64 +251,133 @@ export function Combobox({
     closeCombobox(true);
   };
 
+  const inputValue = isOpen ? searchQuery : (selectedOption?.label ?? '');
+  const inputPlaceholder = isOpen ? searchPlaceholder : placeholder;
+  const triggerRootStyleProps = getComboboxTriggerRootStyleProps({ className, style });
+  const triggerInputStyleProps = getComboboxTriggerInputStyleProps(undefined);
+
   return (
     <>
-      <button
-        {...props}
-        {...triggerStyleProps}
-        ref={(node) => {
-          triggerRef.current = node;
-          assignRef(ref, node);
-        }}
-        id={triggerId}
-        type="button"
-        role="combobox"
-        disabled={disabled}
-        aria-expanded={isOpen}
-        aria-haspopup="listbox"
-        aria-controls={listboxId}
-        aria-activedescendant={isOpen ? (activeItemId ?? undefined) : undefined}
-        aria-invalid={ariaInvalid}
-        data-state={getDataStateAttribute(isOpen, 'open', 'closed')}
-        data-invalid={getDataPresenceAttribute(invalid)}
-        data-disabled={getDataPresenceAttribute(disabled)}
-        onClick={(event) => {
-          if (isOpen) {
-            closeCombobox(false);
-          } else {
-            openCombobox();
-          }
-          onClick?.(event);
-        }}
-        onKeyDown={(event) => {
-          if (!isOpen && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
-            event.preventDefault();
-            openCombobox();
-          }
+      <div {...triggerRootStyleProps}>
+        <Input
+          {...props}
+          {...triggerInputStyleProps}
+          ref={(node) => {
+            triggerRef.current = node;
+            assignRef(ref, node);
+          }}
+          id={inputId}
+          type="text"
+          size={size}
+          invalid={invalid}
+          disabled={disabled}
+          value={inputValue}
+          placeholder={inputPlaceholder}
+          autoComplete={props.autoComplete ?? 'off'}
+          role="combobox"
+          aria-label={ariaLabelProp ?? searchAriaLabel}
+          aria-autocomplete="list"
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          aria-controls={listboxId}
+          aria-activedescendant={isOpen ? (activeItemId ?? undefined) : undefined}
+          aria-invalid={ariaInvalid}
+          data-state={getDataStateAttribute(isOpen, 'open', 'closed')}
+          onFocus={(event) => {
+            if (!isOpen) {
+              openCombobox(true);
+            }
+            onFocus?.(event);
+          }}
+          onBlur={(event) => {
+            const nextFocusedNode = event.relatedTarget;
+            if (isOpen && !contentRef.current?.contains(nextFocusedNode)) {
+              closeCombobox(false);
+            }
+            onBlur?.(event);
+          }}
+          onClick={(event) => {
+            if (!isOpen) {
+              openCombobox(true);
+            }
+            onClick?.(event);
+          }}
+          onChange={(event) => {
+            if (!isOpen) {
+              openCombobox(false);
+            }
+            setSearchQuery(event.currentTarget.value);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowDown') {
+              if (!isOpen) {
+                openCombobox(true);
+              } else {
+                moveActiveItem(1);
+              }
+              event.preventDefault();
+            }
 
-          if (isOpen && event.key === 'Escape') {
-            event.preventDefault();
-            closeCombobox(false);
-          }
+            if (event.key === 'ArrowUp') {
+              if (!isOpen) {
+                openCombobox(true);
+              } else {
+                moveActiveItem(-1);
+              }
+              event.preventDefault();
+            }
 
-          onKeyDown?.(event);
-        }}
-      >
-        <Typography
-          as="span"
-          variant="small"
-          {...getComboboxTriggerLabelStyleProps(selectedOption === null)}
-        >
-          {selectedOption?.label ?? placeholder}
-        </Typography>
-        <span aria-hidden="true" {...getComboboxTriggerIndicatorStyleProps()}>
-          v
+            if (isOpen && event.key === 'Home') {
+              setActiveItemIdOverride(enabledItems[0]?.id ?? null);
+              event.preventDefault();
+            }
+
+            if (isOpen && event.key === 'End') {
+              setActiveItemIdOverride(enabledItems[enabledItems.length - 1]?.id ?? null);
+              event.preventDefault();
+            }
+
+            if (event.key === 'Enter') {
+              if (!isOpen) {
+                openCombobox(true);
+                event.preventDefault();
+              } else {
+                const activeItem = enabledItems.find((item) => item.id === activeItemId);
+                if (activeItem) {
+                  selectItem(activeItem);
+                  event.preventDefault();
+                }
+              }
+            }
+
+            if (event.key === 'Escape' && isOpen) {
+              closeCombobox(false);
+              event.preventDefault();
+            }
+
+            if (event.key === 'Tab' && isOpen) {
+              closeCombobox(false);
+            }
+
+            onKeyDown?.(event);
+          }}
+        />
+        <span aria-hidden="true" {...getComboboxTriggerIndicatorStyleProps(isOpen)}>
+          <svg
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            {...getComboboxTriggerIndicatorIconStyleProps()}
+          >
+            <path d="m5 7.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </span>
-      </button>
+      </div>
 
       {isOpen ? (
         <Portal>
-          <div
+          <Card
             {...getComboboxContentStyleProps({
               style: {
                 top: `${position.top}px`,
@@ -329,64 +385,15 @@ export function Combobox({
                 minWidth: position.minWidth ? `${position.minWidth}px` : undefined
               }
             })}
-            ref={contentRef}
+            ref={(node) => {
+              contentRef.current = node;
+            }}
             data-state="open"
           >
-            <Input
-              ref={searchInputRef}
-              size="sm"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.currentTarget.value)}
-              placeholder={searchPlaceholder}
-              aria-label={searchAriaLabel}
-              aria-controls={listboxId}
-              onKeyDown={(event) => {
-                if (event.key === 'ArrowDown') {
-                  moveActiveItem(1);
-                  event.preventDefault();
-                  return;
-                }
-
-                if (event.key === 'ArrowUp') {
-                  moveActiveItem(-1);
-                  event.preventDefault();
-                  return;
-                }
-
-                if (event.key === 'Home') {
-                  setActiveItemIdOverride(enabledItems[0]?.id ?? null);
-                  event.preventDefault();
-                  return;
-                }
-
-                if (event.key === 'End') {
-                  setActiveItemIdOverride(enabledItems[enabledItems.length - 1]?.id ?? null);
-                  event.preventDefault();
-                  return;
-                }
-
-                if (event.key === 'Enter') {
-                  const activeItem = enabledItems.find((item) => item.id === activeItemId);
-                  if (!activeItem) {
-                    return;
-                  }
-
-                  event.preventDefault();
-                  selectItem(activeItem);
-                  return;
-                }
-
-                if (event.key === 'Escape') {
-                  event.preventDefault();
-                  closeCombobox(true);
-                }
-              }}
-            />
-
             <div
               id={listboxId}
               role="listbox"
-              aria-labelledby={triggerId}
+              aria-labelledby={inputId}
               {...getComboboxListStyleProps(undefined)}
             >
               {listItems.length === 0 ? (
@@ -445,7 +452,7 @@ export function Combobox({
                 })
               )}
             </div>
-          </div>
+          </Card>
         </Portal>
       ) : null}
     </>

@@ -1,22 +1,14 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
-import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
-import { floatingPrimitives } from '../../styles/floating';
+import type { ControlLikeSize } from '../../styles/controlLike';
+import { getMenuContentStyleProps, getMenuItemStyleProps } from '../../styles/menu';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
-import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
-import {
-  radiusTokens,
-  shadowTokens,
-  spacingTokens,
-  typographyTokens
-} from '../../theme/tokens/foundationTokens.stylex';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
 import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type ComboboxSize = ControlLikeSize;
 
-interface GetComboboxTriggerStylePropsOptions {
-  size: ComboboxSize;
-  invalid: boolean;
+interface GetComboboxTriggerRootStylePropsOptions {
   className?: string;
   style?: CSSProperties;
 }
@@ -30,82 +22,45 @@ interface GetComboboxOptionStylePropsOptions {
 
 const comboboxStyles = stylex.create({
   triggerRoot: {
-    alignItems: 'center',
-    cursor: 'pointer',
-    display: 'flex',
-    gap: spacingTokens.sm,
-    justifyContent: 'space-between',
-    paddingRight: spacingTokens.sm,
-    textAlign: 'left',
+    position: 'relative',
     width: '100%'
   },
-  triggerLabel: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap'
-  },
-  triggerPlaceholder: {
-    color: colorTokens.mutedForeground
+  triggerInput: {
+    paddingRight: spacingTokens.xl
   },
   triggerIndicator: {
     color: colorTokens.mutedForeground,
+    display: 'inline-flex',
     flexShrink: 0,
-    fontSize: typographyTokens.fontSizeSm,
-    lineHeight: typographyTokens.lineHeightTight
+    pointerEvents: 'none',
+    position: 'absolute',
+    right: spacingTokens.sm,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    transitionDuration: '0.15s',
+    transitionProperty: 'transform'
   },
-  sm: {
-    fontSize: typographyTokens.fontSizeSm,
-    minHeight: componentSizeTokens.sizeMd,
-    paddingBottom: spacingTokens.xxs,
-    paddingLeft: spacingTokens.sm,
-    paddingTop: spacingTokens.xxs
+  triggerIndicatorOpen: {
+    transform: 'translateY(-50%) rotate(180deg)'
   },
-  md: {
-    fontSize: typographyTokens.fontSizeMd,
-    minHeight: componentSizeTokens.sizeMd,
-    paddingBottom: spacingTokens.xs,
-    paddingLeft: spacingTokens.lg,
-    paddingTop: spacingTokens.xs
-  },
-  lg: {
-    fontSize: typographyTokens.fontSizeLg,
-    minHeight: componentSizeTokens.sizeLg,
-    paddingBottom: spacingTokens.sm,
-    paddingLeft: spacingTokens.xl,
-    paddingTop: spacingTokens.sm
-  },
-  content: {
-    backgroundColor: surfaceTokens.base,
-    borderColor: borderTokens.muted,
-    borderRadius: radiusTokens.md,
-    borderStyle: 'solid',
-    borderWidth: borderTokens.widthThin,
-    boxShadow: shadowTokens.floating,
-    display: 'grid',
-    gap: spacingTokens.xs,
-    padding: spacingTokens.xs
+  triggerIndicatorIcon: {
+    display: 'block',
+    height: spacingTokens.md,
+    width: spacingTokens.md
   },
   list: {
-    display: 'grid',
-    gap: spacingTokens.xxxs
+    display: 'grid'
   },
-  option: {
-    alignItems: 'center',
-    appearance: 'none',
-    backgroundColor: 'transparent',
-    borderColor: 'transparent',
-    borderRadius: radiusTokens.sm,
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    color: colorTokens.foreground,
-    cursor: 'pointer',
-    display: 'flex',
-    fontFamily: typographyTokens.fontFamily,
-    justifyContent: 'space-between',
-    minHeight: componentSizeTokens.sizeMd,
-    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`,
-    textAlign: 'left',
-    width: '100%'
+  optionLayout: {
+    justifyContent: 'space-between'
+  },
+  optionFocusVisible: {
+    ':focus-visible': {
+      outlineColor: borderTokens.focus,
+      outlineOffset: spacingTokens.xxxs,
+      outlineStyle: 'solid',
+      outlineWidth: spacingTokens.xxxs
+    }
   },
   optionActive: {
     backgroundColor: surfaceTokens.hover
@@ -113,62 +68,38 @@ const comboboxStyles = stylex.create({
   optionSelected: {
     backgroundColor: surfaceTokens.selected
   },
-  optionDisabled: {
-    ':disabled': {
-      color: colorTokens.mutedForeground,
-      cursor: 'not-allowed'
-    }
-  },
-  optionFocusVisible: {
-    ':focus-visible': {
-      backgroundColor: surfaceTokens.accentSubtle,
-      outline: 'none'
-    }
-  },
   optionMeta: {
     color: colorTokens.mutedForeground
   },
   emptyState: {
-    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
+    padding: `${spacingTokens.xs} ${spacingTokens.md}`
   }
 });
 
-const comboboxSizeStyles: Record<ComboboxSize, unknown> = {
-  sm: comboboxStyles.sm,
-  md: comboboxStyles.md,
-  lg: comboboxStyles.lg
-};
-
-export function getComboboxTriggerStyleProps({
-  size,
-  invalid,
+export function getComboboxTriggerRootStyleProps({
   className,
   style
-}: GetComboboxTriggerStylePropsOptions) {
-  return getControlLikeStyleProps({
-    size,
-    sizeStyles: comboboxSizeStyles,
-    invalid,
-    baseStyles: [comboboxStyles.triggerRoot],
-    includeText: true,
-    className,
-    style
-  });
+}: GetComboboxTriggerRootStylePropsOptions) {
+  return composeStyleProps([comboboxStyles.triggerRoot], { className, style });
 }
 
-export function getComboboxTriggerLabelStyleProps(placeholder: boolean) {
+export function getComboboxTriggerInputStyleProps(options?: StyleRecipeOverrides) {
+  return composeStyleProps([comboboxStyles.triggerInput], options);
+}
+
+export function getComboboxTriggerIndicatorStyleProps(open: boolean) {
   return composeStyleProps(
-    [comboboxStyles.triggerLabel, placeholder && comboboxStyles.triggerPlaceholder],
+    [comboboxStyles.triggerIndicator, open && comboboxStyles.triggerIndicatorOpen],
     undefined
   );
 }
 
-export function getComboboxTriggerIndicatorStyleProps() {
-  return composeStyleProps([comboboxStyles.triggerIndicator], undefined);
+export function getComboboxTriggerIndicatorIconStyleProps() {
+  return composeStyleProps([comboboxStyles.triggerIndicatorIcon], undefined);
 }
 
 export function getComboboxContentStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([floatingPrimitives.floatingLayer, comboboxStyles.content], options);
+  return getMenuContentStyleProps(options);
 }
 
 export function getComboboxListStyleProps(options?: StyleRecipeOverrides) {
@@ -181,15 +112,15 @@ export function getComboboxOptionStyleProps({
   className,
   style
 }: GetComboboxOptionStylePropsOptions) {
-  return composeStyleProps(
+  return getMenuItemStyleProps(
+    { className, style },
     [
-      comboboxStyles.option,
-      comboboxStyles.optionDisabled,
+      comboboxStyles.optionLayout,
       comboboxStyles.optionFocusVisible,
       active && comboboxStyles.optionActive,
       selected && comboboxStyles.optionSelected
     ],
-    { className, style }
+    false
   );
 }
 

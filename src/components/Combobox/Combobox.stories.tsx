@@ -33,13 +33,10 @@ export const Default: Story = {
     const trigger = canvas.getByRole('combobox', { name: 'Framework' });
 
     await userEvent.click(trigger);
-    const searchInput = await within(document.body).findByRole('textbox', {
-      name: 'Search options'
-    });
-    await userEvent.type(searchInput, 'rea');
+    await userEvent.type(trigger, 'rea');
     await userEvent.click(await within(document.body).findByRole('option', { name: 'React' }));
 
-    expect(canvas.getByRole('combobox', { name: 'Framework' })).toHaveTextContent('React');
+    expect(canvas.getByRole('combobox', { name: 'Framework' })).toHaveValue('React');
   }
 };
 

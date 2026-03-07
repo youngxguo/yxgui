@@ -15,21 +15,20 @@ describe('Combobox', () => {
     render(<Combobox options={options} onValueChange={onValueChange} aria-label="Framework" />);
 
     const trigger = screen.getByRole('combobox', { name: 'Framework' });
-    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.focus(trigger);
 
     expect(await screen.findByRole('listbox')).toBeInTheDocument();
-    const searchInput = screen.getByRole('textbox', { name: 'Search options' });
-    fireEvent.change(searchInput, { target: { value: 'v' } });
+    fireEvent.change(trigger, { target: { value: 'v' } });
 
     expect(screen.getByRole('option', { name: 'Vue' })).toBeInTheDocument();
     expect(screen.queryByRole('option', { name: 'React' })).not.toBeInTheDocument();
 
-    fireEvent.keyDown(searchInput, { key: 'ArrowDown' });
-    fireEvent.keyDown(searchInput, { key: 'Enter' });
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'Enter' });
 
     await waitFor(() => expect(screen.queryByRole('listbox')).not.toBeInTheDocument());
     expect(onValueChange).toHaveBeenCalledWith('vue');
-    expect(trigger).toHaveTextContent('Vue');
+    expect(trigger).toHaveValue('Vue');
   });
 
   it('renders current value and allows clearing selection', async () => {
@@ -44,14 +43,14 @@ describe('Combobox', () => {
     );
 
     const trigger = screen.getByRole('combobox', { name: 'Framework' });
-    expect(trigger).toHaveTextContent('React');
+    expect(trigger).toHaveValue('React');
 
-    fireEvent.click(trigger);
+    fireEvent.focus(trigger);
     fireEvent.click(await screen.findByRole('option', { name: 'Clear selection' }));
 
     await waitFor(() => expect(screen.queryByRole('listbox')).not.toBeInTheDocument());
     expect(onValueChange).toHaveBeenCalledWith(null);
-    expect(trigger).toHaveTextContent('Select an option');
+    expect(trigger).toHaveValue('');
   });
 
   it('respects disabled state and data attributes', () => {
@@ -67,8 +66,15 @@ describe('Combobox', () => {
   });
 
   it('accepts a ref prop', () => {
-    const ref = createRef<HTMLButtonElement>();
+    const ref = createRef<HTMLInputElement>();
     render(<Combobox options={options} ref={ref} aria-label="Framework" />);
-    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(ref.current).toBeInstanceOf(HTMLInputElement);
+  });
+
+  it('renders a dropdown indicator icon on the trigger', () => {
+    render(<Combobox options={options} aria-label="Framework" />);
+
+    const trigger = screen.getByRole('combobox', { name: 'Framework' });
+    expect(trigger.parentElement?.querySelector('svg')).toBeInTheDocument();
   });
 });

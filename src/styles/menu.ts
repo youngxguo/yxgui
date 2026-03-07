@@ -49,14 +49,29 @@ const menuStyles = stylex.create({
 });
 
 /** Returns style props for floating menu content surfaces. */
-export function getMenuContentStyleProps(options?: StyleRecipeOverrides) {
-  return composeStyleProps([floatingPrimitives.floatingLayer, menuStyles.content], options);
+export function getMenuContentStyleProps(
+  options?: StyleRecipeOverrides,
+  extraStyles: ReadonlyArray<unknown> = []
+) {
+  return composeStyleProps(
+    [floatingPrimitives.floatingLayer, menuStyles.content, ...extraStyles],
+    options
+  );
 }
 
 /** Returns style props for interactive menu items, including disabled and focus-visible states. */
-export function getMenuItemStyleProps(options?: StyleRecipeOverrides) {
+export function getMenuItemStyleProps(
+  options?: StyleRecipeOverrides,
+  extraStyles: ReadonlyArray<unknown> = [],
+  includeFocusVisible = true
+) {
   return composeStyleProps(
-    [menuStyles.item, menuStyles.itemDisabled, menuStyles.itemFocusVisible],
+    [
+      menuStyles.item,
+      menuStyles.itemDisabled,
+      includeFocusVisible && menuStyles.itemFocusVisible,
+      ...extraStyles
+    ],
     options
   );
 }
