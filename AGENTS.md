@@ -32,6 +32,7 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 - Types: `✨ feat`, `🐛 fix`, `🧹 chore`, `♻️ refactor`, `📝 docs`, `✅ test`, `🎨 style`, `⚡ perf`, `♿ a11y`, `👷 ci`, `🔧 build`.
 - Labels: `type: <emoji> <kind>`; update with `gh label create ... --force`.
 - Flow: `gh issue view` -> implement -> validate -> commit (`Closes #123` / `Fixes #123` when completed; `Refs #123` otherwise) -> push -> `gh issue close` only if auto-close did not trigger.
+- Branch push issue-closing context: when pushing a non-default branch, open/update a PR and include `Fixes #123`/`Closes #123` in the PR body so merge auto-closes the issue; direct pushes to default branch can rely on commit keywords.
 - Optional: `gh issue develop <number> --checkout`.
 - Commits: atomic, imperative subject (<72 chars), 1-3 line body, no literal `\n` in scripted commits (use multiple `-m` flags).
 - Include tests with behavior changes; verify message before push: `git log --format=medium -n 1`.
