@@ -37,6 +37,7 @@ const switchStyles = stylex.create({
     cursor: 'pointer',
     display: 'inline-flex',
     margin: 0,
+    overflow: 'hidden',
     padding: spacingTokens.xxxs,
     position: 'relative'
   },
@@ -49,15 +50,15 @@ const switchStyles = stylex.create({
     opacity: 0.6
   },
   sm: {
-    height: spacingTokens.xl,
-    width: componentSizeTokens.sizeMd
+    height: componentSizeTokens.switchTrackHeightSm,
+    width: componentSizeTokens.switchTrackWidthSm
   },
   md: {
-    height: spacingTokens.xl,
-    width: componentSizeTokens.sizeLg
+    height: componentSizeTokens.switchTrackHeightMd,
+    width: componentSizeTokens.switchTrackWidthMd
   },
   thumb: {
-    backgroundColor: controlTokens.background,
+    backgroundColor: surfaceTokens.softStrong,
     borderRadius: radiusTokens.pill,
     boxShadow: shadowTokens.controlThumb,
     display: 'block',
@@ -74,9 +75,11 @@ const switchStyles = stylex.create({
     width: spacingTokens.xl
   },
   thumbCheckedSm: {
+    backgroundColor: controlTokens.background,
     transform: `translateX(${spacingTokens.lg})`
   },
   thumbCheckedMd: {
+    backgroundColor: controlTokens.background,
     transform: `translateX(${spacingTokens.xl})`
   }
 });

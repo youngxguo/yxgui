@@ -55,6 +55,10 @@ export const cardElevationTokens = stylex.defineConsts({
 export const componentSizeTokens = stylex.defineConsts({
   sizeMd: '2rem',
   sizeLg: '2.5rem',
+  switchTrackWidthSm: '1.875rem',
+  switchTrackWidthMd: '2.375rem',
+  switchTrackHeightSm: '1.125rem',
+  switchTrackHeightMd: '1.375rem',
   menuMinWidth: '10.75rem',
   textareaMinHeightSm: '5rem',
   textareaMinHeightMd: '6rem',
