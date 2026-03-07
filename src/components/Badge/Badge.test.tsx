@@ -29,6 +29,25 @@ describe('Badge', () => {
     expect(badge.className).not.toEqual(baseClassName);
   });
 
+  it('supports an opt-in full-width style', () => {
+    const { rerender } = render(
+      <Badge variant="neutral" size="md">
+        New
+      </Badge>
+    );
+
+    const badge = screen.getByText('New');
+    const intrinsicClassName = badge.className;
+
+    rerender(
+      <Badge variant="neutral" size="md" fullWidth>
+        New
+      </Badge>
+    );
+
+    expect(badge.className).not.toEqual(intrinsicClassName);
+  });
+
   it('forwards native span props', () => {
     render(
       <Badge data-testid="status" title="Published">

@@ -5,17 +5,19 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   ref?: Ref<HTMLSpanElement>;
   variant?: BadgeVariant;
   size?: BadgeSize;
+  fullWidth?: boolean;
 }
 
 export function Badge({
   ref,
   variant = 'neutral',
   size = 'md',
+  fullWidth = false,
   className,
   style,
   ...props
 }: BadgeProps) {
-  const styleProps = getBadgeStyleProps({ variant, size, className, style });
+  const styleProps = getBadgeStyleProps({ variant, size, fullWidth, className, style });
 
   return <span {...props} {...styleProps} ref={ref} />;
 }

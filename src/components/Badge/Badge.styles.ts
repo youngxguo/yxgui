@@ -15,6 +15,7 @@ export type BadgeSize = 'sm' | 'md';
 interface GetBadgeStylePropsOptions {
   variant: BadgeVariant;
   size: BadgeSize;
+  fullWidth: boolean;
   className?: string;
   style?: CSSProperties;
 }
@@ -29,7 +30,11 @@ const badgeStyles = stylex.create({
     fontFamily: typographyTokens.fontFamily,
     fontWeight: typographyTokens.fontWeightMedium,
     lineHeight: typographyTokens.lineHeightTight,
+    width: 'fit-content',
     whiteSpace: 'nowrap'
+  },
+  fullWidth: {
+    width: '100%'
   },
   neutral: {
     backgroundColor: badgeStyleTokens.neutralBackground,
@@ -81,9 +86,20 @@ const badgeSizeStyles: Record<BadgeSize, unknown> = {
   md: badgeStyles.md
 };
 
-export function getBadgeStyleProps({ variant, size, className, style }: GetBadgeStylePropsOptions) {
+export function getBadgeStyleProps({
+  variant,
+  size,
+  fullWidth,
+  className,
+  style
+}: GetBadgeStylePropsOptions) {
   return composeStyleProps(
-    [badgeStyles.root, pickStyle(badgeVariantStyles, variant), pickStyle(badgeSizeStyles, size)],
+    [
+      badgeStyles.root,
+      fullWidth && badgeStyles.fullWidth,
+      pickStyle(badgeVariantStyles, variant),
+      pickStyle(badgeSizeStyles, size)
+    ],
     { className, style }
   );
 }
