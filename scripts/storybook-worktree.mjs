@@ -1,10 +1,14 @@
-import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { promises as fs } from 'node:fs';
 import net from 'node:net';
+import os from 'node:os';
+import path from 'node:path';
 
 const PORT_MIN = 6100;
 const PORT_MAX = 6999;
 const PORT_RANGE = PORT_MAX - PORT_MIN + 1;
+const REGISTRY_DIR = path.join(os.homedir(), '.yxgui', 'storybook-worktree-ports');
 const cliArgs = process.argv.slice(2);
 
 function parsePort(value) {
@@ -20,21 +24,59 @@ function parsePort(value) {
   return parsed;
 }
 
-function hasExplicitPortArg(args) {
-  return args.some(
-    (arg, index) =>
-      arg === '--port' ||
-      arg === '-p' ||
-      arg.startsWith('--port=') ||
-      (index > 0 && args[index - 1] === '--port') ||
-      (index > 0 && args[index - 1] === '-p')
-  );
+function parsePortArg(args) {
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (arg === '--port' || arg === '-p') {
+      return {
+        hasExplicitPortArg: true,
+        port: parsePort(args[index + 1] ?? '')
+      };
+    }
+
+    if (arg.startsWith('--port=')) {
+      return {
+        hasExplicitPortArg: true,
+        port: parsePort(arg.slice('--port='.length))
+      };
+    }
+
+    if (arg.startsWith('-p') && arg.length > 2) {
+      return {
+        hasExplicitPortArg: true,
+        port: parsePort(arg.slice(2))
+      };
+    }
+  }
+
+  return {
+    hasExplicitPortArg: false,
+    port: null
+  };
 }
 
 function getDeterministicWorktreePort() {
   const hash = createHash('sha1').update(process.cwd()).digest();
   const offset = hash.readUInt16BE(0) % PORT_RANGE;
   return PORT_MIN + offset;
+}
+
+function getWorktreeSessionFile(worktree) {
+  const id = createHash('sha1').update(worktree).digest('hex');
+  return path.join(REGISTRY_DIR, `${id}.json`);
+}
+
+function isProcessRunning(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) {
+    return false;
+  }
+
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    return error?.code === 'EPERM';
+  }
 }
 
 function isPortAvailable(port) {
@@ -68,15 +110,142 @@ async function resolvePort() {
   throw new Error(`Could not find an available port between ${PORT_MIN} and ${PORT_MAX}.`);
 }
 
+async function ensureRegistryDir() {
+  await fs.mkdir(REGISTRY_DIR, { recursive: true });
+}
+
+async function readSession(filePath) {
+  try {
+    const raw = await fs.readFile(filePath, 'utf8');
+    const session = JSON.parse(raw);
+
+    if (
+      !session ||
+      typeof session !== 'object' ||
+      typeof session.worktree !== 'string' ||
+      !Number.isInteger(session.pid) ||
+      !Number.isInteger(session.port)
+    ) {
+      return null;
+    }
+
+    return session;
+  } catch {
+    return null;
+  }
+}
+
+async function listSessions() {
+  await ensureRegistryDir();
+  const files = await fs.readdir(REGISTRY_DIR);
+  const entries = [];
+
+  for (const fileName of files) {
+    if (!fileName.endsWith('.json')) {
+      continue;
+    }
+
+    const filePath = path.join(REGISTRY_DIR, fileName);
+    const session = await readSession(filePath);
+    if (!session || !isProcessRunning(session.pid)) {
+      await fs.rm(filePath, { force: true });
+      continue;
+    }
+
+    entries.push(session);
+  }
+
+  entries.sort((entryA, entryB) => entryA.worktree.localeCompare(entryB.worktree));
+  return entries;
+}
+
+async function getSessionForWorktree(worktree) {
+  const filePath = getWorktreeSessionFile(worktree);
+  const session = await readSession(filePath);
+
+  if (!session) {
+    return null;
+  }
+
+  if (!isProcessRunning(session.pid)) {
+    await fs.rm(filePath, { force: true });
+    return null;
+  }
+
+  return session;
+}
+
+async function registerSession({ worktree, port, pid }) {
+  await ensureRegistryDir();
+  const filePath = getWorktreeSessionFile(worktree);
+
+  const payload = {
+    worktree,
+    pid,
+    port,
+    startedAt: new Date().toISOString()
+  };
+
+  await fs.writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+}
+
+async function unregisterSession({ worktree, pid }) {
+  const filePath = getWorktreeSessionFile(worktree);
+  const session = await readSession(filePath);
+
+  if (session && session.pid === pid) {
+    await fs.rm(filePath, { force: true });
+  }
+}
+
+async function printSessions() {
+  const sessions = await listSessions();
+
+  if (sessions.length === 0) {
+    process.stdout.write(
+      '[storybook] No active Storybook sessions found. Start one with `pnpm storybook`.\n'
+    );
+    return;
+  }
+
+  process.stdout.write('[storybook] Active Storybook sessions:\n');
+  for (const session of sessions) {
+    process.stdout.write(
+      `- ${session.worktree} -> http://localhost:${session.port} (pid ${session.pid})\n`
+    );
+  }
+}
+
+async function printCurrentWorktreePort() {
+  const session = await getSessionForWorktree(process.cwd());
+  if (session) {
+    process.stdout.write(`${session.port}\n`);
+    return;
+  }
+
+  const port = await resolvePort();
+  process.stdout.write(`${port}\n`);
+}
+
 async function run() {
+  if (cliArgs[0] === 'ports') {
+    await printSessions();
+    return;
+  }
+
+  if (cliArgs[0] === 'port') {
+    await printCurrentWorktreePort();
+    return;
+  }
+
   const command = process.platform === 'win32' ? 'storybook.cmd' : 'storybook';
-  const hasExplicitPort = hasExplicitPortArg(cliArgs);
-  const port = hasExplicitPort ? null : await resolvePort();
-  const storybookArgs = hasExplicitPort
+  const { hasExplicitPortArg, port: explicitPort } = parsePortArg(cliArgs);
+  const port = hasExplicitPortArg ? explicitPort : await resolvePort();
+  const storybookArgs = hasExplicitPortArg
     ? ['dev', ...cliArgs]
     : ['dev', '-p', String(port), ...cliArgs];
 
-  if (!hasExplicitPort) {
+  if (port) {
     // Keep the selected port visible so parallel worktree runs are easy to track.
     process.stdout.write(`[storybook] ${process.cwd()} -> http://localhost:${port}\n`);
   }
@@ -91,13 +260,39 @@ async function run() {
     process.exit(1);
   });
 
+  if (port && child.pid) {
+    await registerSession({
+      worktree: process.cwd(),
+      port,
+      pid: child.pid
+    });
+  }
+
   child.on('exit', (code, signal) => {
-    if (signal) {
-      process.kill(process.pid, signal);
+    const exitProcess = () => {
+      if (signal) {
+        process.kill(process.pid, signal);
+        return;
+      }
+
+      process.exit(code ?? 1);
+    };
+
+    if (port && child.pid) {
+      unregisterSession({
+        worktree: process.cwd(),
+        pid: child.pid
+      })
+        .catch((error) => {
+          process.stderr.write(
+            `[storybook] warning: failed to update port registry: ${error.message}\n`
+          );
+        })
+        .finally(exitProcess);
       return;
     }
 
-    process.exit(code ?? 1);
+    exitProcess();
   });
 }
 

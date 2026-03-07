@@ -54,6 +54,8 @@
     "typecheck": "tsc --noEmit",
     "build": "pnpm typecheck && vite build",
     "storybook": "node ./scripts/storybook-worktree.mjs",
+    "storybook:port": "node ./scripts/storybook-worktree.mjs port",
+    "storybook:ports": "node ./scripts/storybook-worktree.mjs ports",
     "build-storybook": "storybook build",
     "release:publish": "bash ./scripts/release-publish.sh",
     "prepublishOnly": "pnpm check:quality"

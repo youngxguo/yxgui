@@ -162,6 +162,18 @@ STORYBOOK_PORT=6200 pnpm storybook
 pnpm storybook -- --port 6200
 ```
 
+To list active Storybook sessions (worktree + port), run:
+
+```bash
+pnpm storybook:ports
+```
+
+To print the active (or next auto-assigned) port for the current worktree:
+
+```bash
+pnpm storybook:port
+```
+
 Note: `package.json` includes `pnpm.overrides` forcing `vitest`/`@vitest/mocker` to use Vite 7.
 This avoids a TypeScript type-identity mismatch when `pnpm` otherwise resolves a separate `vite@6`
 inside the Vitest dependency subtree.
