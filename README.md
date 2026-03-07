@@ -92,6 +92,7 @@ Current exported components include:
 - `Carousel` (`CarouselViewport`, `CarouselContent`, `CarouselItem`, `CarouselPrevious`, `CarouselNext`)
 - `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
 - `Checkbox`
+- `Combobox`
 - `Collapsible` (`CollapsibleTrigger`, `CollapsibleContent`)
 - `ContextMenu` (`ContextMenuTrigger`, `ContextMenuContent`, `ContextMenuItem`, `ContextMenuSeparator`)
 - `Drawer` (`DrawerTrigger`, `DrawerContent`, `DrawerHeader`, `DrawerTitle`, `DrawerDescription`, `DrawerFooter`, `DrawerClose`)

@@ -200,6 +200,8 @@ export type {
 } from './components/Sheet/Sheet';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export type { CheckboxProps } from './components/Checkbox/Checkbox';
+export { Combobox } from './components/Combobox/Combobox';
+export type { ComboboxOption, ComboboxProps } from './components/Combobox/Combobox';
 export {
   Collapsible,
   CollapsibleContent,
