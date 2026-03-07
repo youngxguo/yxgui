@@ -4,12 +4,32 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Avatar,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  Button,
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
+  Flex,
+  FormField,
+  FormFieldControl,
+  FormFieldDescription,
+  FormFieldLabel,
+  Input,
+  Progress,
+  Select,
   Separator,
   Table,
   TableBody,
@@ -853,6 +873,353 @@ function DesignSystemOverviewPage() {
   );
 }
 
+const releaseRows = [
+  {
+    id: 'rel-218',
+    owner: 'Platform',
+    risk: 'Low',
+    status: 'Ready',
+    window: 'Mar 10'
+  },
+  {
+    id: 'rel-219',
+    owner: 'Billing',
+    risk: 'Medium',
+    status: 'Review',
+    window: 'Mar 12'
+  },
+  {
+    id: 'rel-220',
+    owner: 'Growth',
+    risk: 'High',
+    status: 'Blocked',
+    window: 'Mar 13'
+  }
+] as const;
+
+const teamMembers = [
+  {
+    initials: 'AL',
+    name: 'Ari Li',
+    role: 'Frontend',
+    status: 'On track'
+  },
+  {
+    initials: 'JC',
+    name: 'June Cho',
+    role: 'Backend',
+    status: 'Needs review'
+  },
+  {
+    initials: 'MN',
+    name: 'Mina Ng',
+    role: 'Design',
+    status: 'On track'
+  }
+] as const;
+
+function getRiskBadgeVariant(risk: string): 'success' | 'warning' | 'error' {
+  if (risk === 'Low') {
+    return 'success';
+  }
+
+  if (risk === 'Medium') {
+    return 'warning';
+  }
+
+  return 'error';
+}
+
+function getStatusBadgeVariant(status: string): 'neutral' | 'warning' | 'error' {
+  if (status === 'Ready') {
+    return 'neutral';
+  }
+
+  if (status === 'Review') {
+    return 'warning';
+  }
+
+  return 'error';
+}
+
+function getMemberStatusBadgeVariant(status: string): 'success' | 'warning' {
+  return status === 'On track' ? 'success' : 'warning';
+}
+
+function ComponentSamplePage() {
+  return (
+    <Flex
+      as="main"
+      direction="column"
+      gap="xxl"
+      style={{ margin: '0 auto', maxWidth: 1080, paddingBottom: spacingTokens.xxxxl }}
+    >
+      <Flex as="header" direction="column" gap="md">
+        <Breadcrumb aria-label="Workspace path">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Workspace</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/releases">Releases</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Command Center</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <Flex align="start" justify="between" wrap="wrap" rowGap="sm" columnGap="md">
+          <Flex direction="column" gap="xxs">
+            <Typography as="h1" variant="h2">
+              Release Command Center
+            </Typography>
+            <Typography variant="muted">
+              A realistic page preview composed entirely from library components.
+            </Typography>
+          </Flex>
+
+          <Flex gap="sm" wrap="wrap">
+            <Button variant="secondary">Preview Build</Button>
+            <Button>Publish Release</Button>
+          </Flex>
+        </Flex>
+      </Flex>
+
+      <Flex as="section" wrap="wrap" gap="lg">
+        <Card style={{ flex: '1 1 220px' }}>
+          <CardHeader>
+            <CardTitle>Release Progress</CardTitle>
+            <CardDescription>Current sprint rollout completion.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Flex direction="column" gap="xs">
+              <Flex align="center" justify="between">
+                <Typography variant="small">Progress</Typography>
+                <Typography variant="small">72%</Typography>
+              </Flex>
+              <Progress aria-label="Release completion" value={72} />
+            </Flex>
+          </CardContent>
+        </Card>
+
+        <Card style={{ flex: '1 1 220px' }}>
+          <CardHeader>
+            <CardTitle>Open Incidents</CardTitle>
+            <CardDescription>Issues linked to this train.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Flex align="center" justify="between">
+              <Typography as="p" variant="h3">
+                4
+              </Typography>
+              <Badge variant="warning">Attention</Badge>
+            </Flex>
+          </CardContent>
+        </Card>
+
+        <Card style={{ flex: '1 1 220px' }}>
+          <CardHeader>
+            <CardTitle>Deploy Health</CardTitle>
+            <CardDescription>Past 24h deployment checks.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Flex align="center" justify="between">
+              <Typography as="p" variant="h3">
+                99.3%
+              </Typography>
+              <Badge variant="success">Stable</Badge>
+            </Flex>
+          </CardContent>
+        </Card>
+      </Flex>
+
+      <Tabs defaultValue="overview">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="team">Team</TabsTrigger>
+          <TabsTrigger value="settings">Settings</TabsTrigger>
+        </TabsList>
+
+        <TabsPanel value="overview">
+          <Flex wrap="wrap" gap="lg">
+            <Card style={{ flex: '2 1 460px' }}>
+              <CardHeader>
+                <CardTitle>Upcoming Windows</CardTitle>
+                <CardDescription>Release windows and readiness status.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableCaption>The next deployment windows for active trains.</TableCaption>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead scope="col">Release</TableHead>
+                      <TableHead scope="col">Owner</TableHead>
+                      <TableHead scope="col">Risk</TableHead>
+                      <TableHead scope="col">Status</TableHead>
+                      <TableHead scope="col">Window</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {releaseRows.map((release) => (
+                      <TableRow key={release.id}>
+                        <TableCell>
+                          <Typography as="code" variant="code">
+                            {release.id}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>{release.owner}</TableCell>
+                        <TableCell>
+                          <Badge variant={getRiskBadgeVariant(release.risk)}>{release.risk}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant={getStatusBadgeVariant(release.status)}>
+                            {release.status}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{release.window}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            <Card style={{ flex: '1 1 280px' }}>
+              <CardHeader>
+                <CardTitle>Checklist</CardTitle>
+                <CardDescription>Gate review before final publish.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Flex
+                  as="ul"
+                  direction="column"
+                  gap="sm"
+                  style={{ listStyle: 'none', margin: 0, padding: 0 }}
+                >
+                  <li>
+                    <Typography>QA regression passed in staging.</Typography>
+                  </li>
+                  <li>
+                    <Typography>Accessibility spot checks completed.</Typography>
+                  </li>
+                  <li>
+                    <Typography>Rollback plan approved by on-call.</Typography>
+                  </li>
+                </Flex>
+              </CardContent>
+              <CardFooter>
+                <Button size="sm" variant="ghost">
+                  Open runbook
+                </Button>
+              </CardFooter>
+            </Card>
+          </Flex>
+        </TabsPanel>
+
+        <TabsPanel value="team">
+          <Card>
+            <CardHeader>
+              <CardTitle>Release Team</CardTitle>
+              <CardDescription>Owners assigned to this deployment cycle.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead scope="col">Member</TableHead>
+                    <TableHead scope="col">Role</TableHead>
+                    <TableHead scope="col">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {teamMembers.map((member) => (
+                    <TableRow key={member.name}>
+                      <TableCell>
+                        <Flex align="center" gap="sm">
+                          <Avatar alt={member.name} size="sm">
+                            {member.initials}
+                          </Avatar>
+                          <Typography>{member.name}</Typography>
+                        </Flex>
+                      </TableCell>
+                      <TableCell>{member.role}</TableCell>
+                      <TableCell>
+                        <Badge variant={getMemberStatusBadgeVariant(member.status)}>
+                          {member.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsPanel>
+
+        <TabsPanel value="settings">
+          <Flex wrap="wrap" gap="lg">
+            <Card style={{ flex: '2 1 420px' }}>
+              <CardHeader>
+                <CardTitle>Notification Defaults</CardTitle>
+                <CardDescription>Configure rollout alerts for this workspace.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Flex direction="column" gap="md">
+                  <FormField>
+                    <FormFieldLabel>Primary channel</FormFieldLabel>
+                    <FormFieldControl>
+                      <Select defaultValue="slack">
+                        <option value="slack">Slack</option>
+                        <option value="email">Email</option>
+                        <option value="pagerduty">PagerDuty</option>
+                      </Select>
+                    </FormFieldControl>
+                    <FormFieldDescription>
+                      Incident and rollout alerts are sent here.
+                    </FormFieldDescription>
+                  </FormField>
+
+                  <FormField>
+                    <FormFieldLabel>Escalation contact</FormFieldLabel>
+                    <FormFieldControl>
+                      <Input defaultValue="oncall@company.com" />
+                    </FormFieldControl>
+                    <FormFieldDescription>
+                      Used when deployment health drops below threshold.
+                    </FormFieldDescription>
+                  </FormField>
+                </Flex>
+              </CardContent>
+              <CardFooter>
+                <Button variant="secondary">Cancel</Button>
+                <Button>Save changes</Button>
+              </CardFooter>
+            </Card>
+
+            <Card style={{ flex: '1 1 280px' }}>
+              <CardHeader>
+                <CardTitle>Policy Notice</CardTitle>
+                <CardDescription>Current enforcement state for production pushes.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Alert variant="info">
+                  <AlertTitle>Approval required</AlertTitle>
+                  <AlertDescription>
+                    At least one reviewer from Platform must approve a high-risk release.
+                  </AlertDescription>
+                </Alert>
+              </CardContent>
+            </Card>
+          </Flex>
+        </TabsPanel>
+      </Tabs>
+    </Flex>
+  );
+}
+
 const meta = {
   title: 'Foundations/Design System Overview',
   parameters: {
@@ -866,4 +1233,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Overview: Story = {
   render: () => <DesignSystemOverviewPage />
+};
+
+export const ComponentPage: Story = {
+  render: () => <ComponentSamplePage />
 };
