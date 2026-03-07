@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
 import { floatingPrimitives } from '../../styles/floating';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import {
   radiusTokens,
   shadowTokens,
@@ -54,21 +55,21 @@ const comboboxStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     paddingBottom: spacingTokens.xxs,
-    paddingLeft: spacingTokens.half,
+    paddingLeft: spacingTokens.sm,
     paddingTop: spacingTokens.xxs
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     paddingBottom: spacingTokens.xs,
     paddingLeft: spacingTokens.lg,
     paddingTop: spacingTokens.xs
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: spacingTokens.xxxxl,
+    minHeight: componentSizeTokens.sizeLg,
     paddingBottom: spacingTokens.sm,
     paddingLeft: spacingTokens.xl,
     paddingTop: spacingTokens.sm
@@ -101,7 +102,7 @@ const comboboxStyles = stylex.create({
     display: 'flex',
     fontFamily: typographyTokens.fontFamily,
     justifyContent: 'space-between',
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     padding: `${spacingTokens.xxs} ${spacingTokens.sm}`,
     textAlign: 'left',
     width: '100%'
