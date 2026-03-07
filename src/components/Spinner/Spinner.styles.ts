@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import { colorTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type SpinnerSize = 'sm' | 'md' | 'lg';
@@ -26,12 +27,12 @@ const spinnerStyles = stylex.create({
     width: spacingTokens.xl
   },
   md: {
-    height: spacingTokens.xxl,
-    width: spacingTokens.xxl
+    height: spacingTokens.xl,
+    width: spacingTokens.xl
   },
   lg: {
-    height: spacingTokens.xxxl,
-    width: spacingTokens.xxxl
+    height: componentSizeTokens.sizeMd,
+    width: componentSizeTokens.sizeMd
   },
   svg: {
     display: 'block',

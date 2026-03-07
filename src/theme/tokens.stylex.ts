@@ -19,7 +19,8 @@ import {
   badgeStyleTokens,
   buttonInteractionTokens,
   buttonVariantTokens,
-  cardElevationTokens
+  cardElevationTokens,
+  componentSizeTokens
 } from './tokens/componentTokens.stylex';
 
 export {
@@ -39,5 +40,6 @@ export {
   badgeStyleTokens,
   buttonInteractionTokens,
   buttonVariantTokens,
-  cardElevationTokens
+  cardElevationTokens,
+  componentSizeTokens
 };

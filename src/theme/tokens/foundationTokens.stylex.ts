@@ -33,17 +33,12 @@ export const radiusTokens = stylex.defineConsts({
 /** Primary spacing scale used for layout gaps, padding, and compact control heights. */
 export const spacingTokens = stylex.defineConsts({
   xxxs: '0.125rem',
-  xxs: '0.2rem',
-  half: '0.4375rem',
-  xs: '0.333rem',
-  sm: '0.4rem',
-  md: '0.5rem',
-  lg: '0.625rem',
-  xl: '0.875rem',
-  xxl: '1.25rem',
-  xxxl: '1.75rem',
-  xxxxl: '2.25rem',
-  xxxxxl: '2.75rem'
+  xxs: '0.25rem',
+  xs: '0.375rem',
+  sm: '0.5rem',
+  md: '0.625rem',
+  lg: '0.75rem',
+  xl: '1rem'
 });
 
 /** Shared stacking layers for floating UI and local positioned elements. */
@@ -54,8 +49,8 @@ export const layerTokens = stylex.defineConsts({
 
 /** Reusable elevation shadows for controls and floating surfaces. */
 export const shadowTokens = stylex.defineConsts({
-  floating: '0 6px 16px rgba(0,0,0,0.22)',
-  controlThumb: '0 1px 2px rgba(0,0,0,0.15)'
+  floating: 'none',
+  controlThumb: 'none'
 });
 
 /** Shared motion durations and easing curves for UI transitions and entrances. */

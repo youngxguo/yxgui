@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
 import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type TextareaSize = ControlLikeSize;
 
@@ -19,17 +20,17 @@ const textareaStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: '5rem',
+    minHeight: componentSizeTokens.textareaMinHeightSm,
     padding: `${spacingTokens.xs} ${spacingTokens.md}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: '6rem',
-    padding: `${spacingTokens.half} ${spacingTokens.lg}`
+    minHeight: componentSizeTokens.textareaMinHeightMd,
+    padding: `${spacingTokens.sm} ${spacingTokens.lg}`
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: '7rem',
+    minHeight: componentSizeTokens.textareaMinHeightLg,
     padding: `${spacingTokens.sm} ${spacingTokens.xl}`
   }
 });

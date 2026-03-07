@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import {
   radiusTokens,
   spacingTokens,
@@ -44,18 +45,18 @@ const avatarStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    height: spacingTokens.xxxl,
-    width: spacingTokens.xxxl
+    height: spacingTokens.xl,
+    width: spacingTokens.xl
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    height: spacingTokens.xxxxl,
-    width: spacingTokens.xxxxl
+    height: componentSizeTokens.sizeMd,
+    width: componentSizeTokens.sizeMd
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    height: spacingTokens.xxxxxl,
-    width: spacingTokens.xxxxxl
+    height: componentSizeTokens.sizeLg,
+    width: componentSizeTokens.sizeLg
   },
   circle: {
     borderRadius: radiusTokens.pill

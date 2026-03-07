@@ -63,7 +63,7 @@ const badgeStyles = stylex.create({
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: spacingTokens.xxl,
+    minHeight: spacingTokens.xl,
     padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   }
 });

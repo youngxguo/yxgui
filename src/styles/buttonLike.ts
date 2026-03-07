@@ -9,6 +9,7 @@ import {
 } from '../theme/tokens/foundationTokens.stylex';
 import { borderTokens, colorTokens } from '../theme/tokens/semanticTokens.stylex';
 import {
+  componentSizeTokens,
   buttonInteractionTokens,
   buttonVariantTokens
 } from '../theme/tokens/componentTokens.stylex';
@@ -107,18 +108,18 @@ const buttonLikeStyles = stylex.create({
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: spacingTokens.xxxl,
-    padding: `${spacingTokens.xxs} ${spacingTokens.half}`
+    minHeight: componentSizeTokens.sizeMd,
+    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: spacingTokens.xxxxl,
-    padding: `${spacingTokens.half} ${spacingTokens.xl}`
+    minHeight: componentSizeTokens.sizeLg,
+    padding: `${spacingTokens.sm} ${spacingTokens.xl}`
   }
 });
 

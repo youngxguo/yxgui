@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
+import { spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
 import { borderTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type SeparatorOrientation = 'horizontal' | 'vertical';
@@ -17,14 +18,14 @@ const separatorStyles = stylex.create({
     flexShrink: 0
   },
   horizontal: {
-    height: '1px',
+    height: borderTokens.widthThin,
     width: '100%'
   },
   vertical: {
     alignSelf: 'stretch',
     height: '100%',
-    minHeight: '1rem',
-    width: '1px'
+    minHeight: spacingTokens.xl,
+    width: borderTokens.widthThin
   }
 });
 

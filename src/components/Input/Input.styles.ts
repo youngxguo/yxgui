@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
 import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type InputSize = ControlLikeSize;
 
@@ -15,18 +16,18 @@ interface GetInputStylePropsOptions {
 const inputStyles = stylex.create({
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: spacingTokens.xxxl,
-    padding: `${spacingTokens.xxs} ${spacingTokens.half}`
+    minHeight: componentSizeTokens.sizeMd,
+    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     padding: `${spacingTokens.xs} ${spacingTokens.lg}`
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: spacingTokens.xxxxl,
-    padding: `${spacingTokens.half} ${spacingTokens.xl}`
+    minHeight: componentSizeTokens.sizeLg,
+    padding: `${spacingTokens.sm} ${spacingTokens.xl}`
   }
 });
 

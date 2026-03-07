@@ -21,10 +21,10 @@ describe('Flex', () => {
   });
 
   it('supports token-backed gap, rowGap, and columnGap styles', () => {
-    render(<Flex data-testid="flex" gap="lg" rowGap="md" columnGap="xxl" />);
+    render(<Flex data-testid="flex" gap="lg" rowGap="md" columnGap="xl" />);
 
     const flex = screen.getByTestId('flex');
-    expect(flex).toHaveStyle({ gap: '0.625rem', rowGap: '0.5rem', columnGap: '1.25rem' });
+    expect(flex).toHaveStyle({ gap: '0.75rem', rowGap: '0.625rem', columnGap: '1rem' });
   });
 
   it('updates style composition when direction and wrap change', () => {

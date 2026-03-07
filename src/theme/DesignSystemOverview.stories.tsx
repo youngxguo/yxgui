@@ -52,6 +52,7 @@ import {
   buttonInteractionTokens,
   buttonVariantTokens,
   cardElevationTokens,
+  componentSizeTokens,
   controlTokens,
   layerTokens,
   motionTokens,
@@ -192,6 +193,13 @@ const tokenGroups: TokenGroup[] = [
     name: 'Card Elevation',
     description: 'Card-only elevation/shadow tuning so card changes remain isolated.',
     tokens: cardElevationTokens as TokenMap
+  },
+  {
+    id: 'componentSize',
+    name: 'Component Size',
+    description:
+      'Component-specific fixed dimensions that intentionally sit outside spacing scale.',
+    tokens: componentSizeTokens as TokenMap
   }
 ];
 

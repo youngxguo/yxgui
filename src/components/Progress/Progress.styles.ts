@@ -21,7 +21,7 @@ const progressStyles = stylex.create({
     width: '100%'
   },
   sm: { height: spacingTokens.xs },
-  md: { height: spacingTokens.half },
+  md: { height: spacingTokens.sm },
   lg: { height: spacingTokens.lg },
   indicator: {
     backgroundColor: colorTokens.accent,

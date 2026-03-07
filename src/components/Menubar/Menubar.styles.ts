@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import {
   radiusTokens,
   spacingTokens,
@@ -25,7 +26,7 @@ const menubarStyles = stylex.create({
     cursor: 'pointer',
     fontFamily: typographyTokens.fontFamily,
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     padding: `0 ${spacingTokens.sm}`
   },
   triggerHover: {

@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 
 const inputOtpStyles = stylex.create({
   root: {
@@ -18,7 +19,7 @@ const inputOtpStyles = stylex.create({
     fontWeight: typographyTokens.fontWeightMedium,
     padding: 0,
     textAlign: 'center',
-    width: '2.25rem'
+    width: componentSizeTokens.inputOtpSlotWidth
   },
   separator: {
     userSelect: 'none'

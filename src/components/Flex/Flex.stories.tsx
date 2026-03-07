@@ -35,54 +35,15 @@ const meta = {
     },
     gap: {
       control: 'select',
-      options: [
-        'xxxs',
-        'xxs',
-        'half',
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'xl',
-        'xxl',
-        'xxxl',
-        'xxxxl',
-        'xxxxxl'
-      ]
+      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
     },
     rowGap: {
       control: 'select',
-      options: [
-        'xxxs',
-        'xxs',
-        'half',
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'xl',
-        'xxl',
-        'xxxl',
-        'xxxxl',
-        'xxxxxl'
-      ]
+      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
     },
     columnGap: {
       control: 'select',
-      options: [
-        'xxxs',
-        'xxs',
-        'half',
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'xl',
-        'xxl',
-        'xxxl',
-        'xxxxl',
-        'xxxxxl'
-      ]
+      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
     }
   }
 } satisfies Meta<typeof Flex>;

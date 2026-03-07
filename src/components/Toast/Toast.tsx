@@ -48,7 +48,7 @@ export function Toaster({
   visibleToasts = 4,
   expand = false,
   containerAriaLabel = 'Notifications',
-  offset = spacingTokens.xxl,
+  offset = spacingTokens.xl,
   mobileOffset = spacingTokens.xl,
   toastOptions,
   ...props

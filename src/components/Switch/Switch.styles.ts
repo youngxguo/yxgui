@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import {
   motionTokens,
   radiusTokens,
@@ -49,11 +50,11 @@ const switchStyles = stylex.create({
   },
   sm: {
     height: spacingTokens.xl,
-    width: spacingTokens.xxxl
+    width: componentSizeTokens.sizeMd
   },
   md: {
-    height: spacingTokens.xxl,
-    width: spacingTokens.xxxxl
+    height: spacingTokens.xl,
+    width: componentSizeTokens.sizeLg
   },
   thumb: {
     backgroundColor: controlTokens.background,

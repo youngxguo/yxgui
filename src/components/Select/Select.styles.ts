@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { CSSProperties } from 'react';
 import { getControlLikeStyleProps, type ControlLikeSize } from '../../styles/controlLike';
 import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type SelectSize = ControlLikeSize;
 
@@ -15,25 +16,25 @@ interface GetSelectStylePropsOptions {
 const selectStyles = stylex.create({
   root: {
     cursor: 'pointer',
-    paddingRight: spacingTokens.xxxl
+    paddingRight: componentSizeTokens.sizeMd
   },
   sm: {
     fontSize: typographyTokens.fontSizeSm,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     paddingBottom: spacingTokens.xxs,
-    paddingLeft: spacingTokens.half,
+    paddingLeft: spacingTokens.sm,
     paddingTop: spacingTokens.xxs
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
-    minHeight: spacingTokens.xxxl,
+    minHeight: componentSizeTokens.sizeMd,
     paddingBottom: spacingTokens.xs,
     paddingLeft: spacingTokens.lg,
     paddingTop: spacingTokens.xs
   },
   lg: {
     fontSize: typographyTokens.fontSizeLg,
-    minHeight: spacingTokens.xxxxl,
+    minHeight: componentSizeTokens.sizeLg,
     paddingBottom: spacingTokens.sm,
     paddingLeft: spacingTokens.xl,
     paddingTop: spacingTokens.sm

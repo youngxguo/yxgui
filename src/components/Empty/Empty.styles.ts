@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const emptyStyles = stylex.create({
@@ -14,7 +15,7 @@ const emptyStyles = stylex.create({
     display: 'grid',
     gap: spacingTokens.lg,
     justifyItems: 'center',
-    padding: spacingTokens.xxxl,
+    padding: spacingTokens.xl,
     textAlign: 'center',
     width: '100%'
   },
@@ -25,8 +26,8 @@ const emptyStyles = stylex.create({
     color: colorTokens.accent,
     display: 'inline-flex',
     justifyContent: 'center',
-    minHeight: spacingTokens.xxxxxl,
-    minWidth: spacingTokens.xxxxxl,
+    minHeight: componentSizeTokens.sizeLg,
+    minWidth: componentSizeTokens.sizeLg,
     padding: spacingTokens.md
   },
   header: {

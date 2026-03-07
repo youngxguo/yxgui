@@ -11,16 +11,11 @@ export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 const flexGapTokens = {
   xxxs: spacingTokens.xxxs,
   xxs: spacingTokens.xxs,
-  half: spacingTokens.half,
   xs: spacingTokens.xs,
   sm: spacingTokens.sm,
   md: spacingTokens.md,
   lg: spacingTokens.lg,
-  xl: spacingTokens.xl,
-  xxl: spacingTokens.xxl,
-  xxxl: spacingTokens.xxxl,
-  xxxxl: spacingTokens.xxxxl,
-  xxxxxl: spacingTokens.xxxxxl
+  xl: spacingTokens.xl
 } as const;
 
 export type FlexGap = keyof typeof flexGapTokens;

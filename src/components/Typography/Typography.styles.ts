@@ -82,7 +82,7 @@ const typographyStyles = stylex.create({
     borderRadius: radiusTokens.sm,
     fontFamily: typographyTokens.fontFamilyMono,
     fontSize: typographyTokens.fontSizeSm,
-    padding: '0.12rem 0.35rem'
+    padding: `${spacingTokens.xxxs} ${spacingTokens.xs}`
   },
   blockquote: {
     borderLeftColor: borderTokens.strong,

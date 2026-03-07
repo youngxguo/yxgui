@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { getButtonLikeStyleProps } from '../../styles/buttonLike';
 import { composeStyleProps, type StyleRecipeOverrides } from '../../styles/recipes';
 import { spacingTokens, typographyTokens } from '../../theme/tokens/foundationTokens.stylex';
+import { componentSizeTokens } from '../../theme/tokens/componentTokens.stylex';
 import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 const paginationStyles = stylex.create({
@@ -20,7 +21,7 @@ const paginationStyles = stylex.create({
     display: 'inline-flex'
   },
   linkAdjustments: {
-    minWidth: spacingTokens.xxxl,
+    minWidth: componentSizeTokens.sizeMd,
     padding: `0 ${spacingTokens.sm}`,
     textDecoration: 'none'
   },

@@ -386,5 +386,6 @@ export {
   badgeStyleTokens,
   buttonInteractionTokens,
   buttonVariantTokens,
-  cardElevationTokens
+  cardElevationTokens,
+  componentSizeTokens
 } from './theme/tokens.stylex';

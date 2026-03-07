@@ -111,7 +111,7 @@ export function getSonnerButtonStyles() {
       color: buttonVariantTokens.primaryForeground,
       fontFamily: typographyTokens.fontFamily,
       fontWeight: typographyTokens.fontWeightMedium,
-      padding: `${spacingTokens.xxs} ${spacingTokens.half}`
+      padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
     },
     cancel: {
       background: surfaceTokens.soft,
@@ -119,7 +119,7 @@ export function getSonnerButtonStyles() {
       color: colorTokens.foreground,
       fontFamily: typographyTokens.fontFamily,
       fontWeight: typographyTokens.fontWeightMedium,
-      padding: `${spacingTokens.xxs} ${spacingTokens.half}`
+      padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
     },
     close: {
       background: surfaceTokens.elevated,
