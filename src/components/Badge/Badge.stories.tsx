@@ -10,7 +10,8 @@ const meta = {
   args: {
     children: 'Badge',
     variant: 'neutral',
-    size: 'md'
+    size: 'md',
+    fullWidth: false
   },
   argTypes: {
     variant: {
@@ -20,6 +21,9 @@ const meta = {
     size: {
       control: 'select',
       options: ['sm', 'md']
+    },
+    fullWidth: {
+      control: 'boolean'
     }
   }
 } satisfies Meta<typeof Badge>;
@@ -65,6 +69,26 @@ export const Sizes: Story = {
       </Badge>
       <Badge {...args} size="md">
         Medium
+      </Badge>
+    </div>
+  )
+};
+
+export const InColumnFlex: Story = {
+  render: (args: ComponentProps<typeof Badge>) => (
+    <div
+      style={{
+        border: '1px dashed #d4d4d8',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        padding: '0.75rem',
+        width: '20rem'
+      }}
+    >
+      <Badge {...args}>Intrinsic width (default)</Badge>
+      <Badge {...args} fullWidth>
+        Full width (opt-in)
       </Badge>
     </div>
   )
