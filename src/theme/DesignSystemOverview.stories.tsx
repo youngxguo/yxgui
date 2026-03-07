@@ -959,8 +959,8 @@ function ComponentSamplePage() {
     <Flex
       as="main"
       direction="column"
-      gap="xxl"
-      style={{ margin: '0 auto', maxWidth: 1080, paddingBottom: spacingTokens.xxxxl }}
+      gap="xl"
+      style={{ margin: '0 auto', maxWidth: 1080, paddingBottom: spacingTokens.xl }}
     >
       <Flex as="header" direction="column" gap="md">
         <Breadcrumb aria-label="Workspace path">
