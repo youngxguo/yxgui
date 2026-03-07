@@ -13,6 +13,8 @@ import {
 } from 'react';
 import { Portal } from '../_internal/Portal';
 import { getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getTooltipContentStyleProps, getTooltipTriggerWrapStyleProps } from './Tooltip.styles';
 
@@ -31,6 +33,7 @@ export interface TooltipContentProps extends HTMLAttributes<HTMLDivElement> {
 export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
   const id = useId();
   const wrapperRef = useRef<HTMLSpanElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const [open, setOpen] = useState(false);
   const position = useFloatingPosition({
@@ -83,6 +86,7 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
     clearScheduledOpen();
     setOpen(false);
   };
+  useEntranceAnimation(contentRef, open, 'tooltip');
 
   if (!isValidElement(children)) {
     return children;
@@ -135,7 +139,7 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
       </span>
       {open ? (
         <Portal>
-          <div {...contentStyleProps} id={id} role="tooltip" data-state="open">
+          <div {...contentStyleProps} ref={contentRef} id={id} role="tooltip" data-state="open">
             {content}
           </div>
         </Portal>
@@ -145,8 +149,19 @@ export function Tooltip({ content, children, openDelay = 0 }: TooltipProps) {
 }
 
 export function TooltipContent({ ref, className, style, ...props }: TooltipContentProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  useEntranceAnimation(contentRef, true, 'tooltip');
   const styleProps = getTooltipContentStyleProps({ className, style });
   return (
-    <div {...props} {...styleProps} ref={ref} role={props.role ?? 'tooltip'} data-state="open" />
+    <div
+      {...props}
+      {...styleProps}
+      ref={(node) => {
+        contentRef.current = node;
+        assignRef(ref, node);
+      }}
+      role={props.role ?? 'tooltip'}
+      data-state="open"
+    />
   );
 }

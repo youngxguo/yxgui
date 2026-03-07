@@ -3,6 +3,7 @@ import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../s
 import { uiPrimitives } from '../../styles/primitives';
 import {
   layerTokens,
+  motionTokens,
   radiusTokens,
   spacingTokens
 } from '../../theme/tokens/foundationTokens.stylex';
@@ -24,9 +25,9 @@ const carouselStyles = stylex.create({
   },
   content: {
     display: 'flex',
-    transitionDuration: '180ms',
+    transitionDuration: motionTokens.durationModerate,
     transitionProperty: 'transform',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: motionTokens.easingEmphasized,
     width: '100%',
     willChange: 'transform'
   },

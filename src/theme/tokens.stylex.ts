@@ -1,5 +1,6 @@
 import {
   layerTokens,
+  motionTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens,
@@ -23,6 +24,7 @@ import {
 
 export {
   layerTokens,
+  motionTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens,

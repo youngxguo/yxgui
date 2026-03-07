@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import {
+  motionTokens,
   radiusTokens,
   spacingTokens,
   typographyTokens
@@ -19,9 +20,9 @@ const focusVisibleOutline = {
 } as const;
 
 const interactiveTransition = {
-  transitionDuration: '120ms',
+  transitionDuration: motionTokens.durationFast,
   transitionProperty: 'transform, box-shadow, background-color, border-color, color',
-  transitionTimingFunction: 'ease'
+  transitionTimingFunction: motionTokens.easingStandard
 } as const;
 
 const disabledCursor = {

@@ -1,6 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
 import { composeStyleProps, pickStyle, type StyleRecipeOverrides } from '../../styles/recipes';
-import { radiusTokens, spacingTokens } from '../../theme/tokens/foundationTokens.stylex';
+import {
+  motionTokens,
+  radiusTokens,
+  spacingTokens
+} from '../../theme/tokens/foundationTokens.stylex';
 import { borderTokens, colorTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
 
 export type ProgressSize = 'sm' | 'md' | 'lg';
@@ -23,9 +27,9 @@ const progressStyles = stylex.create({
     backgroundColor: colorTokens.accent,
     borderRadius: radiusTokens.pill,
     height: '100%',
-    transitionDuration: '160ms',
+    transitionDuration: motionTokens.durationModerate,
     transitionProperty: 'width',
-    transitionTimingFunction: 'ease'
+    transitionTimingFunction: motionTokens.easingStandard
   }
 });
 

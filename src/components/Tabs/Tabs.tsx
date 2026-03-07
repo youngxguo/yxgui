@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useId,
+  useRef,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
@@ -10,7 +11,9 @@ import {
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import {
   getTabsListStyleProps,
   getTabsPanelStyleProps,
@@ -197,15 +200,20 @@ export function TabsTrigger({
 export function TabsPanel({ ref, value, className, style, hidden, ...props }: TabsPanelProps) {
   const context = useTabsContext('TabsPanel');
   const selected = context.value === value;
+  const panelRef = useRef<HTMLDivElement>(null);
   const styleProps = getTabsPanelStyleProps({ className, style });
   const triggerId = `${context.baseId}-tab-${value}`;
   const panelId = `${context.baseId}-panel-${value}`;
+  useEntranceAnimation(panelRef, selected, 'disclosure');
 
   return (
     <Card
       {...props}
       {...styleProps}
-      ref={ref}
+      ref={(node) => {
+        panelRef.current = node;
+        assignRef(ref, node);
+      }}
       role="tabpanel"
       id={panelId}
       aria-labelledby={triggerId}

@@ -17,6 +17,7 @@ import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import {
   getDialogCloseStyleProps,
   getDialogContentStyleProps,
@@ -64,6 +65,7 @@ export interface DialogTriggerProps extends Omit<ButtonProps, 'type'>, BaseStyle
 export interface DialogContentProps extends HTMLAttributes<HTMLDivElement>, BaseStyleProps {
   ref?: Ref<HTMLDivElement>;
   closeOnOverlayClick?: boolean;
+  'data-side'?: 'bottom' | 'left' | 'right';
 }
 
 export interface DialogTitleProps extends HTMLAttributes<HTMLHeadingElement>, BaseStyleProps {
@@ -152,8 +154,20 @@ export function DialogContent({
   ...props
 }: DialogContentProps) {
   const context = useDialogContext('DialogContent');
+  const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusedRef = useRef<HTMLElement | null>(null);
+  const dataSide = props['data-side'];
+  const contentAnimationPreset =
+    dataSide === 'left'
+      ? 'drawerLeft'
+      : dataSide === 'right'
+        ? 'drawerRight'
+        : dataSide === 'bottom'
+          ? 'drawerBottom'
+          : 'dialogContent';
+  useEntranceAnimation(overlayRef, context.open, 'dialogOverlay');
+  useEntranceAnimation(contentRef, context.open, contentAnimationPreset);
 
   useEffect(() => {
     if (!context.open) {
@@ -197,6 +211,7 @@ export function DialogContent({
     <Portal>
       <div
         {...overlayStyleProps}
+        ref={overlayRef}
         data-state="open"
         onMouseDown={(event) => {
           if (event.target === event.currentTarget && closeOnOverlayClick) {

@@ -12,6 +12,7 @@ import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import {
   getAccordionContentInnerStyleProps,
   getAccordionContentStyleProps,
@@ -364,14 +365,19 @@ export function AccordionContent({
   ...props
 }: AccordionContentProps) {
   const item = useAccordionItemContext('AccordionContent');
+  const contentRef = useRef<HTMLDivElement>(null);
   const styleProps = getAccordionContentStyleProps({ className, style });
   const innerStyleProps = getAccordionContentInnerStyleProps();
+  useEntranceAnimation(contentRef, item.open, 'disclosure');
 
   return (
     <div
       {...props}
       {...styleProps}
-      ref={ref}
+      ref={(node) => {
+        contentRef.current = node;
+        assignRef(ref, node);
+      }}
       id={item.contentId}
       role="region"
       aria-labelledby={item.triggerId}

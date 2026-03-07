@@ -15,6 +15,7 @@ import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import { getPopoverContentStyleProps } from './Popover.styles';
 
@@ -133,6 +134,7 @@ export function PopoverContent({
     offset,
     matchWidth: matchTriggerWidth
   });
+  useEntranceAnimation(contentRef, context.open, 'floating');
 
   useDismissableLayer({
     open: context.open,

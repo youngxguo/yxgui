@@ -34,6 +34,7 @@ import {
   cardElevationTokens,
   controlTokens,
   layerTokens,
+  motionTokens,
   overlayTokens,
   radiusTokens,
   shadowTokens,
@@ -123,6 +124,12 @@ const tokenGroups: TokenGroup[] = [
     name: 'Shadow',
     description: 'Shared elevation shadows for floating surfaces and controls.',
     tokens: shadowTokens as TokenMap
+  },
+  {
+    id: 'motion',
+    name: 'Motion',
+    description: 'Durations and easing curves for transitions and entrance animations.',
+    tokens: motionTokens as TokenMap
   },
   {
     id: 'spacing',

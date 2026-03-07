@@ -16,6 +16,7 @@ import { getDataStateAttribute } from '../_internal/dataAttributes';
 import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import {
   getDropdownMenuContentStyleProps,
@@ -159,6 +160,7 @@ export function DropdownMenuContent({
     offset,
     matchWidth: false
   });
+  useEntranceAnimation(contentRef, context.open, 'floating');
 
   useEffect(() => {
     if (!context.open) {

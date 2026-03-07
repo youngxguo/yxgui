@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useId,
+  useRef,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
@@ -9,7 +10,9 @@ import {
 } from 'react';
 import { Button, type ButtonProps } from '../Button/Button';
 import { Card } from '../Card/Card';
+import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import {
   getCollapsibleContentInnerStyleProps,
   getCollapsibleContentStyleProps,
@@ -157,14 +160,19 @@ export function CollapsibleContent({
   ...props
 }: CollapsibleContentProps) {
   const context = useCollapsibleContext('CollapsibleContent');
+  const contentRef = useRef<HTMLDivElement>(null);
   const contentStyleProps = getCollapsibleContentStyleProps({ className, style });
   const innerStyleProps = getCollapsibleContentInnerStyleProps();
+  useEntranceAnimation(contentRef, context.open, 'disclosure');
 
   return (
     <div
       {...props}
       {...contentStyleProps}
-      ref={ref}
+      ref={(node) => {
+        contentRef.current = node;
+        assignRef(ref, node);
+      }}
       id={context.contentId}
       role="region"
       aria-labelledby={context.triggerId}

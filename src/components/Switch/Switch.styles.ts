@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { composeStyleProps, pickStyle } from '../../styles/recipes';
 import { uiPrimitives } from '../../styles/primitives';
 import {
+  motionTokens,
   radiusTokens,
   shadowTokens,
   spacingTokens
@@ -59,9 +60,9 @@ const switchStyles = stylex.create({
     borderRadius: radiusTokens.pill,
     boxShadow: shadowTokens.controlThumb,
     display: 'block',
-    transitionDuration: '120ms',
+    transitionDuration: motionTokens.durationFast,
     transitionProperty: 'transform',
-    transitionTimingFunction: 'ease'
+    transitionTimingFunction: motionTokens.easingStandard
   },
   thumbSm: {
     height: spacingTokens.lg,

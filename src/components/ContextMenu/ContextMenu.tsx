@@ -16,6 +16,7 @@ import { assignRef } from '../_internal/refs';
 import { Separator } from '../Separator/Separator';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
+import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
 import {
   getContextMenuContentStyleProps,
   getContextMenuItemStyleProps,
@@ -174,6 +175,7 @@ export function ContextMenuContent({
 }: ContextMenuContentProps) {
   const context = useContextMenuContext('ContextMenuContent');
   const contentRef = useRef<HTMLDivElement>(null);
+  useEntranceAnimation(contentRef, context.open, 'floating');
 
   useEffect(() => {
     if (!context.open) {

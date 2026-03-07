@@ -57,3 +57,12 @@ export const shadowTokens = stylex.defineConsts({
   floating: '0 6px 16px rgba(0,0,0,0.22)',
   controlThumb: '0 1px 2px rgba(0,0,0,0.15)'
 });
+
+/** Shared motion durations and easing curves for UI transitions and entrances. */
+export const motionTokens = stylex.defineConsts({
+  durationFast: '120ms',
+  durationModerate: '180ms',
+  durationSlow: '230ms',
+  easingStandard: 'cubic-bezier(0.2, 0, 0, 1)',
+  easingEmphasized: 'cubic-bezier(0.16, 1, 0.3, 1)'
+});

@@ -372,6 +372,7 @@ export {
   colorTokens,
   controlTokens,
   layerTokens,
+  motionTokens,
   overlayTokens,
   radiusTokens,
   shadowTokens,
