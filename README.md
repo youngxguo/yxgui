@@ -153,6 +153,14 @@ pnpm format
 pnpm build
 ```
 
+`pnpm storybook` now auto-selects a stable port per worktree in the `6100-6999` range.
+To force a specific port, set `STORYBOOK_PORT` or pass a CLI override:
+
+```bash
+STORYBOOK_PORT=6200 pnpm storybook
+pnpm storybook -- --port 6200
+```
+
 Note: `package.json` includes `pnpm.overrides` forcing `vitest`/`@vitest/mocker` to use Vite 7.
 This avoids a TypeScript type-identity mismatch when `pnpm` otherwise resolves a separate `vite@6`
 inside the Vitest dependency subtree.
