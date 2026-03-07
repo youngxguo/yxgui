@@ -108,6 +108,16 @@ export type {
   EmptyProps,
   EmptyTitleProps
 } from './components/Empty/Empty';
+export { Flex } from './components/Flex/Flex';
+export type {
+  FlexAlign,
+  FlexDirection,
+  FlexElement,
+  FlexGap,
+  FlexJustify,
+  FlexProps,
+  FlexWrap
+} from './components/Flex/Flex';
 export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard/HoverCard';
 export type {
   HoverCardContentProps,

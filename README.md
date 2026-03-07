@@ -98,6 +98,7 @@ Current exported components include:
 - `Dialog` (`DialogTrigger`, `DialogContent`, `DialogTitle`, `DialogDescription`, `DialogFooter`, `DialogClose`)
 - `DropdownMenu` (`DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`)
 - `FormField` (`FormFieldLabel`, `FormFieldControl`, `FormFieldDescription`, `FormFieldError`)
+- `Flex`
 - `HoverCard` (`HoverCardTrigger`, `HoverCardContent`)
 - `Input`
 - `InputOTP` (`InputOTPGroup`, `InputOTPSlot`, `InputOTPSeparator`)
