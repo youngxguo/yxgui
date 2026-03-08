@@ -13,7 +13,6 @@ import {
   statusTokens,
   surfaceTokens
 } from '../../theme/tokens/semanticTokens.stylex';
-import { buttonVariantTokens } from '../../theme/tokens/componentTokens.stylex';
 
 const sonnerStyles = stylex.create({
   toaster: {
@@ -104,9 +103,9 @@ export function getSonnerToastBaseStyle() {
 export function getSonnerButtonStyles() {
   return {
     action: {
-      background: buttonVariantTokens.primaryBackground,
+      background: colorTokens.accent,
       borderRadius: radiusTokens.sm,
-      color: buttonVariantTokens.primaryForeground,
+      color: colorTokens.accentForeground,
       fontFamily: typographyTokens.fontFamily,
       fontWeight: typographyTokens.fontWeightMedium,
       padding: `${spacingTokens.xxs} ${spacingTokens.sm}`

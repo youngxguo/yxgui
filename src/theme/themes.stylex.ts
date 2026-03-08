@@ -1,9 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import {
-  badgeStyleTokens,
-  buttonInteractionTokens,
-  buttonVariantTokens
-} from './tokens/componentTokens.stylex';
+import { buttonVariantTokens } from './tokens/componentTokens.stylex';
 import {
   borderTokens,
   colorTokens,
@@ -18,6 +14,7 @@ export type ThemeName = 'light' | 'dark';
 
 const darkPalette = {
   accent: '#7fb5ff',
+  accentForeground: '#0f172a',
   background: '#202020',
   border: '#565656',
   borderMuted: '#6d6d6d',
@@ -41,17 +38,11 @@ const darkStatusTones = {
   warning: { background: '#7a5127', border: '#d79a57', foreground: '#fff0db' }
 } as const;
 
-const darkBadgeTones = {
-  error: { background: '#9b2f2f', border: '#d77979', foreground: '#ffeaea' },
-  neutral: { background: '#29538f', border: '#5f92cf', foreground: '#e8f1ff' },
-  success: { background: '#1f6a3a', border: '#5cb784', foreground: '#e7f9ee' },
-  warning: { background: '#8e541b', border: '#d8a05b', foreground: '#fff1dc' }
-} as const;
-
 const darkColorTheme = stylex.createTheme(colorTokens, {
   background: darkPalette.background,
   foreground: darkPalette.foreground,
   accent: darkPalette.accent,
+  accentForeground: darkPalette.accentForeground,
   mutedForeground: darkPalette.mutedForeground
 });
 
@@ -111,45 +102,9 @@ const darkValidationTheme = stylex.createTheme(validationTokens, {
 });
 
 const darkButtonVariantTheme = stylex.createTheme(buttonVariantTokens, {
-  primaryBackground: darkPalette.accent,
-  primaryForeground: '#0f172a',
-  secondaryBackground: darkPalette.surfaceSubtle,
-  secondaryForeground: darkPalette.foreground,
-  secondaryBorder: darkPalette.borderMuted,
-  secondaryHoverBorder: darkPalette.borderStrong,
-  ghostForeground: darkPalette.foreground,
-  ghostHoverBackground: darkPalette.surfaceSubtle,
-  outlineBorder: darkPalette.borderMuted,
   destructiveBackground: '#c61e4e',
   destructiveBorder: '#ad1a43',
   destructiveForeground: '#fff1f2'
-});
-
-const darkButtonInteractionTheme = stylex.createTheme(buttonInteractionTokens, {
-  primaryShadow: 'none',
-  primaryHoverShadow: 'none',
-  primaryPressedShadow: 'none',
-  disabledBackground: darkPalette.controlDisabled,
-  disabledBorder: darkPalette.borderMuted,
-  disabledForeground: darkPalette.mutedForeground,
-  activeOffset: '1px'
-});
-
-const darkBadgeStyleTheme = stylex.createTheme(badgeStyleTokens, {
-  neutralBackground: darkBadgeTones.neutral.background,
-  neutralForeground: darkBadgeTones.neutral.foreground,
-  neutralBorder: darkBadgeTones.neutral.border,
-  successBackground: darkBadgeTones.success.background,
-  successForeground: darkBadgeTones.success.foreground,
-  successBorder: darkBadgeTones.success.border,
-  warningBackground: darkBadgeTones.warning.background,
-  warningForeground: darkBadgeTones.warning.foreground,
-  warningBorder: darkBadgeTones.warning.border,
-  errorBackground: darkBadgeTones.error.background,
-  errorForeground: darkBadgeTones.error.foreground,
-  errorBorder: darkBadgeTones.error.border,
-  outlineForeground: '#b8d4ff',
-  outlineBorder: darkPalette.accent
 });
 
 const darkThemes = [
@@ -160,9 +115,7 @@ const darkThemes = [
   darkControlTheme,
   darkStatusTheme,
   darkValidationTheme,
-  darkButtonVariantTheme,
-  darkButtonInteractionTheme,
-  darkBadgeStyleTheme
+  darkButtonVariantTheme
 ] as const;
 
 const themeRootStyles = stylex.create({

@@ -5,6 +5,7 @@ export const colorTokens = stylex.defineVars({
   background: '#ffffff',
   foreground: '#111827',
   accent: '#2563eb',
+  accentForeground: '#f8fbff',
   mutedForeground: '#4b5563'
 });
 

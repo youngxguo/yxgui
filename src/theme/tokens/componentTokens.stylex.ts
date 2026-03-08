@@ -1,16 +1,23 @@
 import * as stylex from '@stylexjs/stylex';
+import {
+  borderTokens,
+  colorTokens,
+  controlTokens,
+  statusTokens,
+  surfaceTokens
+} from './semanticTokens.stylex';
 
 /** Semantic foreground/background/border sets for button-like component variants. */
 export const buttonVariantTokens = stylex.defineVars({
-  primaryBackground: '#2563eb',
-  primaryForeground: '#f8fbff',
-  secondaryBackground: '#ffffff',
-  secondaryForeground: '#0f172a',
-  secondaryBorder: '#aeb8c6',
-  secondaryHoverBorder: '#7d8ca3',
-  ghostForeground: '#0f172a',
-  ghostHoverBackground: '#ffffff',
-  outlineBorder: '#aeb8c6',
+  primaryBackground: colorTokens.accent,
+  primaryForeground: colorTokens.accentForeground,
+  secondaryBackground: surfaceTokens.subtle,
+  secondaryForeground: colorTokens.foreground,
+  secondaryBorder: borderTokens.default,
+  secondaryHoverBorder: borderTokens.strong,
+  ghostForeground: colorTokens.foreground,
+  ghostHoverBackground: surfaceTokens.hover,
+  outlineBorder: borderTokens.default,
   destructiveBackground: '#e11d48',
   destructiveBorder: '#be123c',
   destructiveForeground: '#fff5f7'
@@ -21,28 +28,28 @@ export const buttonInteractionTokens = stylex.defineVars({
   primaryShadow: 'none',
   primaryHoverShadow: 'none',
   primaryPressedShadow: 'none',
-  disabledBackground: '#ffffff',
-  disabledBorder: '#c2cad6',
-  disabledForeground: '#667085',
+  disabledBackground: controlTokens.backgroundDisabled,
+  disabledBorder: borderTokens.muted,
+  disabledForeground: colorTokens.mutedForeground,
   activeOffset: '1px'
 });
 
 /** Badge-specific semantic colors tuned for stronger chroma than generic status surfaces. */
 export const badgeStyleTokens = stylex.defineVars({
-  neutralBackground: '#3b82f6',
-  neutralForeground: '#dbeafe',
-  neutralBorder: '#dbeafe',
-  successBackground: '#22c55e',
-  successForeground: '#dcfce7',
-  successBorder: '#dcfce7',
-  warningBackground: '#f59e0b',
-  warningForeground: '#ffedd5',
-  warningBorder: '#ffedd5',
-  errorBackground: '#ef4444',
-  errorForeground: '#fee2e2',
-  errorBorder: '#fee2e2',
-  outlineForeground: '#2563eb',
-  outlineBorder: '#2563eb'
+  neutralBackground: colorTokens.accent,
+  neutralForeground: colorTokens.accentForeground,
+  neutralBorder: colorTokens.accent,
+  successBackground: statusTokens.successBackground,
+  successForeground: statusTokens.successForeground,
+  successBorder: statusTokens.successBorder,
+  warningBackground: statusTokens.warningBackground,
+  warningForeground: statusTokens.warningForeground,
+  warningBorder: statusTokens.warningBorder,
+  errorBackground: statusTokens.errorBackground,
+  errorForeground: statusTokens.errorForeground,
+  errorBorder: statusTokens.errorBorder,
+  outlineForeground: colorTokens.accent,
+  outlineBorder: colorTokens.accent
 });
 
 /** Card elevation shadows so card tuning does not affect other surface components. */

@@ -3,10 +3,7 @@ import type { CSSProperties } from 'react';
 import { pickStyle } from '../../styles/recipes';
 import { getButtonLikeStyleProps, type ButtonLikeSize } from '../../styles/buttonLike';
 import { borderTokens, surfaceTokens } from '../../theme/tokens/semanticTokens.stylex';
-import {
-  buttonInteractionTokens,
-  buttonVariantTokens
-} from '../../theme/tokens/componentTokens.stylex';
+import { buttonInteractionTokens } from '../../theme/tokens/componentTokens.stylex';
 
 export type ToggleVariant = 'primary' | 'secondary' | 'ghost';
 export type ToggleSize = ButtonLikeSize;
@@ -29,8 +26,8 @@ const toggleStyles = stylex.create({
     borderColor: borderTokens.strong
   },
   ghostPressed: {
-    backgroundColor: buttonVariantTokens.ghostHoverBackground,
-    borderColor: buttonVariantTokens.outlineBorder
+    backgroundColor: surfaceTokens.hover,
+    borderColor: borderTokens.default
   }
 });
 

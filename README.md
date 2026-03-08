@@ -162,17 +162,24 @@ Current exported components include:
 
 The library exposes token groups for reuse in app-level styles and related components:
 
-- `palette`
+- `color`
+- `surface`
+- `overlay`
+- `border`
+- `control`
+- `status`
+- `validation`
 - `typography`
 - `radius`
 - `spacing`
-- `surface`
-- `border`
-- `control`
-- `variants`
-- `button`
-- `input`
-- `card`
+- `layer`
+- `motion`
+- `shadow`
+- `buttonVariant`
+- `buttonInteraction`
+- `badgeStyle`
+- `cardElevation`
+- `componentSize`
 
 ## Theming
 
