@@ -11,7 +11,7 @@ export const colorTokens = stylex.defineConsts({
 /** Surface colors for layered containers, hover states, and subtle emphasis. */
 export const surfaceTokens = stylex.defineConsts({
   base: '#ffffff',
-  elevated: '#ffffff',
+  elevated: '#f8fafc',
   subtle: '#ffffff',
   selected: '#ffffff',
   soft: '#ffffff',

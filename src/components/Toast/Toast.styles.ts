@@ -3,6 +3,7 @@ import type { ToastClassnames } from 'sonner';
 import { composeStyleProps } from '../../styles/recipes';
 import {
   radiusTokens,
+  shadowTokens,
   spacingTokens,
   typographyTokens
 } from '../../theme/tokens/foundationTokens.stylex';
@@ -12,10 +13,7 @@ import {
   statusTokens,
   surfaceTokens
 } from '../../theme/tokens/semanticTokens.stylex';
-import {
-  buttonVariantTokens,
-  cardElevationTokens
-} from '../../theme/tokens/componentTokens.stylex';
+import { buttonVariantTokens } from '../../theme/tokens/componentTokens.stylex';
 
 const sonnerStyles = stylex.create({
   toaster: {
@@ -23,7 +21,7 @@ const sonnerStyles = stylex.create({
   },
   toast: {
     borderRadius: radiusTokens.md,
-    boxShadow: cardElevationTokens.shadow
+    boxShadow: shadowTokens.floating
   },
   title: {
     fontFamily: typographyTokens.fontFamily,
@@ -98,7 +96,7 @@ export function getSonnerThemeVariables() {
 
 export function getSonnerToastBaseStyle() {
   return {
-    boxShadow: cardElevationTokens.shadow,
+    boxShadow: shadowTokens.floating,
     color: colorTokens.foreground
   } as const;
 }

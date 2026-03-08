@@ -49,7 +49,7 @@ export const layerTokens = stylex.defineConsts({
 
 /** Reusable elevation shadows for controls and floating surfaces. */
 export const shadowTokens = stylex.defineConsts({
-  floating: 'none',
+  floating: '0 1px 2px rgba(17, 24, 39, 0.08), 0 1px 1px rgba(17, 24, 39, 0.06)',
   controlThumb: 'none'
 });
 
