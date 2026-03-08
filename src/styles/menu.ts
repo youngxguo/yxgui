@@ -33,6 +33,11 @@ const menuStyles = stylex.create({
     textAlign: 'left',
     width: '100%'
   },
+  itemHover: {
+    ':not(:disabled):hover': {
+      backgroundColor: surfaceTokens.elevated
+    }
+  },
   itemDisabled: {
     ':disabled': {
       backgroundColor: 'transparent',
@@ -59,7 +64,7 @@ export function getMenuContentStyleProps(
   );
 }
 
-/** Returns style props for interactive menu items, including disabled and focus-visible states. */
+/** Returns style props for interactive menu items, including hover, disabled, and focus-visible states. */
 export function getMenuItemStyleProps(
   options?: StyleRecipeOverrides,
   extraStyles: ReadonlyArray<unknown> = [],
@@ -68,6 +73,7 @@ export function getMenuItemStyleProps(
   return composeStyleProps(
     [
       menuStyles.item,
+      menuStyles.itemHover,
       menuStyles.itemDisabled,
       includeFocusVisible && menuStyles.itemFocusVisible,
       ...extraStyles
