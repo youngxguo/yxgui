@@ -36,9 +36,10 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const select = canvas.getByRole('combobox', { name: 'Team size' });
 
-    expect(select).toHaveValue('small');
-    await userEvent.selectOptions(select, 'mid');
-    expect(select).toHaveValue('mid');
+    expect(select).toHaveTextContent('1-10 people');
+    await userEvent.click(select);
+    await userEvent.click(canvas.getByRole('option', { name: '11-50 people' }));
+    expect(select).toHaveTextContent('11-50 people');
   }
 };
 
