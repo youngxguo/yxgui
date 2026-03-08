@@ -124,6 +124,22 @@ export type {
   FlexValue,
   FlexWrap
 } from './components/Flex/Flex';
+export { Grid } from './components/Grid/Grid';
+export type {
+  GridAlign,
+  GridAlignContent,
+  GridAreas,
+  GridAutoFlow,
+  GridElement,
+  GridGap,
+  GridJustify,
+  GridJustifyContent,
+  GridPadding,
+  GridProps,
+  GridTemplateColumns,
+  GridTemplateRows,
+  GridTrackSize
+} from './components/Grid/Grid';
 export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard/HoverCard';
 export type {
   HoverCardContentProps,

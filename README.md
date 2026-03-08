@@ -87,6 +87,22 @@ For contributor-facing implementation details and current edge cases, see:
 - `flex`: CSS flex shorthand (`'1 1 22rem'`); overrides `basis`/`grow`/`shrink` when provided
 - Plus all native element props from `React.HTMLAttributes<HTMLElement>`
 
+## Grid Props
+
+- `columns`: number (`3` -> `repeat(3, minmax(0, 1fr))`) or raw CSS `grid-template-columns` value
+- `rows`: number (`2` -> `repeat(2, minmax(0, 1fr))`) or raw CSS `grid-template-rows` value
+- `autoRows`: raw CSS `grid-auto-rows` value
+- `autoColumns`: raw CSS `grid-auto-columns` value
+- `areas`: raw CSS `grid-template-areas` value
+- `align`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
+- `justify`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
+- `alignContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
+- `justifyContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
+- `autoFlow`: `'row' | 'column' | 'row-dense' | 'column-dense'` (default: `'row'`)
+- `gap` / `rowGap` / `columnGap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `padding`: spacing token for all sides
+- Plus all native element props from `React.HTMLAttributes<HTMLElement>`
+
 ## Components
 
 Use Storybook for the current component catalog and examples:
@@ -116,6 +132,7 @@ Current exported components include:
 - `DropdownMenu` (`DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`)
 - `FormField` (`FormFieldLabel`, `FormFieldControl`, `FormFieldDescription`, `FormFieldError`)
 - `Flex`
+- `Grid`
 - `HoverCard` (`HoverCardTrigger`, `HoverCardContent`)
 - `Input`
 - `InputOTP` (`InputOTPGroup`, `InputOTPSlot`, `InputOTPSeparator`)
