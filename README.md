@@ -71,6 +71,11 @@ For contributor-facing implementation details and current edge cases, see:
 - `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
 - Plus all native `button` props from `React.ButtonHTMLAttributes<HTMLButtonElement>`
 
+## Card Props
+
+- `variant`: `'outlined' | 'elevated'` (default: `'outlined'`)
+- Plus all native `div` props from `React.HTMLAttributes<HTMLDivElement>`
+
 ## Components
 
 Use Storybook for the current component catalog and examples:

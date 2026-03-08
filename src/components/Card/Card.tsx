@@ -4,7 +4,8 @@ import {
   getCardContentStyleProps,
   getCardFooterStyleProps,
   getCardHeaderStyleProps,
-  getCardRootStyleProps
+  getCardRootStyleProps,
+  type CardVariant
 } from './Card.styles';
 
 interface CardBaseProps {
@@ -14,6 +15,7 @@ interface CardBaseProps {
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement>, CardBaseProps {
   ref?: Ref<HTMLDivElement>;
+  variant?: CardVariant;
 }
 
 export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement>, CardBaseProps {
@@ -40,8 +42,8 @@ function slotStyleOptions({ className, style }: CardBaseProps) {
   return { className, style };
 }
 
-export function Card({ ref, className, style, ...props }: CardProps) {
-  const styleProps = getCardRootStyleProps(slotStyleOptions({ className, style }));
+export function Card({ ref, variant = 'outlined', className, style, ...props }: CardProps) {
+  const styleProps = getCardRootStyleProps(variant, slotStyleOptions({ className, style }));
   return <div {...props} {...styleProps} ref={ref} />;
 }
 

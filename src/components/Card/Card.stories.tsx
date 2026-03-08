@@ -7,15 +7,24 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 const meta = {
   title: 'Layout/Card',
   component: Card,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  args: {
+    variant: 'outlined'
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['outlined', 'elevated']
+    }
+  }
 } satisfies Meta<typeof Card>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Card style={{ maxWidth: 360 }}>
+  render: (args) => (
+    <Card {...args} style={{ maxWidth: 360 }}>
       <CardHeader>
         <CardTitle>Starter Plan</CardTitle>
         <CardDescription>Good for small internal tools and experiments.</CardDescription>
@@ -54,5 +63,24 @@ export const WithFooterActions: Story = {
         <Button>Save</Button>
       </CardFooter>
     </Card>
+  )
+};
+
+export const StackedSurfaceLevels: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: '1rem', maxWidth: 420 }}>
+      <Card>
+        <CardHeader>
+          <CardTitle>Outlined Card</CardTitle>
+          <CardDescription>Baseline layer for dense lists and stacked layouts.</CardDescription>
+        </CardHeader>
+      </Card>
+      <Card variant="elevated">
+        <CardHeader>
+          <CardTitle>Elevated Card</CardTitle>
+          <CardDescription>Use one level of separation to anchor key content.</CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
   )
 };

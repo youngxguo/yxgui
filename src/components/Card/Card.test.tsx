@@ -32,6 +32,19 @@ describe('Card', () => {
     expect(screen.getByTestId('card')).toHaveAttribute('title', 'Plan card');
   });
 
+  it('supports card surface variants for stacked layouts', () => {
+    render(
+      <>
+        <Card data-testid="outlined" />
+        <Card data-testid="elevated" variant="elevated" />
+      </>
+    );
+
+    expect(screen.getByTestId('outlined').className).not.toEqual(
+      screen.getByTestId('elevated').className
+    );
+  });
+
   it('accepts ref props for root and slots', () => {
     const cardRef = createRef<HTMLDivElement>();
     const titleRef = createRef<HTMLHeadingElement>();

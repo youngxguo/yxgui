@@ -86,7 +86,7 @@ export const VerticalCards: Story = {
         </CardHeader>
         <CardContent>Update your display name and avatar.</CardContent>
       </Card>
-      <Card>
+      <Card variant="elevated">
         <CardHeader>
           <CardTitle>Notifications</CardTitle>
           <CardDescription>Control email and push notification cadence.</CardDescription>
