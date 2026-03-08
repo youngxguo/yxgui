@@ -111,11 +111,16 @@ export type {
 export { Flex } from './components/Flex/Flex';
 export type {
   FlexAlign,
+  FlexAlignContent,
+  FlexBasis,
   FlexDirection,
   FlexElement,
+  FlexGrow,
   FlexGap,
   FlexJustify,
   FlexProps,
+  FlexShrink,
+  FlexValue,
   FlexWrap
 } from './components/Flex/Flex';
 export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard/HoverCard';

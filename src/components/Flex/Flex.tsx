@@ -2,9 +2,14 @@ import { createElement, type HTMLAttributes, type Ref } from 'react';
 import {
   getFlexStyleProps,
   type FlexAlign,
+  type FlexAlignContent,
+  type FlexBasis,
   type FlexDirection,
+  type FlexGrow,
   type FlexGap,
   type FlexJustify,
+  type FlexShrink,
+  type FlexValue,
   type FlexWrap
 } from './Flex.styles';
 
@@ -30,10 +35,15 @@ export interface FlexProps extends HTMLAttributes<HTMLElement> {
   align?: FlexAlign;
   justify?: FlexJustify;
   wrap?: FlexWrap;
+  alignContent?: FlexAlignContent;
   inline?: boolean;
   gap?: FlexGap;
   rowGap?: FlexGap;
   columnGap?: FlexGap;
+  basis?: FlexBasis;
+  grow?: FlexGrow;
+  shrink?: FlexShrink;
+  flex?: FlexValue;
 }
 
 export function Flex({
@@ -43,10 +53,15 @@ export function Flex({
   align = 'stretch',
   justify = 'start',
   wrap = 'nowrap',
+  alignContent = 'stretch',
   inline = false,
   gap,
   rowGap,
   columnGap,
+  basis,
+  grow,
+  shrink,
+  flex,
   className,
   style,
   ...props
@@ -56,10 +71,15 @@ export function Flex({
     align,
     justify,
     wrap,
+    alignContent,
     inline,
     gap,
     rowGap,
     columnGap,
+    basis,
+    grow,
+    shrink,
+    flex,
     className,
     style
   });
@@ -73,8 +93,20 @@ export function Flex({
     'data-direction': direction,
     'data-inline': inline || undefined,
     'data-justify': justify,
+    'data-align-content': alignContent,
     'data-wrap': wrap
   });
 }
 
-export type { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './Flex.styles';
+export type {
+  FlexAlign,
+  FlexAlignContent,
+  FlexBasis,
+  FlexDirection,
+  FlexGrow,
+  FlexGap,
+  FlexJustify,
+  FlexShrink,
+  FlexValue,
+  FlexWrap
+} from './Flex.styles';

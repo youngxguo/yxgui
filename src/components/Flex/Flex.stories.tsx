@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../Card/Card';
+import { Typography } from '../Typography/Typography';
 import { Flex } from './Flex';
 
 const meta = {
@@ -13,6 +14,7 @@ const meta = {
     align: 'stretch',
     justify: 'start',
     wrap: 'nowrap',
+    alignContent: 'stretch',
     gap: 'lg',
     inline: false
   },
@@ -33,6 +35,10 @@ const meta = {
       control: 'select',
       options: ['nowrap', 'wrap', 'wrap-reverse']
     },
+    alignContent: {
+      control: 'select',
+      options: ['start', 'end', 'center', 'stretch', 'between', 'around', 'evenly']
+    },
     gap: {
       control: 'select',
       options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
@@ -44,6 +50,20 @@ const meta = {
     columnGap: {
       control: 'select',
       options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
+    },
+    basis: {
+      control: 'text',
+      description: 'Spacing token or CSS flex-basis value (for example: "md", "33%", "16rem").'
+    },
+    grow: {
+      control: 'number'
+    },
+    shrink: {
+      control: 'number'
+    },
+    flex: {
+      control: 'text',
+      description: 'Optional CSS flex shorthand. When set, it overrides basis/grow/shrink.'
     }
   }
 } satisfies Meta<typeof Flex>;
@@ -119,6 +139,63 @@ export const WrappedActions: Story = {
       <Button size="sm" variant="ghost">
         Delete
       </Button>
+    </Flex>
+  )
+};
+
+export const BasisSizing: Story = {
+  render: () => (
+    <Flex direction="column" gap="md" style={{ maxWidth: 680 }}>
+      <Typography variant="small">
+        Use basis/grow/shrink for explicit control, or flex shorthand for app-specific sizing.
+      </Typography>
+      <Flex gap="sm">
+        <Flex
+          basis="xl"
+          grow={1}
+          style={{ border: '1px solid #d1d5db', borderRadius: 6, padding: '0.5rem' }}
+        >
+          <Typography variant="small">basis=&quot;xl&quot; grow={'{1}'}</Typography>
+        </Flex>
+        <Flex
+          basis="35%"
+          shrink={0}
+          style={{ border: '1px solid #d1d5db', borderRadius: 6, padding: '0.5rem' }}
+        >
+          <Typography variant="small">basis=&quot;35%&quot; shrink={'{0}'}</Typography>
+        </Flex>
+        <Flex
+          flex="0 0 220px"
+          style={{ border: '1px solid #d1d5db', borderRadius: 6, padding: '0.5rem' }}
+        >
+          <Typography variant="small">flex=&quot;0 0 220px&quot;</Typography>
+        </Flex>
+      </Flex>
+    </Flex>
+  )
+};
+
+export const WrappedColumns: Story = {
+  render: () => (
+    <Flex
+      wrap="wrap"
+      alignContent="start"
+      gap="sm"
+      rowGap="md"
+      style={{ maxWidth: 620, minHeight: 220 }}
+    >
+      {['Overview', 'Roadmap', 'Quality', 'Notes', 'Releases', 'Owners'].map((label) => (
+        <Flex
+          key={label}
+          flex="1 1 180px"
+          direction="column"
+          gap="xs"
+          style={{ border: '1px solid #d1d5db', borderRadius: 6, padding: '0.5rem' }}
+        >
+          <Typography variant="small">{label}</Typography>
+          <Typography variant="muted">Flexible card columns with controlled wrapping.</Typography>
+        </Flex>
+      ))}
     </Flex>
   )
 };

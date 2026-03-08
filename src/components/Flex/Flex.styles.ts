@@ -7,6 +7,14 @@ export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 export type FlexAlign = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 export type FlexJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
+export type FlexAlignContent =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'stretch'
+  | 'between'
+  | 'around'
+  | 'evenly';
 
 const flexGapTokens = {
   xxxs: spacingTokens.xxxs,
@@ -19,16 +27,28 @@ const flexGapTokens = {
 } as const;
 
 export type FlexGap = keyof typeof flexGapTokens;
+export type FlexBasisToken = keyof typeof flexGapTokens;
+type CSSFlexBasis = NonNullable<CSSProperties['flexBasis']>;
+type CSSFlex = NonNullable<CSSProperties['flex']>;
+export type FlexBasis = FlexBasisToken | CSSFlexBasis;
+export type FlexGrow = number | string;
+export type FlexShrink = number | string;
+export type FlexValue = CSSFlex;
 
 interface GetFlexStylePropsOptions {
   direction: FlexDirection;
   align: FlexAlign;
   justify: FlexJustify;
   wrap: FlexWrap;
+  alignContent: FlexAlignContent;
   inline: boolean;
   gap?: FlexGap;
   rowGap?: FlexGap;
   columnGap?: FlexGap;
+  basis?: FlexBasis;
+  grow?: FlexGrow;
+  shrink?: FlexShrink;
+  flex?: FlexValue;
   className?: string;
   style?: CSSProperties;
 }
@@ -85,6 +105,27 @@ const flexStyles = stylex.create({
   justifyEvenly: {
     justifyContent: 'space-evenly'
   },
+  alignContentStart: {
+    alignContent: 'flex-start'
+  },
+  alignContentEnd: {
+    alignContent: 'flex-end'
+  },
+  alignContentCenter: {
+    alignContent: 'center'
+  },
+  alignContentStretch: {
+    alignContent: 'stretch'
+  },
+  alignContentBetween: {
+    alignContent: 'space-between'
+  },
+  alignContentAround: {
+    alignContent: 'space-around'
+  },
+  alignContentEvenly: {
+    alignContent: 'space-evenly'
+  },
   nowrap: {
     flexWrap: 'nowrap'
   },
@@ -120,6 +161,16 @@ const justifyStyles: Record<FlexJustify, unknown> = {
   evenly: flexStyles.justifyEvenly
 };
 
+const alignContentStyles: Record<FlexAlignContent, unknown> = {
+  start: flexStyles.alignContentStart,
+  end: flexStyles.alignContentEnd,
+  center: flexStyles.alignContentCenter,
+  stretch: flexStyles.alignContentStretch,
+  between: flexStyles.alignContentBetween,
+  around: flexStyles.alignContentAround,
+  evenly: flexStyles.alignContentEvenly
+};
+
 const wrapStyles: Record<FlexWrap, unknown> = {
   nowrap: flexStyles.nowrap,
   wrap: flexStyles.wrap,
@@ -148,21 +199,70 @@ function getGapStyle({
   return Object.keys(gapStyle).length > 0 ? gapStyle : undefined;
 }
 
+function isFlexBasisToken(value: FlexBasis): value is FlexBasisToken {
+  return typeof value === 'string' && Object.prototype.hasOwnProperty.call(flexGapTokens, value);
+}
+
+function getBasisStyle({
+  basis
+}: Pick<GetFlexStylePropsOptions, 'basis'>): CSSProperties | undefined {
+  if (basis == null) {
+    return undefined;
+  }
+
+  return {
+    flexBasis: isFlexBasisToken(basis) ? flexGapTokens[basis] : basis
+  };
+}
+
+function getFlexSizingStyle({
+  basis,
+  grow,
+  shrink,
+  flex
+}: Pick<GetFlexStylePropsOptions, 'basis' | 'grow' | 'shrink' | 'flex'>):
+  | CSSProperties
+  | undefined {
+  if (flex != null) {
+    return { flex };
+  }
+
+  const basisStyle = getBasisStyle({ basis });
+  const sizingStyle: CSSProperties = basisStyle != null ? { ...basisStyle } : {};
+
+  if (grow != null) {
+    sizingStyle.flexGrow = grow;
+  }
+
+  if (shrink != null) {
+    sizingStyle.flexShrink = shrink;
+  }
+
+  return Object.keys(sizingStyle).length > 0 ? sizingStyle : undefined;
+}
+
 export function getFlexStyleProps({
   direction,
   align,
   justify,
   wrap,
+  alignContent,
   inline,
   gap,
   rowGap,
   columnGap,
+  basis,
+  grow,
+  shrink,
+  flex,
   className,
   style
 }: GetFlexStylePropsOptions) {
   const tokenGapStyle = getGapStyle({ gap, rowGap, columnGap });
-  const mergedStyle =
-    tokenGapStyle != null || style != null ? { ...tokenGapStyle, ...style } : undefined;
+  const sizingStyle = getFlexSizingStyle({ basis, grow, shrink, flex });
+  const tokenStyle =
+    tokenGapStyle != null || sizingStyle != null ? { ...tokenGapStyle, ...sizingStyle } : undefined;
+  const mergedStyle = tokenStyle != null || style != null ? { ...tokenStyle, ...style } : undefined;
 
   return composeStyleProps(
     [
@@ -171,6 +271,7 @@ export function getFlexStyleProps({
       pickStyle(directionStyles, direction),
       pickStyle(alignStyles, align),
       pickStyle(justifyStyles, justify),
+      pickStyle(alignContentStyles, alignContent),
       pickStyle(wrapStyles, wrap)
     ],
     { className, style: mergedStyle }

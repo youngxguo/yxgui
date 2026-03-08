@@ -34,11 +34,7 @@ Example: native event handlers and `aria-*` props are forwarded to form controls
 Example: `className` and `style` merge with library styling.
 
 ```tsx
-<Button
-  className="marketing-cta"
-  style={{ minWidth: 160 }}
-  onClick={() => console.log('clicked')}
->
+<Button className="marketing-cta" style={{ minWidth: 160 }} onClick={() => console.log('clicked')}>
   Start trial
 </Button>
 ```
@@ -75,6 +71,20 @@ For contributor-facing implementation details and current edge cases, see:
 
 - `variant`: `'outlined' | 'elevated'` (default: `'outlined'`)
 - Plus all native `div` props from `React.HTMLAttributes<HTMLDivElement>`
+
+## Flex Props
+
+- `direction`: `'row' | 'row-reverse' | 'column' | 'column-reverse'` (default: `'row'`)
+- `align`: `'start' | 'end' | 'center' | 'stretch' | 'baseline'` (default: `'stretch'`)
+- `justify`: `'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'` (default: `'start'`)
+- `wrap`: `'nowrap' | 'wrap' | 'wrap-reverse'` (default: `'nowrap'`)
+- `alignContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
+- `gap` / `rowGap` / `columnGap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `basis`: spacing token (`'sm'`, `'xl'`) or raw CSS `flex-basis` value (`'33%'`, `'16rem'`, `240`)
+- `grow`: CSS `flex-grow` value (`0`, `1`, `2`, ...)
+- `shrink`: CSS `flex-shrink` value (`0`, `1`, ...)
+- `flex`: CSS flex shorthand (`'1 1 22rem'`); overrides `basis`/`grow`/`shrink` when provided
+- Plus all native element props from `React.HTMLAttributes<HTMLElement>`
 
 ## Components
 
