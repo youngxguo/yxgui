@@ -165,6 +165,19 @@ const darkThemes = [
   darkBadgeStyleTheme
 ] as const;
 
+const themeRootStyles = stylex.create({
+  root: {
+    backgroundColor: colorTokens.background,
+    color: colorTokens.foreground
+  }
+});
+
 export function getThemeStyleProps(theme: ThemeName = 'light') {
   return theme === 'dark' ? stylex.props(...darkThemes) : stylex.props();
+}
+
+export function getThemeRootStyleProps(theme: ThemeName = 'light') {
+  const resolvedThemeStyles = theme === 'dark' ? [...darkThemes] : [];
+
+  return stylex.props(...resolvedThemeStyles, themeRootStyles.root);
 }

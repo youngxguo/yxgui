@@ -177,18 +177,33 @@ The library exposes token groups for reuse in app-level styles and related compo
 ## Theming
 
 The library ships with built-in `light` and `dark` themes.
-`light` is the default token set; `dark` is applied with `ThemeProvider`.
+Use `ThemeProvider` when you only need to scope theme tokens.
+Use `ThemeRoot` when you also want app-level `background`, `foreground`, and CSS `color-scheme`.
 
 ```tsx
-import { ThemeProvider } from 'yxgui';
+import { ThemeRoot } from 'yxgui';
 
 function App() {
   return (
-    <ThemeProvider theme="dark">
+    <ThemeRoot theme="dark" style={{ minHeight: '100dvh' }}>
       {/* your app */}
-    </ThemeProvider>
+    </ThemeRoot>
   );
 }
+```
+
+Keep token scoping only (no app-surface styles):
+
+```tsx
+<ThemeProvider theme="dark">
+  {/* scoped themed subtree */}
+</ThemeProvider>
+```
+
+Disable only `color-scheme` behavior on `ThemeRoot`:
+
+```tsx
+<ThemeRoot applyColorScheme={false}>{/* app */}</ThemeRoot>
 ```
 
 ## Development

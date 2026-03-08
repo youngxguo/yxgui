@@ -393,7 +393,9 @@ export type {
 } from './components/Card/Card';
 export { ThemeProvider } from './theme/ThemeProvider';
 export type { ThemeProviderProps } from './theme/ThemeProvider';
-export { getThemeStyleProps } from './theme/themes.stylex';
+export { ThemeRoot } from './theme/ThemeRoot';
+export type { ThemeRootProps } from './theme/ThemeRoot';
+export { getThemeRootStyleProps, getThemeStyleProps } from './theme/themes.stylex';
 export type { ThemeName } from './theme/themes.stylex';
 export {
   borderTokens,
