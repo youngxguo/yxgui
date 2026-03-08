@@ -88,7 +88,8 @@ function isPortAvailable(port) {
       server.close(() => resolve(true));
     });
 
-    server.listen(port, '127.0.0.1');
+    // Probe the wildcard interface so an IPv6/localhost listener is treated as occupied too.
+    server.listen(port);
   });
 }
 
@@ -244,10 +245,22 @@ async function run() {
   const storybookArgs = hasExplicitPortArg
     ? ['dev', ...cliArgs]
     : ['dev', '-p', String(port), ...cliArgs];
+  const storybookUrl = port ? `http://localhost:${port}` : null;
+
+  function printPortHint(label = 'selected') {
+    if (!storybookUrl) {
+      return;
+    }
+
+    process.stdout.write(
+      `[storybook:${label}] URL=${storybookUrl} (check anytime: pnpm storybook:port)\n`
+    );
+  }
 
   if (port) {
     // Keep the selected port visible so parallel worktree runs are easy to track.
-    process.stdout.write(`[storybook] ${process.cwd()} -> http://localhost:${port}\n`);
+    process.stdout.write(`[storybook] ${process.cwd()} -> ${storybookUrl}\n`);
+    printPortHint();
   }
 
   const child = spawn(command, storybookArgs, {
@@ -255,7 +268,19 @@ async function run() {
     env: process.env
   });
 
+  const reminderTimers = [
+    setTimeout(() => printPortHint('reminder'), 2000),
+    setTimeout(() => printPortHint('reminder'), 10000)
+  ];
+
+  function clearReminderTimers() {
+    for (const timer of reminderTimers) {
+      clearTimeout(timer);
+    }
+  }
+
   child.on('error', (error) => {
+    clearReminderTimers();
     process.stderr.write(`[storybook] failed to start: ${error.message}\n`);
     process.exit(1);
   });
@@ -269,6 +294,8 @@ async function run() {
   }
 
   child.on('exit', (code, signal) => {
+    clearReminderTimers();
+
     const exitProcess = () => {
       if (signal) {
         process.kill(process.pid, signal);
