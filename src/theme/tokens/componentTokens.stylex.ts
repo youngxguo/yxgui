@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 /** Semantic foreground/background/border sets for button-like component variants. */
-export const buttonVariantTokens = stylex.defineConsts({
+export const buttonVariantTokens = stylex.defineVars({
   primaryBackground: '#2563eb',
   primaryForeground: '#f8fbff',
   secondaryBackground: '#ffffff',
@@ -17,7 +17,7 @@ export const buttonVariantTokens = stylex.defineConsts({
 });
 
 /** Button interaction details (shadows/disabled/pressed offset) shared by button-like controls. */
-export const buttonInteractionTokens = stylex.defineConsts({
+export const buttonInteractionTokens = stylex.defineVars({
   primaryShadow: 'none',
   primaryHoverShadow: 'none',
   primaryPressedShadow: 'none',
@@ -28,7 +28,7 @@ export const buttonInteractionTokens = stylex.defineConsts({
 });
 
 /** Badge-specific semantic colors tuned for stronger chroma than generic status surfaces. */
-export const badgeStyleTokens = stylex.defineConsts({
+export const badgeStyleTokens = stylex.defineVars({
   neutralBackground: '#3b82f6',
   neutralForeground: '#dbeafe',
   neutralBorder: '#dbeafe',

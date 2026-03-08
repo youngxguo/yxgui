@@ -160,8 +160,7 @@ Current exported components include:
 
 ## Tokens
 
-The library currently ships a fixed visual theme (no runtime theming API).
-It still exposes semantic token groups for reuse in app-level styles and related components:
+The library exposes token groups for reuse in app-level styles and related components:
 
 - `palette`
 - `typography`
@@ -174,6 +173,23 @@ It still exposes semantic token groups for reuse in app-level styles and related
 - `button`
 - `input`
 - `card`
+
+## Theming
+
+The library ships with built-in `light` and `dark` themes.
+`light` is the default token set; `dark` is applied with `ThemeProvider`.
+
+```tsx
+import { ThemeProvider } from 'yxgui';
+
+function App() {
+  return (
+    <ThemeProvider theme="dark">
+      {/* your app */}
+    </ThemeProvider>
+  );
+}
+```
 
 ## Development
 

@@ -391,6 +391,10 @@ export type {
   CardProps,
   CardTitleProps
 } from './components/Card/Card';
+export { ThemeProvider } from './theme/ThemeProvider';
+export type { ThemeProviderProps } from './theme/ThemeProvider';
+export { getThemeStyleProps } from './theme/themes.stylex';
+export type { ThemeName } from './theme/themes.stylex';
 export {
   borderTokens,
   colorTokens,

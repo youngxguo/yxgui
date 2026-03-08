@@ -96,110 +96,110 @@ const tokenGroups: TokenGroup[] = [
     id: 'color',
     name: 'Color',
     description: 'Core semantic text and accent colors used across components.',
-    tokens: colorTokens as TokenMap
+    tokens: colorTokens as unknown as TokenMap
   },
   {
     id: 'surface',
     name: 'Surface',
     description: 'Layered surface fills for cards, hover states, insets, and subtle emphasis.',
-    tokens: surfaceTokens as TokenMap
+    tokens: surfaceTokens as unknown as TokenMap
   },
   {
     id: 'overlay',
     name: 'Overlay',
     description: 'Scrim and overlay colors used behind modal and floating layers.',
-    tokens: overlayTokens as TokenMap
+    tokens: overlayTokens as unknown as TokenMap
   },
   {
     id: 'border',
     name: 'Border',
     description: 'Border widths and border colors, including focus treatment.',
-    tokens: borderTokens as TokenMap
+    tokens: borderTokens as unknown as TokenMap
   },
   {
     id: 'control',
     name: 'Control',
     description: 'Default form control colors (base, placeholder, disabled, and focus).',
-    tokens: controlTokens as TokenMap
+    tokens: controlTokens as unknown as TokenMap
   },
   {
     id: 'status',
     name: 'Status',
     description: 'Feedback colors for info, success, warning, and error states.',
-    tokens: statusTokens as TokenMap
+    tokens: statusTokens as unknown as TokenMap
   },
   {
     id: 'validation',
     name: 'Validation',
     description: 'Validation accents shared by form controls and field messaging.',
-    tokens: validationTokens as TokenMap
+    tokens: validationTokens as unknown as TokenMap
   },
   {
     id: 'layer',
     name: 'Layer',
     description: 'Stacking layers for local UI and floating overlays.',
-    tokens: layerTokens as TokenMap
+    tokens: layerTokens as unknown as TokenMap
   },
   {
     id: 'shadow',
     name: 'Shadow',
     description: 'Shared elevation shadows for floating surfaces and controls.',
-    tokens: shadowTokens as TokenMap
+    tokens: shadowTokens as unknown as TokenMap
   },
   {
     id: 'motion',
     name: 'Motion',
     description: 'Durations and easing curves for transitions and entrance animations.',
-    tokens: motionTokens as TokenMap
+    tokens: motionTokens as unknown as TokenMap
   },
   {
     id: 'spacing',
     name: 'Spacing',
     description: 'Primary spacing scale for gaps, padding, and compact control dimensions.',
-    tokens: spacingTokens as TokenMap
+    tokens: spacingTokens as unknown as TokenMap
   },
   {
     id: 'radius',
     name: 'Radius',
     description: 'Corner radius scale for surfaces, controls, and pill shapes.',
-    tokens: radiusTokens as TokenMap
+    tokens: radiusTokens as unknown as TokenMap
   },
   {
     id: 'typography',
     name: 'Typography',
     description: 'Font families, weights, type scale, line heights, and letter spacing.',
-    tokens: typographyTokens as TokenMap
+    tokens: typographyTokens as unknown as TokenMap
   },
   {
     id: 'buttonVariant',
     name: 'Button Variants',
     description: 'Semantic button-like foreground/background/border combinations.',
-    tokens: buttonVariantTokens as TokenMap
+    tokens: buttonVariantTokens as unknown as TokenMap
   },
   {
     id: 'buttonInteraction',
     name: 'Button Interaction',
     description: 'Button-specific shadows, disabled colors, and pressed offset values.',
-    tokens: buttonInteractionTokens as TokenMap
+    tokens: buttonInteractionTokens as unknown as TokenMap
   },
   {
     id: 'badgeStyle',
     name: 'Badge Style',
     description: 'Badge-specific semantic defaults.',
-    tokens: badgeStyleTokens as TokenMap
+    tokens: badgeStyleTokens as unknown as TokenMap
   },
   {
     id: 'cardElevation',
     name: 'Card Elevation',
     description: 'Card-only elevation/shadow tuning so card changes remain isolated.',
-    tokens: cardElevationTokens as TokenMap
+    tokens: cardElevationTokens as unknown as TokenMap
   },
   {
     id: 'componentSize',
     name: 'Component Size',
     description:
       'Component-specific fixed dimensions that intentionally sit outside spacing scale.',
-    tokens: componentSizeTokens as TokenMap
+    tokens: componentSizeTokens as unknown as TokenMap
   }
 ];
 
