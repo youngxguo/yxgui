@@ -534,6 +534,14 @@ function InventorySnapshotCard(props: {
     tokenOccurrences,
     uniqueValueCount
   } = props;
+  const metricRows = [
+    { label: 'Token groups', value: tokenGroups.length },
+    { label: 'Semantic tokens', value: tokenOccurrences.length },
+    { label: 'Primitive leaves', value: primitiveOccurrences.length },
+    { label: 'Unique literal values', value: uniqueValueCount },
+    { label: 'Repeated values', value: duplicateClusters.length },
+    { label: 'Repeated references (beyond first)', value: duplicateReferenceCount }
+  ] as const;
 
   return (
     <Card>
@@ -556,30 +564,12 @@ function InventorySnapshotCard(props: {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Token groups</TableCell>
-              <TableCell>{tokenGroups.length}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Semantic tokens</TableCell>
-              <TableCell>{tokenOccurrences.length}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Primitive leaves</TableCell>
-              <TableCell>{primitiveOccurrences.length}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Unique literal values</TableCell>
-              <TableCell>{uniqueValueCount}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Repeated values</TableCell>
-              <TableCell>{duplicateClusters.length}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Repeated references (beyond first)</TableCell>
-              <TableCell>{duplicateReferenceCount}</TableCell>
-            </TableRow>
+            {metricRows.map((row) => (
+              <TableRow key={row.label}>
+                <TableCell>{row.label}</TableCell>
+                <TableCell>{row.value}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>
