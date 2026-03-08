@@ -150,9 +150,9 @@ describe('public prop forwarding contracts', () => {
         </Select>
       );
 
-      const select = screen.getByTestId('target');
+      const trigger = screen.getByRole('combobox', { name: 'Plan' });
       expectForwardedCoreProps({
-        element: select,
+        element: trigger,
         id: 'plan',
         name: 'plan',
         title: 'Plan',
@@ -162,11 +162,11 @@ describe('public prop forwarding contracts', () => {
         styleColor: 'tomato'
       });
 
-      fireEvent.change(select, { target: { value: 'pro' } });
-      fireEvent.focus(select);
+      fireEvent.click(trigger);
+      fireEvent.click(screen.getByRole('option', { name: 'Pro' }));
 
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(onFocus).toHaveBeenCalled();
     });
 
     it('forwards core native props and events on Checkbox', () => {

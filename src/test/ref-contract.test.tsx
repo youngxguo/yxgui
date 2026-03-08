@@ -115,15 +115,6 @@ describe('public ref contracts', () => {
         )
       },
       {
-        name: 'Select refs a select',
-        constructor: HTMLSelectElement,
-        render: (ref) => (
-          <Select ref={ref as RefObject<HTMLSelectElement | null>} data-testid="target">
-            <option value="a">A</option>
-          </Select>
-        )
-      },
-      {
         name: 'Checkbox refs an input',
         constructor: HTMLInputElement,
         render: (ref) => (
@@ -199,6 +190,21 @@ describe('public ref contracts', () => {
     for (const testCase of cases) {
       runSimpleRefCase(testCase);
     }
+
+    it('Select refs the internal native select element', () => {
+      const ref = createRef<HTMLSelectElement>();
+
+      render(
+        <Select ref={ref} defaultValue="a" aria-label="Plan">
+          <option value="a">A</option>
+        </Select>
+      );
+
+      expect(ref.current).toBeInstanceOf(HTMLSelectElement);
+      expect(ref.current?.tagName).toBe('SELECT');
+      expect(ref.current?.value).toBe('a');
+      expect(screen.getByRole('combobox', { name: 'Plan' })).toBeInTheDocument();
+    });
   });
 
   it('verifies Alert root and slot ref targets', () => {
