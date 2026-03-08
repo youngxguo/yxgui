@@ -8,6 +8,7 @@ import {
   type FlexGrow,
   type FlexGap,
   type FlexJustify,
+  type FlexPadding,
   type FlexShrink,
   type FlexValue,
   type FlexWrap
@@ -40,6 +41,7 @@ export interface FlexProps extends HTMLAttributes<HTMLElement> {
   gap?: FlexGap;
   rowGap?: FlexGap;
   columnGap?: FlexGap;
+  padding?: FlexPadding;
   basis?: FlexBasis;
   grow?: FlexGrow;
   shrink?: FlexShrink;
@@ -58,6 +60,7 @@ export function Flex({
   gap,
   rowGap,
   columnGap,
+  padding,
   basis,
   grow,
   shrink,
@@ -76,6 +79,7 @@ export function Flex({
     gap,
     rowGap,
     columnGap,
+    padding,
     basis,
     grow,
     shrink,
@@ -106,6 +110,7 @@ export type {
   FlexGrow,
   FlexGap,
   FlexJustify,
+  FlexPadding,
   FlexShrink,
   FlexValue,
   FlexWrap

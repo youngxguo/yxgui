@@ -28,6 +28,13 @@ describe('Flex', () => {
     expect(flex).toHaveStyle({ gap: '0.75rem', rowGap: '0.625rem', columnGap: '1rem' });
   });
 
+  it('supports token-backed padding styles', () => {
+    render(<Flex data-testid="flex" padding="sm" />);
+
+    const flex = screen.getByTestId('flex');
+    expect(flex).toHaveStyle({ padding: '0.5rem' });
+  });
+
   it('supports token-backed flex-basis styles', () => {
     render(<Flex data-testid="flex" basis="xl" />);
 
@@ -96,18 +103,19 @@ describe('Flex', () => {
     expect(flex).toHaveAttribute('data-inline', 'true');
   });
 
-  it('lets inline style overrides win over token and sizing props', () => {
+  it('lets inline style overrides win over token spacing and sizing props', () => {
     render(
       <Flex
         data-testid="flex"
         gap="sm"
+        padding="sm"
         basis="xl"
         grow={1}
-        style={{ gap: '4rem', flexBasis: '50%', flexGrow: 3 }}
+        style={{ gap: '4rem', padding: '2rem', flexBasis: '50%', flexGrow: 3 }}
       />
     );
 
     const flex = screen.getByTestId('flex');
-    expect(flex).toHaveStyle({ gap: '4rem', flexBasis: '50%', flexGrow: '3' });
+    expect(flex).toHaveStyle({ gap: '4rem', padding: '2rem', flexBasis: '50%', flexGrow: '3' });
   });
 });

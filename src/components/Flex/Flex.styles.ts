@@ -27,6 +27,7 @@ const flexGapTokens = {
 } as const;
 
 export type FlexGap = keyof typeof flexGapTokens;
+export type FlexPadding = keyof typeof flexGapTokens;
 export type FlexBasisToken = keyof typeof flexGapTokens;
 type CSSFlexBasis = NonNullable<CSSProperties['flexBasis']>;
 type CSSFlex = NonNullable<CSSProperties['flex']>;
@@ -45,6 +46,7 @@ interface GetFlexStylePropsOptions {
   gap?: FlexGap;
   rowGap?: FlexGap;
   columnGap?: FlexGap;
+  padding?: FlexPadding;
   basis?: FlexBasis;
   grow?: FlexGrow;
   shrink?: FlexShrink;
@@ -199,6 +201,18 @@ function getGapStyle({
   return Object.keys(gapStyle).length > 0 ? gapStyle : undefined;
 }
 
+function getPaddingStyle({
+  padding
+}: Pick<GetFlexStylePropsOptions, 'padding'>): CSSProperties | undefined {
+  const paddingStyle: CSSProperties = {};
+
+  if (padding != null) {
+    paddingStyle.padding = flexGapTokens[padding];
+  }
+
+  return Object.keys(paddingStyle).length > 0 ? paddingStyle : undefined;
+}
+
 function isFlexBasisToken(value: FlexBasis): value is FlexBasisToken {
   return typeof value === 'string' && Object.prototype.hasOwnProperty.call(flexGapTokens, value);
 }
@@ -251,6 +265,7 @@ export function getFlexStyleProps({
   gap,
   rowGap,
   columnGap,
+  padding,
   basis,
   grow,
   shrink,
@@ -259,9 +274,12 @@ export function getFlexStyleProps({
   style
 }: GetFlexStylePropsOptions) {
   const tokenGapStyle = getGapStyle({ gap, rowGap, columnGap });
+  const paddingStyle = getPaddingStyle({ padding });
   const sizingStyle = getFlexSizingStyle({ basis, grow, shrink, flex });
   const tokenStyle =
-    tokenGapStyle != null || sizingStyle != null ? { ...tokenGapStyle, ...sizingStyle } : undefined;
+    tokenGapStyle != null || paddingStyle != null || sizingStyle != null
+      ? { ...tokenGapStyle, ...paddingStyle, ...sizingStyle }
+      : undefined;
   const mergedStyle = tokenStyle != null || style != null ? { ...tokenStyle, ...style } : undefined;
 
   return composeStyleProps(

@@ -118,6 +118,7 @@ export type {
   FlexGrow,
   FlexGap,
   FlexJustify,
+  FlexPadding,
   FlexProps,
   FlexShrink,
   FlexValue,

@@ -51,6 +51,10 @@ const meta = {
       control: 'select',
       options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
     },
+    padding: {
+      control: 'select',
+      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
+    },
     basis: {
       control: 'text',
       description: 'Spacing token or CSS flex-basis value (for example: "md", "33%", "16rem").'
@@ -95,7 +99,8 @@ export const Default: Story = {
 export const VerticalCards: Story = {
   args: {
     direction: 'column',
-    gap: 'xl'
+    gap: 'xl',
+    padding: 'md'
   },
   render: (args) => (
     <Flex {...args} style={{ maxWidth: 360 }}>
