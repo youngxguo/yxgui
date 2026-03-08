@@ -17,6 +17,7 @@ import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
+import { floatingOffsets } from '../_internal/floatingOffsets';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import {
   getDropdownMenuContentStyleProps,
@@ -147,7 +148,7 @@ export function DropdownMenuContent({
   ref,
   className,
   style,
-  offset = 6,
+  offset = floatingOffsets.menu,
   onKeyDown,
   children,
   ...props

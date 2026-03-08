@@ -9,6 +9,27 @@ const options = [
   { value: 'solid', label: 'Solid', disabled: true }
 ];
 
+function mockElementRect(
+  element: HTMLElement,
+  rect: { bottom: number; height: number; left: number }
+) {
+  Object.defineProperty(element, 'getBoundingClientRect', {
+    value: () =>
+      ({
+        x: rect.left,
+        y: rect.bottom - rect.height,
+        top: rect.bottom - rect.height,
+        right: rect.left,
+        bottom: rect.bottom,
+        left: rect.left,
+        width: 0,
+        height: rect.height,
+        toJSON: () => ({})
+      }) as DOMRect,
+    configurable: true
+  });
+}
+
 describe('Combobox', () => {
   it('filters options and supports keyboard selection', async () => {
     const onValueChange = vi.fn();
@@ -76,5 +97,17 @@ describe('Combobox', () => {
 
     const trigger = screen.getByRole('combobox', { name: 'Framework' });
     expect(trigger.parentElement?.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('uses the compact default offset for listbox content', async () => {
+    render(<Combobox options={options} aria-label="Framework" />);
+
+    const trigger = screen.getByRole('combobox', { name: 'Framework' });
+    mockElementRect(trigger, { bottom: 88, height: 32, left: 20 });
+
+    fireEvent.focus(trigger);
+
+    const listbox = await screen.findByRole('listbox');
+    await waitFor(() => expect(listbox.parentElement).toHaveStyle({ left: '20px', top: '92px' }));
   });
 });

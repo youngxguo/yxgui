@@ -8,6 +8,27 @@ import {
   DropdownMenuTrigger
 } from './DropdownMenu';
 
+function mockElementRect(
+  element: HTMLElement,
+  rect: { bottom: number; height: number; left: number }
+) {
+  Object.defineProperty(element, 'getBoundingClientRect', {
+    value: () =>
+      ({
+        x: rect.left,
+        y: rect.bottom - rect.height,
+        top: rect.bottom - rect.height,
+        right: rect.left,
+        bottom: rect.bottom,
+        left: rect.left,
+        width: 0,
+        height: rect.height,
+        toJSON: () => ({})
+      }) as DOMRect,
+    configurable: true
+  });
+}
+
 describe('DropdownMenu', () => {
   it('opens and supports keyboard navigation that skips disabled items', async () => {
     render(
@@ -59,5 +80,24 @@ describe('DropdownMenu', () => {
 
     await screen.findByRole('menu');
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it('uses the compact default offset for trigger-anchored content', async () => {
+    render(
+      <DropdownMenu>
+        <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>Open</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+
+    const trigger = screen.getByRole('button', { name: 'Actions' });
+    mockElementRect(trigger, { bottom: 60, height: 28, left: 24 });
+
+    fireEvent.click(trigger);
+
+    const menu = await screen.findByRole('menu');
+    await waitFor(() => expect(menu).toHaveStyle({ left: '24px', top: '64px' }));
   });
 });

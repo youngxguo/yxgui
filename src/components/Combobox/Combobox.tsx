@@ -12,6 +12,7 @@ import { assignRef } from '../_internal/refs';
 import { useControllableState } from '../_internal/useControllableState';
 import { useDismissableLayer } from '../_internal/useDismissableLayer';
 import { useEntranceAnimation } from '../_internal/useEntranceAnimation';
+import { floatingOffsets } from '../_internal/floatingOffsets';
 import { useFloatingPosition } from '../_internal/useFloatingPosition';
 import {
   getComboboxContentStyleProps,
@@ -107,7 +108,7 @@ export function Combobox({
   size = 'md',
   invalid: invalidProp = false,
   disabled = false,
-  offset = 6,
+  offset = floatingOffsets.menu,
   className,
   style,
   id: idProp,

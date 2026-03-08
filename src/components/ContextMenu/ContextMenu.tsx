@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { Portal } from '../_internal/Portal';
 import { getDataPresenceAttribute, getDataStateAttribute } from '../_internal/dataAttributes';
+import { floatingOffsets } from '../_internal/floatingOffsets';
 import { assignRef } from '../_internal/refs';
 import { Separator } from '../Separator/Separator';
 import { useControllableState } from '../_internal/useControllableState';
@@ -155,7 +156,7 @@ export function ContextMenuTrigger({
       onKeyDown={(event) => {
         if (event.key === 'ContextMenu' || (event.key === 'F10' && event.shiftKey)) {
           const rect = event.currentTarget.getBoundingClientRect();
-          context.setPosition({ x: rect.left + 8, y: rect.bottom + 4 });
+          context.setPosition({ x: rect.left + 8, y: rect.bottom + floatingOffsets.menu });
           context.setOpen(true);
           event.preventDefault();
         }
