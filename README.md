@@ -132,7 +132,7 @@ Current exported components include:
 - `Popover` (`PopoverTrigger`, `PopoverContent`)
 - `Progress`
 - `RadioGroup` (`Radio`)
-- `ScrollArea` (`ScrollAreaViewport`, `ScrollAreaScrollbar`, `ScrollAreaThumb`)
+- `ScrollArea` (`ScrollAreaViewport`; `ScrollAreaScrollbar` + `ScrollAreaThumb` are compatibility-only and hidden by default)
 - `Select`
 - `Separator`
 - `Sheet` (`SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`)
