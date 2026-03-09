@@ -32,7 +32,7 @@ const emptyStyles = stylex.create({
   },
   header: {
     display: 'grid',
-    gap: spacingTokens.xxs,
+    gap: spacingTokens.xs,
     justifyItems: 'inherit',
     maxWidth: '34rem'
   },

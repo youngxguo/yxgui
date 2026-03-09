@@ -38,7 +38,7 @@ const switchStyles = stylex.create({
     display: 'inline-flex',
     margin: 0,
     overflow: 'hidden',
-    padding: spacingTokens.xxxs,
+    padding: spacingTokens.xs,
     position: 'relative'
   },
   checked: {

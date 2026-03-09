@@ -79,7 +79,7 @@ For contributor-facing implementation details and current edge cases, see:
 - `align`: `'start' | 'end' | 'center' | 'stretch' | 'baseline'` (default: `'stretch'`)
 - `justify`: `'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'` (default: `'start'`)
 - `wrap`: `'nowrap' | 'wrap' | 'wrap-reverse'` (default: `'nowrap'`)
-- `gap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `gap`: `'xs' | 'sm' | 'md' | 'lg' | 'xl'`
 - `padding`: spacing token for all sides
 - Plus native element props from `React.HTMLAttributes<HTMLElement>` except `style`
 
@@ -89,7 +89,7 @@ For contributor-facing implementation details and current edge cases, see:
 - `rows`: `1..12` (`2` -> `repeat(2, minmax(0, 1fr))`)
 - `align`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
 - `justify`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
-- `gap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `gap`: `'xs' | 'sm' | 'md' | 'lg' | 'xl'`
 - `padding`: spacing token for all sides
 - Plus native element props from `React.HTMLAttributes<HTMLElement>` except `style`
 
