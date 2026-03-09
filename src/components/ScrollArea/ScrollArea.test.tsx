@@ -59,4 +59,25 @@ describe('ScrollArea', () => {
     expect(thumb).toHaveAttribute('hidden');
     expect(thumb).toHaveAttribute('aria-hidden', 'true');
   });
+
+  it('shows compatibility primitives when hidden is disabled', () => {
+    render(
+      <ScrollArea>
+        <ScrollAreaViewport aria-label="Scrollable notes">
+          <div style={{ height: 320 }}>Long content</div>
+        </ScrollAreaViewport>
+        <ScrollAreaScrollbar data-testid="scrollbar" hidden={false}>
+          <ScrollAreaThumb data-testid="thumb" hidden={false} />
+        </ScrollAreaScrollbar>
+      </ScrollArea>
+    );
+
+    const scrollbar = screen.getByTestId('scrollbar');
+    const thumb = screen.getByTestId('thumb');
+
+    expect(scrollbar).not.toHaveAttribute('hidden');
+    expect(thumb).not.toHaveAttribute('hidden');
+    expect(window.getComputedStyle(scrollbar).display).not.toBe('none');
+    expect(window.getComputedStyle(thumb).display).not.toBe('none');
+  });
 });

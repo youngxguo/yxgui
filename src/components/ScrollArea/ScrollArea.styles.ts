@@ -31,22 +31,33 @@ const scrollAreaStyles = stylex.create({
     }
   },
   scrollbar: {
-    display: 'none'
+    backgroundColor: surfaceTokens.softHover,
+    borderRadius: radiusTokens.pill,
+    display: 'block',
+    flexShrink: 0,
+    userSelect: 'none',
+    overflow: 'hidden'
   },
   scrollbarVertical: {
-    display: 'none'
+    width: spacingTokens.sm,
+    padding: spacingTokens.xxxs
   },
   scrollbarHorizontal: {
-    display: 'none'
+    height: spacingTokens.sm,
+    padding: spacingTokens.xxxs
   },
   thumb: {
-    display: 'none'
+    backgroundColor: surfaceTokens.softStrong,
+    borderRadius: radiusTokens.pill,
+    display: 'block'
   },
   thumbVertical: {
-    display: 'none'
+    width: '100%',
+    minHeight: spacingTokens.sm
   },
   thumbHorizontal: {
-    display: 'none'
+    height: '100%',
+    minWidth: spacingTokens.sm
   }
 });
 
