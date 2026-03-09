@@ -42,6 +42,7 @@ React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`)
 ## Testing
 
 - Vitest + Testing Library; prefer accessible role/name queries.
+- For component-only edits, run verification for the affected component(s) only; run full suite only for cross-cutting changes or done gate.
 - Test behavior + public API.
 - Prefer `play` assertions in existing `Default` story.
 - Test-only stories only when also documented.
