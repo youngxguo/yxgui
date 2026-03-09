@@ -8,52 +8,45 @@ const scrollAreaStyles = stylex.create({
     border: `${borderTokens.widthThin} solid ${borderTokens.default}`,
     borderRadius: radiusTokens.md,
     backgroundColor: surfaceTokens.base,
-    position: 'relative'
+    overflow: 'hidden'
   },
   viewport: {
     overflow: 'auto',
     maxWidth: '100%',
     maxHeight: '100%',
     outline: 'none',
-    scrollbarWidth: 'none',
-    msOverflowStyle: 'none',
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${surfaceTokens.softStrong} ${surfaceTokens.softHover}`,
     '::-webkit-scrollbar': {
-      display: 'none'
+      width: spacingTokens.sm,
+      height: spacingTokens.sm
+    },
+    '::-webkit-scrollbar-track': {
+      backgroundColor: surfaceTokens.softHover,
+      borderRadius: radiusTokens.pill
+    },
+    '::-webkit-scrollbar-thumb': {
+      backgroundColor: surfaceTokens.softStrong,
+      borderRadius: radiusTokens.pill
     }
   },
   scrollbar: {
-    backgroundColor: surfaceTokens.softHover,
-    borderRadius: radiusTokens.pill,
-    display: 'block',
-    flexShrink: 0,
-    userSelect: 'none',
-    overflow: 'hidden'
+    display: 'none'
   },
   scrollbarVertical: {
-    width: spacingTokens.md,
-    padding: spacingTokens.xxxs,
-    position: 'absolute',
-    right: spacingTokens.xxxs,
-    top: spacingTokens.xxxs,
-    bottom: spacingTokens.xxxs
+    display: 'none'
   },
   scrollbarHorizontal: {
-    height: spacingTokens.md,
-    padding: spacingTokens.xxxs,
-    position: 'absolute',
-    left: spacingTokens.xxxs,
-    right: spacingTokens.xxxs,
-    bottom: spacingTokens.xxxs
+    display: 'none'
   },
   thumb: {
-    backgroundColor: surfaceTokens.softStrong,
-    borderRadius: radiusTokens.pill
+    display: 'none'
   },
   thumbVertical: {
-    width: '100%'
+    display: 'none'
   },
   thumbHorizontal: {
-    height: '100%'
+    display: 'none'
   }
 });
 

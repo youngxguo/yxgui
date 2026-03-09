@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
 import { Typography } from '../Typography/Typography';
-import { ScrollArea, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from './ScrollArea';
+import { ScrollArea, ScrollAreaViewport } from './ScrollArea';
 
 const meta = {
   title: 'Layout/ScrollArea',
@@ -27,9 +27,6 @@ export const Default: Story = {
           ))}
         </div>
       </ScrollAreaViewport>
-      <ScrollAreaScrollbar>
-        <ScrollAreaThumb />
-      </ScrollAreaScrollbar>
     </ScrollArea>
   ),
   play: ({ canvasElement }) => {
@@ -40,7 +37,7 @@ export const Default: Story = {
 
 export const HorizontalContent: Story = {
   render: () => (
-    <ScrollArea style={{ height: 120, width: 320, paddingBottom: 16 }}>
+    <ScrollArea style={{ height: 120, width: 320 }}>
       <ScrollAreaViewport aria-label="Horizontal tags" style={{ width: 320, height: 100 }}>
         <div style={{ display: 'flex', gap: 8, width: 720, padding: '0.5rem' }}>
           {Array.from({ length: 20 }, (_, index) => (
@@ -55,9 +52,6 @@ export const HorizontalContent: Story = {
           ))}
         </div>
       </ScrollAreaViewport>
-      <ScrollAreaScrollbar orientation="horizontal">
-        <ScrollAreaThumb />
-      </ScrollAreaScrollbar>
     </ScrollArea>
   )
 };
