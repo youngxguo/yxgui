@@ -7,14 +7,6 @@ export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 export type FlexAlign = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 export type FlexJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
-export type FlexAlignContent =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'stretch'
-  | 'between'
-  | 'around'
-  | 'evenly';
 
 const flexGapTokens = {
   xxxs: spacingTokens.xxxs,
@@ -28,31 +20,16 @@ const flexGapTokens = {
 
 export type FlexGap = keyof typeof flexGapTokens;
 export type FlexPadding = keyof typeof flexGapTokens;
-export type FlexBasisToken = keyof typeof flexGapTokens;
-type CSSFlexBasis = NonNullable<CSSProperties['flexBasis']>;
-type CSSFlex = NonNullable<CSSProperties['flex']>;
-export type FlexBasis = FlexBasisToken | CSSFlexBasis;
-export type FlexGrow = number | string;
-export type FlexShrink = number | string;
-export type FlexValue = CSSFlex;
 
 interface GetFlexStylePropsOptions {
   direction: FlexDirection;
   align: FlexAlign;
   justify: FlexJustify;
   wrap: FlexWrap;
-  alignContent: FlexAlignContent;
   inline: boolean;
   gap?: FlexGap;
-  rowGap?: FlexGap;
-  columnGap?: FlexGap;
   padding?: FlexPadding;
-  basis?: FlexBasis;
-  grow?: FlexGrow;
-  shrink?: FlexShrink;
-  flex?: FlexValue;
   className?: string;
-  style?: CSSProperties;
 }
 
 const flexStyles = stylex.create({
@@ -107,27 +84,6 @@ const flexStyles = stylex.create({
   justifyEvenly: {
     justifyContent: 'space-evenly'
   },
-  alignContentStart: {
-    alignContent: 'flex-start'
-  },
-  alignContentEnd: {
-    alignContent: 'flex-end'
-  },
-  alignContentCenter: {
-    alignContent: 'center'
-  },
-  alignContentStretch: {
-    alignContent: 'stretch'
-  },
-  alignContentBetween: {
-    alignContent: 'space-between'
-  },
-  alignContentAround: {
-    alignContent: 'space-around'
-  },
-  alignContentEvenly: {
-    alignContent: 'space-evenly'
-  },
   nowrap: {
     flexWrap: 'nowrap'
   },
@@ -163,39 +119,17 @@ const justifyStyles: Record<FlexJustify, unknown> = {
   evenly: flexStyles.justifyEvenly
 };
 
-const alignContentStyles: Record<FlexAlignContent, unknown> = {
-  start: flexStyles.alignContentStart,
-  end: flexStyles.alignContentEnd,
-  center: flexStyles.alignContentCenter,
-  stretch: flexStyles.alignContentStretch,
-  between: flexStyles.alignContentBetween,
-  around: flexStyles.alignContentAround,
-  evenly: flexStyles.alignContentEvenly
-};
-
 const wrapStyles: Record<FlexWrap, unknown> = {
   nowrap: flexStyles.nowrap,
   wrap: flexStyles.wrap,
   'wrap-reverse': flexStyles.wrapReverse
 };
 
-function getGapStyle({
-  gap,
-  rowGap,
-  columnGap
-}: Pick<GetFlexStylePropsOptions, 'gap' | 'rowGap' | 'columnGap'>): CSSProperties | undefined {
+function getGapStyle({ gap }: Pick<GetFlexStylePropsOptions, 'gap'>): CSSProperties | undefined {
   const gapStyle: CSSProperties = {};
 
   if (gap != null) {
     gapStyle.gap = flexGapTokens[gap];
-  }
-
-  if (rowGap != null) {
-    gapStyle.rowGap = flexGapTokens[rowGap];
-  }
-
-  if (columnGap != null) {
-    gapStyle.columnGap = flexGapTokens[columnGap];
   }
 
   return Object.keys(gapStyle).length > 0 ? gapStyle : undefined;
@@ -212,75 +146,22 @@ function getPaddingStyle({
 
   return Object.keys(paddingStyle).length > 0 ? paddingStyle : undefined;
 }
-
-function isFlexBasisToken(value: FlexBasis): value is FlexBasisToken {
-  return typeof value === 'string' && Object.prototype.hasOwnProperty.call(flexGapTokens, value);
-}
-
-function getBasisStyle({
-  basis
-}: Pick<GetFlexStylePropsOptions, 'basis'>): CSSProperties | undefined {
-  if (basis == null) {
-    return undefined;
-  }
-
-  return {
-    flexBasis: isFlexBasisToken(basis) ? flexGapTokens[basis] : basis
-  };
-}
-
-function getFlexSizingStyle({
-  basis,
-  grow,
-  shrink,
-  flex
-}: Pick<GetFlexStylePropsOptions, 'basis' | 'grow' | 'shrink' | 'flex'>):
-  | CSSProperties
-  | undefined {
-  if (flex != null) {
-    return { flex };
-  }
-
-  const basisStyle = getBasisStyle({ basis });
-  const sizingStyle: CSSProperties = basisStyle != null ? { ...basisStyle } : {};
-
-  if (grow != null) {
-    sizingStyle.flexGrow = grow;
-  }
-
-  if (shrink != null) {
-    sizingStyle.flexShrink = shrink;
-  }
-
-  return Object.keys(sizingStyle).length > 0 ? sizingStyle : undefined;
-}
-
 export function getFlexStyleProps({
   direction,
   align,
   justify,
   wrap,
-  alignContent,
   inline,
   gap,
-  rowGap,
-  columnGap,
   padding,
-  basis,
-  grow,
-  shrink,
-  flex,
-  className,
-  style
+  className
 }: GetFlexStylePropsOptions) {
-  const tokenGapStyle = getGapStyle({ gap, rowGap, columnGap });
+  const tokenGapStyle = getGapStyle({ gap });
   const paddingStyle = getPaddingStyle({ padding });
-  const sizingStyle = getFlexSizingStyle({ basis, grow, shrink, flex });
   const tokenStyle =
-    tokenGapStyle != null || paddingStyle != null || sizingStyle != null
-      ? { ...tokenGapStyle, ...paddingStyle, ...sizingStyle }
+    tokenGapStyle != null || paddingStyle != null
+      ? { ...tokenGapStyle, ...paddingStyle }
       : undefined;
-  const mergedStyle = tokenStyle != null || style != null ? { ...tokenStyle, ...style } : undefined;
 
   return composeStyleProps(
     [
@@ -289,9 +170,8 @@ export function getFlexStyleProps({
       pickStyle(directionStyles, direction),
       pickStyle(alignStyles, align),
       pickStyle(justifyStyles, justify),
-      pickStyle(alignContentStyles, alignContent),
       pickStyle(wrapStyles, wrap)
     ],
-    { className, style: mergedStyle }
+    { className, style: tokenStyle }
   );
 }

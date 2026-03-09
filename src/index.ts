@@ -111,34 +111,25 @@ export type {
 export { Flex } from './components/Flex/Flex';
 export type {
   FlexAlign,
-  FlexAlignContent,
-  FlexBasis,
   FlexDirection,
   FlexElement,
-  FlexGrow,
   FlexGap,
   FlexJustify,
   FlexPadding,
   FlexProps,
-  FlexShrink,
-  FlexValue,
   FlexWrap
 } from './components/Flex/Flex';
 export { Grid } from './components/Grid/Grid';
 export type {
   GridAlign,
-  GridAlignContent,
-  GridAreas,
-  GridAutoFlow,
   GridElement,
   GridGap,
   GridJustify,
-  GridJustifyContent,
   GridPadding,
   GridProps,
+  GridTrackCount,
   GridTemplateColumns,
-  GridTemplateRows,
-  GridTrackSize
+  GridTemplateRows
 } from './components/Grid/Grid';
 export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard/HoverCard';
 export type {

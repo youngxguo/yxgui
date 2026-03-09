@@ -15,17 +15,14 @@ describe('Grid', () => {
     expect(grid.tagName).toBe('DIV');
     expect(grid).toHaveAttribute('data-align', 'stretch');
     expect(grid).toHaveAttribute('data-justify', 'stretch');
-    expect(grid).toHaveAttribute('data-align-content', 'stretch');
-    expect(grid).toHaveAttribute('data-justify-content', 'stretch');
-    expect(grid).toHaveAttribute('data-auto-flow', 'row');
     expect(grid).not.toHaveAttribute('data-inline');
   });
 
-  it('supports token-backed gap, rowGap, and columnGap styles', () => {
-    render(<Grid data-testid="grid" gap="lg" rowGap="md" columnGap="xl" />);
+  it('supports token-backed gap styles', () => {
+    render(<Grid data-testid="grid" gap="lg" />);
 
     const grid = screen.getByTestId('grid');
-    expect(grid).toHaveStyle({ gap: '0.75rem', rowGap: '0.625rem', columnGap: '1rem' });
+    expect(grid).toHaveStyle({ gap: '0.75rem' });
   });
 
   it('supports token-backed padding styles', () => {
@@ -45,42 +42,17 @@ describe('Grid', () => {
     });
   });
 
-  it('supports raw template and auto track values', () => {
-    render(
-      <Grid
-        data-testid="grid"
-        columns="2fr 1fr"
-        rows="auto auto"
-        autoRows="minmax(4rem, auto)"
-        autoColumns="12rem"
-        areas='"hero side" "table side"'
-      />
-    );
-
-    const grid = screen.getByTestId('grid');
-    expect(grid).toHaveStyle({
-      gridTemplateColumns: '2fr 1fr',
-      gridTemplateRows: 'auto auto',
-      gridAutoRows: 'minmax(4rem, auto)',
-      gridAutoColumns: '12rem',
-      gridTemplateAreas: '"hero side" "table side"'
-    });
-  });
-
-  it('updates class composition when alignment and autoFlow change', () => {
-    const { rerender } = render(
-      <Grid data-testid="grid" align="stretch" justify="stretch" autoFlow="row" />
-    );
+  it('updates class composition when alignment changes', () => {
+    const { rerender } = render(<Grid data-testid="grid" align="stretch" justify="stretch" />);
 
     const grid = screen.getByTestId('grid');
     const baseClassName = grid.className;
 
-    rerender(<Grid data-testid="grid" align="center" justify="end" autoFlow="column-dense" />);
+    rerender(<Grid data-testid="grid" align="center" justify="end" />);
 
     expect(grid.className).not.toEqual(baseClassName);
     expect(grid).toHaveAttribute('data-align', 'center');
     expect(grid).toHaveAttribute('data-justify', 'end');
-    expect(grid).toHaveAttribute('data-auto-flow', 'column-dense');
   });
 
   it('supports semantic element overrides and ref passthrough', () => {
@@ -96,24 +68,5 @@ describe('Grid', () => {
     expect(grid.tagName).toBe('SECTION');
     expect(ref.current).toBe(grid);
     expect(grid).toHaveAttribute('data-inline', 'true');
-  });
-
-  it('lets inline style overrides win over token spacing and templates', () => {
-    render(
-      <Grid
-        data-testid="grid"
-        columns={3}
-        gap="sm"
-        padding="sm"
-        style={{ gridTemplateColumns: 'repeat(6, 1fr)', gap: '3rem', padding: '2rem' }}
-      />
-    );
-
-    const grid = screen.getByTestId('grid');
-    expect(grid).toHaveStyle({
-      gridTemplateColumns: 'repeat(6, 1fr)',
-      gap: '3rem',
-      padding: '2rem'
-    });
   });
 });

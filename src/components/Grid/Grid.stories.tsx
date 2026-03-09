@@ -12,22 +12,17 @@ const meta = {
     columns: 3,
     align: 'stretch',
     justify: 'stretch',
-    alignContent: 'stretch',
-    justifyContent: 'stretch',
-    autoFlow: 'row',
     gap: 'lg',
     inline: false
   },
   argTypes: {
     columns: {
-      control: 'number',
-      description:
-        'Number (maps to repeat(n, minmax(0, 1fr))) or raw CSS grid-template-columns string.'
+      control: 'select',
+      options: [1, 2, 3, 4, 5, 6, 12]
     },
     rows: {
-      control: 'text',
-      description:
-        'Number (maps to repeat(n, minmax(0, 1fr))) or raw CSS grid-template-rows string.'
+      control: 'select',
+      options: [1, 2, 3, 4, 5, 6]
     },
     align: {
       control: 'select',
@@ -37,42 +32,13 @@ const meta = {
       control: 'select',
       options: ['start', 'end', 'center', 'stretch']
     },
-    alignContent: {
-      control: 'select',
-      options: ['start', 'end', 'center', 'stretch', 'between', 'around', 'evenly']
-    },
-    justifyContent: {
-      control: 'select',
-      options: ['start', 'end', 'center', 'stretch', 'between', 'around', 'evenly']
-    },
-    autoFlow: {
-      control: 'select',
-      options: ['row', 'column', 'row-dense', 'column-dense']
-    },
     gap: {
-      control: 'select',
-      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
-    },
-    rowGap: {
-      control: 'select',
-      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
-    },
-    columnGap: {
       control: 'select',
       options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
     },
     padding: {
       control: 'select',
       options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
-    },
-    autoRows: {
-      control: 'text'
-    },
-    autoColumns: {
-      control: 'text'
-    },
-    areas: {
-      control: 'text'
     }
   }
 } satisfies Meta<typeof Grid>;
@@ -109,62 +75,68 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const grid = canvas.getByTestId('grid-default');
 
-    expect(grid).toHaveAttribute('data-auto-flow', 'row');
+    expect(grid).toHaveAttribute('data-align', 'stretch');
     expect(canvas.getByRole('button', { name: 'Profile' })).toBeVisible();
   }
 };
 
 export const DashboardPanels: Story = {
   args: {
-    columns: 'repeat(auto-fit, minmax(13rem, 1fr))',
+    columns: 2,
     gap: 'md',
-    rowGap: 'lg',
     padding: 'sm',
     align: 'stretch'
   },
   render: (args) => (
-    <Grid {...args} style={{ maxWidth: 880 }}>
-      <section style={panelStyle}>
-        <Typography variant="small">Revenue</Typography>
-        <Typography variant="muted">$24,981 this month</Typography>
-      </section>
-      <section style={panelStyle}>
-        <Typography variant="small">Activation</Typography>
-        <Typography variant="muted">63% users completed onboarding</Typography>
-      </section>
-      <section style={panelStyle}>
-        <Typography variant="small">Reliability</Typography>
-        <Typography variant="muted">99.98% service uptime in the last 30 days</Typography>
-      </section>
-      <section style={panelStyle}>
-        <Typography variant="small">Support</Typography>
-        <Typography variant="muted">Median first response: 17 minutes</Typography>
-      </section>
-    </Grid>
+    <div style={{ maxWidth: 880 }}>
+      <Grid {...args}>
+        <section style={panelStyle}>
+          <Typography variant="small">Revenue</Typography>
+          <Typography variant="muted">$24,981 this month</Typography>
+        </section>
+        <section style={panelStyle}>
+          <Typography variant="small">Activation</Typography>
+          <Typography variant="muted">63% users completed onboarding</Typography>
+        </section>
+        <section style={panelStyle}>
+          <Typography variant="small">Reliability</Typography>
+          <Typography variant="muted">99.98% service uptime in the last 30 days</Typography>
+        </section>
+        <section style={panelStyle}>
+          <Typography variant="small">Support</Typography>
+          <Typography variant="muted">Median first response: 17 minutes</Typography>
+        </section>
+      </Grid>
+    </div>
   )
 };
 
-export const TemplateAreas: Story = {
+export const Matrix: Story = {
   args: {
-    columns: '2fr 1fr',
-    rows: 'auto auto',
-    areas: '"hero sidebar" "table sidebar"',
+    columns: 3,
+    rows: 2,
     gap: 'sm'
   },
   render: (args) => (
-    <Grid {...args} style={{ maxWidth: 760 }}>
-      <section style={{ ...panelStyle, gridArea: 'hero' }}>
-        <Typography variant="small">Release Health</Typography>
-        <Typography variant="muted">No production incidents in the last 14 days.</Typography>
+    <Grid {...args}>
+      <section style={panelStyle}>
+        <Typography variant="small">A1</Typography>
       </section>
-      <section style={{ ...panelStyle, gridArea: 'table' }}>
-        <Typography variant="small">Open Work</Typography>
-        <Typography variant="muted">17 tasks pending review in this sprint.</Typography>
+      <section style={panelStyle}>
+        <Typography variant="small">A2</Typography>
       </section>
-      <aside style={{ ...panelStyle, gridArea: 'sidebar' }}>
-        <Typography variant="small">Owners</Typography>
-        <Typography variant="muted">Design, Platform, and QA rotations assigned.</Typography>
-      </aside>
+      <section style={panelStyle}>
+        <Typography variant="small">A3</Typography>
+      </section>
+      <section style={panelStyle}>
+        <Typography variant="small">B1</Typography>
+      </section>
+      <section style={panelStyle}>
+        <Typography variant="small">B2</Typography>
+      </section>
+      <section style={panelStyle}>
+        <Typography variant="small">B3</Typography>
+      </section>
     </Grid>
   )
 };

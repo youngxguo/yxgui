@@ -946,12 +946,7 @@ function getMemberStatusBadgeVariant(status: string): 'success' | 'warning' {
 
 function ComponentSamplePage() {
   return (
-    <Flex
-      as="main"
-      direction="column"
-      gap="xl"
-      style={{ margin: '0 auto', maxWidth: 1080, paddingBottom: spacingTokens.xl }}
-    >
+    <Flex as="main" direction="column" gap="xl" padding="xl">
       <Flex as="header" direction="column" gap="md">
         <Breadcrumb aria-label="Workspace path">
           <BreadcrumbList>
@@ -969,7 +964,7 @@ function ComponentSamplePage() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <Flex align="start" justify="between" wrap="wrap" rowGap="sm" columnGap="md">
+        <Flex align="start" justify="between" wrap="wrap" gap="md">
           <Flex direction="column" gap="xxs">
             <Typography as="h1" variant="h2">
               Release Command Center
@@ -1091,22 +1086,13 @@ function ComponentSamplePage() {
                 <CardDescription>Gate review before final publish.</CardDescription>
               </CardHeader>
               <CardContent>
-                <Flex
-                  as="ul"
-                  direction="column"
-                  gap="sm"
-                  style={{ listStyle: 'none', margin: 0, padding: 0 }}
-                >
-                  <li>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                  <Flex as="li" direction="column" gap="sm">
                     <Typography>QA regression passed in staging.</Typography>
-                  </li>
-                  <li>
                     <Typography>Accessibility spot checks completed.</Typography>
-                  </li>
-                  <li>
                     <Typography>Rollback plan approved by on-call.</Typography>
-                  </li>
-                </Flex>
+                  </Flex>
+                </ul>
               </CardContent>
               <CardFooter>
                 <Button size="sm" variant="ghost">

@@ -2,15 +2,10 @@ import { createElement, type HTMLAttributes, type Ref } from 'react';
 import {
   getFlexStyleProps,
   type FlexAlign,
-  type FlexAlignContent,
-  type FlexBasis,
   type FlexDirection,
-  type FlexGrow,
   type FlexGap,
   type FlexJustify,
   type FlexPadding,
-  type FlexShrink,
-  type FlexValue,
   type FlexWrap
 } from './Flex.styles';
 
@@ -29,23 +24,16 @@ export type FlexElement =
   | 'span'
   | 'ul';
 
-export interface FlexProps extends HTMLAttributes<HTMLElement> {
+export interface FlexProps extends Omit<HTMLAttributes<HTMLElement>, 'style'> {
   ref?: Ref<HTMLElement>;
   as?: FlexElement;
   direction?: FlexDirection;
   align?: FlexAlign;
   justify?: FlexJustify;
   wrap?: FlexWrap;
-  alignContent?: FlexAlignContent;
   inline?: boolean;
   gap?: FlexGap;
-  rowGap?: FlexGap;
-  columnGap?: FlexGap;
   padding?: FlexPadding;
-  basis?: FlexBasis;
-  grow?: FlexGrow;
-  shrink?: FlexShrink;
-  flex?: FlexValue;
 }
 
 export function Flex({
@@ -55,18 +43,10 @@ export function Flex({
   align = 'stretch',
   justify = 'start',
   wrap = 'nowrap',
-  alignContent = 'stretch',
   inline = false,
   gap,
-  rowGap,
-  columnGap,
   padding,
-  basis,
-  grow,
-  shrink,
-  flex,
   className,
-  style,
   ...props
 }: FlexProps) {
   const styleProps = getFlexStyleProps({
@@ -74,18 +54,10 @@ export function Flex({
     align,
     justify,
     wrap,
-    alignContent,
     inline,
     gap,
-    rowGap,
-    columnGap,
     padding,
-    basis,
-    grow,
-    shrink,
-    flex,
-    className,
-    style
+    className
   });
   const Component = as ?? 'div';
 
@@ -97,21 +69,15 @@ export function Flex({
     'data-direction': direction,
     'data-inline': inline || undefined,
     'data-justify': justify,
-    'data-align-content': alignContent,
     'data-wrap': wrap
   });
 }
 
 export type {
   FlexAlign,
-  FlexAlignContent,
-  FlexBasis,
   FlexDirection,
-  FlexGrow,
   FlexGap,
   FlexJustify,
   FlexPadding,
-  FlexShrink,
-  FlexValue,
   FlexWrap
 } from './Flex.styles';

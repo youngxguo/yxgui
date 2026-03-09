@@ -17,6 +17,7 @@ These conventions describe the library's public component APIs for external cons
 - Components use the React 19 `ref` prop pattern (no `forwardRef` wrapper required for consumers)
 - Some props are intentionally owned or overridden (for example trigger buttons that force `type="button"`, or custom `size` props on styled controls)
 - `className` and `style` are merged with component styles so you can layer custom styles on top
+- Exception: `Flex` and `Grid` intentionally do not accept inline `style` overrides to keep layout APIs token-driven and consistent.
 
 Example: native event handlers and `aria-*` props are forwarded to form controls.
 
@@ -78,30 +79,19 @@ For contributor-facing implementation details and current edge cases, see:
 - `align`: `'start' | 'end' | 'center' | 'stretch' | 'baseline'` (default: `'stretch'`)
 - `justify`: `'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'` (default: `'start'`)
 - `wrap`: `'nowrap' | 'wrap' | 'wrap-reverse'` (default: `'nowrap'`)
-- `alignContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
-- `gap` / `rowGap` / `columnGap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `gap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
 - `padding`: spacing token for all sides
-- `basis`: spacing token (`'sm'`, `'xl'`) or raw CSS `flex-basis` value (`'33%'`, `'16rem'`, `240`)
-- `grow`: CSS `flex-grow` value (`0`, `1`, `2`, ...)
-- `shrink`: CSS `flex-shrink` value (`0`, `1`, ...)
-- `flex`: CSS flex shorthand (`'1 1 22rem'`); overrides `basis`/`grow`/`shrink` when provided
-- Plus all native element props from `React.HTMLAttributes<HTMLElement>`
+- Plus native element props from `React.HTMLAttributes<HTMLElement>` except `style`
 
 ## Grid Props
 
-- `columns`: number (`3` -> `repeat(3, minmax(0, 1fr))`) or raw CSS `grid-template-columns` value
-- `rows`: number (`2` -> `repeat(2, minmax(0, 1fr))`) or raw CSS `grid-template-rows` value
-- `autoRows`: raw CSS `grid-auto-rows` value
-- `autoColumns`: raw CSS `grid-auto-columns` value
-- `areas`: raw CSS `grid-template-areas` value
+- `columns`: `1..12` (`3` -> `repeat(3, minmax(0, 1fr))`)
+- `rows`: `1..12` (`2` -> `repeat(2, minmax(0, 1fr))`)
 - `align`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
 - `justify`: `'start' | 'end' | 'center' | 'stretch'` (default: `'stretch'`)
-- `alignContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
-- `justifyContent`: `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around' | 'evenly'` (default: `'stretch'`)
-- `autoFlow`: `'row' | 'column' | 'row-dense' | 'column-dense'` (default: `'row'`)
-- `gap` / `rowGap` / `columnGap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `gap`: `'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'`
 - `padding`: spacing token for all sides
-- Plus all native element props from `React.HTMLAttributes<HTMLElement>`
+- Plus native element props from `React.HTMLAttributes<HTMLElement>` except `style`
 
 ## Components
 
@@ -202,9 +192,7 @@ function App() {
 Keep token scoping only (no app-surface styles):
 
 ```tsx
-<ThemeProvider theme="dark">
-  {/* scoped themed subtree */}
-</ThemeProvider>
+<ThemeProvider theme="dark">{/* scoped themed subtree */}</ThemeProvider>
 ```
 
 Disable only `color-scheme` behavior on `ThemeRoot`:
