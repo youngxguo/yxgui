@@ -31,19 +31,19 @@ const scrollAreaStyles = stylex.create({
   },
   scrollbarVertical: {
     width: spacingTokens.md,
-    padding: spacingTokens.xxxs,
+    padding: spacingTokens.xs,
     position: 'absolute',
-    right: spacingTokens.xxxs,
-    top: spacingTokens.xxxs,
-    bottom: spacingTokens.xxxs
+    right: spacingTokens.xs,
+    top: spacingTokens.xs,
+    bottom: spacingTokens.xs
   },
   scrollbarHorizontal: {
     height: spacingTokens.md,
-    padding: spacingTokens.xxxs,
+    padding: spacingTokens.xs,
     position: 'absolute',
-    left: spacingTokens.xxxs,
-    right: spacingTokens.xxxs,
-    bottom: spacingTokens.xxxs
+    left: spacingTokens.xs,
+    right: spacingTokens.xs,
+    bottom: spacingTokens.xs
   },
   thumb: {
     backgroundColor: surfaceTokens.softStrong,

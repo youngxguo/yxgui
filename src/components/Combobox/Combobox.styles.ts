@@ -57,9 +57,9 @@ const comboboxStyles = stylex.create({
   optionFocusVisible: {
     ':focus-visible': {
       outlineColor: borderTokens.focus,
-      outlineOffset: spacingTokens.xxxs,
+      outlineOffset: spacingTokens.xs,
       outlineStyle: 'solid',
-      outlineWidth: spacingTokens.xxxs
+      outlineWidth: spacingTokens.xs
     }
   },
   optionActive: {

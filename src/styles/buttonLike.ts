@@ -48,9 +48,9 @@ const buttonLikeStyles = stylex.create({
   focusVisibleMenuitemSafe: {
     ':focus-visible:not([role="menuitem"])': {
       outlineColor: borderTokens.focus,
-      outlineOffset: spacingTokens.xxxs,
+      outlineOffset: spacingTokens.xs,
       outlineStyle: 'solid',
-      outlineWidth: spacingTokens.xxxs
+      outlineWidth: spacingTokens.xs
     }
   },
   disabled: {
@@ -109,7 +109,7 @@ const buttonLikeStyles = stylex.create({
   sm: {
     fontSize: typographyTokens.fontSizeSm,
     minHeight: componentSizeTokens.sizeMd,
-    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
+    padding: `${spacingTokens.xs} ${spacingTokens.sm}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,

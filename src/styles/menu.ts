@@ -14,7 +14,7 @@ const menuStyles = stylex.create({
     gap: 0,
     minWidth: componentSizeTokens.menuMinWidth,
     overflow: 'hidden',
-    padding: `${spacingTokens.xxs} 0`
+    padding: `${spacingTokens.xs} 0`
   },
   item: {
     appearance: 'none',

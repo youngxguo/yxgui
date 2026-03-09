@@ -35,11 +35,11 @@ const meta = {
     },
     gap: {
       control: 'select',
-      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
     },
     padding: {
       control: 'select',
-      options: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl']
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
     }
   }
 } satisfies Meta<typeof Flex>;

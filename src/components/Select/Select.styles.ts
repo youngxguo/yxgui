@@ -35,9 +35,9 @@ const selectStyles = stylex.create({
   sm: {
     fontSize: typographyTokens.fontSizeSm,
     minHeight: componentSizeTokens.sizeMd,
-    paddingBottom: spacingTokens.xxs,
+    paddingBottom: spacingTokens.xs,
     paddingLeft: spacingTokens.sm,
-    paddingTop: spacingTokens.xxs
+    paddingTop: spacingTokens.xs
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,
