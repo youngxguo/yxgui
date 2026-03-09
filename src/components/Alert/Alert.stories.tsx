@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, within } from 'storybook/test';
 import { Alert, AlertDescription, AlertTitle } from './Alert';
 
 const meta = {
@@ -26,7 +27,14 @@ export const Default: Story = {
       <AlertTitle>Profile updated</AlertTitle>
       <AlertDescription>Your account settings were saved successfully.</AlertDescription>
     </Alert>
-  )
+  ),
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const status = canvas.getByRole('status');
+
+    expect(status).toHaveTextContent('Profile updated');
+    expect(status).toHaveTextContent('Your account settings were saved successfully.');
+  }
 };
 
 export const Variants: Story = {

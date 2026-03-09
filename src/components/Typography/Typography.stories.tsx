@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { expect, within } from 'storybook/test';
 import { Typography } from './Typography';
 
 const meta = {
@@ -27,7 +28,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args: ComponentProps<typeof Typography>) => <Typography {...args} />
+  render: (args: ComponentProps<typeof Typography>) => <Typography {...args} />,
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText(/Typography provides token-driven text styles/i);
+
+    expect(paragraph.tagName).toBe('P');
+  }
 };
 
 export const Variants: Story = {

@@ -61,7 +61,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.click(canvas.getByRole('button', { name: 'Returns and exchanges' }));
-    expect(canvas.getByRole('region', { name: 'Returns and exchanges' })).toBeVisible();
+    expect(canvas.getByRole('region', { name: 'Returns and exchanges' })).toHaveAttribute(
+      'data-state',
+      'open'
+    );
   }
 };
 

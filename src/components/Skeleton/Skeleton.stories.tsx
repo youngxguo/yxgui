@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Skeleton } from './Skeleton';
 
 const meta = {
@@ -22,7 +23,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <Skeleton {...args} style={{ maxWidth: 240 }} />
+  render: (args) => <Skeleton {...args} data-testid="skeleton-default" style={{ maxWidth: 240 }} />,
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const skeleton = canvas.getByTestId('skeleton-default');
+
+    expect(skeleton).toHaveAttribute('aria-hidden', 'true');
+    expect(skeleton).toHaveAttribute('data-animated', 'true');
+  }
 };
 
 export const Variants: Story = {
