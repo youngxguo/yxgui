@@ -7,8 +7,6 @@ export type GridAlign = 'start' | 'end' | 'center' | 'stretch';
 export type GridJustify = 'start' | 'end' | 'center' | 'stretch';
 
 const gridSpacingTokens = {
-  xxxs: spacingTokens.xxxs,
-  xxs: spacingTokens.xxs,
   xs: spacingTokens.xs,
   sm: spacingTokens.sm,
   md: spacingTokens.md,

@@ -12,8 +12,8 @@ const tabsStyles = stylex.create({
   },
   list: {
     display: 'inline-flex',
-    gap: spacingTokens.xxs,
-    padding: spacingTokens.xxs
+    gap: spacingTokens.xs,
+    padding: spacingTokens.xs
   },
   listVertical: {
     alignItems: 'stretch',

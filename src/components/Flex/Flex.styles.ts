@@ -9,8 +9,6 @@ export type FlexJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'e
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 
 const flexGapTokens = {
-  xxxs: spacingTokens.xxxs,
-  xxs: spacingTokens.xxs,
   xs: spacingTokens.xs,
   sm: spacingTokens.sm,
   md: spacingTokens.md,

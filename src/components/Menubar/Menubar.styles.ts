@@ -16,7 +16,7 @@ const menubarStyles = stylex.create({
     borderRadius: radiusTokens.md,
     display: 'inline-flex',
     gap: 0,
-    padding: spacingTokens.xxs
+    padding: spacingTokens.xs
   },
   trigger: {
     backgroundColor: 'transparent',

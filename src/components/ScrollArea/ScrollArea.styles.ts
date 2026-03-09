@@ -40,11 +40,11 @@ const scrollAreaStyles = stylex.create({
   },
   scrollbarVertical: {
     width: spacingTokens.sm,
-    padding: spacingTokens.xxxs
+    padding: spacingTokens.xs
   },
   scrollbarHorizontal: {
     height: spacingTokens.sm,
-    padding: spacingTokens.xxxs
+    padding: spacingTokens.xs
   },
   thumb: {
     backgroundColor: surfaceTokens.softStrong,

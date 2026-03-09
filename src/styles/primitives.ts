@@ -13,9 +13,9 @@ import { borderTokens, colorTokens, controlTokens } from '../theme/tokens/semant
 const focusVisibleOutline = {
   ':focus-visible': {
     outlineColor: borderTokens.focus,
-    outlineOffset: spacingTokens.xxxs,
+    outlineOffset: spacingTokens.xs,
     outlineStyle: 'solid',
-    outlineWidth: spacingTokens.xxxs
+    outlineWidth: spacingTokens.xs
   }
 } as const;
 
