@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Typography } from '../Typography/Typography';
 import { Radio, RadioGroup } from './RadioGroup';
 
@@ -38,7 +39,19 @@ export const Default: Story = {
       <Radio value="team">Team</Radio>
       <Radio value="enterprise">Enterprise</Radio>
     </RadioGroup>
-  )
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    expect(canvas.getByRole('radiogroup', { name: 'Plan type' })).toBeInTheDocument();
+
+    const teamOption = canvas.getByRole('radio', { name: 'Team' });
+    const enterpriseOption = canvas.getByRole('radio', { name: 'Enterprise' });
+
+    expect(teamOption).toBeChecked();
+    await userEvent.click(enterpriseOption);
+    expect(enterpriseOption).toBeChecked();
+  }
 };
 
 export const Controlled: Story = {

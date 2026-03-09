@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Progress } from './Progress';
 
 const meta = {
@@ -22,7 +23,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const progressbar = canvas.getByRole('progressbar', { name: 'Progress' });
+
+    expect(progressbar).toHaveAttribute('aria-valuenow', '45');
+    expect(progressbar).toHaveAttribute('aria-valuemax', '100');
+  }
+};
 
 export const Sizes: Story = {
   render: () => (

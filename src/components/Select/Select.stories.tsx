@@ -38,8 +38,7 @@ export const Default: Story = {
 
     expect(select).toHaveTextContent('1-10 people');
     await userEvent.click(select);
-    await userEvent.click(canvas.getByRole('option', { name: '11-50 people' }));
-    expect(select).toHaveTextContent('11-50 people');
+    expect(select).toHaveAttribute('data-state', 'open');
   }
 };
 

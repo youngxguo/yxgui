@@ -30,6 +30,9 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.click(canvas.getByRole('tab', { name: 'Billing' }));
-    expect(canvas.getByRole('tabpanel', { name: 'Billing' })).toBeVisible();
+    expect(canvas.getByRole('tabpanel', { name: 'Billing' })).toHaveAttribute(
+      'data-state',
+      'active'
+    );
   }
 };

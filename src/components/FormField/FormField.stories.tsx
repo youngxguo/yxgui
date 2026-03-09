@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
@@ -60,5 +61,13 @@ export const Default: Story = {
         <FormFieldDescription>Receive product announcements.</FormFieldDescription>
       </FormField>
     </div>
-  )
+  ),
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    expect(canvas.getByRole('textbox', { name: 'Email' })).toBeInTheDocument();
+    expect(canvas.getByRole('combobox', { name: 'Plan' })).toHaveAttribute('aria-invalid', 'true');
+    expect(canvas.getByRole('alert')).toHaveTextContent('Please choose a plan.');
+    expect(canvas.getByRole('checkbox', { name: 'Email updates' })).toBeInTheDocument();
+  }
 };
