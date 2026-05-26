@@ -2,89 +2,43 @@
 
 React 19 + TypeScript component library (Vite, Vitest, Storybook, `pnpm@9.15.2`).
 
-## Rules
+## Always-On Policy
 
 - Build styled, production-ready components first; keep APIs composable.
-- Split behavior/styling when complexity grows.
-- Prefer shared tokens (`spacingTokens`) over raw sizes; no `calc(...)` sizing.
-- Use function components, named exports, explicit `Props`.
-- React 19 `ref` prop pattern only; no `React.forwardRef`.
-- Prefer narrow unions + destructured defaults; no `defaultProps`.
+- Prefer shared tokens (`spacingTokens`) over raw sizes; do not use `calc(...)` sizing.
+- Use function components, named exports, explicit `Props`, and React 19 `ref` prop pattern only.
+- Prefer narrow unions + destructured defaults; do not use `defaultProps`.
 - Prefer `Typography` for user-visible text.
-- Component files: `src/components/<ComponentName>/` with `.tsx`, `.css`, `.stories.tsx`, `.test.tsx`.
+- Keep component files under `src/components/<ComponentName>/` with `.tsx`, `.css`, `.stories.tsx`, `.test.tsx`.
 - Export public API from `src/index.ts`.
+- Use native `gh` CLI only for GitHub operations.
+- Do not commit or hand-edit `dist/`.
 
-## Commands
+## Script Source Of Truth
+
+Use only scripts that exist in `package.json`:
 
 - Install: `pnpm install`
-- Done gate: `pnpm lint`, `pnpm test`, `pnpm build`
-- Common: `pnpm storybook`, `pnpm test:watch`, `pnpm typecheck`, `pnpm format`, `pnpm format:check`, `pnpm lint:fix`, `pnpm build-storybook`
-- Release publish (npm + tag + GitHub): `pnpm release:publish` (pass npm 2FA with `pnpm release:publish -- --otp <code>`)
-- Publish (npm only/manual): `npm publish` (pass `--otp <code>` when npm 2FA requires it)
-- Publish dry-run: `npm publish --dry-run`
+- Done gate: `pnpm check:quality`
+- Pre-push gate: `pnpm check:prepush`
+- Core: `pnpm lint`, `pnpm test`, `pnpm build`, `pnpm typecheck`
+- Formatting: `pnpm format`, `pnpm format:check`, `pnpm lint:fix`
+- Storybook: `pnpm storybook`, `pnpm storybook:port`, `pnpm storybook:ports`, `pnpm build-storybook`
+- Storybook tests: `pnpm test-storybook`, `pnpm test-storybook:coverage`, `pnpm test-storybook:watch`
+- Unit test watch: `pnpm test:watch`
+- Release: `pnpm release:publish` (use `pnpm release:publish -- --otp <code>` for npm 2FA)
 
-## GitHub / Commits
+## Skill Playbooks
 
-- Use native `gh` CLI only (`gh auth login` if needed); no wrappers.
-- Keep issues small; use issues as backlog.
-- Issue/commit format: `<emoji> <type>(<scope>): <summary>`.
-- Issue body: change + acceptance checks.
-- Types: `✨ feat`, `🐛 fix`, `🧹 chore`, `♻️ refactor`, `📝 docs`, `✅ test`, `🎨 style`, `⚡ perf`, `♿ a11y`, `👷 ci`, `🔧 build`.
-- Labels: `type: <emoji> <kind>`; update with `gh label create ... --force`.
-- Flow: `gh issue view` -> implement -> validate -> commit (`Closes #123` / `Fixes #123` when completed; `Refs #123` otherwise) -> push branch -> create PR with `gh pr create` -> merge -> `gh issue close` only if auto-close did not trigger.
-- Default delivery path: create a branch, push it, and create a PR for every change; do not push directly to `main`.
-- When asked to "commit and push", treat it as "commit, push, and open a PR" unless the user explicitly says not to create a PR.
-- Optional: `gh issue develop <number> --checkout`.
-- Commits: atomic, imperative subject (<72 chars), 1-3 line body, no literal `\n` in scripted commits (use multiple `-m` flags).
-- Include tests with behavior changes; verify message before push: `git log --format=medium -n 1`.
-- `pre-push`: `pnpm check:prepush`; CI: `pnpm check:quality`.
+Load only the matching playbook for the task:
 
-## Testing
+- Component authoring: `skills/component-authoring-react19/SKILL.md`
+- Verification scope and gates: `skills/verification-gates/SKILL.md`
+- Issue/branch/commit/PR flow: `skills/gh-issue-pr-flow/SKILL.md`
+- npm + tag + GitHub release flow: `skills/release-publisher/SKILL.md`
 
-- Vitest + Testing Library; prefer accessible role/name queries.
-- For component-only edits, run verification for the affected component(s) only; run full suite only for cross-cutting changes or done gate.
-- Test behavior + public API.
-- Prefer `play` assertions in existing `Default` story.
-- Test-only stories only when also documented.
+## Minimal Defaults
 
-## Release Runbook
-
-- Goal: keep npm package, git tag, and GitHub release aligned to the same version and commit.
-- Preferred path: after version bump commit, run `pnpm release:publish` to execute quality checks, dry-run, npm publish, tag push, and GitHub release creation in one flow.
-- Preflight:
-  - `git status --short` must be clean (or commit/stash unrelated work first).
-  - `npm whoami` should return the expected npm account.
-  - `gh auth status` should be valid for GitHub release/tag pushes.
-- Versioning:
-  - Bump `package.json` version before publishing (use semver).
-  - Commit the version bump before publish so the release can be tagged on that commit.
-- Verify before publish:
-  - `npm publish --dry-run`
-  - `pnpm check:quality` (or rely on `prepublishOnly`, but dry-run first)
-- Publish to npm:
-  - `npm publish`
-  - If npm 2FA is enabled and returns `EOTP`, rerun with `npm publish --otp <code>`.
-  - If npm returns `E403`, verify package ownership/name and token/account publish permissions.
-- Tagging (annotated tags only):
-  - Create `vX.Y.Z` on the exact commit that produced the published artifact: `git tag -a vX.Y.Z <commit> -m "vX.Y.Z"`
-  - Do not move/recreate a release tag after publish unless absolutely necessary.
-  - Verify target commit: `git show --no-patch --format=fuller vX.Y.Z`
-- Push sequence:
-  - `git push origin main`
-  - `git push origin vX.Y.Z`
-  - Verify remote tag target: `git ls-remote --tags origin "vX.Y.Z*"` (check `^{}` commit matches the published commit)
-- GitHub release:
-  - `gh release create vX.Y.Z --verify-tag --title "vX.Y.Z" --generate-notes`
-  - If the release already exists, update it with `gh release edit`.
-- Post-release verification:
-  - `npm view <package-name> version dist-tags --json`
-  - `gh release view vX.Y.Z`
-  - Optionally install-test from a clean app (`pnpm add <package-name>@X.Y.Z`)
-
-## Notes
-
-- Follow `eslint.config.mjs` and `.prettierrc.json`.
-- Update `README.md` for public API/usage changes.
-- Keep workflow/automation details in `AGENTS.md`, not `README.md`.
-- Do not commit or hand-edit `dist/`.
-- Before publish, confirm auth with `npm whoami` and verify the tarball with `npm publish --dry-run`.
+- Default delivery path is branch -> push -> PR (never push directly to `main`).
+- Include tests with behavior changes.
+- Update `README.md` when public API/usage changes.
