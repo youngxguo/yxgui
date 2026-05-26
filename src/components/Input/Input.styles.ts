@@ -17,7 +17,7 @@ const inputStyles = stylex.create({
   sm: {
     fontSize: typographyTokens.fontSizeSm,
     minHeight: componentSizeTokens.sizeMd,
-    padding: `${spacingTokens.xxs} ${spacingTokens.sm}`
+    padding: `${spacingTokens.xs} ${spacingTokens.sm}`
   },
   md: {
     fontSize: typographyTokens.fontSizeMd,

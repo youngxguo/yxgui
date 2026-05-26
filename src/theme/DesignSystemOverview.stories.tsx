@@ -965,7 +965,7 @@ function ComponentSamplePage() {
         </Breadcrumb>
 
         <Flex align="start" justify="between" wrap="wrap" gap="md">
-          <Flex direction="column" gap="xxs">
+          <Flex direction="column" gap="xs">
             <Typography as="h1" variant="h2">
               Release Command Center
             </Typography>
