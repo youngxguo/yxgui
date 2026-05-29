@@ -1,4 +1,10 @@
-import { createRef, type ChangeEvent, type MouseEvent } from 'react';
+import {
+  createRef,
+  type ChangeEvent,
+  type FocusEvent,
+  type KeyboardEvent,
+  type MouseEvent
+} from 'react';
 import {
   Button,
   Checkbox,
@@ -65,6 +71,30 @@ const selectRef = createRef<HTMLSelectElement>();
     const nextValue: string = event.currentTarget.value;
     void typedEvent;
     void nextValue;
+  }}
+  onKeyDown={(event) => {
+    const typedEvent: KeyboardEvent<HTMLButtonElement> = event;
+    const typedTarget: HTMLButtonElement = event.currentTarget;
+    void typedEvent;
+    void typedTarget;
+  }}
+  onClick={(event) => {
+    const typedEvent: MouseEvent<HTMLButtonElement> = event;
+    const typedTarget: HTMLButtonElement = event.currentTarget;
+    void typedEvent;
+    void typedTarget;
+  }}
+  onFocus={(event) => {
+    const typedEvent: FocusEvent<HTMLButtonElement> = event;
+    const typedTarget: HTMLButtonElement = event.currentTarget;
+    void typedEvent;
+    void typedTarget;
+  }}
+  onBlur={(event) => {
+    const typedEvent: FocusEvent<HTMLButtonElement> = event;
+    const typedTarget: HTMLButtonElement = event.currentTarget;
+    void typedEvent;
+    void typedTarget;
   }}
 >
   <option value="one">One</option>

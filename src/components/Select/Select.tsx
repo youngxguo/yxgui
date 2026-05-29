@@ -39,10 +39,21 @@ import {
   type SelectSize
 } from './Select.styles';
 
-export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+type TriggerEventOverrides = 'onBlur' | 'onClick' | 'onFocus' | 'onKeyDown' | 'size';
+
+export interface SelectProps extends Omit<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  TriggerEventOverrides
+> {
   ref?: Ref<HTMLSelectElement>;
   size?: SelectSize;
   invalid?: boolean;
+  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+  'data-testid'?: string;
+  'data-contract'?: string;
 }
 
 interface SelectOptionItem {
@@ -148,16 +159,10 @@ export function Select({
   'aria-labelledby': ariaLabelledBy,
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalidProp,
+  'data-testid': dataTestId,
+  'data-contract': dataContract,
   ...nativeSelectProps
 }: SelectProps) {
-  const nativeSelectDomProps = {
-    ...nativeSelectProps
-  } as SelectHTMLAttributes<HTMLSelectElement> & Record<string, unknown>;
-  const triggerDataTestId = nativeSelectDomProps['data-testid'];
-  const triggerDataContract = nativeSelectDomProps['data-contract'];
-  delete nativeSelectDomProps['data-testid'];
-  delete nativeSelectDomProps['data-contract'];
-
   const triggerRef = useRef<HTMLButtonElement>(null);
   const nativeSelectRef = useRef<HTMLSelectElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -319,42 +324,61 @@ export function Select({
     commitSelectedValue(option.value);
   };
 
-  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    if (event.key === 'ArrowDown') {
-      if (!isOpen) {
-        openSelect(false);
-      } else {
+  const handleOpenListboxKeyDown = (event: KeyboardEvent<HTMLElement>): boolean => {
+    switch (event.key) {
+      case 'ArrowDown':
         moveActiveIndex(1);
-      }
-      event.preventDefault();
-    } else if (event.key === 'ArrowUp') {
-      if (!isOpen) {
-        openSelect(true);
-      } else {
+        event.preventDefault();
+        return true;
+      case 'ArrowUp':
         moveActiveIndex(-1);
+        event.preventDefault();
+        return true;
+      case 'Home':
+        setActiveIndex(enabledOptionIndexes[0] ?? -1);
+        event.preventDefault();
+        return true;
+      case 'End':
+        setActiveIndex(enabledOptionIndexes[enabledOptionIndexes.length - 1] ?? -1);
+        event.preventDefault();
+        return true;
+      case 'Enter':
+      case ' ':
+        if (!event.altKey && !event.metaKey) {
+          selectActiveOption();
+          event.preventDefault();
+          return true;
+        }
+        return false;
+      default:
+        return false;
+    }
+  };
+
+  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (isOpen) {
+      if (!handleOpenListboxKeyDown(event)) {
+        if (event.key === 'Escape') {
+          closeSelect(true);
+          event.preventDefault();
+        } else if (event.key === 'Tab') {
+          closeSelect(false);
+        }
       }
-      event.preventDefault();
-    } else if (event.key === 'Home' && isOpen) {
-      setActiveIndex(enabledOptionIndexes[0] ?? -1);
-      event.preventDefault();
-    } else if (event.key === 'End' && isOpen) {
-      setActiveIndex(enabledOptionIndexes[enabledOptionIndexes.length - 1] ?? -1);
-      event.preventDefault();
-    } else if ((event.key === 'Enter' || event.key === ' ') && !event.altKey && !event.metaKey) {
-      if (!isOpen) {
+    } else {
+      if (event.key === 'ArrowDown') {
         openSelect(false);
-      } else {
-        selectActiveOption();
+        event.preventDefault();
+      } else if (event.key === 'ArrowUp') {
+        openSelect(true);
+        event.preventDefault();
+      } else if ((event.key === 'Enter' || event.key === ' ') && !event.altKey && !event.metaKey) {
+        openSelect(false);
+        event.preventDefault();
       }
-      event.preventDefault();
-    } else if (event.key === 'Escape' && isOpen) {
-      closeSelect(true);
-      event.preventDefault();
-    } else if (event.key === 'Tab' && isOpen) {
-      closeSelect(false);
     }
 
-    onKeyDown?.(event as unknown as KeyboardEvent<HTMLSelectElement>);
+    onKeyDown?.(event);
   };
 
   return (
@@ -377,22 +401,20 @@ export function Select({
         aria-haspopup="listbox"
         aria-controls={listboxId}
         aria-activedescendant={activeOptionId}
-        data-testid={typeof triggerDataTestId === 'string' ? triggerDataTestId : undefined}
-        data-contract={typeof triggerDataContract === 'string' ? triggerDataContract : undefined}
+        data-testid={dataTestId}
+        data-contract={dataContract}
         data-state={getDataStateAttribute(isOpen, 'open', 'closed')}
         data-invalid={getDataPresenceAttribute(invalid)}
         data-disabled={getDataPresenceAttribute(disabled)}
         disabled={disabled}
-        onFocus={(event) => {
-          onFocus?.(event as unknown as FocusEvent<HTMLSelectElement>);
-        }}
+        onFocus={onFocus}
         onBlur={(event) => {
           const nextTarget = event.relatedTarget;
           if (isOpen && !contentRef.current?.contains(nextTarget)) {
             setOpen(false);
           }
 
-          onBlur?.(event as unknown as FocusEvent<HTMLSelectElement>);
+          onBlur?.(event);
         }}
         onClick={(event) => {
           if (!isOpen) {
@@ -400,7 +422,7 @@ export function Select({
           } else {
             closeSelect(false);
           }
-          onClick?.(event as unknown as MouseEvent<HTMLSelectElement>);
+          onClick?.(event);
         }}
         onKeyDown={handleTriggerKeyDown}
       >
@@ -425,7 +447,7 @@ export function Select({
       </button>
 
       <select
-        {...nativeSelectDomProps}
+        {...nativeSelectProps}
         {...getSelectHiddenSelectStyleProps()}
         ref={(node) => {
           nativeSelectRef.current = node;
@@ -463,36 +485,7 @@ export function Select({
             tabIndex={-1}
             data-state="open"
             aria-labelledby={id}
-            onKeyDown={(event) => {
-              if (event.key === 'ArrowDown') {
-                moveActiveIndex(1);
-                event.preventDefault();
-                return;
-              }
-
-              if (event.key === 'ArrowUp') {
-                moveActiveIndex(-1);
-                event.preventDefault();
-                return;
-              }
-
-              if (event.key === 'Home') {
-                setActiveIndex(enabledOptionIndexes[0] ?? -1);
-                event.preventDefault();
-                return;
-              }
-
-              if (event.key === 'End') {
-                setActiveIndex(enabledOptionIndexes[enabledOptionIndexes.length - 1] ?? -1);
-                event.preventDefault();
-                return;
-              }
-
-              if (event.key === 'Enter' || event.key === ' ') {
-                selectActiveOption();
-                event.preventDefault();
-              }
-            }}
+            onKeyDown={handleOpenListboxKeyDown}
           >
             {options.map((option, index) => {
               const isSelected = option.value === selectedValue;

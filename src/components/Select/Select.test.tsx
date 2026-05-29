@@ -93,4 +93,165 @@ describe('Select', () => {
     const listbox = await screen.findByRole('listbox');
     await waitFor(() => expect(listbox).toHaveStyle({ left: '16px', top: '78px' }));
   });
+
+  it('opens with ArrowDown and navigates options with arrow keys', () => {
+    render(
+      <Select defaultValue="a" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+        <option value="c">Charlie</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
+    expect(trigger.getAttribute('aria-activedescendant')).toContain('option-0');
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    expect(trigger.getAttribute('aria-activedescendant')).toContain('option-1');
+
+    fireEvent.keyDown(trigger, { key: 'ArrowUp' });
+    expect(trigger.getAttribute('aria-activedescendant')).toContain('option-0');
+  });
+
+  it('selects with Enter and closes the listbox', () => {
+    const onChange = vi.fn();
+
+    render(
+      <Select defaultValue="a" aria-label="Letter" onChange={onChange}>
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'Enter' });
+
+    expect(trigger).toHaveTextContent('Bravo');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('selects with Space and closes the listbox', () => {
+    render(
+      <Select defaultValue="a" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.keyDown(trigger, { key: ' ' });
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: ' ' });
+
+    expect(trigger).toHaveTextContent('Bravo');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+  });
+
+  it('closes listbox on Escape and returns focus to trigger', () => {
+    render(
+      <Select defaultValue="a" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.click(trigger);
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: 'Escape' });
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(trigger).toHaveTextContent('Alpha');
+  });
+
+  it('navigates to first and last options with Home and End', () => {
+    render(
+      <Select defaultValue="b" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+        <option value="c">Charlie</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.click(trigger);
+    fireEvent.keyDown(trigger, { key: 'End' });
+    fireEvent.keyDown(trigger, { key: 'Enter' });
+
+    expect(trigger).toHaveTextContent('Charlie');
+
+    fireEvent.click(trigger);
+    fireEvent.keyDown(trigger, { key: 'Home' });
+    fireEvent.keyDown(trigger, { key: 'Enter' });
+
+    expect(trigger).toHaveTextContent('Alpha');
+  });
+
+  it('skips disabled options during keyboard navigation', () => {
+    render(
+      <Select defaultValue="a" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b" disabled>
+          Bravo
+        </option>
+        <option value="c">Charlie</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'Enter' });
+
+    expect(trigger).toHaveTextContent('Charlie');
+  });
+
+  it('closes listbox on Tab without changing selection', () => {
+    render(
+      <Select defaultValue="a" aria-label="Letter">
+        <option value="a">Alpha</option>
+        <option value="b">Bravo</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+
+    fireEvent.click(trigger);
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    fireEvent.keyDown(trigger, { key: 'Tab' });
+
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(trigger).toHaveTextContent('Alpha');
+  });
+
+  it('forwards onKeyDown callback with properly typed button events', () => {
+    const onKeyDown = vi.fn();
+
+    render(
+      <Select defaultValue="a" aria-label="Letter" onKeyDown={onKeyDown}>
+        <option value="a">Alpha</option>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox', { name: 'Letter' });
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onKeyDown.mock.calls[0][0].target).toBe(trigger);
+  });
 });
