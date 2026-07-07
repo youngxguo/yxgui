@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist/**', 'storybook-static/**']
+    ignores: ['dist/**']
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
