@@ -1,0 +1,18 @@
+:root {
+  --yx-color-background: #ffffff;
+  --yx-color-surface: #ffffff;
+  --yx-color-text: #171717;
+  --yx-color-border: #d4d4d4;
+  --yx-color-border-strong: #737373;
+  --yx-color-primary: #14532d;
+  --yx-color-primary-hover: #166534;
+  --yx-color-on-primary: #ffffff;
+  --yx-color-focus: #2563eb;
+  --yx-radius-md: 6px;
+  --yx-space-3: 0.75rem;
+  --yx-space-4: 1rem;
+  --yx-space-5: 1.25rem;
+  --yx-size-control-sm: 2rem;
+  --yx-size-control-md: 2.5rem;
+  --yx-size-control-lg: 3rem;
+}

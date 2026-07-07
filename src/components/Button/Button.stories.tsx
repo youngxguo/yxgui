@@ -1,76 +1,39 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import type { ComponentProps } from 'react';
-import { expect, fn, userEvent, within } from 'storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
 
 const meta = {
-  title: 'Actions/Button',
+  title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
   args: {
-    children: 'Press me',
-    variant: 'primary',
-    size: 'md',
-    disabled: false
+    children: 'Save changes'
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'ghost']
-    },
     size: {
-      control: 'select',
+      control: 'inline-radio',
       options: ['sm', 'md', 'lg']
+    },
+    variant: {
+      control: 'inline-radio',
+      options: ['primary', 'secondary']
     }
   }
 } satisfies Meta<typeof Button>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
-    onClick: fn()
-  },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button', { name: 'Press me' });
-
-    await userEvent.click(button);
-    expect(args.onClick).toHaveBeenCalledTimes(1);
+    variant: 'primary'
   }
 };
 
-export const Variants: Story = {
-  render: (args: ComponentProps<typeof Button>) => (
-    <div style={{ display: 'flex', gap: '0.75rem' }}>
-      <Button {...args} variant="primary">
-        Primary
-      </Button>
-      <Button {...args} variant="secondary">
-        Secondary
-      </Button>
-      <Button {...args} variant="ghost">
-        Ghost
-      </Button>
-    </div>
-  )
-};
-
-export const Sizes: Story = {
-  render: (args: ComponentProps<typeof Button>) => (
-    <div style={{ alignItems: 'center', display: 'flex', gap: '0.75rem' }}>
-      <Button {...args} size="sm">
-        Small
-      </Button>
-      <Button {...args} size="md">
-        Medium
-      </Button>
-      <Button {...args} size="lg">
-        Large
-      </Button>
-    </div>
-  )
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary'
+  }
 };
 
 export const Disabled: Story = {

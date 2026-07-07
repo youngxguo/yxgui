@@ -70,7 +70,6 @@
     "@storybook/addon-vitest": "10.2.10",
     "@storybook/react": "10.2.10",
     "@storybook/react-vite": "^10.2.10",
-    "@stylexjs/unplugin": "^0.17.5",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -94,14 +93,9 @@
     "storybook": "^10.2.10",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
-    "unplugin": "^2.3.11",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.18"
-  },
-  "dependencies": {
-    "@stylexjs/stylex": "^0.17.5",
-    "sonner": "^2.0.7"
   },
   "pnpm": {
     "overrides": {

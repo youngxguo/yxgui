@@ -7,7 +7,6 @@ export default defineConfig({
     coverage: storybookCoverage,
     projects: [
       createStorybookProject({
-        includeStylexPlugin: true,
         storybookScript: 'pnpm storybook --ci'
       })
     ]

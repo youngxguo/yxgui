@@ -1,33 +1,23 @@
 import type { ButtonHTMLAttributes, Ref } from 'react';
-import { getDataPresenceAttribute } from '../_internal/dataAttributes';
-import { getButtonStyleProps, type ButtonSize, type ButtonVariant } from './Button.styles';
+import './Button.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ref?: Ref<HTMLButtonElement>;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'secondary';
 }
 
 export function Button({
-  ref,
-  variant = 'primary',
-  size = 'md',
-  disabled = false,
   className,
-  style,
+  ref,
+  size = 'md',
   type = 'button',
+  variant = 'primary',
   ...props
 }: ButtonProps) {
-  const styleProps = getButtonStyleProps({ variant, size, className, style });
+  const classes = ['yx-button', `yx-button--${variant}`, `yx-button--${size}`, className]
+    .filter(Boolean)
+    .join(' ');
 
-  return (
-    <button
-      {...props}
-      {...styleProps}
-      ref={ref}
-      type={type}
-      disabled={disabled}
-      data-disabled={getDataPresenceAttribute(disabled)}
-    />
-  );
+  return <button ref={ref} className={classes} type={type} {...props} />;
 }
