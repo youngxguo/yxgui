@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url';
 
 import react from '@vitejs/plugin-react';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import stylex from '@stylexjs/unplugin';
 import { playwright } from '@vitest/browser-playwright';
 
 const dirname =
@@ -12,27 +11,19 @@ const dirname =
 export const storybookConfigDir = path.join(dirname, '.storybook');
 
 interface StorybookProjectOptions {
-  includeStylexPlugin?: boolean;
   storybookScript?: string;
 }
 
-export function createStorybookProject({
-  includeStylexPlugin = false,
-  storybookScript
-}: StorybookProjectOptions = {}) {
+export function createStorybookProject({ storybookScript }: StorybookProjectOptions = {}) {
   return {
     extends: true as const,
     plugins: [
-      ...(includeStylexPlugin ? [stylex.vite({ runtimeInjection: true })] : []),
       react(),
       storybookTest({
         configDir: storybookConfigDir,
         ...(storybookScript ? { storybookScript } : {})
       })
     ],
-    optimizeDeps: {
-      include: ['@stylexjs/stylex/lib/stylex-inject']
-    },
     test: {
       name: `storybook:${storybookConfigDir}`,
       browser: {

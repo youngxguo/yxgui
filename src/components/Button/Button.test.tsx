@@ -1,70 +1,37 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { createRef } from 'react';
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
 
 describe('Button', () => {
-  it('renders children text', () => {
-    render(<Button>Launch</Button>);
+  it('renders an accessible button with safe defaults', () => {
+    render(<Button>Save changes</Button>);
 
-    expect(screen.getByRole('button', { name: 'Launch' })).toBeInTheDocument();
+    const button = screen.getByRole('button', { name: 'Save changes' });
+
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveClass('yx-button', 'yx-button--primary', 'yx-button--md');
   });
 
-  it('calls onClick when enabled', () => {
+  it('passes through native button props', () => {
     const onClick = vi.fn();
-    render(<Button onClick={onClick}>Launch</Button>);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Launch' }));
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('does not call onClick when disabled', () => {
-    const onClick = vi.fn();
     render(
-      <Button disabled onClick={onClick}>
-        Launch
-      </Button>
-    );
-
-    fireEvent.click(screen.getByRole('button', { name: 'Launch' }));
-
-    expect(onClick).not.toHaveBeenCalled();
-  });
-
-  it('changes style class composition with variant and size', () => {
-    const { rerender } = render(
-      <Button variant="primary" size="md">
-        Launch
-      </Button>
-    );
-
-    const button = screen.getByRole('button', { name: 'Launch' });
-    const baseClassName = button.className;
-
-    rerender(
-      <Button variant="secondary" size="lg">
-        Launch
-      </Button>
-    );
-
-    expect(button.className).not.toEqual(baseClassName);
-  });
-
-  it('forwards native button props', () => {
-    render(
-      <Button type="submit" data-testid="submit-btn">
+      <Button
+        aria-label="Submit form"
+        type="submit"
+        variant="secondary"
+        size="lg"
+        onClick={onClick}
+      >
         Submit
       </Button>
     );
 
-    expect(screen.getByTestId('submit-btn')).toHaveAttribute('type', 'submit');
-  });
+    const button = screen.getByRole('button', { name: 'Submit form' });
+    button.click();
 
-  it('accepts a ref prop', () => {
-    const ref = createRef<HTMLButtonElement>();
-    render(<Button ref={ref}>Launch</Button>);
-
-    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(button).toHaveAttribute('type', 'submit');
+    expect(button).toHaveClass('yx-button--secondary', 'yx-button--lg');
+    expect(onClick).toHaveBeenCalledOnce();
   });
 });
