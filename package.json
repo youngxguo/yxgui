@@ -20,14 +20,12 @@
   "homepage": "https://github.com/youngxguo/yxgui#readme",
   "type": "module",
   "packageManager": "pnpm@9.15.2",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
+      "import": "./dist/index.js"
     }
   },
   "files": [
