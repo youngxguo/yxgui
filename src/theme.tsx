@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
+import { defaultTheme } from './tokens.stylex';
 
 export interface Theme {
   color: {
@@ -28,33 +29,6 @@ export interface Theme {
 
 export type ThemeOptions = {
   [Section in keyof Theme]?: Partial<Theme[Section]>;
-};
-
-const defaultTheme: Theme = {
-  color: {
-    canvas: '#f7f7f4',
-    surface: '#ffffff',
-    text: '#20201e',
-    textMuted: '#66655f',
-    border: '#d9d8d1',
-    accent: '#5b47d6',
-    accentHover: '#4936bd',
-    onAccent: '#ffffff',
-    focus: '#7969e8'
-  },
-  typography: {
-    bodyFontFamily:
-      'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-  },
-  control: {
-    height: '2.75rem',
-    paddingInline: '1rem',
-    radius: '0.75rem'
-  },
-  motion: {
-    durationFast: '140ms',
-    easingStandard: 'cubic-bezier(0.2, 0, 0, 1)'
-  }
 };
 
 export function createTheme(options: ThemeOptions = {}): Theme {

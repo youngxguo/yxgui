@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { Button } from './Button';
 import { createTheme, darkTheme, lightTheme, ThemeProvider } from './theme';
 
 describe('createTheme', () => {
@@ -27,14 +28,14 @@ describe('ThemeProvider', () => {
     const theme = createTheme({ color: { accent: '#006adc' } });
     const markup = renderToStaticMarkup(
       <ThemeProvider theme={theme} id="custom-theme">
-        Application content
+        <Button>Save</Button>
       </ThemeProvider>
     );
 
     expect(markup).toContain('<div id="custom-theme" data-yxgui-theme=""');
     expect(markup).toContain('--yxg-color-accent:#006adc');
     expect(markup).toContain('--yxg-control-height:2.75rem');
-    expect(markup).toContain('>Application content</div>');
+    expect(markup).toContain('<button');
   });
 
   it('preserves ordinary element props and consumer styles', () => {
