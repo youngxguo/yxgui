@@ -1,7 +1,7 @@
 {
   "name": "yxgui",
   "version": "0.1.0",
-  "description": "Minimal Vite React TypeScript library",
+  "description": "Opinionated React component system with typed semantic themes",
   "keywords": [
     "react",
     "ui",
