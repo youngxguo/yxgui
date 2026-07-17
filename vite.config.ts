@@ -19,7 +19,13 @@ export default defineConfig({
     react(),
     dts({
       include: ['src'],
-      exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/tokens.stylex.ts'],
+      exclude: [
+        'src/**/*.stories.ts',
+        'src/**/*.stories.tsx',
+        'src/**/*.test.ts',
+        'src/**/*.test.tsx',
+        'src/tokens.stylex.ts'
+      ],
       insertTypesEntry: true
     })
   ],
