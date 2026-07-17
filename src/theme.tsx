@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
-import { defaultTheme } from './tokens.stylex';
 
-export interface Theme {
+interface ThemeValues {
   color: {
     canvas: string;
     surface: string;
@@ -27,22 +26,17 @@ export interface Theme {
   };
 }
 
-export type ThemeOptions = {
-  [Section in keyof Theme]?: Partial<Theme[Section]>;
+export type ThemeOverrides = {
+  [Section in keyof ThemeValues]?: Partial<ThemeValues[Section]>;
 };
 
-export function createTheme(options: ThemeOptions = {}): Theme {
-  return {
-    color: { ...defaultTheme.color, ...options.color },
-    typography: { ...defaultTheme.typography, ...options.typography },
-    control: { ...defaultTheme.control, ...options.control },
-    motion: { ...defaultTheme.motion, ...options.motion }
-  };
+export function createTheme(overrides: ThemeOverrides = {}): ThemeOverrides {
+  return overrides;
 }
 
-export const lightTheme: Theme = createTheme();
+export const lightTheme: ThemeOverrides = createTheme();
 
-export const darkTheme: Theme = createTheme({
+export const darkTheme: ThemeOverrides = createTheme({
   color: {
     canvas: '#171716',
     surface: '#232321',
@@ -60,28 +54,28 @@ type ThemeCSSProperties = CSSProperties & {
   [Variable in `--yxg-${string}`]?: string;
 };
 
-function themeToCSSProperties(theme: Theme): ThemeCSSProperties {
+function themeToCSSProperties(theme: ThemeOverrides): ThemeCSSProperties {
   return {
-    '--yxg-color-canvas': theme.color.canvas,
-    '--yxg-color-surface': theme.color.surface,
-    '--yxg-color-text': theme.color.text,
-    '--yxg-color-text-muted': theme.color.textMuted,
-    '--yxg-color-border': theme.color.border,
-    '--yxg-color-accent': theme.color.accent,
-    '--yxg-color-accent-hover': theme.color.accentHover,
-    '--yxg-color-on-accent': theme.color.onAccent,
-    '--yxg-color-focus': theme.color.focus,
-    '--yxg-font-body': theme.typography.bodyFontFamily,
-    '--yxg-control-height': theme.control.height,
-    '--yxg-control-padding-inline': theme.control.paddingInline,
-    '--yxg-radius-control': theme.control.radius,
-    '--yxg-duration-fast': theme.motion.durationFast,
-    '--yxg-ease-standard': theme.motion.easingStandard
+    '--yxg-color-canvas': theme.color?.canvas,
+    '--yxg-color-surface': theme.color?.surface,
+    '--yxg-color-text': theme.color?.text,
+    '--yxg-color-text-muted': theme.color?.textMuted,
+    '--yxg-color-border': theme.color?.border,
+    '--yxg-color-accent': theme.color?.accent,
+    '--yxg-color-accent-hover': theme.color?.accentHover,
+    '--yxg-color-on-accent': theme.color?.onAccent,
+    '--yxg-color-focus': theme.color?.focus,
+    '--yxg-font-body': theme.typography?.bodyFontFamily,
+    '--yxg-control-height': theme.control?.height,
+    '--yxg-control-padding-inline': theme.control?.paddingInline,
+    '--yxg-radius-control': theme.control?.radius,
+    '--yxg-duration-fast': theme.motion?.durationFast,
+    '--yxg-ease-standard': theme.motion?.easingStandard
   };
 }
 
 export type ThemeProviderProps = ComponentPropsWithoutRef<'div'> & {
-  theme: Theme;
+  theme: ThemeOverrides;
 };
 
 export function ThemeProvider({ theme, style, children, ...props }: ThemeProviderProps) {

@@ -9,11 +9,12 @@
 Tokens give yxgui a coherent default visual language and let consuming
 applications use the same design decisions outside yxgui components.
 
-StyleX is the internal styling layer. Themeable values are authored against StyleX
-variables and compiled into stable `--yxg-*` CSS custom properties. Consumers
-configure those properties through a typed semantic theme object and provider. The
-initial system will be intentionally small and will grow from real component and
-application needs.
+StyleX is the internal styling layer and the single source of default theme values.
+Themeable values are authored against StyleX variables and compiled into stable
+`--yxg-*` CSS custom properties. Consumers override those properties through a
+typed, sparse semantic theme object and provider. Unspecified values inherit from a
+parent theme or StyleX's compiled defaults. The initial system will be intentionally
+small and will grow from real component and application needs.
 
 ## Goals
 
@@ -78,10 +79,11 @@ constants. Examples may include breakpoints or shared layer ordering.
 ### JavaScript theme contract
 
 Internal StyleX variables are not exported as a consumer API. Consumers provide
-semantic theme options through `createTheme`, and `ThemeProvider` maps the complete
-theme to the public CSS custom properties on an element subtree. Separate raw
-JavaScript token values will be added only for genuine non-CSS consumers such as
-charts.
+sparse `ThemeOverrides` through `createTheme`, and `ThemeProvider` maps only the
+supplied values to public CSS custom properties on an element subtree. StyleX's
+`defineVars` output owns the defaults; CSS inheritance resolves omitted values from
+a parent provider or those compiled defaults. Separate resolved JavaScript token
+values will be added only for genuine non-CSS consumers such as charts.
 
 ## Conceptual model
 
@@ -113,7 +115,7 @@ React context.
 
 The first implementation should demonstrate:
 
-- A complete default theme
+- A complete default theme compiled from StyleX variables
 - Light and dark color schemes
 - Comfortable and compact density
 - Standard and reduced motion
@@ -129,7 +131,7 @@ must prove the supported combinations rather than assume arbitrary themes merge.
 Consumers must be able to:
 
 - Use the default yxgui design without theme configuration.
-- Create a typed semantic theme without installing or configuring StyleX.
+- Create typed semantic theme overrides without installing or configuring StyleX.
 - Use stable `--yxg-*` custom properties in application styles and third-party
   code.
 - Apply global and scoped themes without component-specific mode logic.
