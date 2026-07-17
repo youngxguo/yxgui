@@ -6,6 +6,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   plugins: [
     stylex.rollup({
+      runtimeInjection: false,
       unstable_moduleResolution: {
         type: 'commonJS',
         rootDir: fileURLToPath(new URL('.', import.meta.url))

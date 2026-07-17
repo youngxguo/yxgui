@@ -7,6 +7,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [
     stylex.vite({
+      runtimeInjection: false,
       unstable_moduleResolution: {
         type: 'commonJS',
         rootDir: fileURLToPath(new URL('.', import.meta.url))

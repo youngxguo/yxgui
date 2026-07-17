@@ -52,7 +52,12 @@ export default tseslint.config(
         }
       ],
       'prettier/prettier': 'error',
+      '@stylexjs/enforce-extension': 'error',
       '@stylexjs/no-conflicting-props': 'error',
+      '@stylexjs/no-legacy-contextual-styles': 'error',
+      '@stylexjs/no-nonstandard-styles': 'error',
+      '@stylexjs/no-unused': 'error',
+      '@stylexjs/sort-keys': 'warn',
       '@stylexjs/valid-shorthands': 'error',
       '@stylexjs/valid-styles': 'error',
       '@typescript-eslint/no-unused-vars': [
