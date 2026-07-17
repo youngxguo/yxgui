@@ -7,5 +7,6 @@ export {
   lightTheme,
   ThemeProvider,
   type ThemeOverrides,
-  type ThemeProviderProps
+  type ThemeProviderProps,
+  type TypographyRole
 } from './theme';
