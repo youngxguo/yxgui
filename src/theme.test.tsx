@@ -4,22 +4,23 @@ import { Button } from './Button';
 import { createTheme, darkTheme, lightTheme, ThemeProvider } from './theme';
 
 describe('createTheme', () => {
-  it('merges semantic overrides with the default theme', () => {
+  it('preserves sparse semantic overrides', () => {
     const theme = createTheme({
       color: { accent: '#006adc' },
       control: { radius: '999px' }
     });
 
-    expect(theme.color.accent).toBe('#006adc');
-    expect(theme.color.canvas).toBe(lightTheme.color.canvas);
-    expect(theme.control.radius).toBe('999px');
-    expect(theme.control.height).toBe(lightTheme.control.height);
+    expect(theme).toEqual({
+      color: { accent: '#006adc' },
+      control: { radius: '999px' }
+    });
+    expect(lightTheme).toEqual({});
   });
 
-  it('provides a complete dark theme', () => {
-    expect(darkTheme.color.canvas).toBe('#171716');
-    expect(darkTheme.typography).toEqual(lightTheme.typography);
-    expect(darkTheme.motion).toEqual(lightTheme.motion);
+  it('keeps the dark theme limited to its color overrides', () => {
+    expect(darkTheme.color?.canvas).toBe('#171716');
+    expect(darkTheme.typography).toBeUndefined();
+    expect(darkTheme.motion).toBeUndefined();
   });
 });
 
@@ -34,7 +35,7 @@ describe('ThemeProvider', () => {
 
     expect(markup).toContain('<div id="custom-theme" data-yxgui-theme=""');
     expect(markup).toContain('--yxg-color-accent:#006adc');
-    expect(markup).toContain('--yxg-control-height:2.75rem');
+    expect(markup).not.toContain('--yxg-control-height');
     expect(markup).toContain('<button');
   });
 
@@ -48,5 +49,16 @@ describe('ThemeProvider', () => {
     expect(markup).toContain('class="app-shell"');
     expect(markup).toContain('min-height:100vh');
     expect(markup).toContain('--yxg-color-canvas:#171716');
+  });
+
+  it('lets nested themes inherit values they do not override', () => {
+    const markup = renderToStaticMarkup(
+      <ThemeProvider theme={createTheme({ color: { accent: '#006adc' } })}>
+        <ThemeProvider theme={createTheme({ control: { radius: '999px' } })}>Content</ThemeProvider>
+      </ThemeProvider>
+    );
+
+    expect(markup.match(/--yxg-color-accent:/g)).toHaveLength(1);
+    expect(markup.match(/--yxg-radius-control:/g)).toHaveLength(1);
   });
 });

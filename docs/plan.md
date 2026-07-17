@@ -5,9 +5,10 @@ language, accessible behavior, and a coherent token foundation that applications
 can use and customize.
 
 StyleX is the internal styling backbone. Component styles are compiled to JavaScript
-and static CSS before publication. Consumers create typed semantic theme objects,
+and static CSS before publication. Consumers create typed semantic theme overrides,
 which yxgui maps to stable `--yxg-*` custom properties, so consumers never need to
-install StyleX or compile yxgui source.
+install StyleX or compile yxgui source. Unspecified values resolve through CSS
+inheritance to a parent theme or StyleX's compiled defaults.
 
 ## Guiding decisions
 
