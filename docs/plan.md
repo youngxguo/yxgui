@@ -4,40 +4,39 @@ yxgui will be a small, opinionated React component system with its own visual
 language, accessible behavior, and a coherent token foundation that applications
 can use and customize.
 
-StyleX is the styling backbone. Styles and themes are authored through StyleX
-and compiled to static CSS. Themeable public tokens use stable `--yxg-*` custom
-properties so they remain useful outside yxgui components.
+StyleX is the internal styling backbone. Component styles are compiled to JavaScript
+and static CSS before publication. Consumers create typed semantic theme objects,
+which yxgui maps to stable `--yxg-*` custom properties, so consumers never need to
+install StyleX or compile yxgui source.
 
 ## Guiding decisions
 
 - Tokens are a public contract, but they are developed alongside real interface
   needs rather than designed exhaustively up front.
-- StyleX is the single styling and composition system for yxgui and the
-  recommended system for applications built with it.
+- StyleX is the single styling and composition system inside yxgui. Applications
+  may use any styling system that can consume CSS custom properties.
 - Themeable values, fixed style constants, and JavaScript values remain distinct
   contracts. Each is exposed only when consumers need it.
-- Themes apply to ordinary element subtrees. React context is not required for
-  components to receive theme values.
+- Themes apply through a provider element to ordinary element subtrees. React
+  context is not required for components to receive theme values.
 - Component CSS is extracted at build time. Runtime style injection is not part
   of the architecture.
 - Plain CSS is limited to a small, documented global entry point and platform
   cases that are not a good fit for StyleX.
 - Components prefer native HTML behavior. More complex behavior must remain
   accessible, reliable, and independent of yxgui's visual design.
-- yxgui starts as a package. Source distribution or a CLI can be reconsidered
-  after real usage demonstrates a need.
+- yxgui ships as a compiled package rather than distributing StyleX source for
+  consuming applications to build.
 
 ## Phases
 
 ### 1. Prove the foundation
 
-- Configure the official StyleX toolchain for the library, tests, and a small
-  playground.
+- Configure the official StyleX toolchain for the library and tests.
 - Build a minimal spike with representative tokens, two themes, and one styled
   component.
-- Pack the library and install it in a clean Vite application.
-- Verify static CSS output, required imports, public token use, theme application,
-  and scoped overrides.
+- Verify static CSS output, required imports, semantic theme creation, public CSS
+  variable customization, provider application, and scoped overrides.
 - Settle the minimum package and consumer contract before expanding the system.
 
 ### 2. Establish the design through a vertical slice
@@ -58,7 +57,7 @@ properties so they remain useful outside yxgui components.
 - Define StyleX conventions for parts, variants, interaction states, responsive
   styles, and intentional consumer overrides.
 - Establish the supported browser and React environment.
-- Add behavior, accessibility, and visual testing to the playground.
+- Add behavior, accessibility, and visual testing for components.
 - Define the completion checklist shared by every component.
 
 ### 4. Complete the essential controls
@@ -79,7 +78,6 @@ properties so they remain useful outside yxgui components.
 
 - Add advanced components only when an application needs them.
 - Stabilize package exports, documentation, compatibility, and release policy.
-- Revisit source distribution after yxgui has been used in real applications.
 
 ## Not yet
 

@@ -9,8 +9,9 @@
 Tokens give yxgui a coherent default visual language and let consuming
 applications use the same design decisions outside yxgui components.
 
-StyleX is the canonical styling and theme layer. Themeable public tokens are
-typed StyleX variables backed by stable `--yxg-*` CSS custom properties. The
+StyleX is the internal styling layer. Themeable values are authored against StyleX
+variables and compiled into stable `--yxg-*` CSS custom properties. Consumers
+configure those properties through a typed semantic theme object and provider. The
 initial system will be intentionally small and will grow from real component and
 application needs.
 
@@ -31,6 +32,7 @@ application needs.
 - Tokenizing every CSS declaration
 - Designing component APIs
 - Supporting multiple styling systems
+- Publishing StyleX source for consuming applications to compile
 - Defining long-term compatibility policy before the first package contract is
   proven
 
@@ -64,20 +66,22 @@ designed and evaluated together.
 
 ### Themeable variables
 
-Values that change with a theme use StyleX variables and public `--yxg-*` CSS
-custom properties. These are the normal integration point for components,
-application styles, plain CSS, and third-party UI.
+Values that change with a theme are authored as StyleX variables and emitted as
+public `--yxg-*` CSS custom properties. The custom properties are the normal
+integration point for components, application styles, and third-party UI.
 
 ### Static constants
 
 Fixed style decisions that do not need runtime theming remain compile-time
 constants. Examples may include breakpoints or shared layer ordering.
 
-### JavaScript values
+### JavaScript theme contract
 
-StyleX variables are CSS identifiers rather than JavaScript data. A separate
-JavaScript contract will be added only for genuine non-CSS consumers such as
-charts. The package does not need to duplicate every token in JavaScript.
+Internal StyleX variables are not exported as a consumer API. Consumers provide
+semantic theme options through `createTheme`, and `ThemeProvider` maps the complete
+theme to the public CSS custom properties on an element subtree. Separate raw
+JavaScript token values will be added only for genuine non-CSS consumers such as
+charts.
 
 ## Conceptual model
 
@@ -103,8 +107,9 @@ layout will follow from the prototype.
 
 ## Themes
 
-Themes must work by applying StyleX props to an ordinary element and must affect
-that element's subtree without React context.
+Themes must work by passing a semantic theme object to a provider element and must
+affect that element's subtree through CSS inheritance rather than component-level
+React context.
 
 The first implementation should demonstrate:
 
@@ -124,15 +129,16 @@ must prove the supported combinations rather than assume arbitrary themes merge.
 Consumers must be able to:
 
 - Use the default yxgui design without theme configuration.
-- Use shared tokens in StyleX application styles.
-- Use stable `--yxg-*` custom properties in plain CSS and third-party code.
+- Create a typed semantic theme without installing or configuring StyleX.
+- Use stable `--yxg-*` custom properties in application styles and third-party
+  code.
 - Apply global and scoped themes without component-specific mode logic.
 - Inspect active values in browser developer tools.
 - Access JavaScript values where a demonstrated non-CSS use case requires them.
 
-Before the token contract is accepted, a packed release must work in a clean
-consumer application. That proof should establish CSS loading, package exports,
-StyleX toolchain expectations, reset ownership, and scoped theme behavior.
+Before the token contract is accepted, the compiled package build must establish
+CSS loading, package exports, reset ownership, and scoped theme behavior without
+requiring consumers to process yxgui source.
 
 ## Accessibility
 
@@ -164,7 +170,7 @@ The token system succeeds when:
 
 ## Next steps
 
-1. Prove the StyleX package contract with a minimal packed-library fixture.
+1. Prove the compiled package contract in the library build and tests.
 2. Define the visual direction and initial inventory alongside a small settings
    interface.
 3. Test the required theme combinations and consumer overrides.
