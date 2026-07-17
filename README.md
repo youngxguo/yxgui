@@ -1,12 +1,14 @@
 # yxgui
 
-An opinionated React component system with typed semantic themes.
+An opinionated React component system built with StyleX.
 
-Create a theme with semantic values and apply it to any element subtree with
-`ThemeProvider`:
+The foundation currently includes one Button, semantic themes, and a small public
+token set. Create a theme with typed semantic values and apply it to any element
+subtree with `ThemeProvider`:
 
 ```tsx
-import { createTheme, ThemeProvider } from 'yxgui';
+import { Button, createTheme, ThemeProvider } from 'yxgui';
+import 'yxgui/styles.css';
 
 const theme = createTheme({
   color: {
@@ -22,7 +24,7 @@ const theme = createTheme({
 export function Example() {
   return (
     <ThemeProvider theme={theme}>
-      <main>Application content</main>
+      <Button>Save changes</Button>
     </ThemeProvider>
   );
 }
@@ -31,4 +33,5 @@ export function Example() {
 Unspecified values inherit yxgui's defaults. `lightTheme` and `darkTheme` are also
 available as complete built-in themes. Theme values become stable `--yxg-*` CSS
 custom properties on the provider element, so nested providers and application CSS
-can customize the same semantic contract.
+can customize the same semantic contract. Applications own their global reset; the
+yxgui stylesheet contains only its compiled component and token CSS.

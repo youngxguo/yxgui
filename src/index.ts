@@ -1,3 +1,6 @@
+import './style.css';
+
+export { Button, type ButtonProps } from './Button';
 export {
   createTheme,
   darkTheme,

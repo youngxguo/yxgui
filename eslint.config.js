@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import * as stylexPlugin from '@stylexjs/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -31,7 +32,8 @@ export default tseslint.config(
     plugins: {
       prettier: prettierPlugin,
       react: reactPlugin,
-      'react-hooks': reactHooksPlugin
+      'react-hooks': reactHooksPlugin,
+      '@stylexjs': stylexPlugin
     },
     settings: {
       react: {
@@ -50,6 +52,9 @@ export default tseslint.config(
         }
       ],
       'prettier/prettier': 'error',
+      '@stylexjs/no-conflicting-props': 'error',
+      '@stylexjs/valid-shorthands': 'error',
+      '@stylexjs/valid-styles': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
