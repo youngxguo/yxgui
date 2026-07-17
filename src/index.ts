@@ -6,7 +6,6 @@ export {
   darkTheme,
   lightTheme,
   ThemeProvider,
-  type Theme,
-  type ThemeOptions,
+  type ThemeOverrides,
   type ThemeProviderProps
 } from './theme';

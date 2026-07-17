@@ -26,19 +26,17 @@ interface ThemeValues {
   };
 }
 
-export type Theme = {
+export type ThemeOverrides = {
   [Section in keyof ThemeValues]?: Partial<ThemeValues[Section]>;
 };
 
-export type ThemeOptions = Theme;
-
-export function createTheme(options: ThemeOptions = {}): Theme {
-  return options;
+export function createTheme(overrides: ThemeOverrides = {}): ThemeOverrides {
+  return overrides;
 }
 
-export const lightTheme: Theme = createTheme();
+export const lightTheme: ThemeOverrides = createTheme();
 
-export const darkTheme: Theme = createTheme({
+export const darkTheme: ThemeOverrides = createTheme({
   color: {
     canvas: '#171716',
     surface: '#232321',
@@ -56,7 +54,7 @@ type ThemeCSSProperties = CSSProperties & {
   [Variable in `--yxg-${string}`]?: string;
 };
 
-function themeToCSSProperties(theme: Theme): ThemeCSSProperties {
+function themeToCSSProperties(theme: ThemeOverrides): ThemeCSSProperties {
   return {
     '--yxg-color-canvas': theme.color?.canvas,
     '--yxg-color-surface': theme.color?.surface,
@@ -77,7 +75,7 @@ function themeToCSSProperties(theme: Theme): ThemeCSSProperties {
 }
 
 export type ThemeProviderProps = ComponentPropsWithoutRef<'div'> & {
-  theme: Theme;
+  theme: ThemeOverrides;
 };
 
 export function ThemeProvider({ theme, style, children, ...props }: ThemeProviderProps) {

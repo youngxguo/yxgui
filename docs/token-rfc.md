@@ -79,7 +79,7 @@ constants. Examples may include breakpoints or shared layer ordering.
 ### JavaScript theme contract
 
 Internal StyleX variables are not exported as a consumer API. Consumers provide
-sparse semantic overrides through `createTheme`, and `ThemeProvider` maps only the
+sparse `ThemeOverrides` through `createTheme`, and `ThemeProvider` maps only the
 supplied values to public CSS custom properties on an element subtree. StyleX's
 `defineVars` output owns the defaults; CSS inheritance resolves omitted values from
 a parent provider or those compiled defaults. Separate resolved JavaScript token
