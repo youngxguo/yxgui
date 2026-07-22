@@ -37,8 +37,7 @@ export default defineConfig(({ mode }) => {
                 'src/**/*.stories.ts',
                 'src/**/*.stories.tsx',
                 'src/**/*.test.ts',
-                'src/**/*.test.tsx',
-                'src/tokens.stylex.ts'
+                'src/**/*.test.tsx'
               ],
               insertTypesEntry: true
             })

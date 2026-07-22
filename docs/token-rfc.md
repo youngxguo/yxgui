@@ -1,14 +1,14 @@
 # RFC: Semantic tokens
 
 - Status: Draft
-- Last updated: 2026-07-17
+- Last updated: 2026-07-22
 
 ## Summary
 
-yxgui exposes a small semantic theme for components and application UI. StyleX
-owns the default values and stays internal. Consumers customize typed, sparse
-overrides with `createTheme` and `ThemeProvider`, or use the corresponding
-`--yxg-*` CSS custom properties.
+yxgui exposes a small semantic theme for components and application UI. A complete
+JavaScript theme owns the values while StyleX stays internal. Consumers customize
+typed, sparse overrides with `createTheme` and `ThemeProvider`, or use the
+corresponding `--yxg-*` CSS custom properties.
 
 ## Initial set
 
@@ -64,12 +64,12 @@ a shipped component requires them.
 
 ## Contract
 
-- StyleX `defineVars` is the single source of default values.
-- `createTheme` accepts deep partial semantic overrides without filling omitted
-  values in JavaScript.
-- `ThemeProvider` maps only supplied values onto one element subtree; omitted
-  values inherit from a parent provider or the compiled defaults.
-- `lightTheme` uses the compiled defaults and `darkTheme` supplies color overrides.
+- `defaultTheme` is the single source of the complete semantic values.
+- `createTheme` accepts deep partial semantic overrides and resolves a complete
+  theme against `defaultTheme`.
+- `ThemeProvider` maps a complete theme onto one element subtree and uses
+  `defaultTheme` when no theme is supplied.
+- `darkTheme` resolves its color overrides against the same default theme.
 - Components and application CSS share stable `--yxg-*` properties.
 - Consumers do not install, configure, or import StyleX.
 - Default text, state, border, and focus relationships target WCAG 2.2 AA

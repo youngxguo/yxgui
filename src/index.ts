@@ -3,9 +3,10 @@ import './style.css';
 export { Button, type ButtonProps } from './Button';
 export {
   createTheme,
+  defaultTheme,
   darkTheme,
-  lightTheme,
   ThemeProvider,
+  type Theme,
   type ThemeOverrides,
   type ThemeProviderProps,
   type TypographyRole

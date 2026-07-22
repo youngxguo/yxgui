@@ -7,8 +7,9 @@ can use and customize.
 StyleX is the internal styling backbone. Component styles are compiled to JavaScript
 and static CSS before publication. Consumers create typed semantic theme overrides,
 which yxgui maps to stable `--yxg-*` custom properties, so consumers never need to
-install StyleX or compile yxgui source. Unspecified values resolve through CSS
-inheritance to a parent theme or StyleX's compiled defaults.
+install StyleX or compile yxgui source. `createTheme` resolves overrides against one
+complete default theme, and `ThemeProvider` applies the resolved values to its
+subtree.
 
 ## Guiding decisions
 

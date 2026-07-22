@@ -1,52 +1,51 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentPropsWithoutRef } from 'react';
-import { tokens } from './tokens.stylex';
 
 export type ButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
     borderColor: 'transparent',
-    borderRadius: tokens['--yxg-radius-control'],
+    borderRadius: 'var(--yxg-radius-control)',
     borderStyle: 'solid',
     borderWidth: 1,
-    gap: tokens['--yxg-control-gap'],
-    paddingInline: tokens['--yxg-control-padding-inline'],
+    gap: 'var(--yxg-control-gap)',
+    paddingInline: 'var(--yxg-control-padding-inline)',
     alignItems: 'center',
     backgroundColor: {
-      default: tokens['--yxg-color-accent-solid'],
-      ':active:not(:disabled)': tokens['--yxg-color-accent-solid-pressed'],
-      ':hover:not(:disabled)': tokens['--yxg-color-accent-solid-hover']
+      default: 'var(--yxg-color-accent-solid)',
+      ':active:not(:disabled)': 'var(--yxg-color-accent-solid-pressed)',
+      ':hover:not(:disabled)': 'var(--yxg-color-accent-solid-hover)'
     },
     boxSizing: 'border-box',
-    color: tokens['--yxg-color-accent-contrast'],
+    color: 'var(--yxg-color-accent-contrast)',
     cursor: {
       default: 'pointer',
       ':disabled': 'not-allowed'
     },
     display: 'inline-flex',
-    fontFamily: tokens['--yxg-font-label-family'],
-    fontSize: tokens['--yxg-font-label-size'],
-    fontWeight: tokens['--yxg-font-label-weight'],
+    fontFamily: 'var(--yxg-font-label-family)',
+    fontSize: 'var(--yxg-font-label-size)',
+    fontWeight: 'var(--yxg-font-label-weight)',
     justifyContent: 'center',
-    letterSpacing: tokens['--yxg-font-label-letter-spacing'],
-    lineHeight: tokens['--yxg-font-label-line-height'],
+    letterSpacing: 'var(--yxg-font-label-letter-spacing)',
+    lineHeight: 'var(--yxg-font-label-line-height)',
     opacity: {
       default: 1,
-      ':disabled': tokens['--yxg-opacity-disabled']
+      ':disabled': 'var(--yxg-opacity-disabled)'
     },
     outlineColor: {
       default: 'transparent',
-      ':focus-visible': tokens['--yxg-color-focus-ring']
+      ':focus-visible': 'var(--yxg-color-focus-ring)'
     },
     outlineOffset: 3,
     outlineStyle: 'solid',
     outlineWidth: 2,
-    transitionDuration: tokens['--yxg-duration-fast'],
+    transitionDuration: 'var(--yxg-duration-fast)',
     transitionProperty: 'background-color, color',
-    transitionTimingFunction: tokens['--yxg-ease-standard'],
+    transitionTimingFunction: 'var(--yxg-ease-standard)',
     userSelect: 'none',
-    height: tokens['--yxg-control-height']
+    height: 'var(--yxg-control-height)'
   }
 });
 

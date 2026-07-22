@@ -1,10 +1,10 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { Button } from './Button';
-import { createTheme, darkTheme, lightTheme, ThemeProvider } from './theme';
+import { createTheme, darkTheme, defaultTheme, ThemeProvider } from './theme';
 
 describe('createTheme', () => {
-  it('preserves deep sparse semantic overrides', () => {
+  it('resolves deep semantic overrides against the default theme', () => {
     const theme = createTheme({
       color: {
         background: { canvas: '#f8fafc' },
@@ -16,36 +16,31 @@ describe('createTheme', () => {
       opacity: { disabled: '0.4' }
     });
 
-    expect(theme).toEqual({
-      color: {
-        background: { canvas: '#f8fafc' },
-        accent: { solid: '#006adc', solidPressed: '#004f9e' }
-      },
-      typography: { label: { fontWeight: 700 } },
-      control: { gap: '0.75rem' },
-      radius: { control: '999px' },
-      opacity: { disabled: '0.4' }
-    });
-    expect(lightTheme).toEqual({});
+    expect(theme.color.background.canvas).toBe('#f8fafc');
+    expect(theme.color.background.surface).toBe(defaultTheme.color.background.surface);
+    expect(theme.color.accent.solid).toBe('#006adc');
+    expect(theme.color.accent.solidHover).toBe(defaultTheme.color.accent.solidHover);
+    expect(theme.typography.label.fontWeight).toBe(700);
+    expect(theme.typography.label.fontFamily).toBe(defaultTheme.typography.label.fontFamily);
+    expect(theme.control.gap).toBe('0.75rem');
+    expect(theme.radius.control).toBe('999px');
+    expect(theme.opacity.disabled).toBe('0.4');
   });
 
-  it('keeps the dark theme limited to complete color overrides', () => {
-    expect(darkTheme.color?.background?.canvas).toBe('#171716');
-    expect(darkTheme.color?.background?.raised).toBe('#32312d');
-    expect(darkTheme.color?.accent?.solidPressed).toBe('#c0b6ff');
-    expect(darkTheme.color?.danger?.border).toBe('#f97066');
-    expect(darkTheme.typography).toBeUndefined();
-    expect(darkTheme.motion).toBeUndefined();
+  it('exports complete built-in theme presets', () => {
+    expect(darkTheme.color.background.canvas).toBe('#0a0a0a');
+    expect(darkTheme.color.background.raised).toBe('#262626');
+    expect(darkTheme.color.accent.solidPressed).toBe('#a3a3a3');
+    expect(darkTheme.color.danger.border).toBe('#ef4444');
+    expect(darkTheme.typography).toEqual(defaultTheme.typography);
+    expect(darkTheme.motion).toEqual(defaultTheme.motion);
   });
 });
 
 describe('ThemeProvider', () => {
-  it('scopes only supplied semantic values to its element subtree', () => {
+  it('scopes a complete semantic theme to its element subtree', () => {
     const theme = createTheme({
-      color: {
-        background: { canvas: '#f8fafc' },
-        accent: { solid: '#006adc', solidPressed: '#004f9e' }
-      },
+      color: { accent: { solid: '#006adc', solidPressed: '#004f9e' } },
       typography: { label: { fontWeight: 700 } },
       opacity: { disabled: '0.4' }
     });
@@ -56,13 +51,12 @@ describe('ThemeProvider', () => {
     );
 
     expect(markup).toContain('<div id="custom-theme" data-yxgui-theme=""');
-    expect(markup).toContain('--yxg-color-background-canvas:#f8fafc');
     expect(markup).toContain('--yxg-color-accent-solid:#006adc');
     expect(markup).toContain('--yxg-color-accent-solid-pressed:#004f9e');
     expect(markup).toContain('--yxg-font-label-weight:700');
     expect(markup).toContain('--yxg-opacity-disabled:0.4');
-    expect(markup).not.toContain('--yxg-control-height');
-    expect(new Set(markup.match(/--yxg-[\w-]+(?=:)/g))).toHaveLength(5);
+    expect(markup).toContain(`--yxg-control-height:${defaultTheme.control.height}`);
+    expect(new Set(markup.match(/--yxg-[\w-]+(?=:)/g))).toHaveLength(52);
     expect(markup).toContain('<button');
   });
 
@@ -75,18 +69,13 @@ describe('ThemeProvider', () => {
 
     expect(markup).toContain('class="app-shell"');
     expect(markup).toContain('min-height:100vh');
-    expect(markup).toContain('--yxg-color-background-canvas:#171716');
-    expect(markup).not.toContain('--yxg-font-body-family');
+    expect(markup).toContain('--yxg-color-background-canvas:#0a0a0a');
   });
 
-  it('lets nested themes inherit values they do not override', () => {
-    const markup = renderToStaticMarkup(
-      <ThemeProvider theme={createTheme({ color: { accent: { solid: '#006adc' } } })}>
-        <ThemeProvider theme={createTheme({ radius: { control: '999px' } })}>Content</ThemeProvider>
-      </ThemeProvider>
-    );
+  it('applies the default theme when no theme is supplied', () => {
+    const markup = renderToStaticMarkup(<ThemeProvider>Content</ThemeProvider>);
 
-    expect(markup.match(/--yxg-color-accent-solid:/g)).toHaveLength(1);
-    expect(markup.match(/--yxg-radius-control:/g)).toHaveLength(1);
+    expect(markup).toContain(`--yxg-color-accent-solid:${defaultTheme.color.accent.solid}`);
+    expect(markup).toContain(`--yxg-radius-control:${defaultTheme.radius.control}`);
   });
 });
