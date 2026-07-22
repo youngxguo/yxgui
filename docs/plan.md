@@ -1,91 +1,32 @@
 # yxgui plan
 
-yxgui will be a small, opinionated React component system with its own visual
-language, accessible behavior, and a coherent token foundation that applications
-can use and customize.
+yxgui is a small, opinionated React component system with accessible behavior and
+a coherent visual language. It ships as a compiled package, with StyleX kept
+as its public styling contract and built-in light and dark theme objects.
 
-StyleX is the internal styling backbone. Component styles are compiled to JavaScript
-and static CSS before publication. Consumers create typed semantic theme overrides,
-which yxgui maps to stable `--yxg-*` custom properties, so consumers never need to
-install StyleX or compile yxgui source. `createTheme` resolves overrides against one
-complete default theme, and `ThemeProvider` applies the resolved values to its
-subtree.
+## Approach
 
-## Guiding decisions
+- Build tokens and components from real interface needs instead of designing a
+  large system up front.
+- Keep fixed values, semantic variables, and themes as distinct StyleX layers.
+- Prefer native HTML behavior and add complexity only when accessibility or user
+  experience requires it.
+- Maintain a focused public API and avoid alternate styling systems,
+  compatibility layers, and component scaffolding without a concrete need.
 
-- Tokens are a public contract, but they are developed alongside real interface
-  needs rather than designed exhaustively up front.
-- StyleX is the single styling and composition system inside yxgui. Applications
-  may use any styling system that can consume CSS custom properties.
-- Themeable values, fixed style constants, and JavaScript values remain distinct
-  contracts. Each is exposed only when consumers need it.
-- Themes apply through a provider element to ordinary element subtrees. React
-  context is not required for components to receive theme values.
-- Component CSS is extracted at build time. Runtime style injection is not part
-  of the architecture.
-- Plain CSS is limited to a small, documented global entry point and platform
-  cases that are not a good fit for StyleX.
-- Components prefer native HTML behavior. More complex behavior must remain
-  accessible, reliable, and independent of yxgui's visual design.
-- yxgui ships as a compiled package rather than distributing StyleX source for
-  consuming applications to build.
+## Roadmap
 
-## Phases
+### Foundation
 
-### 1. Prove the foundation
+Maintain the compiled package, StyleX token layers, static CSS output, and
+consumer integration.
 
-- Configure the official StyleX toolchain for the library and tests.
-- Build a minimal spike with representative tokens, two themes, and one styled
-  component.
-- Verify static CSS output, required imports, semantic theme creation, public CSS
-  variable customization, provider application, and scoped overrides.
-- Settle the minimum package and consumer contract before expanding the system.
+### Core interface
 
-### 2. Establish the design through a vertical slice
+Build a representative settings interface to establish the visual language,
+essential controls, component conventions, and accessibility expectations.
 
-- Define the initial visual direction and a minimal token inventory.
-- Establish the default light and dark schemes and the first density and motion
-  choices.
-- Organize theme dimensions so the supported combinations compose predictably.
-- Build a small settings interface with Button, Field, Input, and Switch.
-- Test a consumer brand, dark mode, compact density, reduced motion, and a scoped
-  override.
-- Finalize the initial token relationships and names from what the prototype
-  reveals.
+### Expand from use
 
-### 3. Establish component conventions
-
-- Define component API, form, and accessibility conventions.
-- Define StyleX conventions for parts, variants, interaction states, responsive
-  styles, and intentional consumer overrides.
-- Establish the supported browser and React environment.
-- Add behavior, accessibility, and visual testing for components.
-- Define the completion checklist shared by every component.
-
-### 4. Complete the essential controls
-
-- Add Textarea, Checkbox, and the feedback components needed by the settings
-  interface.
-- Finish the interface and use it to validate the visual language, themes,
-  component APIs, and accessibility conventions.
-
-### 5. Add compound interactions
-
-- Add disclosure and overlay components such as Accordion, Tabs, Dialog,
-  Popover, Tooltip, Menu, and Select as real use cases require them.
-- Treat focus management, keyboard behavior, dismissal, and positioning as
-  first-class component contracts.
-
-### 6. Expand and distribute
-
-- Add advanced components only when an application needs them.
-- Stabilize package exports, documentation, compatibility, and release policy.
-
-## Not yet
-
-- A second styling engine, utility CSS framework, or `sx`-style language
-- A component registry or installer CLI
-- A large component catalog
-- Compatibility layers for other styling engines
-- An exhaustive token system designed without real UI
-- Complex components before the basic visual and behavioral language is proven
+Add feedback, compound interactions, and advanced components only as applications
+require them. Stabilize documentation and release policy as the public API grows.
