@@ -1,52 +1,49 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentPropsWithoutRef } from 'react';
-import { tokens } from './tokens.stylex';
+import { colors, control, radii, typography } from './tokens.stylex';
 
 export type ButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
     borderColor: 'transparent',
-    borderRadius: tokens['--yxg-radius-control'],
+    borderRadius: radii.control,
     borderStyle: 'solid',
     borderWidth: 1,
-    gap: tokens['--yxg-control-gap'],
-    paddingInline: tokens['--yxg-control-padding-inline'],
+    gap: control.gap,
+    paddingInline: control.paddingInline,
     alignItems: 'center',
     backgroundColor: {
-      default: tokens['--yxg-color-accent-solid'],
-      ':active:not(:disabled)': tokens['--yxg-color-accent-solid-pressed'],
-      ':hover:not(:disabled)': tokens['--yxg-color-accent-solid-hover']
+      default: colors.accentSolid,
+      ':active:not(:disabled)': colors.accentSolidPressed,
+      ':hover:not(:disabled)': colors.accentSolidHover
     },
     boxSizing: 'border-box',
-    color: tokens['--yxg-color-accent-contrast'],
+    color: colors.accentContrast,
     cursor: {
       default: 'pointer',
       ':disabled': 'not-allowed'
     },
     display: 'inline-flex',
-    fontFamily: tokens['--yxg-font-label-family'],
-    fontSize: tokens['--yxg-font-label-size'],
-    fontWeight: tokens['--yxg-font-label-weight'],
+    fontFamily: typography.labelFamily,
+    fontSize: typography.labelSize,
+    fontWeight: typography.labelWeight,
     justifyContent: 'center',
-    letterSpacing: tokens['--yxg-font-label-letter-spacing'],
-    lineHeight: tokens['--yxg-font-label-line-height'],
+    letterSpacing: typography.labelLetterSpacing,
+    lineHeight: typography.labelLineHeight,
     opacity: {
       default: 1,
-      ':disabled': tokens['--yxg-opacity-disabled']
+      ':disabled': 0.5
     },
     outlineColor: {
       default: 'transparent',
-      ':focus-visible': tokens['--yxg-color-focus-ring']
+      ':focus-visible': colors.focusRing
     },
     outlineOffset: 3,
     outlineStyle: 'solid',
     outlineWidth: 2,
-    transitionDuration: tokens['--yxg-duration-fast'],
-    transitionProperty: 'background-color, color',
-    transitionTimingFunction: tokens['--yxg-ease-standard'],
     userSelect: 'none',
-    height: tokens['--yxg-control-height']
+    height: control.height
   }
 });
 

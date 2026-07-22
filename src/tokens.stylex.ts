@@ -1,61 +1,72 @@
 import * as stylex from '@stylexjs/stylex';
+import {
+  controlValues,
+  fontFamilies,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+  palette,
+  radiusValues
+} from './values.stylex';
 
-export const tokens = stylex.defineVars({
-  '--yxg-color-background-canvas': '#f7f7f4',
-  '--yxg-color-background-surface': '#ffffff',
-  '--yxg-color-background-raised': '#ffffff',
-  '--yxg-color-background-subtle': '#efeee8',
-  '--yxg-color-foreground-default': '#20201e',
-  '--yxg-color-foreground-muted': '#66655f',
-  '--yxg-color-border-default': '#85847d',
-  '--yxg-color-border-strong': '#66655f',
-  '--yxg-color-accent-solid': '#5b47d6',
-  '--yxg-color-accent-solid-hover': '#4936bd',
-  '--yxg-color-accent-solid-pressed': '#3f2da5',
-  '--yxg-color-accent-contrast': '#ffffff',
-  '--yxg-color-accent-subtle': '#eeeafd',
-  '--yxg-color-accent-foreground': '#4936bd',
-  '--yxg-color-danger-foreground': '#b42318',
-  '--yxg-color-danger-border': '#d92d20',
-  '--yxg-color-danger-subtle': '#fef3f2',
-  '--yxg-color-focus-ring': '#7969e8',
-  '--yxg-font-body-family':
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  '--yxg-font-body-size': '1rem',
-  '--yxg-font-body-line-height': '1.5rem',
-  '--yxg-font-body-weight': 400,
-  '--yxg-font-body-letter-spacing': '0',
-  '--yxg-font-body-small-family':
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  '--yxg-font-body-small-size': '0.875rem',
-  '--yxg-font-body-small-line-height': '1.25rem',
-  '--yxg-font-body-small-weight': 400,
-  '--yxg-font-body-small-letter-spacing': '0',
-  '--yxg-font-label-family':
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  '--yxg-font-label-size': '0.875rem',
-  '--yxg-font-label-line-height': '1.25rem',
-  '--yxg-font-label-weight': 600,
-  '--yxg-font-label-letter-spacing': '0',
-  '--yxg-font-heading-family':
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  '--yxg-font-heading-size': '1.5rem',
-  '--yxg-font-heading-line-height': '2rem',
-  '--yxg-font-heading-weight': 700,
-  '--yxg-font-heading-letter-spacing': '-0.015em',
-  '--yxg-font-code-family':
-    '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace',
-  '--yxg-font-code-size': '0.875rem',
-  '--yxg-font-code-line-height': '1.25rem',
-  '--yxg-font-code-weight': 400,
-  '--yxg-font-code-letter-spacing': '0',
-  '--yxg-control-height': '2.75rem',
-  '--yxg-control-padding-inline': '1rem',
-  '--yxg-control-gap': '0.5rem',
-  '--yxg-radius-control': '0.75rem',
-  '--yxg-radius-container': '1rem',
-  '--yxg-radius-full': '9999px',
-  '--yxg-duration-fast': '140ms',
-  '--yxg-ease-standard': 'cubic-bezier(0.2, 0, 0, 1)',
-  '--yxg-opacity-disabled': '0.5'
+export const colors = stylex.defineVars({
+  backgroundCanvas: palette.white,
+  backgroundSurface: palette.white,
+  backgroundRaised: palette.white,
+  backgroundSubtle: palette.neutral100,
+  foregroundDefault: palette.neutral950,
+  foregroundMuted: palette.neutral500,
+  borderDefault: palette.neutral200,
+  borderStrong: palette.neutral300,
+  accentSolid: palette.neutral900,
+  accentSolidHover: palette.neutral800,
+  accentSolidPressed: palette.neutral700,
+  accentContrast: palette.neutral50,
+  accentSubtle: palette.neutral100,
+  accentForeground: palette.neutral900,
+  dangerForeground: palette.red700,
+  dangerBorder: palette.red500,
+  dangerSubtle: palette.red50,
+  focusRing: palette.neutral500
+});
+
+export const typography = stylex.defineVars({
+  bodyFamily: fontFamilies.sans,
+  bodySize: fontSizes.body,
+  bodyLineHeight: lineHeights.body,
+  bodyWeight: fontWeights.regular,
+  bodyLetterSpacing: letterSpacings.default,
+  bodySmallFamily: fontFamilies.sans,
+  bodySmallSize: fontSizes.small,
+  bodySmallLineHeight: lineHeights.small,
+  bodySmallWeight: fontWeights.regular,
+  bodySmallLetterSpacing: letterSpacings.default,
+  labelFamily: fontFamilies.sans,
+  labelSize: fontSizes.small,
+  labelLineHeight: lineHeights.small,
+  labelWeight: fontWeights.semibold,
+  labelLetterSpacing: letterSpacings.default,
+  headingFamily: fontFamilies.sans,
+  headingSize: fontSizes.heading,
+  headingLineHeight: lineHeights.heading,
+  headingWeight: fontWeights.bold,
+  headingLetterSpacing: letterSpacings.heading,
+  codeFamily: fontFamilies.mono,
+  codeSize: fontSizes.small,
+  codeLineHeight: lineHeights.small,
+  codeWeight: fontWeights.regular,
+  codeLetterSpacing: letterSpacings.default
+});
+
+export const control = stylex.defineVars({
+  height: controlValues.height,
+  paddingInline: controlValues.paddingInline,
+  gap: controlValues.gap
+});
+
+export const radii = stylex.defineVars({
+  control: radiusValues.control,
+  container: radiusValues.container,
+  full: radiusValues.full
 });

@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   args: {
-    children: 'Save changes'
+    children: 'Button'
   },
   tags: ['autodocs']
 } satisfies Meta<typeof Button>;
@@ -14,15 +14,3 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const Disabled: Story = {
-  args: {
-    disabled: true
-  }
-};
-
-export const LongLabel: Story = {
-  args: {
-    children: 'Continue to the next step'
-  }
-};

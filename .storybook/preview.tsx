@@ -1,6 +1,17 @@
+import * as stylex from '@stylexjs/stylex';
 import type { Preview } from '@storybook/react-vite';
-import { darkTheme, lightTheme, ThemeProvider } from '../src/theme';
 import '../src/style.css';
+import { darkTheme, lightTheme } from '../src/themes';
+import { colors, typography } from '../src/tokens.stylex';
+
+const styles = stylex.create({
+  root: {
+    backgroundColor: colors.backgroundCanvas,
+    color: colors.foregroundDefault,
+    fontFamily: typography.bodyFamily,
+    minHeight: '100vh'
+  }
+});
 
 const preview: Preview = {
   decorators: [
@@ -8,9 +19,9 @@ const preview: Preview = {
       const theme = context.globals.theme === 'dark' ? darkTheme : lightTheme;
 
       return (
-        <ThemeProvider theme={theme}>
+        <div {...stylex.props(theme, styles.root)}>
           <Story />
-        </ThemeProvider>
+        </div>
       );
     }
   ],
