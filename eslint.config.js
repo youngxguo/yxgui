@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import * as stylexPlugin from '@stylexjs/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -9,7 +8,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist/**', 'storybook-static/**']
+    ignores: ['dist/**']
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -32,8 +31,7 @@ export default tseslint.config(
     plugins: {
       prettier: prettierPlugin,
       react: reactPlugin,
-      'react-hooks': reactHooksPlugin,
-      '@stylexjs': stylexPlugin
+      'react-hooks': reactHooksPlugin
     },
     settings: {
       react: {
@@ -52,14 +50,6 @@ export default tseslint.config(
         }
       ],
       'prettier/prettier': 'error',
-      '@stylexjs/enforce-extension': 'error',
-      '@stylexjs/no-conflicting-props': 'error',
-      '@stylexjs/no-legacy-contextual-styles': 'error',
-      '@stylexjs/no-nonstandard-styles': 'error',
-      '@stylexjs/no-unused': 'error',
-      '@stylexjs/sort-keys': 'warn',
-      '@stylexjs/valid-shorthands': 'error',
-      '@stylexjs/valid-styles': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {

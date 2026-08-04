@@ -1,7 +1,7 @@
 {
   "name": "yxgui",
   "version": "0.1.0",
-  "description": "Opinionated React component system built with StyleX",
+  "description": "Minimal Vite React TypeScript library",
   "keywords": [
     "react",
     "ui",
@@ -17,31 +17,28 @@
   "bugs": {
     "url": "https://github.com/youngxguo/yxgui/issues"
   },
-  "homepage": "https://github.com/youngxguo/yxgui#readme",
+  "homepage": "https://github.com/youngxguo/yxgui",
   "type": "module",
   "packageManager": "pnpm@9.15.2",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./styles.css": "./dist/style.css"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs"
+    }
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
   "files": [
     "dist",
-    "README.md",
     "LICENSE"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "check:quality": "pnpm lint && pnpm test && pnpm build && pnpm build-storybook",
+    "check:quality": "pnpm lint && pnpm test && pnpm build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs --fix",
     "format": "prettier --write .",
@@ -49,9 +46,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "build": "pnpm typecheck && vite build",
-    "storybook": "storybook dev --port 6006",
-    "build-storybook": "storybook build"
+    "build": "pnpm typecheck && vite build"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -59,11 +54,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
-    "@storybook/addon-docs": "10.5.2",
-    "@storybook/react-vite": "10.5.2",
-    "@stylexjs/eslint-plugin": "^0.19.0",
-    "@stylexjs/stylex": "^0.19.0",
-    "@stylexjs/unplugin": "^0.19.0",
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -77,10 +67,8 @@
     "prettier": "^3.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "storybook": "10.5.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
-    "unplugin": "^2.3.11",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.18"
