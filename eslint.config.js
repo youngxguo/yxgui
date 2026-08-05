@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
-import prettierPlugin from 'eslint-plugin-prettier';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
@@ -29,7 +28,6 @@ export default tseslint.config(
       }
     },
     plugins: {
-      prettier: prettierPlugin,
       react: reactPlugin,
       'react-hooks': reactHooksPlugin
     },
@@ -41,15 +39,6 @@ export default tseslint.config(
     rules: {
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
-      'no-multiple-empty-lines': [
-        'error',
-        {
-          max: 1,
-          maxBOF: 0,
-          maxEOF: 0
-        }
-      ],
-      'prettier/prettier': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
