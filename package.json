@@ -38,7 +38,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "check:quality": "pnpm lint && pnpm test && pnpm build",
+    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs --fix",
     "format": "prettier --write .",
@@ -60,7 +60,6 @@
     "@vitejs/plugin-react": "^5.1.4",
     "eslint": "^9.39.3",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.3.0",
