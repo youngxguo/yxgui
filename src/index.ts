@@ -1,1 +1,1 @@
-export const packageName = 'yxgui';
+export { Button, type ButtonProps } from './Button';
