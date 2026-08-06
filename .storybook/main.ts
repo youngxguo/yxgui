@@ -1,15 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-docs'],
-  framework: {
-    name: '@storybook/react-vite',
-    options: {}
-  },
-  docs: {
-    defaultName: 'Documentation'
-  },
+  stories: ['../src/**/*.stories.tsx'],
+  framework: '@storybook/react-vite',
   viteFinal: async (viteConfig) => {
     viteConfig.plugins = viteConfig.plugins?.filter(
       (plugin) =>
