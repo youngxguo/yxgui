@@ -7,7 +7,7 @@ export const spacing = stylex.defineConsts({
 });
 
 export const radii = stylex.defineConsts({
-  sm: '2px'
+  sm: '4px'
 });
 
 export const fontFamilies = stylex.defineConsts({
