@@ -19,8 +19,13 @@ const styles = stylex.create({
       ':enabled:hover': colors.primaryHover,
       ':disabled': colors.surfaceDisabled
     },
+    borderColor: {
+      default: 'transparent',
+      ':disabled': colors.borderDisabled
+    },
     borderRadius: radii.sm,
-    borderStyle: 'none',
+    borderStyle: 'solid',
+    borderWidth: '1px',
     boxSizing: 'border-box',
     color: {
       default: colors.onEmphasis,

@@ -15,6 +15,9 @@ importers:
       '@eslint/js':
         specifier: ^9.39.3
         version: 9.39.5
+      '@storybook/addon-themes':
+        specifier: 10.5.2
+        version: 10.5.2(storybook@10.5.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
       '@storybook/react-vite':
         specifier: 10.5.2
         version: 10.5.2(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rollup@4.62.4)(storybook@10.5.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(typescript@5.9.3)(vite@7.3.6(@types/node@25.9.5)(lightningcss@1.33.0))
@@ -861,6 +864,11 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
+
+  '@storybook/addon-themes@10.5.2':
+    resolution: {integrity: sha512-XxqGlGFOw8lXhlkxftmq2ifsGeKLM8YePhVzdmG52XCHWN5sPJx9ns4QWOPqSs5669QlKUDo6Ct8c8cN6BmznA==}
+    peerDependencies:
+      storybook: ^10.5.2
 
   '@storybook/builder-vite@10.5.2':
     resolution: {integrity: sha512-XxY/zpMrEOXqdJaEw8s7fJefDCjO1eRkjvZvb50ojiqDJpTdfguhBrwqlHilpWWt5a12VjbbMrUHza4YPs/bBg==}
@@ -3357,6 +3365,11 @@ snapshots:
       - '@types/node'
 
   '@standard-schema/spec@1.1.0': {}
+
+  '@storybook/addon-themes@10.5.2(storybook@10.5.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))':
+    dependencies:
+      storybook: 10.5.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
+      ts-dedent: 2.3.0
 
   '@storybook/builder-vite@10.5.2(esbuild@0.28.1)(rollup@4.62.4)(storybook@10.5.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@7.3.6(@types/node@25.9.5)(lightningcss@1.33.0))':
     dependencies:
