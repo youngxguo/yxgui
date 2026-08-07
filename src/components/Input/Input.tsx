@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentProps } from 'react';
-import { colors } from '../colors.stylex';
+import { colors } from '../../theme/colors.stylex';
 import {
   fontFamilies,
   fontSizes,
@@ -8,7 +8,7 @@ import {
   lineHeights,
   radii,
   spacing
-} from '../foundations.stylex';
+} from '../../theme/foundations.stylex';
 
 type InputProps = Omit<ComponentProps<'input'>, 'className' | 'style'>;
 

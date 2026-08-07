@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentProps } from 'react';
-import { darkTheme, lightTheme } from '../themes';
+import { darkTheme, lightTheme } from '../../theme/themes';
 
 type ThemeProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
   mode?: 'light' | 'dark';

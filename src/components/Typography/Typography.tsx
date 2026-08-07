@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentPropsWithoutRef } from 'react';
-import { colors } from '../colors.stylex';
-import { fontFamilies, fontSizes, fontWeights, lineHeights } from '../foundations.stylex';
+import { colors } from '../../theme/colors.stylex';
+import { fontFamilies, fontSizes, fontWeights, lineHeights } from '../../theme/foundations.stylex';
 
 type TypographyProps = Omit<ComponentPropsWithoutRef<'p'>, 'className' | 'style'> & {
   variant?: 'body' | 'h1' | 'h2';
