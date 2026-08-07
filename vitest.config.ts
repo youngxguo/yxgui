@@ -1,9 +1,10 @@
 import stylex from '@stylexjs/unplugin';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [stylex.rollup()],
   test: {
-    environment: 'node'
+    environment: 'node',
+    exclude: [...configDefaults.exclude, 'tests/screenshots/**']
   }
 });
