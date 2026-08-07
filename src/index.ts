@@ -1,1 +1,4 @@
-export { Button, type ButtonProps } from './Button';
+export { Button } from './Button';
+export { Input } from './Input';
+export { Theme } from './Theme';
+export { Typography } from './Typography';

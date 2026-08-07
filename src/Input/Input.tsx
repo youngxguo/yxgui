@@ -10,31 +10,37 @@ import {
   spacing
 } from '../foundations.stylex';
 
-type ButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
+type InputProps = Omit<ComponentProps<'input'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
     backgroundColor: {
-      default: colors.primary,
-      ':enabled:hover': colors.primaryHover,
+      default: colors.surface,
       ':disabled': colors.surfaceDisabled
     },
+    borderColor: colors.border,
     borderRadius: radii.sm,
-    borderStyle: 'none',
+    borderStyle: 'solid',
+    borderWidth: '1px',
     boxSizing: 'border-box',
     color: {
-      default: colors.onEmphasis,
+      default: colors.text,
       ':disabled': colors.textDisabled
     },
     fontFamily: fontFamilies.sans,
     fontSize: fontSizes.sm,
-    fontWeight: fontWeights.semibold,
+    fontWeight: fontWeights.regular,
     lineHeight: lineHeights.sm,
-    paddingBlock: spacing.md,
-    paddingInline: spacing.lg
+    padding: spacing.md,
+    '::placeholder': {
+      color: {
+        default: colors.textMuted,
+        ':disabled': colors.textDisabled
+      }
+    }
   }
 });
 
-export function Button(props: ButtonProps) {
-  return <button {...props} {...stylex.props(styles.root)} />;
+export function Input(props: InputProps) {
+  return <input {...props} {...stylex.props(styles.root)} />;
 }
