@@ -18,13 +18,16 @@
     "LICENSE"
   ],
   "scripts": {
-    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm build-storybook",
+    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:screenshots",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
+    "test:screenshots": "pnpm build-storybook && playwright test",
+    "test:screenshots:update": "pnpm build-storybook && playwright test --update-snapshots",
+    "test:screenshots:install": "playwright install chromium",
     "typecheck": "tsc --noEmit",
     "build": "pnpm typecheck && vite build",
     "storybook": "storybook dev --port 6006",
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
+    "@playwright/test": "^1.62.1",
     "@storybook/addon-themes": "10.5.2",
     "@storybook/react-vite": "10.5.2",
     "@stylexjs/stylex": "^0.19.0",
