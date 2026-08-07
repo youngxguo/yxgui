@@ -1,0 +1,40 @@
+import * as stylex from '@stylexjs/stylex';
+import type { ComponentProps } from 'react';
+import { colors } from '../../theme/colors.stylex';
+import {
+  fontFamilies,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  radii,
+  spacing
+} from '../../theme/foundations.stylex';
+
+type ButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
+
+const styles = stylex.create({
+  root: {
+    backgroundColor: {
+      default: colors.primary,
+      ':enabled:hover': colors.primaryHover,
+      ':disabled': colors.surfaceDisabled
+    },
+    borderRadius: radii.sm,
+    borderStyle: 'none',
+    boxSizing: 'border-box',
+    color: {
+      default: colors.onEmphasis,
+      ':disabled': colors.textDisabled
+    },
+    fontFamily: fontFamilies.sans,
+    fontSize: fontSizes.sm,
+    fontWeight: fontWeights.semibold,
+    lineHeight: lineHeights.sm,
+    paddingBlock: spacing.md,
+    paddingInline: spacing.lg
+  }
+});
+
+export function Button(props: ButtonProps) {
+  return <button {...props} {...stylex.props(styles.root)} />;
+}
