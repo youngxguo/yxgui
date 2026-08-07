@@ -1,3 +1,5 @@
+import './fonts.css';
+
 export { Button } from './components/Button';
 export { Input } from './components/Input';
 export { Theme } from './components/Theme';

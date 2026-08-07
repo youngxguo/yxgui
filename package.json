@@ -8,14 +8,15 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/assets/stylex.css"
+    "./styles.css": "./dist/yxgui.css"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "files": [
     "dist",
-    "LICENSE"
+    "LICENSE",
+    "LICENSES"
   ],
   "scripts": {
     "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm build-storybook",

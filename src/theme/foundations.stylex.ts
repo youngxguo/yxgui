@@ -11,7 +11,7 @@ export const radii = stylex.defineConsts({
 });
 
 export const fontFamilies = stylex.defineConsts({
-  sans: 'system-ui, sans-serif'
+  sans: 'Inter, sans-serif'
 });
 
 export const fontSizes = stylex.defineConsts({

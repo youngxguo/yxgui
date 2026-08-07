@@ -5,6 +5,7 @@ import type { PropsWithChildren } from 'react';
 import { Theme } from '../src/components/Theme';
 import { colors } from '../src/theme/colors.stylex';
 import { spacing } from '../src/theme/foundations.stylex';
+import '../src/fonts.css';
 import './preview.css';
 
 type StorybookTheme = {
