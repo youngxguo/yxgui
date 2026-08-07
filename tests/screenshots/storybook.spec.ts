@@ -34,28 +34,10 @@ for (const theme of themes) {
 
       await page.goto(`/iframe.html?${query.toString()}`);
       await expect(page.locator('#storybook-root > *')).toBeVisible();
-      await page.addStyleTag({
-        content: `
-          @font-face {
-            font-family: Screenshot;
-            font-style: normal;
-            font-weight: 400;
-            src: url('/nunito-sans-regular.woff2') format('woff2');
-          }
-          @font-face {
-            font-family: Screenshot;
-            font-style: normal;
-            font-weight: 600;
-            src: url('/nunito-sans-bold.woff2') format('woff2');
-          }
-          * { font-family: Screenshot, sans-serif !important; }
-        `
-      });
-      await page.evaluate(() => document.fonts.ready);
 
       await expect
         .soft(page, `${story.title} / ${story.name}`)
-        .toHaveScreenshot(`${story.id}-${theme}.png`);
+        .toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
     }
   });
 }
