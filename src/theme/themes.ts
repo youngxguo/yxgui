@@ -9,6 +9,7 @@ export const darkTheme = stylex.createTheme(colors, {
   text: palette.gray50,
   textMuted: palette.gray400,
   border: palette.gray400,
+  borderDisabled: palette.gray600,
   primary: palette.blue500,
   primaryHover: palette.blue400,
   onEmphasis: palette.gray950,

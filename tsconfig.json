@@ -17,5 +17,12 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["node", "vitest/globals", "vite/client"]
   },
-  "include": ["src", ".storybook/**/*.ts", "vite.config.ts", "vitest*.ts", "vitest*.config.ts"]
+  "include": [
+    "src",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "vite.config.ts",
+    "vitest*.ts",
+    "vitest*.config.ts"
+  ]
 }

@@ -18,7 +18,10 @@ const styles = stylex.create({
       default: colors.surface,
       ':disabled': colors.surfaceDisabled
     },
-    borderColor: colors.border,
+    borderColor: {
+      default: colors.border,
+      ':disabled': colors.borderDisabled
+    },
     borderRadius: radii.sm,
     borderStyle: 'solid',
     borderWidth: '1px',
