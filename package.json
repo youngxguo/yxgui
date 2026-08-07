@@ -1,28 +1,7 @@
 {
   "name": "yxgui",
   "version": "0.1.0",
-  "description": "Minimal Vite React TypeScript library",
-  "keywords": [
-    "react",
-    "ui",
-    "component-library",
-    "typescript",
-    "design-system"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/youngxguo/yxgui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/youngxguo/yxgui/issues"
-  },
-  "homepage": "https://github.com/youngxguo/yxgui",
   "type": "module",
-  "packageManager": "pnpm@9.15.2",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -38,9 +17,6 @@
     "dist",
     "LICENSE"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
     "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm build-storybook",
     "lint": "eslint .",
