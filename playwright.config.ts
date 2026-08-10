@@ -14,8 +14,7 @@ export default defineConfig({
     toHaveScreenshot: {
       animations: 'disabled',
       caret: 'hide',
-      // TODO: Bundle a stable font and tighten this cross-platform tolerance.
-      maxDiffPixelRatio: 0.03
+      maxDiffPixelRatio: 0.01
     }
   },
   use: {
@@ -35,7 +34,7 @@ export default defineConfig({
     command:
       'pnpm exec vite preview --outDir storybook-static --host 127.0.0.1 --port 6006 --strictPort',
     url: 'http://127.0.0.1:6006/index.json',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 30_000
   }
 });

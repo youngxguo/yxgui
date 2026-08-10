@@ -8,14 +8,15 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/assets/stylex.css"
+    "./styles.css": "./dist/styles.css"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "files": [
     "dist",
-    "LICENSE"
+    "LICENSE",
+    "LICENSES"
   ],
   "scripts": {
     "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:screenshots",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
+    "@fontsource-variable/inter": "5.3.0",
     "@playwright/test": "^1.62.1",
     "@storybook/addon-themes": "10.5.2",
     "@storybook/react-vite": "10.5.2",
