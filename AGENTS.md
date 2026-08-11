@@ -1,0 +1,8 @@
+some loose philosophy:
+
+- this is a small library mostly used for personal use
+- this library should "just work" (i.e. consumer can rely on this for everything)
+- className and style overrides should never be allowed
+- if features don't exist, then we'll build them first-class
+- we prefer simplicity and native behavior as much as possible
+- only add behavior and complexity when strictly required
