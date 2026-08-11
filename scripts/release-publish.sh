@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Release workflow:
+# 1. Merge a dedicated version-bump PR.
+# 2. Update a clean local main and confirm npm and GitHub authentication.
+# 3. Run this script; rerun it if a partial release needs repair.
+
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
