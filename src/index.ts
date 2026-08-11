@@ -1,3 +1,4 @@
+import './fonts.css';
 import './styles.css';
 
 export { Button } from './components/Button';

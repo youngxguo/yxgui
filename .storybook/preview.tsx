@@ -3,8 +3,8 @@ import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react-vite';
 import type { PropsWithChildren } from 'react';
 import { Theme } from '../src/components/Theme';
-import { colors } from '../src/theme/colors.stylex';
 import { spacing } from '../src/theme/foundations.stylex';
+import '../src/fonts.css';
 import '../src/styles.css';
 
 type StorybookTheme = {
@@ -18,8 +18,6 @@ const themes = {
 
 const styles = stylex.create({
   canvas: {
-    backgroundColor: colors.surface,
-    boxSizing: 'border-box',
     minHeight: '100vh',
     padding: spacing.lg
   }
