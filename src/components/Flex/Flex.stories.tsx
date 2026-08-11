@@ -1,46 +1,17 @@
 import * as stylex from '@stylexjs/stylex';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { colors } from '../../theme/colors.stylex';
-import { radii, spacing } from '../../theme/foundations.stylex';
+import { Card } from '../Card';
 import { Typography } from '../Typography';
 import { Flex } from './Flex';
 
 const styles = stylex.create({
   frame: {
-    borderColor: colors.border,
-    borderRadius: radii.sm,
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    boxSizing: 'border-box',
     width: '360px'
   },
   narrowFrame: {
     width: '220px'
-  },
-  tile: {
-    backgroundColor: colors.primary,
-    borderRadius: radii.sm,
-    boxSizing: 'border-box',
-    padding: spacing.md
-  },
-  fixedTile: {
-    width: '96px'
-  },
-  shortTile: {
-    paddingBlock: spacing.sm
-  },
-  tallTile: {
-    paddingBlock: spacing.lg
   }
 });
-
-function Tile({ children, fixed = false }: { children: string; fixed?: boolean }) {
-  return (
-    <div {...stylex.props(styles.tile, fixed && styles.fixedTile)}>
-      <Typography>{children}</Typography>
-    </div>
-  );
-}
 
 const meta = {
   title: 'Components/Flex',
@@ -89,9 +60,15 @@ export const Default: Story = {
   render: (args) => (
     <div {...stylex.props(styles.frame)}>
       <Flex {...args}>
-        <Tile>Alpha</Tile>
-        <Tile>Beta</Tile>
-        <Tile>Gamma</Tile>
+        <Card>
+          <Typography>Alpha</Typography>
+        </Card>
+        <Card>
+          <Typography>Beta</Typography>
+        </Card>
+        <Card>
+          <Typography>Gamma</Typography>
+        </Card>
       </Flex>
     </div>
   )
@@ -106,9 +83,15 @@ export const Column: Story = {
   render: (args) => (
     <div {...stylex.props(styles.frame)}>
       <Flex {...args}>
-        <Tile>First</Tile>
-        <Tile>Second</Tile>
-        <Tile>Third</Tile>
+        <Card>
+          <Typography>First</Typography>
+        </Card>
+        <Card>
+          <Typography>Second</Typography>
+        </Card>
+        <Card>
+          <Typography>Third</Typography>
+        </Card>
       </Flex>
     </div>
   )
@@ -123,15 +106,15 @@ export const Alignment: Story = {
   render: (args) => (
     <div {...stylex.props(styles.frame)}>
       <Flex {...args}>
-        <div {...stylex.props(styles.tile, styles.shortTile)}>
-          <Typography>Short</Typography>
-        </div>
-        <div {...stylex.props(styles.tile, styles.tallTile)}>
-          <Typography>Tall</Typography>
-        </div>
-        <div {...stylex.props(styles.tile)}>
-          <Typography>Medium</Typography>
-        </div>
+        <Card>
+          <Typography>Body</Typography>
+        </Card>
+        <Card>
+          <Typography variant="h1">Heading</Typography>
+        </Card>
+        <Card>
+          <Typography variant="h2">Subheading</Typography>
+        </Card>
       </Flex>
     </div>
   )
@@ -147,9 +130,9 @@ export const Wrapped: Story = {
     <div {...stylex.props(styles.frame, styles.narrowFrame)}>
       <Flex {...args}>
         {['One', 'Two', 'Three', 'Four', 'Five'].map((label) => (
-          <Tile key={label} fixed>
-            {label}
-          </Tile>
+          <Card key={label}>
+            <Typography>{label}</Typography>
+          </Card>
         ))}
       </Flex>
     </div>
@@ -165,7 +148,9 @@ export const ViewportHeight: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <Tile>100dvh minimum</Tile>
+      <Card>
+        <Typography>100dvh minimum</Typography>
+      </Card>
     </Flex>
   )
 };
