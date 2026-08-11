@@ -2,7 +2,6 @@ import * as stylex from '@stylexjs/stylex';
 
 export const palette = stylex.defineConsts({
   gray50: '#f9fafb',
-  gray100: '#f3f4f6',
   gray400: '#9ca3af',
   gray600: '#4b5563',
   gray900: '#111827',

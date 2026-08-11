@@ -3,7 +3,6 @@ import { palette } from './palette.stylex';
 
 export const colors = stylex.defineVars({
   surface: palette.gray50,
-  surfaceMuted: palette.gray100,
   text: palette.gray900,
   textMuted: palette.gray600,
   border: palette.gray600,
