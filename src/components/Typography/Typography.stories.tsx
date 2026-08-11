@@ -14,6 +14,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const Muted: Story = {
+  args: {
+    children: 'Muted typography',
+    color: 'muted'
+  }
+};
+
 export const Heading1: Story = {
   args: {
     children: 'Heading 1',
