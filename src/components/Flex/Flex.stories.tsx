@@ -160,7 +160,8 @@ export const ViewportHeight: Story = {
   args: {
     align: 'center',
     justify: 'center',
-    minHeight: 'viewport'
+    minHeight: 'viewport',
+    padding: 'md'
   },
   render: (args) => (
     <Flex {...args}>

@@ -17,6 +17,7 @@ type FlexProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
 const styles = stylex.create({
   root: {
     alignItems: 'stretch',
+    boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
