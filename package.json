@@ -32,7 +32,8 @@
     "typecheck": "tsc --noEmit",
     "build": "pnpm typecheck && vite build",
     "storybook": "storybook dev --port 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "release:publish": "bash ./scripts/release-publish.sh"
   },
   "peerDependencies": {
     "react": "^19.0.0",
