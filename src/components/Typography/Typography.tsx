@@ -3,15 +3,21 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { fontFamilies, fontSizes, fontWeights, lineHeights } from '../../theme/foundations.stylex';
 
-type TypographyProps = Omit<ComponentPropsWithoutRef<'p'>, 'className' | 'style'> & {
+type TypographyProps = Omit<ComponentPropsWithoutRef<'p'>, 'className' | 'color' | 'style'> & {
+  color?: 'default' | 'muted';
   variant?: 'body' | 'h1' | 'h2';
 };
 
 const styles = stylex.create({
   root: {
-    color: colors.text,
     fontFamily: fontFamilies.sans,
     margin: 0
+  },
+  default: {
+    color: colors.text
+  },
+  muted: {
+    color: colors.textMuted
   },
   body: {
     fontSize: fontSizes.md,
@@ -30,9 +36,10 @@ const styles = stylex.create({
   }
 });
 
-export function Typography({ variant = 'body', ...props }: TypographyProps) {
+export function Typography({ color = 'default', variant = 'body', ...props }: TypographyProps) {
+  const colorStyle = color === 'muted' ? styles.muted : styles.default;
   const style = variant === 'h1' ? styles.h1 : variant === 'h2' ? styles.h2 : styles.body;
-  const styleProps = stylex.props(styles.root, style);
+  const styleProps = stylex.props(styles.root, colorStyle, style);
 
   if (variant === 'h1') {
     return <h1 {...props} {...styleProps} />;
