@@ -7,9 +7,9 @@ type CardProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderRadius: radii.sm,
+    backgroundColor: colors.surfaceElevated,
+    borderColor: colors.borderMuted,
+    borderRadius: radii.md,
     borderStyle: 'solid',
     borderWidth: '1px',
     boxSizing: 'border-box',
