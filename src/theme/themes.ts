@@ -6,9 +6,11 @@ export const lightTheme = stylex.createTheme(colors, {});
 
 export const darkTheme = stylex.createTheme(colors, {
   surface: palette.gray900,
+  surfaceElevated: palette.gray800,
   text: palette.gray50,
   textMuted: palette.gray400,
   border: palette.gray400,
+  borderMuted: palette.gray600,
   borderDisabled: palette.gray600,
   primary: palette.blue500,
   primaryHover: palette.blue400,
