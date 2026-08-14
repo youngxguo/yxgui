@@ -24,6 +24,12 @@ async function waitForInter(page: Page) {
   expect(loadedFaces).toBeGreaterThan(0);
 }
 
+async function waitForImages(page: Page) {
+  await page.waitForFunction(() =>
+    Array.from(document.images).every((image) => image.complete && image.naturalWidth > 0)
+  );
+}
+
 for (const theme of themes) {
   test(`all stories match the ${theme} theme snapshots`, async ({ page, request }) => {
     const indexResponse = await request.get('/index.json');
@@ -46,6 +52,7 @@ for (const theme of themes) {
       await page.goto(`/iframe.html?${query.toString()}`);
       await expect(page.locator('#storybook-root > *')).toBeVisible();
       await waitForInter(page);
+      await waitForImages(page);
 
       await expect
         .soft(page, `${story.title} / ${story.name}`)
