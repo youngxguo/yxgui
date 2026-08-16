@@ -71,7 +71,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
   Empty,
+  EmptyContent,
   EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
   EmptyTitle,
   Field,
   FieldDescription,
@@ -611,8 +614,16 @@ function ConsumerApp() {
               </PaginationList>
             </Pagination>
             <Empty>
-              <EmptyTitle>No more checks</EmptyTitle>
-              <EmptyDescription>The consumer surface compiled successfully.</EmptyDescription>
+              <EmptyHeader>
+                <EmptyMedia variant="icon">✓</EmptyMedia>
+                <EmptyTitle>No more checks</EmptyTitle>
+                <EmptyDescription>The consumer surface compiled successfully.</EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button type="button" variant="secondary">
+                  Review results
+                </Button>
+              </EmptyContent>
             </Empty>
           </Flex>
         </Card>

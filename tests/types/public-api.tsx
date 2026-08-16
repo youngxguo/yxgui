@@ -94,6 +94,9 @@ import type {
   DrawerTitleProps,
   DrawerTriggerProps,
   EmptyDescriptionProps,
+  EmptyContentProps,
+  EmptyHeaderProps,
+  EmptyMediaProps,
   EmptyProps,
   EmptyTitleProps,
   FieldDescriptionProps,
@@ -420,6 +423,9 @@ type PublicProps =
   | DrawerTitleProps
   | DrawerTriggerProps
   | EmptyDescriptionProps
+  | EmptyContentProps
+  | EmptyHeaderProps
+  | EmptyMediaProps
   | EmptyProps
   | EmptyTitleProps
   | FieldDescriptionProps
