@@ -158,6 +158,26 @@ test('combobox filters and selects with the keyboard', async ({ page }) => {
   await expect(input).toHaveValue('Blueberry');
 });
 
+test('OTP field filters invalid text and advances between slots', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-otpfield--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const inputs = page.getByRole('textbox');
+  await page.getByRole('textbox', { name: 'Verification code' }).focus();
+  await page.keyboard.type('12a3456');
+  await expect(inputs).toHaveCount(6);
+  await expect(inputs.nth(0)).toHaveValue('1');
+  await expect(inputs.nth(1)).toHaveValue('2');
+  await expect(inputs.nth(2)).toHaveValue('3');
+  await expect(inputs.nth(3)).toHaveValue('4');
+  await expect(inputs.nth(4)).toHaveValue('5');
+  await expect(inputs.nth(5)).toHaveValue('6');
+});
+
 test('tabs support arrow-key activation', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-tabs--default',

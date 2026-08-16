@@ -85,6 +85,7 @@ import type {
   MeterProps,
   NumberFieldInputProps,
   NumberFieldProps,
+  OTPFieldProps,
   PaginationItemProps,
   PaginationLinkProps,
   PaginationListProps,
@@ -150,6 +151,7 @@ import {
   Input,
   Link,
   MenuContent,
+  OTPField,
   ScrollArea,
   Slider,
   Table,
@@ -246,6 +248,7 @@ type PublicProps =
   | MeterProps
   | NumberFieldInputProps
   | NumberFieldProps
+  | OTPFieldProps
   | PaginationItemProps
   | PaginationLinkProps
   | PaginationListProps
@@ -325,6 +328,8 @@ const closedStyleApi = () => (
     <Toolbar className="override" />
     {/* @ts-expect-error combobox styling remains internal */}
     <Combobox className="override" label="Fruit" options={[]} />
+    {/* @ts-expect-error OTP slot styling remains internal */}
+    <OTPField className="override" label="Code" />
     {/* @ts-expect-error overlay classes remain internal */}
     <DialogContent className="override" />
     {/* @ts-expect-error overlay inline styles remain internal */}

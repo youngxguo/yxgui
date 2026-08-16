@@ -60,6 +60,7 @@ import {
   MenuTrigger,
   Meter,
   NumberField,
+  OTPField,
   Pagination,
   PaginationItem,
   PaginationLink,
@@ -170,6 +171,7 @@ function ConsumerApp() {
                 { label: 'Europe', value: 'eu' }
               ]}
             />
+            <OTPField label="Verification code" length={4} />
             <RadioGroup>
               <RadioGroupLegend>Plan</RadioGroupLegend>
               <Radio defaultChecked label="Personal" name="consumer-plan" />

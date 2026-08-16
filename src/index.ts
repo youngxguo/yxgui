@@ -191,6 +191,7 @@ export {
   type NumberFieldInputProps,
   type NumberFieldProps
 } from './components/NumberField';
+export { OTPField, type OTPFieldProps } from './components/OTPField';
 export {
   Pagination,
   PaginationItem,
