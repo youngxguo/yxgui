@@ -359,6 +359,12 @@ export {
 } from './components/Table';
 export { TagInput, type TagInputProps } from './components/TagInput';
 export {
+  Timeline,
+  type TimelineItem,
+  type TimelineProps,
+  type TimelineStatus
+} from './components/Timeline';
+export {
   Tab,
   Tabs,
   TabsList,

@@ -176,6 +176,9 @@ import type {
   TabsProps,
   TextareaProps,
   ThemeProps,
+  TimelineItem,
+  TimelineProps,
+  TimelineStatus,
   ToggleProps,
   ToggleGroupProps,
   ToastAction,
@@ -236,6 +239,7 @@ import {
   Table,
   TagInput,
   Tabs,
+  Timeline,
   ToastProvider,
   Toolbar,
   TooltipTrigger,
@@ -421,6 +425,9 @@ type PublicProps =
   | TabsProps
   | TextareaProps
   | ThemeProps
+  | TimelineItem
+  | TimelineProps
+  | TimelineStatus
   | ToggleProps
   | ToggleGroupProps
   | ToastAction
@@ -525,6 +532,8 @@ const closedStyleApi = () => (
     <TreeView className="override" label="Tree" nodes={[]} />
     {/* @ts-expect-error stepper presentation remains internal */}
     <Stepper className="override" label="Steps" steps={[]} />
+    {/* @ts-expect-error timeline presentation remains internal */}
+    <Timeline style={{ display: 'block' }} items={[]} />
     {/* @ts-expect-error tag input presentation remains internal */}
     <TagInput className="override" label="Tags" />
     {/* @ts-expect-error toast presentation is provider-owned */}

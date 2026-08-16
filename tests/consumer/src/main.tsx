@@ -132,6 +132,7 @@ import {
   TabsList,
   TabsPanel,
   Theme,
+  Timeline,
   Toggle,
   ToggleGroup,
   ToastProvider,
@@ -221,6 +222,13 @@ function ConsumerApp() {
                 { id: 'review', label: 'Review' },
                 { id: 'publish', label: 'Publish' }
               ]}
+            />
+            <Timeline
+              items={[
+                { id: 'installed', status: 'complete', title: 'Package installed' },
+                { id: 'rendered', status: 'current', title: 'Consumer rendered' }
+              ]}
+              label="Consumer activity"
             />
             <MultiSelect
               defaultValue={['react']}
