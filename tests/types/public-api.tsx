@@ -187,6 +187,8 @@ import type {
   StatProps,
   StatTrendProps,
   StatValueProps,
+  StatusProps,
+  StatusVariant,
   StepperOrientation,
   StepperProps,
   StepperStep,
@@ -277,6 +279,7 @@ import {
   SegmentedControl,
   Slider,
   Stat,
+  Status,
   Stepper,
   Table,
   TagInput,
@@ -478,6 +481,8 @@ type PublicProps =
   | StatProps
   | StatTrendProps
   | StatValueProps
+  | StatusProps
+  | StatusVariant
   | StepperOrientation
   | StepperProps
   | StepperStep
@@ -620,6 +625,8 @@ const closedStyleApi = () => (
     <ScrollArea className="override">Content</ScrollArea>
     {/* @ts-expect-error stat presentation remains internal */}
     <Stat className="override" />
+    {/* @ts-expect-error status presentation remains internal */}
+    <Status className="override">Ready</Status>
     {/* @ts-expect-error resizable panel layout remains internal */}
     <ResizablePanels className="override" first="One" second="Two" />
     {/* @ts-expect-error native table styles remain closed */}

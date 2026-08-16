@@ -392,6 +392,7 @@ export {
   type StatTrendProps,
   type StatValueProps
 } from './components/Stat';
+export { Status, type StatusProps, type StatusVariant } from './components/Status';
 export {
   Stepper,
   type StepperOrientation,

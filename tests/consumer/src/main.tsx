@@ -143,6 +143,7 @@ import {
   StatLabel,
   StatTrend,
   StatValue,
+  Status,
   Stepper,
   Switch,
   Table,
@@ -241,6 +242,7 @@ function ConsumerApp() {
                 <StatTrend direction="up">Ready</StatTrend> for package verification
               </StatDescription>
             </Stat>
+            <Status variant="success">Consumer operational</Status>
             <CodeBlock code="pnpm add yxgui" label="Consumer install" language="shell" />
             <Carousel aria-label="Consumer carousel">
               <Card>
