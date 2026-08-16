@@ -227,6 +227,26 @@ test('toolbar supports roving keyboard focus', async ({ page }) => {
   await expect(redo).toBeFocused();
 });
 
+test('navigation menu supports roving focus and Escape dismissal', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-navigationmenu--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const products = page.getByRole('button', { name: 'Products' });
+  const resources = page.getByRole('button', { name: 'Resources' });
+  await products.focus();
+  await products.press('ArrowRight');
+  await expect(resources).toBeFocused();
+  await products.click();
+  await expect(page.getByRole('link', { name: 'Components' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('link', { name: 'Components' })).toBeHidden();
+  await expect(products).toBeFocused();
+});
+
 test('dialog traps focus, dismisses with Escape, and restores focus', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-dialog--default',

@@ -187,6 +187,22 @@ export {
 } from './components/Menu';
 export { Meter, type MeterProps } from './components/Meter';
 export {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuTriggerLink,
+  type NavigationMenuContentProps,
+  type NavigationMenuItemProps,
+  type NavigationMenuLinkProps,
+  type NavigationMenuListProps,
+  type NavigationMenuProps,
+  type NavigationMenuTriggerLinkProps,
+  type NavigationMenuTriggerProps
+} from './components/NavigationMenu';
+export {
   NumberField,
   type NumberFieldInputProps,
   type NumberFieldProps

@@ -59,6 +59,12 @@ import {
   MenuItem,
   MenuTrigger,
   Meter,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
   NumberField,
   OTPField,
   Pagination,
@@ -153,6 +159,16 @@ function ConsumerApp() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+            <NavigationMenu aria-label="Consumer navigation">
+              <NavigationMenuList>
+                <NavigationMenuItem value="library">
+                  <NavigationMenuTrigger>Library</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <NavigationMenuLink href="#components">Components</NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
             <Field>
               <FieldLabel htmlFor="consumer-email">Email</FieldLabel>
               <Input fullWidth id="consumer-email" type="email" />

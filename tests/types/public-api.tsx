@@ -83,6 +83,13 @@ import type {
   MenuSubmenuTriggerProps,
   MenuTriggerProps,
   MeterProps,
+  NavigationMenuContentProps,
+  NavigationMenuItemProps,
+  NavigationMenuLinkProps,
+  NavigationMenuListProps,
+  NavigationMenuProps,
+  NavigationMenuTriggerLinkProps,
+  NavigationMenuTriggerProps,
   NumberFieldInputProps,
   NumberFieldProps,
   OTPFieldProps,
@@ -151,6 +158,7 @@ import {
   Input,
   Link,
   MenuContent,
+  NavigationMenuContent,
   OTPField,
   ScrollArea,
   Slider,
@@ -246,6 +254,13 @@ type PublicProps =
   | MenuSubmenuTriggerProps
   | MenuTriggerProps
   | MeterProps
+  | NavigationMenuContentProps
+  | NavigationMenuItemProps
+  | NavigationMenuLinkProps
+  | NavigationMenuListProps
+  | NavigationMenuProps
+  | NavigationMenuTriggerLinkProps
+  | NavigationMenuTriggerProps
   | NumberFieldInputProps
   | NumberFieldProps
   | OTPFieldProps
@@ -330,6 +345,8 @@ const closedStyleApi = () => (
     <Combobox className="override" label="Fruit" options={[]} />
     {/* @ts-expect-error OTP slot styling remains internal */}
     <OTPField className="override" label="Code" />
+    {/* @ts-expect-error navigation menu surfaces keep styling internal */}
+    <NavigationMenuContent className="override" />
     {/* @ts-expect-error overlay classes remain internal */}
     <DialogContent className="override" />
     {/* @ts-expect-error overlay inline styles remain internal */}
