@@ -43,7 +43,7 @@ export function App() {
 - Forms: `Button`, `Input`, `Textarea`, `Select`, `Combobox`, `OTPField`, `Checkbox`, `CheckboxGroup`, `CheckboxItem`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`, `ToastProvider`, `useToast`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
-- Popups and overlays: `Dialog`, `AlertDialog`, `Drawer`, `Popover`, `PreviewCard`, `Tooltip`, `Menu`, `ContextMenu`
+- Popups and overlays: `Dialog`, `AlertDialog`, `Drawer`, `Popover`, `PreviewCard`, `Tooltip`, `Menu`, `Menubar`, `ContextMenu`
 - Media: `Avatar`
 - Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 

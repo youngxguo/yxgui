@@ -90,6 +90,7 @@ import type {
   MenuSubmenuProps,
   MenuSubmenuTriggerProps,
   MenuTriggerProps,
+  MenubarProps,
   MeterProps,
   NavigationMenuContentProps,
   NavigationMenuItemProps,
@@ -173,6 +174,7 @@ import {
   Input,
   Link,
   MenuContent,
+  Menubar,
   NavigationMenuContent,
   OTPField,
   PreviewCardContent,
@@ -277,6 +279,7 @@ type PublicProps =
   | MenuSubmenuProps
   | MenuSubmenuTriggerProps
   | MenuTriggerProps
+  | MenubarProps
   | MeterProps
   | NavigationMenuContentProps
   | NavigationMenuItemProps
@@ -387,6 +390,8 @@ const closedStyleApi = () => (
     <TooltipTrigger style={{ color: 'red' }}>Info</TooltipTrigger>
     {/* @ts-expect-error menu classes remain internal */}
     <MenuContent className="override" />
+    {/* @ts-expect-error menubar layout remains internal */}
+    <Menubar style={{ gap: 0 }} />
     {/* @ts-expect-error context menu styles remain internal */}
     <ContextMenuContent style={{ padding: 0 }} />
     {/* @ts-expect-error application surfaces keep styling internal */}

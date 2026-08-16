@@ -375,6 +375,26 @@ test('menu supports arrow-key selection and restores focus', async ({ page }) =>
   await expect(trigger).toBeFocused();
 });
 
+test('menubar supports roving focus and opens a menu', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-menubar--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const file = page.getByRole('menuitem', { name: 'File' });
+  const edit = page.getByRole('menuitem', { name: 'Edit' });
+  await file.focus();
+  await file.press('ArrowRight');
+  await expect(edit).toBeFocused();
+  await file.click();
+  await expect(page.getByRole('menuitem', { name: 'New document' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('menu')).toBeHidden();
+  await expect(file).toBeFocused();
+});
+
 test('context menu opens from right click and dismisses with Escape', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-contextmenu--default',

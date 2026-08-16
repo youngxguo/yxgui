@@ -29,6 +29,23 @@ export const overlayStyles = stylex.create({
     paddingBlock: spacing.md,
     paddingInline: spacing.lg
   },
+  menubarTrigger: {
+    alignItems: 'center',
+    backgroundColor: { default: 'transparent', ':hover': colors.surfaceSubtle },
+    borderColor: 'transparent',
+    borderRadius: radii.sm,
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    color: colors.text,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    fontFamily: fontFamilies.sans,
+    fontSize: fontSizes.sm,
+    fontWeight: fontWeights.semibold,
+    lineHeight: lineHeights.sm,
+    paddingBlock: spacing.md,
+    paddingInline: spacing.lg
+  },
   iconTrigger: {
     alignItems: 'center',
     backgroundColor: { default: colors.surfaceElevated, ':hover': colors.surfaceSubtle },

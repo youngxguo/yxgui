@@ -202,6 +202,7 @@ export {
   type MenuSubmenuTriggerProps,
   type MenuTriggerProps
 } from './components/Menu';
+export { Menubar, type MenubarProps } from './components/Menubar';
 export { Meter, type MeterProps } from './components/Meter';
 export {
   NavigationMenu,

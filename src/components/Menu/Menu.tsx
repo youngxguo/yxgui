@@ -10,7 +10,9 @@ type PositionOptions = Pick<
 >;
 
 export type MenuProps = BaseMenu.Root.Props;
-export type MenuTriggerProps = ClosedProps<BaseMenu.Trigger.Props>;
+export type MenuTriggerProps = ClosedProps<BaseMenu.Trigger.Props> & {
+  variant?: 'button' | 'menubar';
+};
 export type MenuContentProps = ClosedProps<BaseMenu.Popup.Props> & PositionOptions;
 export type MenuItemProps = ClosedProps<BaseMenu.Item.Props> & { danger?: boolean };
 export type MenuLinkItemProps = ClosedProps<BaseMenu.LinkItem.Props> & { danger?: boolean };
@@ -35,8 +37,16 @@ export function Menu(props: MenuProps) {
   return <BaseMenu.Root {...props} />;
 }
 
-export function MenuTrigger(props: MenuTriggerProps) {
-  return <BaseMenu.Trigger {...props} className={stylex.props(overlayStyles.trigger).className} />;
+export function MenuTrigger({ variant = 'button', ...props }: MenuTriggerProps) {
+  return (
+    <BaseMenu.Trigger
+      {...props}
+      className={
+        stylex.props(variant === 'menubar' ? overlayStyles.menubarTrigger : overlayStyles.trigger)
+          .className
+      }
+    />
+  );
 }
 
 export function MenuContent({

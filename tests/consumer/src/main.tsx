@@ -64,6 +64,7 @@ import {
   MenuContent,
   MenuItem,
   MenuTrigger,
+  Menubar,
   Meter,
   NavigationMenu,
   NavigationMenuContent,
@@ -286,6 +287,20 @@ function ConsumerApp() {
                 <MenuItem>Duplicate</MenuItem>
               </MenuContent>
             </Menu>
+            <Menubar aria-label="Consumer menubar">
+              <Menu>
+                <MenuTrigger variant="menubar">File</MenuTrigger>
+                <MenuContent>
+                  <MenuItem>New</MenuItem>
+                </MenuContent>
+              </Menu>
+              <Menu>
+                <MenuTrigger variant="menubar">Edit</MenuTrigger>
+                <MenuContent>
+                  <MenuItem>Undo</MenuItem>
+                </MenuContent>
+              </Menu>
+            </Menubar>
             <ToastProvider>
               <ConsumerToastButton />
             </ToastProvider>
