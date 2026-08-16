@@ -61,7 +61,7 @@ export {
   type BreadcrumbProps,
   type BreadcrumbSeparatorProps
 } from './components/Breadcrumb';
-export { Button, type ButtonProps } from './components/Button';
+export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button';
 export { ButtonGroup, type ButtonGroupProps } from './components/ButtonGroup';
 export { Calendar, type CalendarProps } from './components/Calendar';
 export { Card, type CardProps } from './components/Card';
@@ -218,6 +218,7 @@ export {
   SunIcon,
   type IconProps
 } from './components/Icon';
+export { IconButton, type IconButtonProps } from './components/IconButton';
 export { Input, type InputProps } from './components/Input';
 export {
   InputGroup,

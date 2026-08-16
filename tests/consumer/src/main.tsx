@@ -78,6 +78,7 @@ import {
   GridItem,
   Fieldset,
   FieldsetLegend,
+  IconButton,
   Input,
   InputGroup,
   InputGroupAddon,
@@ -408,6 +409,9 @@ function ConsumerApp() {
               <MailIcon />
               Continue
             </Button>
+            <IconButton label="Send consumer message" variant="secondary">
+              <MailIcon />
+            </IconButton>
             <ButtonGroup aria-label="Consumer document actions">
               <Button type="button">Save</Button>
               <Button type="button">Archive</Button>

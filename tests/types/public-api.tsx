@@ -27,6 +27,8 @@ import type {
   BreadcrumbProps,
   BreadcrumbSeparatorProps,
   ButtonProps,
+  ButtonSize,
+  ButtonVariant,
   ButtonGroupProps,
   CalendarProps,
   CardProps,
@@ -103,6 +105,7 @@ import type {
   FormValidationMode,
   GridItemProps,
   GridProps,
+  IconButtonProps,
   IconProps,
   InputGroupAddonProps,
   InputGroupButtonProps,
@@ -261,6 +264,7 @@ import {
   Grid,
   Input,
   InputGroup,
+  IconButton,
   Item,
   Kbd,
   Link,
@@ -321,6 +325,8 @@ type PublicProps =
   | BreadcrumbProps
   | BreadcrumbSeparatorProps
   | ButtonProps
+  | ButtonSize
+  | ButtonVariant
   | ButtonGroupProps
   | CalendarProps
   | CardProps
@@ -397,6 +403,7 @@ type PublicProps =
   | FormValidationMode
   | GridItemProps
   | GridProps
+  | IconButtonProps
   | IconProps
   | InputGroupAddonProps
   | InputGroupButtonProps
@@ -555,6 +562,10 @@ const closedStyleApi = () => (
     <Input className="override" />
     {/* @ts-expect-error grouped-input presentation remains internal */}
     <InputGroup className="override" />
+    {/* @ts-expect-error icon-button sizing remains an explicit semantic API */}
+    <IconButton className="override" label="Action">
+      !
+    </IconButton>
     {/* @ts-expect-error item presentation remains internal */}
     <Item className="override" />
     {/* @ts-expect-error code presentation remains internal */}

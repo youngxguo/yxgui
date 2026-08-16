@@ -16,6 +16,7 @@ export const colors = stylex.defineVars({
   success: palette.green600,
   warning: palette.amber700,
   danger: palette.red600,
+  dangerHover: palette.red700,
   controlThumb: palette.white,
   onEmphasis: palette.gray50,
   surfaceDisabled: palette.gray50,

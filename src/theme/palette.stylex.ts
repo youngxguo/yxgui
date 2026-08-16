@@ -19,5 +19,6 @@ export const palette = stylex.defineConsts({
   amber400: '#fbbf24',
   amber700: '#b45309',
   red400: '#f87171',
-  red600: '#dc2626'
+  red600: '#dc2626',
+  red700: '#b91c1c'
 });
