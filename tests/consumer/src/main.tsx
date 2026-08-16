@@ -34,6 +34,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  CodeBlock,
   ColorField,
   Combobox,
   CommandMenu,
@@ -212,6 +213,7 @@ function ConsumerApp() {
                 <StatTrend direction="up">Ready</StatTrend> for package verification
               </StatDescription>
             </Stat>
+            <CodeBlock code="pnpm add yxgui" label="Consumer install" language="shell" />
             <Carousel aria-label="Consumer carousel">
               <Card>
                 <Typography>First packaged slide</Typography>

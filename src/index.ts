@@ -74,6 +74,7 @@ export {
   type CheckboxItemProps
 } from './components/CheckboxGroup';
 export { ColorField, type ColorFieldProps } from './components/ColorField';
+export { CodeBlock, type CodeBlockProps } from './components/CodeBlock';
 export {
   Collapsible,
   CollapsibleContent,

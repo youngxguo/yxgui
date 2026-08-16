@@ -18,7 +18,7 @@ Version 1.0 covers every primitive category in the installed Base UI release and
 
 ### Available
 
-- Foundations: `Theme`, `Typography`, `Kbd`, `VisuallyHidden`, `Container`, `Flex`, `Grid`, `GridItem`, `Card`
+- Foundations: `Theme`, `Typography`, `Kbd`, `CodeBlock`, `VisuallyHidden`, `Container`, `Flex`, `Grid`, `GridItem`, `Card`
 - Actions and navigation: `Button`, `CopyButton`, `Link`, `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbCurrent`, `Pagination`, `PaginationList`, `PaginationItem`, `PaginationLink`, `Toolbar`, `ToolbarGroup`, `ToolbarButton`, `ToolbarLink`, `ToolbarInput`, `ToolbarSeparator`, `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `NavigationMenuTriggerLink`
 - Forms: `Form`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `SearchField`, `PasswordField`, `ColorField`, `Select`, `Autocomplete`, `Combobox`, `MultiSelect`, `TagInput`, `DateField`, `TimeField`, `DateTimeField`, `FileUpload`, `OTPField`, `Checkbox`, `CheckboxGroup`, `CheckboxGroupLegend`, `CheckboxItem`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Rating`, `Switch`, `Toggle`, `ToggleGroup`, `Slider`, `NumberField`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Stepper`, `Timeline`, `Empty`, `EmptyTitle`, `EmptyDescription`, `ToastProvider`, `useToast`
