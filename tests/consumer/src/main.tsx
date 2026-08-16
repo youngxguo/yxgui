@@ -76,6 +76,7 @@ import {
   MenuTrigger,
   Menubar,
   Meter,
+  MultiSelect,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -195,6 +196,14 @@ function ConsumerApp() {
               options={[
                 { label: 'Accordion', value: 'accordion' },
                 { label: 'Alert', value: 'alert' }
+              ]}
+            />
+            <MultiSelect
+              defaultValue={['react']}
+              label="Consumer technologies"
+              options={[
+                { label: 'React', value: 'react' },
+                { label: 'StyleX', value: 'stylex' }
               ]}
             />
             <Form errors={{ packageName: 'Use a scoped package name.' }}>

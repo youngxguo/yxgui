@@ -105,6 +105,8 @@ import type {
   MenuTriggerProps,
   MenubarProps,
   MeterProps,
+  MultiSelectOption,
+  MultiSelectProps,
   NavigationMenuContentProps,
   NavigationMenuItemProps,
   NavigationMenuLinkProps,
@@ -194,6 +196,7 @@ import {
   Link,
   MenuContent,
   Menubar,
+  MultiSelect,
   NavigationMenuContent,
   OTPField,
   PreviewCardContent,
@@ -313,6 +316,8 @@ type PublicProps =
   | MenuTriggerProps
   | MenubarProps
   | MeterProps
+  | MultiSelectOption
+  | MultiSelectProps
   | NavigationMenuContentProps
   | NavigationMenuItemProps
   | NavigationMenuLinkProps
@@ -420,6 +425,8 @@ const closedStyleApi = () => (
     <Toolbar className="override" />
     {/* @ts-expect-error combobox styling remains internal */}
     <Combobox className="override" label="Fruit" options={[]} />
+    {/* @ts-expect-error multi-select styling remains internal */}
+    <MultiSelect style={{ minHeight: 0 }} label="Tags" options={[]} />
     {/* @ts-expect-error OTP slot styling remains internal */}
     <OTPField className="override" label="Code" />
     {/* @ts-expect-error navigation menu surfaces keep styling internal */}

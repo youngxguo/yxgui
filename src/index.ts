@@ -224,6 +224,11 @@ export {
 export { Menubar, type MenubarProps } from './components/Menubar';
 export { Meter, type MeterProps } from './components/Meter';
 export {
+  MultiSelect,
+  type MultiSelectOption,
+  type MultiSelectProps
+} from './components/MultiSelect';
+export {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,

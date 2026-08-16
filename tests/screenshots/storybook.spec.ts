@@ -190,6 +190,25 @@ test('combobox filters and selects with the keyboard', async ({ page }) => {
   await expect(input).toHaveValue('Blueberry');
 });
 
+test('multi-select adds and removes values with keyboard and pointer input', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-multiselect--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('combobox', { name: 'Technologies' });
+  await expect(page.getByRole('button', { name: 'Remove React' })).toBeVisible();
+  await page.getByRole('button', { name: 'Remove React' }).click();
+  await expect(page.getByRole('button', { name: 'Remove React' })).toBeHidden();
+  await input.fill('style');
+  await expect(page.getByRole('option', { name: 'StyleX' })).toBeVisible();
+  await input.press('ArrowDown');
+  await input.press('Enter');
+  await expect(page.getByRole('button', { name: 'Remove StyleX' })).toBeVisible();
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',
