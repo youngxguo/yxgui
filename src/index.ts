@@ -213,6 +213,7 @@ export {
   type IconProps
 } from './components/Icon';
 export { Input, type InputProps } from './components/Input';
+export { Kbd, type KbdProps } from './components/Kbd';
 export { Link, type LinkProps } from './components/Link';
 export {
   Menu,
@@ -399,4 +400,5 @@ export {
   type ToolbarSeparatorProps
 } from './components/Toolbar';
 export { Typography, type TypographyProps } from './components/Typography';
+export { VisuallyHidden, type VisuallyHiddenProps } from './components/VisuallyHidden';
 export { TreeView, type TreeViewNode, type TreeViewProps } from './components/TreeView';

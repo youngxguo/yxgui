@@ -98,6 +98,7 @@ import type {
   GridProps,
   IconProps,
   InputProps,
+  KbdProps,
   LinkProps,
   MenuCheckboxItemProps,
   MenuContentProps,
@@ -192,6 +193,7 @@ import type {
   TreeViewNode,
   TreeViewProps,
   TypographyProps,
+  VisuallyHiddenProps,
   TimeFieldProps
 } from '../../src';
 import {
@@ -210,8 +212,9 @@ import {
   DrawerContent,
   Form,
   FileUpload,
-  Input,
   Grid,
+  Input,
+  Kbd,
   Link,
   MenuContent,
   Menubar,
@@ -228,7 +231,8 @@ import {
   ToastProvider,
   Toolbar,
   TooltipTrigger,
-  TreeView
+  TreeView,
+  VisuallyHidden
 } from '../../src';
 
 type PublicProps =
@@ -331,6 +335,7 @@ type PublicProps =
   | GridProps
   | IconProps
   | InputProps
+  | KbdProps
   | LinkProps
   | MenuCheckboxItemProps
   | MenuContentProps
@@ -425,6 +430,7 @@ type PublicProps =
   | TreeViewNode
   | TreeViewProps
   | TypographyProps
+  | VisuallyHiddenProps
   | TimeFieldProps;
 
 const publicProps = undefined as PublicProps | undefined;
@@ -442,6 +448,8 @@ const closedStyleApi = () => (
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
+    {/* @ts-expect-error keyboard-token presentation remains internal */}
+    <Kbd className="override">K</Kbd>
     {/* @ts-expect-error form layout remains a semantic API */}
     <Form className="override" />
     {/* @ts-expect-error file upload presentation remains internal */}
@@ -502,6 +510,8 @@ const closedStyleApi = () => (
     <TagInput className="override" label="Tags" />
     {/* @ts-expect-error toast presentation is provider-owned */}
     <ToastProvider className="override">Content</ToastProvider>
+    {/* @ts-expect-error visually hidden behavior remains internal */}
+    <VisuallyHidden style={{ position: 'static' }}>Label</VisuallyHidden>
   </>
 );
 void closedStyleApi;

@@ -73,6 +73,7 @@ import {
   Fieldset,
   FieldsetLegend,
   Input,
+  Kbd,
   MailIcon,
   Menu,
   MenuContent,
@@ -140,6 +141,7 @@ import {
   TooltipTrigger,
   TreeView,
   Typography,
+  VisuallyHidden,
   useToast
 } from 'yxgui';
 import 'yxgui/styles.css';
@@ -172,6 +174,7 @@ function ConsumerApp() {
               <Avatar alt="Consumer build" />
               <Typography variant="h1">Consumer build</Typography>
               <Badge variant="success">Ready</Badge>
+              <Kbd>⌘K</Kbd>
             </Flex>
             <Alert>
               <AlertTitle>Package exports loaded</AlertTitle>
@@ -241,6 +244,9 @@ function ConsumerApp() {
               rows={[{ id: 'yxgui', name: 'yxgui' }]}
             />
             <ResizablePanels first="Consumer navigation" second="Consumer workspace" />
+            <Button type="button">
+              ?<VisuallyHidden>Consumer help</VisuallyHidden>
+            </Button>
             <CommandMenu
               onSelect={() => undefined}
               options={[
