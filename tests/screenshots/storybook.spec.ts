@@ -61,6 +61,34 @@ for (const theme of themes) {
   });
 }
 
+test('app shell switches between desktop and mobile layouts', async ({ page }) => {
+  await page.setViewportSize({ width: 900, height: 700 });
+  const query = new URLSearchParams({
+    id: 'components-appshell--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+  await page.goto(`/iframe.html?${query.toString()}`);
+
+  const sidebar = page.getByRole('complementary', { name: 'Application sidebar' });
+  const header = page.getByRole('banner');
+  await expect(sidebar).toBeVisible();
+  await expect(header).toBeVisible();
+
+  const desktopSidebar = await sidebar.boundingBox();
+  const desktopHeader = await header.boundingBox();
+  expect(desktopSidebar).not.toBeNull();
+  expect(desktopHeader).not.toBeNull();
+  expect(desktopHeader!.x).toBeGreaterThan(desktopSidebar!.x);
+
+  await page.setViewportSize({ width: 480, height: 700 });
+  const mobileSidebar = await sidebar.boundingBox();
+  const mobileHeader = await header.boundingBox();
+  expect(mobileSidebar).not.toBeNull();
+  expect(mobileHeader).not.toBeNull();
+  expect(mobileHeader!.y).toBeGreaterThan(mobileSidebar!.y);
+});
+
 test('switch supports pointer and keyboard interaction', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-switch--default',

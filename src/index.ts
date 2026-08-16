@@ -44,6 +44,34 @@ export {
   type AlertDialogTitleProps,
   type AlertDialogTriggerProps
 } from './components/AlertDialog';
+export {
+  AppShell,
+  AppShellFooter,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  SidebarButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarLink,
+  SidebarNav,
+  type AppShellFooterProps,
+  type AppShellHeaderProps,
+  type AppShellMainProps,
+  type AppShellProps,
+  type AppShellSidebarProps,
+  type SidebarButtonProps,
+  type SidebarContentProps,
+  type SidebarFooterProps,
+  type SidebarGroupLabelProps,
+  type SidebarGroupProps,
+  type SidebarHeaderProps,
+  type SidebarLinkProps,
+  type SidebarNavProps
+} from './components/AppShell';
 export { AspectRatio, type AspectRatioProps } from './components/AspectRatio';
 export { Avatar, type AvatarProps } from './components/Avatar';
 export { Badge, type BadgeProps } from './components/Badge';

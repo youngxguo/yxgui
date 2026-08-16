@@ -17,6 +17,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   AlertTitle,
+  AppShell,
+  AppShellFooter,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
   Avatar,
   Badge,
   Breadcrumb,
@@ -135,6 +140,8 @@ import {
   SearchField,
   SegmentedControl,
   Separator,
+  SidebarLink,
+  SidebarNav,
   Select,
   Skeleton,
   Slider,
@@ -224,6 +231,18 @@ function ConsumerApp() {
                 </DataListItem>
               </DataList>
             </Container>
+            <AppShell>
+              <AppShellSidebar>
+                <SidebarNav label="Consumer shell navigation">
+                  <SidebarLink active href="#consumer-shell">
+                    Overview
+                  </SidebarLink>
+                </SidebarNav>
+              </AppShellSidebar>
+              <AppShellHeader>Consumer shell</AppShellHeader>
+              <AppShellMain>Packaged shell content</AppShellMain>
+              <AppShellFooter>Packaged shell footer</AppShellFooter>
+            </AppShell>
             <Item>
               <ItemMedia>
                 <Avatar alt="yxgui consumer" />

@@ -17,6 +17,11 @@ import type {
   AlertDialogTriggerProps,
   AlertProps,
   AlertTitleProps,
+  AppShellFooterProps,
+  AppShellHeaderProps,
+  AppShellMainProps,
+  AppShellProps,
+  AppShellSidebarProps,
   AspectRatioProps,
   AvatarProps,
   BadgeProps,
@@ -182,6 +187,14 @@ import type {
   SegmentedControlProps,
   SelectProps,
   SeparatorProps,
+  SidebarButtonProps,
+  SidebarContentProps,
+  SidebarFooterProps,
+  SidebarGroupLabelProps,
+  SidebarGroupProps,
+  SidebarHeaderProps,
+  SidebarLinkProps,
+  SidebarNavProps,
   SkeletonProps,
   SliderProps,
   SpinnerProps,
@@ -240,6 +253,7 @@ import type {
   TimeFieldProps
 } from '../../src';
 import {
+  AppShell,
   Autocomplete,
   Button,
   ButtonGroup,
@@ -315,6 +329,11 @@ type PublicProps =
   | AlertDialogTriggerProps
   | AlertProps
   | AlertTitleProps
+  | AppShellFooterProps
+  | AppShellHeaderProps
+  | AppShellMainProps
+  | AppShellProps
+  | AppShellSidebarProps
   | AspectRatioProps
   | AvatarProps
   | BadgeProps
@@ -480,6 +499,14 @@ type PublicProps =
   | SegmentedControlProps
   | SelectProps
   | SeparatorProps
+  | SidebarButtonProps
+  | SidebarContentProps
+  | SidebarFooterProps
+  | SidebarGroupLabelProps
+  | SidebarGroupProps
+  | SidebarHeaderProps
+  | SidebarLinkProps
+  | SidebarNavProps
   | SkeletonProps
   | SliderProps
   | SpinnerProps
@@ -542,6 +569,8 @@ void publicProps;
 
 const closedStyleApi = () => (
   <>
+    {/* @ts-expect-error application-shell layout remains internal */}
+    <AppShell className="override" />
     {/* @ts-expect-error autocomplete styling remains internal */}
     <Autocomplete className="override" label="Search" options={[]} />
     {/* @ts-expect-error consumers cannot override component classes */}
