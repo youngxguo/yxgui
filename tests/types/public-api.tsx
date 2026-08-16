@@ -146,6 +146,8 @@ import type {
   RadioGroupLegendProps,
   RadioGroupProps,
   RadioProps,
+  ResizablePanelsOrientation,
+  ResizablePanelsProps,
   ScrollAreaProps,
   SelectProps,
   SeparatorProps,
@@ -217,6 +219,7 @@ import {
   NavigationMenuContent,
   OTPField,
   PreviewCardContent,
+  ResizablePanels,
   ScrollArea,
   Slider,
   Table,
@@ -376,6 +379,8 @@ type PublicProps =
   | RadioGroupLegendProps
   | RadioGroupProps
   | RadioProps
+  | ResizablePanelsOrientation
+  | ResizablePanelsProps
   | ScrollAreaProps
   | SelectProps
   | SeparatorProps
@@ -487,6 +492,8 @@ const closedStyleApi = () => (
     <ContextMenuContent style={{ padding: 0 }} />
     {/* @ts-expect-error application surfaces keep styling internal */}
     <ScrollArea className="override">Content</ScrollArea>
+    {/* @ts-expect-error resizable panel layout remains internal */}
+    <ResizablePanels className="override" first="One" second="Two" />
     {/* @ts-expect-error native table styles remain closed */}
     <Table style={{ border: 0 }} />
     {/* @ts-expect-error tree layout remains internal */}

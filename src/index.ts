@@ -318,6 +318,11 @@ export {
   type RadioGroupProps,
   type RadioProps
 } from './components/RadioGroup';
+export {
+  ResizablePanels,
+  type ResizablePanelsOrientation,
+  type ResizablePanelsProps
+} from './components/ResizablePanels';
 export { Select, type SelectProps } from './components/Select';
 export { ScrollArea, type ScrollAreaProps } from './components/ScrollArea';
 export { Separator, type SeparatorProps } from './components/Separator';

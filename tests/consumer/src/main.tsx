@@ -108,6 +108,7 @@ import {
   Radio,
   RadioGroup,
   RadioGroupLegend,
+  ResizablePanels,
   ScrollArea,
   Separator,
   Select,
@@ -239,6 +240,7 @@ function ConsumerApp() {
               label="Consumer data"
               rows={[{ id: 'yxgui', name: 'yxgui' }]}
             />
+            <ResizablePanels first="Consumer navigation" second="Consumer workspace" />
             <CommandMenu
               onSelect={() => undefined}
               options={[

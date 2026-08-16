@@ -318,6 +318,28 @@ test('data table sorts native rows and exposes sort direction', async ({ page })
   await expect(page.getByRole('row').nth(1)).toContainText('Research');
 });
 
+test('resizable panels support keyboard and pointer resizing', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-resizablepanels--horizontal',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const handle = page.getByRole('separator', { name: 'Resize panels' });
+  await expect(handle).toHaveAttribute('aria-valuenow', '40');
+  await handle.press('ArrowRight');
+  await expect(handle).toHaveAttribute('aria-valuenow', '45');
+
+  const bounds = await handle.boundingBox();
+  if (!bounds) throw new Error('Resize handle has no bounds.');
+  await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(bounds.x + 80, bounds.y + bounds.height / 2);
+  await page.mouse.up();
+  await expect(handle).not.toHaveAttribute('aria-valuenow', '45');
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',
