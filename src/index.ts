@@ -82,6 +82,11 @@ export {
   type CollapsibleTriggerProps
 } from './components/Collapsible';
 export { Combobox, type ComboboxOption, type ComboboxProps } from './components/Combobox';
+export {
+  CommandMenu,
+  type CommandMenuOption,
+  type CommandMenuProps
+} from './components/CommandMenu';
 export { Container, type ContainerProps } from './components/Container';
 export {
   ContextMenu,

@@ -38,6 +38,8 @@ import type {
   CollapsibleTriggerProps,
   ComboboxOption,
   ComboboxProps,
+  CommandMenuOption,
+  CommandMenuProps,
   ContainerProps,
   ContextMenuCheckboxItemProps,
   ContextMenuContentProps,
@@ -186,6 +188,7 @@ import {
   Card,
   Carousel,
   Combobox,
+  CommandMenu,
   Container,
   ContextMenuContent,
   DataList,
@@ -251,6 +254,8 @@ type PublicProps =
   | CollapsibleTriggerProps
   | ComboboxOption
   | ComboboxProps
+  | CommandMenuOption
+  | CommandMenuProps
   | ContainerProps
   | ContextMenuCheckboxItemProps
   | ContextMenuContentProps
@@ -428,6 +433,8 @@ const closedStyleApi = () => (
     <Toolbar className="override" />
     {/* @ts-expect-error combobox styling remains internal */}
     <Combobox className="override" label="Fruit" options={[]} />
+    {/* @ts-expect-error command menu presentation remains internal */}
+    <CommandMenu className="override" onSelect={() => undefined} options={[]} trigger="Open" />
     {/* @ts-expect-error multi-select styling remains internal */}
     <MultiSelect style={{ minHeight: 0 }} label="Tags" options={[]} />
     {/* @ts-expect-error OTP slot styling remains internal */}

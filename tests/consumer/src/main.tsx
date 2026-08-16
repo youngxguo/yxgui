@@ -35,6 +35,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   Combobox,
+  CommandMenu,
   Container,
   ContextMenu,
   ContextMenuContent,
@@ -208,6 +209,14 @@ function ConsumerApp() {
               ]}
             />
             <TagInput defaultValue={['consumer']} label="Consumer tags" name="tags" />
+            <CommandMenu
+              onSelect={() => undefined}
+              options={[
+                { id: 'search', label: 'Search components' },
+                { id: 'theme', label: 'Switch theme' }
+              ]}
+              trigger="Open consumer commands"
+            />
             <Form errors={{ packageName: 'Use a scoped package name.' }}>
               <Field name="packageName">
                 <FieldLabel>Package name</FieldLabel>

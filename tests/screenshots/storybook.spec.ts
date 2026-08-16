@@ -225,6 +225,26 @@ test('tag input creates and removes free-form values', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Remove native' })).toBeHidden();
 });
 
+test('command menu filters, selects, and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-commandmenu--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Open commands' });
+  await trigger.click();
+  const input = page.getByRole('combobox', { name: 'Search commands' });
+  await expect(input).toBeFocused();
+  await input.fill('theme');
+  await expect(page.getByRole('option', { name: /Switch theme/ })).toBeVisible();
+  await expect(page.getByRole('option', { name: /New file/ })).toBeHidden();
+  await input.press('Enter');
+  await expect(page.getByText('Switch theme', { exact: true })).toBeVisible();
+  await expect(trigger).toBeFocused();
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',
