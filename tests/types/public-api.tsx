@@ -36,6 +36,7 @@ import type {
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
+  ColorFieldProps,
   ComboboxOption,
   ComboboxProps,
   CommandMenuOption,
@@ -212,6 +213,7 @@ import {
   Button,
   Card,
   Carousel,
+  ColorField,
   Combobox,
   CommandMenu,
   Container,
@@ -290,6 +292,7 @@ type PublicProps =
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
+  | ColorFieldProps
   | ComboboxOption
   | ComboboxProps
   | CommandMenuOption
@@ -478,6 +481,8 @@ const closedStyleApi = () => (
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
+    {/* @ts-expect-error color field presentation remains internal */}
+    <ColorField className="override" label="Color" />
     {/* @ts-expect-error password field presentation remains internal */}
     <PasswordField className="override" label="Password" />
     {/* @ts-expect-error search field presentation remains internal */}

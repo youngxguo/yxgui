@@ -34,6 +34,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  ColorField,
   Combobox,
   CommandMenu,
   Container,
@@ -216,6 +217,7 @@ function ConsumerApp() {
             />
             <SearchField defaultValue="dialog" label="Consumer search field" />
             <PasswordField defaultValue="consumer secret" label="Consumer password" />
+            <ColorField defaultValue="#2563eb" label="Consumer color" name="color" />
             <CopyButton value="pnpm add yxgui" />
             <Stepper
               defaultStep={1}

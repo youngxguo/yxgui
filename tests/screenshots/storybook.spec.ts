@@ -172,6 +172,22 @@ test('password field toggles visibility without losing its value', async ({ page
   await expect(input).toHaveValue('correct horse');
 });
 
+test('color field synchronizes text entry with the native picker', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-colorfield--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const text = page.getByRole('textbox', { name: 'Brand color' });
+  const picker = page.getByLabel('Choose color');
+  await text.fill('#ff0000');
+  await expect(picker).toHaveValue('#ff0000');
+  await picker.fill('#00ff00');
+  await expect(text).toHaveValue('#00ff00');
+});
+
 test('stepper reports and changes the current workflow step', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-stepper--interactive',
