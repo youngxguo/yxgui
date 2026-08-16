@@ -15,6 +15,7 @@
   ],
   "files": [
     "dist",
+    "docs",
     "LICENSE",
     "LICENSES",
     "THIRD_PARTY_NOTICES.md"
@@ -49,6 +50,8 @@
     "@storybook/react-vite": "10.5.2",
     "@stylexjs/stylex": "^0.19.0",
     "@stylexjs/unplugin": "^0.19.0",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -57,6 +60,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "jsdom": "^30.0.1",
     "prettier": "^3.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

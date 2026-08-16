@@ -60,3 +60,20 @@ for (const theme of themes) {
     }
   });
 }
+
+test('switch supports pointer and keyboard interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-switch--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const control = page.getByRole('switch', { name: 'Email notifications' });
+
+  await expect(control).toHaveAttribute('aria-checked', 'false');
+  await control.click();
+  await expect(control).toHaveAttribute('aria-checked', 'true');
+  await control.press('Space');
+  await expect(control).toHaveAttribute('aria-checked', 'false');
+});

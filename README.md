@@ -38,9 +38,11 @@ export function App() {
 
 ## Components
 
-- Structure: `Theme`, `Flex`, `Card`
+- Structure: `Theme`, `Flex`, `Card`, `Separator`, `AspectRatio`
 - Typography and navigation: `Typography`, `Link`
-- Forms: `Button`, `Input`, `Textarea`, `Checkbox`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`
+- Forms: `Button`, `Input`, `Textarea`, `Checkbox`, `Switch`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`
+- Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Progress`, `Skeleton`, `Spinner`
+- Media: `Avatar`
 - Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
 Native-element components preserve relevant element props and refs. `className` and `style` are intentionally unavailable: visual behavior belongs to the library, and new needs should become explicit component APIs. Field composition follows native `id`, `htmlFor`, `aria-describedby`, and `aria-invalid` relationships without hiding those browser contracts.
@@ -76,3 +78,5 @@ The quality gate covers linting, formatting, unit and type contracts, production
 Intentional visual changes require reviewing and updating the committed Playwright snapshots with `pnpm test:screenshots:update`.
 
 Set `STORYBOOK_TEST_PORT` when the default screenshot-test port is already in use.
+
+See [the component coverage roadmap](./docs/roadmap.md) for the path toward a Base UI-scale catalog.

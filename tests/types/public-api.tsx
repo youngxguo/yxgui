@@ -1,4 +1,10 @@
 import type {
+  AlertDescriptionProps,
+  AlertProps,
+  AlertTitleProps,
+  AspectRatioProps,
+  AvatarProps,
+  BadgeProps,
   ButtonProps,
   CardProps,
   CheckboxProps,
@@ -10,6 +16,11 @@ import type {
   IconProps,
   InputProps,
   LinkProps,
+  ProgressProps,
+  SeparatorProps,
+  SkeletonProps,
+  SpinnerProps,
+  SwitchProps,
   TextareaProps,
   ThemeProps,
   TypographyProps
@@ -17,6 +28,12 @@ import type {
 import { Button, Card, Input, Link } from '../../src';
 
 type PublicProps =
+  | AlertDescriptionProps
+  | AlertProps
+  | AlertTitleProps
+  | AspectRatioProps
+  | AvatarProps
+  | BadgeProps
   | ButtonProps
   | CardProps
   | CheckboxProps
@@ -28,6 +45,11 @@ type PublicProps =
   | IconProps
   | InputProps
   | LinkProps
+  | ProgressProps
+  | SeparatorProps
+  | SkeletonProps
+  | SpinnerProps
+  | SwitchProps
   | TextareaProps
   | ThemeProps
   | TypographyProps;

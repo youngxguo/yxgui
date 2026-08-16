@@ -3,12 +3,14 @@ import * as stylex from '@stylexjs/stylex';
 export const spacing = stylex.defineConsts({
   sm: '4px',
   md: '8px',
-  lg: '16px'
+  lg: '16px',
+  xl: '24px'
 });
 
 export const radii = stylex.defineConsts({
   sm: '4px',
-  md: '6px'
+  md: '6px',
+  full: '9999px'
 });
 
 export const fontFamilies = stylex.defineConsts({
@@ -16,6 +18,7 @@ export const fontFamilies = stylex.defineConsts({
 });
 
 export const fontSizes = stylex.defineConsts({
+  xs: '12px',
   sm: '14px',
   md: '16px',
   lg: '24px',
