@@ -122,6 +122,11 @@ import {
   PageHeaderContent,
   PageHeaderDescription,
   PageHeaderTitle,
+  PageSection,
+  PageSectionContent,
+  PageSectionHeader,
+  PageSectionHeading,
+  PageSectionTitle,
   PasswordField,
   Popover,
   PopoverClose,
@@ -251,6 +256,16 @@ function ConsumerApp() {
                     <PageHeaderDescription>Packaged shell content</PageHeaderDescription>
                   </PageHeaderContent>
                 </PageHeader>
+                <PageSection aria-labelledby="consumer-section-heading">
+                  <PageSectionHeader>
+                    <PageSectionHeading>
+                      <PageSectionTitle id="consumer-section-heading">
+                        Consumer section
+                      </PageSectionTitle>
+                    </PageSectionHeading>
+                  </PageSectionHeader>
+                  <PageSectionContent>Packaged section content</PageSectionContent>
+                </PageSection>
               </AppShellMain>
               <AppShellFooter>Packaged shell footer</AppShellFooter>
             </AppShell>
