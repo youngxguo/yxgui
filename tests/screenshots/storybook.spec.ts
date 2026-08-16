@@ -141,6 +141,37 @@ test('number field supports stepper interaction', async ({ page }) => {
   await expect(input).toHaveValue('3');
 });
 
+test('search field clears its native value and restores input focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-searchfield--filled',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('searchbox', { name: 'Search components' });
+  await expect(input).toHaveValue('dialog');
+  await page.getByRole('button', { name: 'Clear search' }).click();
+  await expect(input).toHaveValue('');
+  await expect(input).toBeFocused();
+});
+
+test('password field toggles visibility without losing its value', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-passwordfield--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByLabel('Password', { exact: true });
+  await input.fill('correct horse');
+  await expect(input).toHaveAttribute('type', 'password');
+  await page.getByRole('button', { name: 'Show password' }).click();
+  await expect(input).toHaveAttribute('type', 'text');
+  await expect(input).toHaveValue('correct horse');
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',

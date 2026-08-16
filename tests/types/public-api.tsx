@@ -131,6 +131,7 @@ import type {
   PaginationLinkProps,
   PaginationListProps,
   PaginationProps,
+  PasswordFieldProps,
   PopoverCloseProps,
   PopoverContentProps,
   PopoverDescriptionProps,
@@ -150,6 +151,7 @@ import type {
   ResizablePanelsOrientation,
   ResizablePanelsProps,
   ScrollAreaProps,
+  SearchFieldProps,
   SelectProps,
   SeparatorProps,
   SkeletonProps,
@@ -221,9 +223,11 @@ import {
   MultiSelect,
   NavigationMenuContent,
   OTPField,
+  PasswordField,
   PreviewCardContent,
   ResizablePanels,
   ScrollArea,
+  SearchField,
   Slider,
   Table,
   TagInput,
@@ -368,6 +372,7 @@ type PublicProps =
   | PaginationLinkProps
   | PaginationListProps
   | PaginationProps
+  | PasswordFieldProps
   | PopoverCloseProps
   | PopoverContentProps
   | PopoverDescriptionProps
@@ -387,6 +392,7 @@ type PublicProps =
   | ResizablePanelsOrientation
   | ResizablePanelsProps
   | ScrollAreaProps
+  | SearchFieldProps
   | SelectProps
   | SeparatorProps
   | SkeletonProps
@@ -448,6 +454,10 @@ const closedStyleApi = () => (
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
+    {/* @ts-expect-error password field presentation remains internal */}
+    <PasswordField className="override" label="Password" />
+    {/* @ts-expect-error search field presentation remains internal */}
+    <SearchField style={{ width: 100 }} label="Search" />
     {/* @ts-expect-error keyboard-token presentation remains internal */}
     <Kbd className="override">K</Kbd>
     {/* @ts-expect-error form layout remains a semantic API */}

@@ -94,6 +94,7 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationList,
+  PasswordField,
   Popover,
   PopoverClose,
   PopoverContent,
@@ -111,6 +112,7 @@ import {
   RadioGroupLegend,
   ResizablePanels,
   ScrollArea,
+  SearchField,
   Separator,
   Select,
   Skeleton,
@@ -208,6 +210,8 @@ function ConsumerApp() {
                 { label: 'Alert', value: 'alert' }
               ]}
             />
+            <SearchField defaultValue="dialog" label="Consumer search field" />
+            <PasswordField defaultValue="consumer secret" label="Consumer password" />
             <MultiSelect
               defaultValue={['react']}
               label="Consumer technologies"
