@@ -77,6 +77,8 @@ import {
   FieldsetLegend,
   Input,
   Kbd,
+  Listbox,
+  ListboxOption,
   MailIcon,
   Menu,
   MenuContent,
@@ -334,6 +336,11 @@ function ConsumerApp() {
                 <option>Personal</option>
               </Select>
             </Fieldset>
+            <Listbox defaultValue="button" label="Consumer components">
+              <ListboxOption value="button">Button</ListboxOption>
+              <ListboxOption value="dialog">Dialog</ListboxOption>
+              <ListboxOption value="tabs">Tabs</ListboxOption>
+            </Listbox>
             <Combobox
               label="Region"
               options={[

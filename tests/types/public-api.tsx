@@ -104,6 +104,8 @@ import type {
   InputProps,
   KbdProps,
   LinkProps,
+  ListboxOptionProps,
+  ListboxProps,
   MenuCheckboxItemProps,
   MenuContentProps,
   MenuGroupLabelProps,
@@ -237,6 +239,7 @@ import {
   Input,
   Kbd,
   Link,
+  Listbox,
   MenuContent,
   Menubar,
   MultiSelect,
@@ -368,6 +371,8 @@ type PublicProps =
   | InputProps
   | KbdProps
   | LinkProps
+  | ListboxOptionProps
+  | ListboxProps
   | MenuCheckboxItemProps
   | MenuContentProps
   | MenuGroupLabelProps
@@ -513,6 +518,8 @@ const closedStyleApi = () => (
     <Link href="#" style={{ color: 'red' }}>
       Link
     </Link>
+    {/* @ts-expect-error listbox presentation remains internal */}
+    <Listbox className="override" label="Components" />
     {/* @ts-expect-error grid layout remains an explicit semantic API */}
     <Grid style={{ display: 'block' }} />
     {/* @ts-expect-error container sizing remains an explicit semantic API */}

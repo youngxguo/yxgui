@@ -219,6 +219,12 @@ export { Input, type InputProps } from './components/Input';
 export { Kbd, type KbdProps } from './components/Kbd';
 export { Link, type LinkProps } from './components/Link';
 export {
+  Listbox,
+  ListboxOption,
+  type ListboxOptionProps,
+  type ListboxProps
+} from './components/Listbox';
+export {
   Menu,
   MenuCheckboxItem,
   MenuContent,

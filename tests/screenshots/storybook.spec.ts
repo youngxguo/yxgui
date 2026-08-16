@@ -237,6 +237,21 @@ test('rating uses native radio-group keyboard interaction', async ({ page }) => 
   await expect(fourth).toBeChecked();
 });
 
+test('listbox uses native keyboard selection', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-listbox--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const listbox = page.getByRole('listbox', { name: 'Components' });
+  await expect(listbox).toHaveValue('alert');
+  await listbox.focus();
+  await listbox.press('ArrowDown');
+  await expect(listbox).toHaveValue('button');
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',
