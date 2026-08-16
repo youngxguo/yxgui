@@ -136,6 +136,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  TreeView,
   Typography,
   useToast
 } from 'yxgui';
@@ -213,6 +214,17 @@ function ConsumerApp() {
             <TagInput defaultValue={['consumer']} label="Consumer tags" name="tags" />
             <DateField defaultValue="2026-08-16" label="Consumer date" name="date" />
             <FileUpload label="Consumer files" name="files" />
+            <TreeView
+              defaultExpandedIds={['components']}
+              label="Consumer tree"
+              nodes={[
+                {
+                  children: [{ id: 'button', label: 'Button' }],
+                  id: 'components',
+                  label: 'Components'
+                }
+              ]}
+            />
             <CommandMenu
               onSelect={() => undefined}
               options={[

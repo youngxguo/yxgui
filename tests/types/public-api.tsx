@@ -183,6 +183,8 @@ import type {
   TooltipProps,
   TooltipProviderProps,
   TooltipTriggerProps,
+  TreeViewNode,
+  TreeViewProps,
   TypographyProps,
   TimeFieldProps
 } from '../../src';
@@ -217,7 +219,8 @@ import {
   Tabs,
   ToastProvider,
   Toolbar,
-  TooltipTrigger
+  TooltipTrigger,
+  TreeView
 } from '../../src';
 
 type PublicProps =
@@ -405,6 +408,8 @@ type PublicProps =
   | TooltipProps
   | TooltipProviderProps
   | TooltipTriggerProps
+  | TreeViewNode
+  | TreeViewProps
   | TypographyProps
   | TimeFieldProps;
 
@@ -473,6 +478,8 @@ const closedStyleApi = () => (
     <ScrollArea className="override">Content</ScrollArea>
     {/* @ts-expect-error native table styles remain closed */}
     <Table style={{ border: 0 }} />
+    {/* @ts-expect-error tree layout remains internal */}
+    <TreeView className="override" label="Tree" nodes={[]} />
     {/* @ts-expect-error tag input presentation remains internal */}
     <TagInput className="override" label="Tags" />
     {/* @ts-expect-error toast presentation is provider-owned */}

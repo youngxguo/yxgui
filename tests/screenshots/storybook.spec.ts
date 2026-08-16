@@ -280,6 +280,27 @@ test('file upload reports and clears native file selections', async ({ page }) =
   expect(await input.evaluate((node: HTMLInputElement) => node.files?.length)).toBe(0);
 });
 
+test('tree view supports branch and selection keyboard navigation', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-treeview--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const components = page.getByRole('treeitem', { name: 'Components' });
+  await components.focus();
+  await components.press('ArrowRight');
+  await expect(page.getByRole('treeitem', { name: 'Button' })).toBeFocused();
+  await page.getByRole('treeitem', { name: 'Button' }).press('ArrowDown');
+  const select = page.getByRole('treeitem', { name: 'Select' });
+  await expect(select).toBeFocused();
+  await select.press('Enter');
+  await expect(select).toHaveAttribute('aria-selected', 'true');
+  await select.press('ArrowLeft');
+  await expect(components).toBeFocused();
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',

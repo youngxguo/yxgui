@@ -387,3 +387,4 @@ export {
   type ToolbarSeparatorProps
 } from './components/Toolbar';
 export { Typography, type TypographyProps } from './components/Typography';
+export { TreeView, type TreeViewNode, type TreeViewProps } from './components/TreeView';
