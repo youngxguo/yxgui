@@ -189,3 +189,71 @@ test('toolbar supports roving keyboard focus', async ({ page }) => {
   await undo.press('ArrowRight');
   await expect(redo).toBeFocused();
 });
+
+test('dialog traps focus, dismisses with Escape, and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-dialog--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Edit profile' });
+  await trigger.click();
+  const dialog = page.getByRole('dialog', { name: 'Edit profile' });
+  await expect(dialog).toBeVisible();
+  await expect(page.getByRole('textbox', { name: 'Name' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('alert dialog requires a visible response and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-alertdialog--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Delete project' });
+  await trigger.click();
+  const dialog = page.getByRole('alertdialog', { name: 'Delete project?' });
+  await expect(dialog).toBeVisible();
+  await page.getByRole('button', { name: 'Cancel' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('popover dismisses with Escape and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-popover--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Workspace details' });
+  await trigger.click();
+  const popover = page.getByRole('dialog', { name: 'Personal workspace' });
+  await expect(popover).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(popover).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('tooltip opens on focus and dismisses with Escape', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-tooltip--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Save changes' });
+  await trigger.focus();
+  const tooltip = page.getByRole('tooltip');
+  await expect(tooltip).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(tooltip).toBeHidden();
+});

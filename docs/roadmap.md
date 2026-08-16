@@ -20,6 +20,7 @@ yxgui is growing into a broad, styled React component system for personal applic
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
 - Media and structure: `Avatar`, `AspectRatio`, `Separator`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
+- Popups and overlays: `Dialog`, `DialogTrigger`, `DialogContent`, `DialogTitle`, `DialogDescription`, `DialogClose`, `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogCancel`, `AlertDialogAction`, `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverTitle`, `PopoverDescription`, `PopoverClose`, `TooltipProvider`, `Tooltip`, `TooltipTrigger`, `TooltipContent`
 - Assets: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
 ### Form controls
@@ -34,12 +35,8 @@ yxgui is growing into a broad, styled React component system for personal applic
 
 ### Popups and overlays
 
-- `Dialog`
-- `AlertDialog`
 - `Drawer`
-- `Popover`
 - `PreviewCard`
-- `Tooltip`
 - `Menu`
 - `ContextMenu`
 - `Menubar`

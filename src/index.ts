@@ -21,6 +21,24 @@ export {
   type AlertProps,
   type AlertTitleProps
 } from './components/Alert';
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogActions,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  type AlertDialogActionProps,
+  type AlertDialogActionsProps,
+  type AlertDialogCancelProps,
+  type AlertDialogContentProps,
+  type AlertDialogDescriptionProps,
+  type AlertDialogProps,
+  type AlertDialogTitleProps,
+  type AlertDialogTriggerProps
+} from './components/AlertDialog';
 export { AspectRatio, type AspectRatioProps } from './components/AspectRatio';
 export { Avatar, type AvatarProps } from './components/Avatar';
 export { Badge, type BadgeProps } from './components/Badge';
@@ -57,6 +75,22 @@ export {
   type CollapsibleProps,
   type CollapsibleTriggerProps
 } from './components/Collapsible';
+export {
+  Dialog,
+  DialogActions,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  type DialogActionsProps,
+  type DialogCloseProps,
+  type DialogContentProps,
+  type DialogDescriptionProps,
+  type DialogProps,
+  type DialogTitleProps,
+  type DialogTriggerProps
+} from './components/Dialog';
 export {
   Empty,
   EmptyDescription,
@@ -110,6 +144,20 @@ export {
   type PaginationListProps,
   type PaginationProps
 } from './components/Pagination';
+export {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
+  type PopoverCloseProps,
+  type PopoverContentProps,
+  type PopoverDescriptionProps,
+  type PopoverProps,
+  type PopoverTitleProps,
+  type PopoverTriggerProps
+} from './components/Popover';
 export { Progress, type ProgressProps } from './components/Progress';
 export {
   Radio,
@@ -139,6 +187,16 @@ export { Textarea, type TextareaProps } from './components/Textarea';
 export { Theme, type ThemeProps } from './components/Theme';
 export { Toggle, type ToggleProps } from './components/Toggle';
 export { ToggleGroup, type ToggleGroupProps } from './components/ToggleGroup';
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+  type TooltipContentProps,
+  type TooltipProps,
+  type TooltipProviderProps,
+  type TooltipTriggerProps
+} from './components/Tooltip';
 export {
   Toolbar,
   ToolbarButton,

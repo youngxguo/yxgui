@@ -5,6 +5,14 @@ import type {
   AccordionProps,
   AccordionTriggerProps,
   AlertDescriptionProps,
+  AlertDialogActionProps,
+  AlertDialogActionsProps,
+  AlertDialogCancelProps,
+  AlertDialogContentProps,
+  AlertDialogDescriptionProps,
+  AlertDialogProps,
+  AlertDialogTitleProps,
+  AlertDialogTriggerProps,
   AlertProps,
   AlertTitleProps,
   AspectRatioProps,
@@ -25,6 +33,13 @@ import type {
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
+  DialogActionsProps,
+  DialogCloseProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogProps,
+  DialogTitleProps,
+  DialogTriggerProps,
   EmptyDescriptionProps,
   EmptyProps,
   EmptyTitleProps,
@@ -46,6 +61,12 @@ import type {
   PaginationLinkProps,
   PaginationListProps,
   PaginationProps,
+  PopoverCloseProps,
+  PopoverContentProps,
+  PopoverDescriptionProps,
+  PopoverProps,
+  PopoverTitleProps,
+  PopoverTriggerProps,
   ProgressProps,
   RadioGroupLegendProps,
   RadioGroupProps,
@@ -70,9 +91,23 @@ import type {
   ToolbarLinkProps,
   ToolbarProps,
   ToolbarSeparatorProps,
+  TooltipContentProps,
+  TooltipProps,
+  TooltipProviderProps,
+  TooltipTriggerProps,
   TypographyProps
 } from '../../src';
-import { Button, Card, Input, Link, Slider, Tabs, Toolbar } from '../../src';
+import {
+  Button,
+  Card,
+  DialogContent,
+  Input,
+  Link,
+  Slider,
+  Tabs,
+  Toolbar,
+  TooltipTrigger
+} from '../../src';
 
 type PublicProps =
   | AccordionHeaderProps
@@ -81,6 +116,14 @@ type PublicProps =
   | AccordionProps
   | AccordionTriggerProps
   | AlertDescriptionProps
+  | AlertDialogActionProps
+  | AlertDialogActionsProps
+  | AlertDialogCancelProps
+  | AlertDialogContentProps
+  | AlertDialogDescriptionProps
+  | AlertDialogProps
+  | AlertDialogTitleProps
+  | AlertDialogTriggerProps
   | AlertProps
   | AlertTitleProps
   | AspectRatioProps
@@ -101,6 +144,13 @@ type PublicProps =
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
+  | DialogActionsProps
+  | DialogCloseProps
+  | DialogContentProps
+  | DialogDescriptionProps
+  | DialogProps
+  | DialogTitleProps
+  | DialogTriggerProps
   | EmptyDescriptionProps
   | EmptyProps
   | EmptyTitleProps
@@ -122,6 +172,12 @@ type PublicProps =
   | PaginationLinkProps
   | PaginationListProps
   | PaginationProps
+  | PopoverCloseProps
+  | PopoverContentProps
+  | PopoverDescriptionProps
+  | PopoverProps
+  | PopoverTitleProps
+  | PopoverTriggerProps
   | ProgressProps
   | RadioGroupLegendProps
   | RadioGroupProps
@@ -146,6 +202,10 @@ type PublicProps =
   | ToolbarLinkProps
   | ToolbarProps
   | ToolbarSeparatorProps
+  | TooltipContentProps
+  | TooltipProps
+  | TooltipProviderProps
+  | TooltipTriggerProps
   | TypographyProps;
 
 const publicProps = undefined as PublicProps | undefined;
@@ -169,6 +229,10 @@ const closedStyleApi = () => (
     <Tabs render={<section />} />
     {/* @ts-expect-error Base UI classes remain internal */}
     <Toolbar className="override" />
+    {/* @ts-expect-error overlay classes remain internal */}
+    <DialogContent className="override" />
+    {/* @ts-expect-error overlay inline styles remain internal */}
+    <TooltipTrigger style={{ color: 'red' }}>Info</TooltipTrigger>
   </>
 );
 void closedStyleApi;

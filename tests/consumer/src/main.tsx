@@ -8,6 +8,13 @@ import {
   AccordionTrigger,
   Alert,
   AlertDescription,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   AlertTitle,
   Avatar,
   Badge,
@@ -25,6 +32,12 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
   Empty,
   EmptyDescription,
   EmptyTitle,
@@ -42,6 +55,12 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationList,
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
   Progress,
   Radio,
   RadioGroup,
@@ -62,6 +81,10 @@ import {
   Toolbar,
   ToolbarButton,
   ToolbarSeparator,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
   Typography
 } from 'yxgui';
 import 'yxgui/styles.css';
@@ -135,6 +158,37 @@ function ConsumerApp() {
               <ToolbarSeparator />
               <ToolbarButton>Redo</ToolbarButton>
             </Toolbar>
+            <Dialog>
+              <DialogTrigger>Open dialog</DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Consumer dialog</DialogTitle>
+                <DialogDescription>Portal behavior loaded through yxgui.</DialogDescription>
+                <DialogClose>Close</DialogClose>
+              </DialogContent>
+            </Dialog>
+            <AlertDialog>
+              <AlertDialogTrigger>Reset consumer</AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogTitle>Reset consumer?</AlertDialogTitle>
+                <AlertDialogDescription>This verifies alert dialog exports.</AlertDialogDescription>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Reset</AlertDialogAction>
+              </AlertDialogContent>
+            </AlertDialog>
+            <Popover>
+              <PopoverTrigger>Consumer details</PopoverTrigger>
+              <PopoverContent>
+                <PopoverTitle>Package popover</PopoverTitle>
+                <PopoverDescription>Positioning loaded through yxgui.</PopoverDescription>
+                <PopoverClose>Done</PopoverClose>
+              </PopoverContent>
+            </Popover>
+            <TooltipProvider delay={0}>
+              <Tooltip>
+                <TooltipTrigger aria-label="Consumer tooltip">Info</TooltipTrigger>
+                <TooltipContent>Consumer tooltip</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <Collapsible>
               <CollapsibleTrigger>Details</CollapsibleTrigger>
               <CollapsibleContent>Native disclosure behavior loaded.</CollapsibleContent>

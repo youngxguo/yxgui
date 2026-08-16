@@ -43,10 +43,13 @@ export function App() {
 - Forms: `Button`, `Input`, `Textarea`, `Select`, `Checkbox`, `CheckboxGroup`, `CheckboxItem`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
+- Popups and overlays: `Dialog`, `AlertDialog`, `Popover`, `Tooltip`
 - Media: `Avatar`
 - Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
 Native-element components preserve relevant element props and refs. `className` and `style` are intentionally unavailable: visual behavior belongs to the library, and new needs should become explicit component APIs. Field composition follows native `id`, `htmlFor`, `aria-describedby`, and `aria-invalid` relationships without hiding those browser contracts.
+
+Overlay content owns its portal, backdrop or positioner, and visual surface. When rendered inside `Theme`, portalled content stays within that theme automatically, including nested dark themes.
 
 Icons are decorative by default. Pass `label` only when the icon itself carries meaning; icons inside a labeled link or button should remain decorative.
 
