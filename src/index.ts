@@ -322,6 +322,7 @@ export {
   type TableProps,
   type TableRowProps
 } from './components/Table';
+export { TagInput, type TagInputProps } from './components/TagInput';
 export {
   Tab,
   Tabs,

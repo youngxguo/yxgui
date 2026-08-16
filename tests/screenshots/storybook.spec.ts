@@ -209,6 +209,22 @@ test('multi-select adds and removes values with keyboard and pointer input', asy
   await expect(page.getByRole('button', { name: 'Remove StyleX' })).toBeVisible();
 });
 
+test('tag input creates and removes free-form values', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-taginput--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('textbox', { name: 'Tags' });
+  await input.fill('native');
+  await input.press('Enter');
+  await expect(page.getByRole('button', { name: 'Remove native' })).toBeVisible();
+  await page.getByRole('button', { name: 'Remove native' }).click();
+  await expect(page.getByRole('button', { name: 'Remove native' })).toBeHidden();
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',

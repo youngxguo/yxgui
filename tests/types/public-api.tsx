@@ -152,6 +152,7 @@ import type {
   TableHeaderProps,
   TableProps,
   TableRowProps,
+  TagInputProps,
   TabProps,
   TabsListProps,
   TabsPanelProps,
@@ -203,6 +204,7 @@ import {
   ScrollArea,
   Slider,
   Table,
+  TagInput,
   Tabs,
   ToastProvider,
   Toolbar,
@@ -363,6 +365,7 @@ type PublicProps =
   | TableHeaderProps
   | TableProps
   | TableRowProps
+  | TagInputProps
   | TabProps
   | TabsListProps
   | TabsPanelProps
@@ -449,6 +452,8 @@ const closedStyleApi = () => (
     <ScrollArea className="override">Content</ScrollArea>
     {/* @ts-expect-error native table styles remain closed */}
     <Table style={{ border: 0 }} />
+    {/* @ts-expect-error tag input presentation remains internal */}
+    <TagInput className="override" label="Tags" />
     {/* @ts-expect-error toast presentation is provider-owned */}
     <ToastProvider className="override">Content</ToastProvider>
   </>

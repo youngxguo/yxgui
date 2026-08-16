@@ -117,6 +117,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TagInput,
   Tab,
   Tabs,
   TabsList,
@@ -206,6 +207,7 @@ function ConsumerApp() {
                 { label: 'StyleX', value: 'stylex' }
               ]}
             />
+            <TagInput defaultValue={['consumer']} label="Consumer tags" name="tags" />
             <Form errors={{ packageName: 'Use a scoped package name.' }}>
               <Field name="packageName">
                 <FieldLabel>Package name</FieldLabel>
