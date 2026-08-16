@@ -35,10 +35,15 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   Combobox,
+  Container,
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
+  DataList,
+  DataListDescription,
+  DataListItem,
+  DataListTerm,
   Dialog,
   DialogClose,
   DialogContent,
@@ -169,6 +174,14 @@ function ConsumerApp() {
               <GridItem>Packaged grid item</GridItem>
               <GridItem>Second grid item</GridItem>
             </Grid>
+            <Container padding="none" size="sm">
+              <DataList>
+                <DataListItem>
+                  <DataListTerm>Package</DataListTerm>
+                  <DataListDescription>yxgui</DataListDescription>
+                </DataListItem>
+              </DataList>
+            </Container>
             <Carousel aria-label="Consumer carousel">
               <Card>
                 <Typography>First packaged slide</Typography>

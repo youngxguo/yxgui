@@ -82,6 +82,7 @@ export {
   type CollapsibleTriggerProps
 } from './components/Collapsible';
 export { Combobox, type ComboboxOption, type ComboboxProps } from './components/Combobox';
+export { Container, type ContainerProps } from './components/Container';
 export {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -110,6 +111,16 @@ export {
   type ContextMenuSubmenuTriggerProps,
   type ContextMenuTriggerProps
 } from './components/ContextMenu';
+export {
+  DataList,
+  DataListDescription,
+  DataListItem,
+  DataListTerm,
+  type DataListDescriptionProps,
+  type DataListItemProps,
+  type DataListProps,
+  type DataListTermProps
+} from './components/DataList';
 export {
   Dialog,
   DialogActions,

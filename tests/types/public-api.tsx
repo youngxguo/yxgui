@@ -38,6 +38,7 @@ import type {
   CollapsibleTriggerProps,
   ComboboxOption,
   ComboboxProps,
+  ContainerProps,
   ContextMenuCheckboxItemProps,
   ContextMenuContentProps,
   ContextMenuGroupLabelProps,
@@ -51,6 +52,10 @@ import type {
   ContextMenuSubmenuProps,
   ContextMenuSubmenuTriggerProps,
   ContextMenuTriggerProps,
+  DataListDescriptionProps,
+  DataListItemProps,
+  DataListProps,
+  DataListTermProps,
   DialogActionsProps,
   DialogCloseProps,
   DialogContentProps,
@@ -178,7 +183,9 @@ import {
   Card,
   Carousel,
   Combobox,
+  Container,
   ContextMenuContent,
+  DataList,
   DialogContent,
   DrawerContent,
   Form,
@@ -239,6 +246,7 @@ type PublicProps =
   | CollapsibleTriggerProps
   | ComboboxOption
   | ComboboxProps
+  | ContainerProps
   | ContextMenuCheckboxItemProps
   | ContextMenuContentProps
   | ContextMenuGroupLabelProps
@@ -252,6 +260,10 @@ type PublicProps =
   | ContextMenuSubmenuProps
   | ContextMenuSubmenuTriggerProps
   | ContextMenuTriggerProps
+  | DataListDescriptionProps
+  | DataListItemProps
+  | DataListProps
+  | DataListTermProps
   | DialogActionsProps
   | DialogCloseProps
   | DialogContentProps
@@ -396,6 +408,10 @@ const closedStyleApi = () => (
     </Link>
     {/* @ts-expect-error grid layout remains an explicit semantic API */}
     <Grid style={{ display: 'block' }} />
+    {/* @ts-expect-error container sizing remains an explicit semantic API */}
+    <Container className="override" />
+    {/* @ts-expect-error structured data presentation remains internal */}
+    <DataList style={{ display: 'block' }} />
     {/* @ts-expect-error Base UI styling hooks remain internal */}
     <Slider className="override" label="Volume" />
     {/* @ts-expect-error Base UI render hooks remain internal */}
