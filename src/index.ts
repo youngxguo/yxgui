@@ -249,6 +249,20 @@ export {
   type PopoverTitleProps,
   type PopoverTriggerProps
 } from './components/Popover';
+export {
+  PreviewCard,
+  PreviewCardContent,
+  PreviewCardDescription,
+  PreviewCardImage,
+  PreviewCardTitle,
+  PreviewCardTrigger,
+  type PreviewCardContentProps,
+  type PreviewCardDescriptionProps,
+  type PreviewCardImageProps,
+  type PreviewCardProps,
+  type PreviewCardTitleProps,
+  type PreviewCardTriggerProps
+} from './components/PreviewCard';
 export { Progress, type ProgressProps } from './components/Progress';
 export {
   Radio,

@@ -84,6 +84,11 @@ import {
   PopoverTitle,
   PopoverTrigger,
   Progress,
+  PreviewCard,
+  PreviewCardContent,
+  PreviewCardDescription,
+  PreviewCardTitle,
+  PreviewCardTrigger,
   Radio,
   RadioGroup,
   RadioGroupLegend,
@@ -258,6 +263,17 @@ function ConsumerApp() {
                 <PopoverClose>Done</PopoverClose>
               </PopoverContent>
             </Popover>
+            <PreviewCard>
+              <PreviewCardTrigger delay={0} href="#consumer-preview">
+                Preview consumer
+              </PreviewCardTrigger>
+              <PreviewCardContent>
+                <PreviewCardTitle>Consumer preview</PreviewCardTitle>
+                <PreviewCardDescription>
+                  Hover behavior loaded through yxgui.
+                </PreviewCardDescription>
+              </PreviewCardContent>
+            </PreviewCard>
             <TooltipProvider delay={0}>
               <Tooltip>
                 <TooltipTrigger aria-label="Consumer tooltip">Info</TooltipTrigger>

@@ -111,6 +111,12 @@ import type {
   PopoverProps,
   PopoverTitleProps,
   PopoverTriggerProps,
+  PreviewCardContentProps,
+  PreviewCardDescriptionProps,
+  PreviewCardImageProps,
+  PreviewCardProps,
+  PreviewCardTitleProps,
+  PreviewCardTriggerProps,
   ProgressProps,
   RadioGroupLegendProps,
   RadioGroupProps,
@@ -169,6 +175,7 @@ import {
   MenuContent,
   NavigationMenuContent,
   OTPField,
+  PreviewCardContent,
   ScrollArea,
   Slider,
   Table,
@@ -291,6 +298,12 @@ type PublicProps =
   | PopoverProps
   | PopoverTitleProps
   | PopoverTriggerProps
+  | PreviewCardContentProps
+  | PreviewCardDescriptionProps
+  | PreviewCardImageProps
+  | PreviewCardProps
+  | PreviewCardTitleProps
+  | PreviewCardTriggerProps
   | ProgressProps
   | RadioGroupLegendProps
   | RadioGroupProps
@@ -368,6 +381,8 @@ const closedStyleApi = () => (
     <DialogContent className="override" />
     {/* @ts-expect-error drawer surfaces keep styling internal */}
     <DrawerContent style={{ width: 200 }} />
+    {/* @ts-expect-error preview card presentation remains internal */}
+    <PreviewCardContent className="override" />
     {/* @ts-expect-error overlay inline styles remain internal */}
     <TooltipTrigger style={{ color: 'red' }}>Info</TooltipTrigger>
     {/* @ts-expect-error menu classes remain internal */}

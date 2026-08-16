@@ -320,6 +320,22 @@ test('popover dismisses with Escape and restores focus', async ({ page }) => {
   await expect(trigger).toBeFocused();
 });
 
+test('preview card opens from focus and dismisses with Escape', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-previewcard--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('link', { name: 'visual systems' });
+  await trigger.focus();
+  await expect(page.getByText('A shared language for color')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByText('A shared language for color')).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
 test('tooltip opens on focus and dismisses with Escape', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-tooltip--default',
