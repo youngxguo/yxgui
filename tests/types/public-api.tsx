@@ -157,6 +157,9 @@ import type {
   SkeletonProps,
   SliderProps,
   SpinnerProps,
+  StepperOrientation,
+  StepperProps,
+  StepperStep,
   SwitchProps,
   TableBodyProps,
   TableCaptionProps,
@@ -229,6 +232,7 @@ import {
   ScrollArea,
   SearchField,
   Slider,
+  Stepper,
   Table,
   TagInput,
   Tabs,
@@ -398,6 +402,9 @@ type PublicProps =
   | SkeletonProps
   | SliderProps
   | SpinnerProps
+  | StepperOrientation
+  | StepperProps
+  | StepperStep
   | SwitchProps
   | TableBodyProps
   | TableCaptionProps
@@ -516,6 +523,8 @@ const closedStyleApi = () => (
     <Table style={{ border: 0 }} />
     {/* @ts-expect-error tree layout remains internal */}
     <TreeView className="override" label="Tree" nodes={[]} />
+    {/* @ts-expect-error stepper presentation remains internal */}
+    <Stepper className="override" label="Steps" steps={[]} />
     {/* @ts-expect-error tag input presentation remains internal */}
     <TagInput className="override" label="Tags" />
     {/* @ts-expect-error toast presentation is provider-owned */}

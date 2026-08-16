@@ -118,6 +118,7 @@ import {
   Skeleton,
   Slider,
   Spinner,
+  Stepper,
   Switch,
   Table,
   TableBody,
@@ -212,6 +213,15 @@ function ConsumerApp() {
             />
             <SearchField defaultValue="dialog" label="Consumer search field" />
             <PasswordField defaultValue="consumer secret" label="Consumer password" />
+            <Stepper
+              defaultStep={1}
+              label="Consumer setup"
+              steps={[
+                { id: 'details', label: 'Details' },
+                { id: 'review', label: 'Review' },
+                { id: 'publish', label: 'Publish' }
+              ]}
+            />
             <MultiSelect
               defaultValue={['react']}
               label="Consumer technologies"

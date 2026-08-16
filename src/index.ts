@@ -332,6 +332,12 @@ export { Separator, type SeparatorProps } from './components/Separator';
 export { Skeleton, type SkeletonProps } from './components/Skeleton';
 export { Slider, type SliderProps } from './components/Slider';
 export { Spinner, type SpinnerProps } from './components/Spinner';
+export {
+  Stepper,
+  type StepperOrientation,
+  type StepperProps,
+  type StepperStep
+} from './components/Stepper';
 export { Switch, type SwitchProps } from './components/Switch';
 export {
   Table,

@@ -172,6 +172,23 @@ test('password field toggles visibility without losing its value', async ({ page
   await expect(input).toHaveValue('correct horse');
 });
 
+test('stepper reports and changes the current workflow step', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-stepper--interactive',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const review = page.getByRole('button', { name: 'Review' }).locator('..').locator('..');
+  const publishButton = page.getByRole('button', { name: 'Publish' });
+  const publish = publishButton.locator('..').locator('..');
+
+  await expect(review).toHaveAttribute('aria-current', 'step');
+  await publishButton.click();
+  await expect(publish).toHaveAttribute('aria-current', 'step');
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',
