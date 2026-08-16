@@ -1,5 +1,13 @@
 # Third-party notices
 
+## Base UI
+
+The advanced interaction components use Base UI 1.7.0, distributed under the MIT License. The full license is included at `LICENSES/BaseUI.txt`.
+
+Source: https://github.com/mui/base-ui
+
+## Brand assets
+
 The brand assets listed below are not covered by yxgui's MIT license. They remain the property and trademarks of their respective owners. Their inclusion does not imply endorsement or affiliation. Consumers are responsible for following the owners' current usage guidelines.
 
 ## GitHub

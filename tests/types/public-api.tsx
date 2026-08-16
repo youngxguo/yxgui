@@ -1,4 +1,9 @@
 import type {
+  AccordionHeaderProps,
+  AccordionItemProps,
+  AccordionPanelProps,
+  AccordionProps,
+  AccordionTriggerProps,
   AlertDescriptionProps,
   AlertProps,
   AlertTitleProps,
@@ -26,6 +31,8 @@ import type {
   InputProps,
   LinkProps,
   MeterProps,
+  NumberFieldInputProps,
+  NumberFieldProps,
   ProgressProps,
   RadioGroupLegendProps,
   RadioGroupProps,
@@ -33,16 +40,27 @@ import type {
   SelectProps,
   SeparatorProps,
   SkeletonProps,
+  SliderProps,
   SpinnerProps,
   SwitchProps,
+  TabProps,
+  TabsListProps,
+  TabsPanelProps,
+  TabsProps,
   TextareaProps,
   ThemeProps,
   ToggleProps,
+  ToggleGroupProps,
   TypographyProps
 } from '../../src';
-import { Button, Card, Input, Link } from '../../src';
+import { Button, Card, Input, Link, Slider, Tabs } from '../../src';
 
 type PublicProps =
+  | AccordionHeaderProps
+  | AccordionItemProps
+  | AccordionPanelProps
+  | AccordionProps
+  | AccordionTriggerProps
   | AlertDescriptionProps
   | AlertProps
   | AlertTitleProps
@@ -70,6 +88,8 @@ type PublicProps =
   | InputProps
   | LinkProps
   | MeterProps
+  | NumberFieldInputProps
+  | NumberFieldProps
   | ProgressProps
   | RadioGroupLegendProps
   | RadioGroupProps
@@ -77,11 +97,17 @@ type PublicProps =
   | SelectProps
   | SeparatorProps
   | SkeletonProps
+  | SliderProps
   | SpinnerProps
   | SwitchProps
+  | TabProps
+  | TabsListProps
+  | TabsPanelProps
+  | TabsProps
   | TextareaProps
   | ThemeProps
   | ToggleProps
+  | ToggleGroupProps
   | TypographyProps;
 
 const publicProps = undefined as PublicProps | undefined;
@@ -99,6 +125,10 @@ const closedStyleApi = () => (
     <Link href="#" style={{ color: 'red' }}>
       Link
     </Link>
+    {/* @ts-expect-error Base UI styling hooks remain internal */}
+    <Slider className="override" label="Volume" />
+    {/* @ts-expect-error Base UI render hooks remain internal */}
+    <Tabs render={<section />} />
   </>
 );
 void closedStyleApi;

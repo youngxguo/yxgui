@@ -16,26 +16,21 @@ yxgui is growing into a broad, styled React component system for personal applic
 
 - Foundations: `Theme`, `Typography`, `Flex`, `Card`
 - Actions and navigation: `Button`, `Link`
-- Forms: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Switch`, `Toggle`
+- Forms: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Switch`, `Toggle`, `ToggleGroup`, `Slider`, `NumberField`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
 - Media and structure: `Avatar`, `AspectRatio`, `Separator`
-- Disclosure: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`
+- Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
 - Assets: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
 ### Form controls
 
 - `CheckboxGroup`
-- `Slider`
-- `NumberField`
 - `OTPField`
-- `ToggleGroup`
 - `Combobox`
 - `Autocomplete`
 
 ### Disclosure and navigation
 
-- `Accordion`
-- `Tabs`
 - `Breadcrumb`
 - `Pagination`
 - `Toolbar`

@@ -2,6 +2,18 @@ import './fonts.css';
 import './styles.css';
 
 export {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+  type AccordionHeaderProps,
+  type AccordionItemProps,
+  type AccordionPanelProps,
+  type AccordionProps,
+  type AccordionTriggerProps
+} from './components/Accordion';
+export {
   Alert,
   AlertDescription,
   AlertTitle,
@@ -61,6 +73,11 @@ export {
 export { Input, type InputProps } from './components/Input';
 export { Link, type LinkProps } from './components/Link';
 export { Meter, type MeterProps } from './components/Meter';
+export {
+  NumberField,
+  type NumberFieldInputProps,
+  type NumberFieldProps
+} from './components/NumberField';
 export { Progress, type ProgressProps } from './components/Progress';
 export {
   Radio,
@@ -73,9 +90,21 @@ export {
 export { Select, type SelectProps } from './components/Select';
 export { Separator, type SeparatorProps } from './components/Separator';
 export { Skeleton, type SkeletonProps } from './components/Skeleton';
+export { Slider, type SliderProps } from './components/Slider';
 export { Spinner, type SpinnerProps } from './components/Spinner';
 export { Switch, type SwitchProps } from './components/Switch';
+export {
+  Tab,
+  Tabs,
+  TabsList,
+  TabsPanel,
+  type TabProps,
+  type TabsListProps,
+  type TabsPanelProps,
+  type TabsProps
+} from './components/Tabs';
 export { Textarea, type TextareaProps } from './components/Textarea';
 export { Theme, type ThemeProps } from './components/Theme';
 export { Toggle, type ToggleProps } from './components/Toggle';
+export { ToggleGroup, type ToggleGroupProps } from './components/ToggleGroup';
 export { Typography, type TypographyProps } from './components/Typography';

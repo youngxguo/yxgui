@@ -77,5 +77,8 @@
       "vitest>vite": "^7.3.1",
       "@vitest/mocker>vite": "^7.3.1"
     }
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0"
   }
 }

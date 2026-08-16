@@ -1,16 +1,12 @@
+import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 import * as stylex from '@stylexjs/stylex';
-import { useState, type ComponentProps, type MouseEvent } from 'react';
+import type { Ref } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { fontFamilies, fontSizes, radii, spacing } from '../../theme/foundations.stylex';
 
-export type ToggleProps = Omit<
-  ComponentProps<'button'>,
-  'aria-pressed' | 'className' | 'style' | 'type'
-> & {
-  defaultPressed?: boolean;
-  onPressedChange?: (pressed: boolean) => void;
-  pressed?: boolean;
+export type ToggleProps = Omit<BaseToggle.Props, 'className' | 'render' | 'style'> & {
   size?: 'sm' | 'md';
+  ref?: Ref<HTMLButtonElement>;
 };
 
 const styles = stylex.create({
@@ -42,34 +38,13 @@ const styles = stylex.create({
   md: { minHeight: '36px' }
 });
 
-export function Toggle({
-  defaultPressed = false,
-  onClick,
-  onPressedChange,
-  pressed,
-  size = 'md',
-  ...props
-}: ToggleProps) {
-  const [internalPressed, setInternalPressed] = useState(defaultPressed);
-  const isControlled = pressed !== undefined;
-  const isPressed = pressed ?? internalPressed;
-
-  function handleClick(event: MouseEvent<HTMLButtonElement>) {
-    onClick?.(event);
-    if (event.defaultPrevented) return;
-    const nextPressed = !isPressed;
-    if (!isControlled) setInternalPressed(nextPressed);
-    onPressedChange?.(nextPressed);
-  }
-
+export function Toggle({ size = 'md', ...props }: ToggleProps) {
   return (
-    <button
+    <BaseToggle
       {...props}
-      aria-pressed={isPressed}
-      data-state={isPressed ? 'on' : 'off'}
-      onClick={handleClick}
-      type="button"
-      {...stylex.props(styles.root, styles[size], isPressed && styles.pressed)}
+      className={(state) =>
+        stylex.props(styles.root, styles[size], state.pressed && styles.pressed).className
+      }
     />
   );
 }

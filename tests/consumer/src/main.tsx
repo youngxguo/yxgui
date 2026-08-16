@@ -1,6 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
   Alert,
   AlertDescription,
   AlertTitle,
@@ -23,6 +28,7 @@ import {
   Input,
   MailIcon,
   Meter,
+  NumberField,
   Progress,
   Radio,
   RadioGroup,
@@ -30,10 +36,16 @@ import {
   Separator,
   Select,
   Skeleton,
+  Slider,
   Spinner,
   Switch,
+  Tab,
+  Tabs,
+  TabsList,
+  TabsPanel,
   Theme,
   Toggle,
+  ToggleGroup,
   Typography
 } from 'yxgui';
 import 'yxgui/styles.css';
@@ -75,16 +87,38 @@ function ConsumerApp() {
             </Button>
             <Progress aria-label="Consumer verification" value={100} />
             <Meter aria-label="Storage" fullWidth max={100} value={64} />
+            <Slider defaultValue={64} label="Storage target" />
+            <NumberField defaultValue={2} label="Seats" min={1} />
             <Flex align="center" gap="md">
               <Switch aria-label="Consumer switch" />
               <Toggle>Bold</Toggle>
               <Spinner label="Verifying" size="sm" />
               <Skeleton width="sm" />
             </Flex>
+            <ToggleGroup aria-label="Alignment" defaultValue={['left']}>
+              <Toggle value="left">Left</Toggle>
+              <Toggle value="right">Right</Toggle>
+            </ToggleGroup>
             <Collapsible>
               <CollapsibleTrigger>Details</CollapsibleTrigger>
               <CollapsibleContent>Native disclosure behavior loaded.</CollapsibleContent>
             </Collapsible>
+            <Accordion defaultValue={['details']}>
+              <AccordionItem value="details">
+                <AccordionHeader>
+                  <AccordionTrigger>Package details</AccordionTrigger>
+                </AccordionHeader>
+                <AccordionPanel>Base behavior loaded through yxgui.</AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+            <Tabs defaultValue="one">
+              <TabsList aria-label="Consumer tabs">
+                <Tab value="one">One</Tab>
+                <Tab value="two">Two</Tab>
+              </TabsList>
+              <TabsPanel value="one">First panel.</TabsPanel>
+              <TabsPanel value="two">Second panel.</TabsPanel>
+            </Tabs>
             <Empty>
               <EmptyTitle>No more checks</EmptyTitle>
               <EmptyDescription>The consumer surface compiled successfully.</EmptyDescription>

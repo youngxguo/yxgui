@@ -112,3 +112,65 @@ test('collapsible uses native disclosure interaction', async ({ page }) => {
   await trigger.press('Enter');
   await expect(details).not.toHaveAttribute('open', '');
 });
+
+test('slider supports keyboard value changes', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-slider--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const slider = page.getByRole('slider', { name: 'Volume' });
+  await expect(slider).toHaveAttribute('aria-valuenow', '40');
+  await slider.press('ArrowRight');
+  await expect(slider).toHaveAttribute('aria-valuenow', '41');
+});
+
+test('number field supports stepper interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-numberfield--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('textbox', { name: 'Seats' });
+  await expect(input).toHaveValue('2');
+  await page.getByRole('button', { name: 'Increase' }).click();
+  await expect(input).toHaveValue('3');
+});
+
+test('tabs support arrow-key activation', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-tabs--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const overview = page.getByRole('tab', { name: 'Overview' });
+  await overview.focus();
+  await overview.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Projects' })).toHaveAttribute(
+    'aria-selected',
+    'true'
+  );
+  await expect(page.getByRole('tabpanel')).toContainText('active projects');
+});
+
+test('accordion supports disclosure interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-accordion--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'How do I get started?' });
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await page.getByRole('button', { name: 'Does it support dark mode?' }).click();
+  await expect(page.getByText(/Theme owns both light and dark/)).toBeVisible();
+});
