@@ -33,6 +33,8 @@ import type {
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
+  ComboboxOption,
+  ComboboxProps,
   ContextMenuCheckboxItemProps,
   ContextMenuContentProps,
   ContextMenuGroupLabelProps,
@@ -142,6 +144,7 @@ import type {
 import {
   Button,
   Card,
+  Combobox,
   ContextMenuContent,
   DialogContent,
   Input,
@@ -191,6 +194,8 @@ type PublicProps =
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
+  | ComboboxOption
+  | ComboboxProps
   | ContextMenuCheckboxItemProps
   | ContextMenuContentProps
   | ContextMenuGroupLabelProps
@@ -318,6 +323,8 @@ const closedStyleApi = () => (
     <Tabs render={<section />} />
     {/* @ts-expect-error Base UI classes remain internal */}
     <Toolbar className="override" />
+    {/* @ts-expect-error combobox styling remains internal */}
+    <Combobox className="override" label="Fruit" options={[]} />
     {/* @ts-expect-error overlay classes remain internal */}
     <DialogContent className="override" />
     {/* @ts-expect-error overlay inline styles remain internal */}

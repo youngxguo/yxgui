@@ -75,6 +75,7 @@ export {
   type CollapsibleProps,
   type CollapsibleTriggerProps
 } from './components/Collapsible';
+export { Combobox, type ComboboxOption, type ComboboxProps } from './components/Combobox';
 export {
   ContextMenu,
   ContextMenuCheckboxItem,

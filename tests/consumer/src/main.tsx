@@ -32,6 +32,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  Combobox,
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
@@ -162,6 +163,13 @@ function ConsumerApp() {
                 <option>Personal</option>
               </Select>
             </Fieldset>
+            <Combobox
+              label="Region"
+              options={[
+                { label: 'North America', value: 'na' },
+                { label: 'Europe', value: 'eu' }
+              ]}
+            />
             <RadioGroup>
               <RadioGroupLegend>Plan</RadioGroupLegend>
               <Radio defaultChecked label="Personal" name="consumer-plan" />

@@ -141,6 +141,23 @@ test('number field supports stepper interaction', async ({ page }) => {
   await expect(input).toHaveValue('3');
 });
 
+test('combobox filters and selects with the keyboard', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-combobox--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('combobox', { name: 'Favorite fruit' });
+  await input.fill('blu');
+  await expect(page.getByRole('option', { name: 'Blueberry' })).toBeVisible();
+  await expect(page.getByRole('option', { name: 'Apple' })).toBeHidden();
+  await input.press('ArrowDown');
+  await input.press('Enter');
+  await expect(input).toHaveValue('Blueberry');
+});
+
 test('tabs support arrow-key activation', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-tabs--default',
