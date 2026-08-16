@@ -318,3 +318,20 @@ test('scroll area provides a native scrolling viewport', async ({ page }) => {
   });
   await expect.poll(() => viewport.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
 });
+
+test('toast announces feedback and supports actions and dismissal', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-toast--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  await page.getByRole('button', { name: 'Show notification' }).click();
+  await expect(page.getByText('Project saved')).toBeVisible();
+  await expect(page.getByText('Your changes are available across devices.')).toBeVisible();
+  await page.keyboard.press('F6');
+  await expect(page.getByRole('region', { name: 'Notifications' })).toBeFocused();
+  await page.getByRole('button', { name: 'Dismiss notification' }).click();
+  await expect(page.getByText('Project saved')).toBeHidden();
+});

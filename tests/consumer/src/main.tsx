@@ -93,6 +93,7 @@ import {
   Theme,
   Toggle,
   ToggleGroup,
+  ToastProvider,
   Toolbar,
   ToolbarButton,
   ToolbarSeparator,
@@ -100,9 +101,28 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  Typography
+  Typography,
+  useToast
 } from 'yxgui';
 import 'yxgui/styles.css';
+
+function ConsumerToastButton() {
+  const toast = useToast();
+  return (
+    <Button
+      type="button"
+      onClick={() =>
+        toast.add({
+          description: 'The packaged notification manager is working.',
+          title: 'Consumer toast',
+          variant: 'success'
+        })
+      }
+    >
+      Show toast
+    </Button>
+  );
+}
 
 function ConsumerApp() {
   return (
@@ -210,6 +230,9 @@ function ConsumerApp() {
                 <MenuItem>Duplicate</MenuItem>
               </MenuContent>
             </Menu>
+            <ToastProvider>
+              <ConsumerToastButton />
+            </ToastProvider>
             <ContextMenu>
               <ContextMenuTrigger>Right click for consumer actions</ContextMenuTrigger>
               <ContextMenuContent>

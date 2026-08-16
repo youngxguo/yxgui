@@ -263,6 +263,17 @@ export { Theme, type ThemeProps } from './components/Theme';
 export { Toggle, type ToggleProps } from './components/Toggle';
 export { ToggleGroup, type ToggleGroupProps } from './components/ToggleGroup';
 export {
+  ToastProvider,
+  useToast,
+  type ToastAction,
+  type ToastManager,
+  type ToastOptions,
+  type ToastPromiseOptions,
+  type ToastProviderProps,
+  type ToastUpdateOptions,
+  type ToastVariant
+} from './components/Toast';
+export {
   Tooltip,
   TooltipContent,
   TooltipProvider,

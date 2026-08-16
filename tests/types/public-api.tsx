@@ -120,6 +120,13 @@ import type {
   ThemeProps,
   ToggleProps,
   ToggleGroupProps,
+  ToastAction,
+  ToastManager,
+  ToastOptions,
+  ToastPromiseOptions,
+  ToastProviderProps,
+  ToastUpdateOptions,
+  ToastVariant,
   ToolbarButtonProps,
   ToolbarGroupProps,
   ToolbarInputProps,
@@ -144,6 +151,7 @@ import {
   Slider,
   Table,
   Tabs,
+  ToastProvider,
   Toolbar,
   TooltipTrigger
 } from '../../src';
@@ -270,6 +278,13 @@ type PublicProps =
   | ThemeProps
   | ToggleProps
   | ToggleGroupProps
+  | ToastAction
+  | ToastManager
+  | ToastOptions
+  | ToastPromiseOptions<unknown>
+  | ToastProviderProps
+  | ToastUpdateOptions
+  | ToastVariant
   | ToolbarButtonProps
   | ToolbarGroupProps
   | ToolbarInputProps
@@ -315,6 +330,8 @@ const closedStyleApi = () => (
     <ScrollArea className="override">Content</ScrollArea>
     {/* @ts-expect-error native table styles remain closed */}
     <Table style={{ border: 0 }} />
+    {/* @ts-expect-error toast presentation is provider-owned */}
+    <ToastProvider className="override">Content</ToastProvider>
   </>
 );
 void closedStyleApi;
