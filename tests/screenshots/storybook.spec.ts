@@ -245,6 +245,21 @@ test('command menu filters, selects, and restores focus', async ({ page }) => {
   await expect(trigger).toBeFocused();
 });
 
+test('date field preserves native keyboard-editable values', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-datetimefield--date',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByLabel('Start date');
+  await expect(input).toHaveAttribute('type', 'date');
+  await expect(input).toHaveValue('2026-08-16');
+  await input.fill('2026-08-20');
+  await expect(input).toHaveValue('2026-08-20');
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',

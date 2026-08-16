@@ -45,6 +45,7 @@ import {
   DataListDescription,
   DataListItem,
   DataListTerm,
+  DateField,
   Dialog,
   DialogClose,
   DialogContent,
@@ -209,6 +210,7 @@ function ConsumerApp() {
               ]}
             />
             <TagInput defaultValue={['consumer']} label="Consumer tags" name="tags" />
+            <DateField defaultValue="2026-08-16" label="Consumer date" name="date" />
             <CommandMenu
               onSelect={() => undefined}
               options={[

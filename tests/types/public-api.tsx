@@ -58,6 +58,8 @@ import type {
   DataListItemProps,
   DataListProps,
   DataListTermProps,
+  DateFieldProps,
+  DateTimeFieldProps,
   DialogActionsProps,
   DialogCloseProps,
   DialogContentProps,
@@ -180,7 +182,8 @@ import type {
   TooltipProps,
   TooltipProviderProps,
   TooltipTriggerProps,
-  TypographyProps
+  TypographyProps,
+  TimeFieldProps
 } from '../../src';
 import {
   Autocomplete,
@@ -192,6 +195,7 @@ import {
   Container,
   ContextMenuContent,
   DataList,
+  DateField,
   DialogContent,
   DrawerContent,
   Form,
@@ -274,6 +278,8 @@ type PublicProps =
   | DataListItemProps
   | DataListProps
   | DataListTermProps
+  | DateFieldProps
+  | DateTimeFieldProps
   | DialogActionsProps
   | DialogCloseProps
   | DialogContentProps
@@ -396,7 +402,8 @@ type PublicProps =
   | TooltipProps
   | TooltipProviderProps
   | TooltipTriggerProps
-  | TypographyProps;
+  | TypographyProps
+  | TimeFieldProps;
 
 const publicProps = undefined as PublicProps | undefined;
 void publicProps;
@@ -425,6 +432,8 @@ const closedStyleApi = () => (
     <Container className="override" />
     {/* @ts-expect-error structured data presentation remains internal */}
     <DataList style={{ display: 'block' }} />
+    {/* @ts-expect-error native date field styles remain internal */}
+    <DateField className="override" label="Date" />
     {/* @ts-expect-error Base UI styling hooks remain internal */}
     <Slider className="override" label="Volume" />
     {/* @ts-expect-error Base UI render hooks remain internal */}

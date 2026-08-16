@@ -18,7 +18,9 @@ const styles = stylex.create({
   root: {
     backgroundColor: colors.surface,
     color: colors.text
-  }
+  },
+  light: { colorScheme: 'light' },
+  dark: { colorScheme: 'dark' }
 });
 
 const ThemePortalContext = createContext<HTMLDivElement | null | undefined>(undefined);
@@ -48,7 +50,11 @@ export function Theme({ mode = 'light', ref, ...props }: ThemeProps) {
 
   return (
     <ThemePortalContext.Provider value={portalContainer}>
-      <div {...props} ref={setRootRef} {...stylex.props(theme, styles.root)} />
+      <div
+        {...props}
+        ref={setRootRef}
+        {...stylex.props(theme, styles.root, mode === 'dark' ? styles.dark : styles.light)}
+      />
     </ThemePortalContext.Provider>
   );
 }
