@@ -73,12 +73,19 @@ import {
   Radio,
   RadioGroup,
   RadioGroupLegend,
+  ScrollArea,
   Separator,
   Select,
   Skeleton,
   Slider,
   Spinner,
   Switch,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
   Tab,
   Tabs,
   TabsList,
@@ -209,6 +216,25 @@ function ConsumerApp() {
                 <ContextMenuItem>Open</ContextMenuItem>
               </ContextMenuContent>
             </ContextMenu>
+            <ScrollArea aria-label="Consumer activity" size="sm">
+              <Typography>First packaged update</Typography>
+              <Typography>Second packaged update</Typography>
+              <Typography>Third packaged update</Typography>
+            </ScrollArea>
+            <Table aria-label="Consumer workspaces">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Workspace</TableHead>
+                  <TableHead numeric>Members</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Personal</TableCell>
+                  <TableCell numeric>1</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
             <Collapsible>
               <CollapsibleTrigger>Details</CollapsibleTrigger>
               <CollapsibleContent>Native disclosure behavior loaded.</CollapsibleContent>

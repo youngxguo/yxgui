@@ -297,3 +297,24 @@ test('context menu opens from right click and dismisses with Escape', async ({ p
   await page.keyboard.press('Escape');
   await expect(menu).toBeHidden();
 });
+
+test('scroll area provides a native scrolling viewport', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-scrollarea--vertical',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const root = page.getByLabel('Recent activity');
+  const viewport = root.locator(':scope > div').first();
+
+  await expect(viewport).toBeVisible();
+  expect(await viewport.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(
+    true
+  );
+  await viewport.evaluate((element) => {
+    element.scrollTop = 48;
+  });
+  await expect.poll(() => viewport.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
+});

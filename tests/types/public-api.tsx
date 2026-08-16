@@ -97,12 +97,21 @@ import type {
   RadioGroupLegendProps,
   RadioGroupProps,
   RadioProps,
+  ScrollAreaProps,
   SelectProps,
   SeparatorProps,
   SkeletonProps,
   SliderProps,
   SpinnerProps,
   SwitchProps,
+  TableBodyProps,
+  TableCaptionProps,
+  TableCellProps,
+  TableFooterProps,
+  TableHeadProps,
+  TableHeaderProps,
+  TableProps,
+  TableRowProps,
   TabProps,
   TabsListProps,
   TabsPanelProps,
@@ -131,7 +140,9 @@ import {
   Input,
   Link,
   MenuContent,
+  ScrollArea,
   Slider,
+  Table,
   Tabs,
   Toolbar,
   TooltipTrigger
@@ -236,12 +247,21 @@ type PublicProps =
   | RadioGroupLegendProps
   | RadioGroupProps
   | RadioProps
+  | ScrollAreaProps
   | SelectProps
   | SeparatorProps
   | SkeletonProps
   | SliderProps
   | SpinnerProps
   | SwitchProps
+  | TableBodyProps
+  | TableCaptionProps
+  | TableCellProps
+  | TableFooterProps
+  | TableHeadProps
+  | TableHeaderProps
+  | TableProps
+  | TableRowProps
   | TabProps
   | TabsListProps
   | TabsPanelProps
@@ -291,6 +311,10 @@ const closedStyleApi = () => (
     <MenuContent className="override" />
     {/* @ts-expect-error context menu styles remain internal */}
     <ContextMenuContent style={{ padding: 0 }} />
+    {/* @ts-expect-error application surfaces keep styling internal */}
+    <ScrollArea className="override">Content</ScrollArea>
+    {/* @ts-expect-error native table styles remain closed */}
+    <Table style={{ border: 0 }} />
   </>
 );
 void closedStyleApi;

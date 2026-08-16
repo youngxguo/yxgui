@@ -38,7 +38,7 @@ export function App() {
 
 ## Components
 
-- Structure: `Theme`, `Flex`, `Card`, `Separator`, `AspectRatio`
+- Structure: `Theme`, `Flex`, `Card`, `Separator`, `AspectRatio`, `ScrollArea`, `Table`
 - Typography and navigation: `Typography`, `Link`, `Breadcrumb`, `Pagination`, `Toolbar`
 - Forms: `Button`, `Input`, `Textarea`, `Select`, `Checkbox`, `CheckboxGroup`, `CheckboxItem`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`

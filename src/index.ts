@@ -224,11 +224,30 @@ export {
   type RadioProps
 } from './components/RadioGroup';
 export { Select, type SelectProps } from './components/Select';
+export { ScrollArea, type ScrollAreaProps } from './components/ScrollArea';
 export { Separator, type SeparatorProps } from './components/Separator';
 export { Skeleton, type SkeletonProps } from './components/Skeleton';
 export { Slider, type SliderProps } from './components/Slider';
 export { Spinner, type SpinnerProps } from './components/Spinner';
 export { Switch, type SwitchProps } from './components/Switch';
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+  type TableBodyProps,
+  type TableCaptionProps,
+  type TableCellProps,
+  type TableFooterProps,
+  type TableHeadProps,
+  type TableHeaderProps,
+  type TableProps,
+  type TableRowProps
+} from './components/Table';
 export {
   Tab,
   Tabs,
