@@ -218,6 +218,16 @@ export {
   type IconProps
 } from './components/Icon';
 export { Input, type InputProps } from './components/Input';
+export {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  type InputGroupAddonProps,
+  type InputGroupButtonProps,
+  type InputGroupInputProps,
+  type InputGroupProps
+} from './components/InputGroup';
 export { Kbd, type KbdProps } from './components/Kbd';
 export { Link, type LinkProps } from './components/Link';
 export {

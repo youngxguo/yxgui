@@ -78,6 +78,10 @@ import {
   Fieldset,
   FieldsetLegend,
   Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
   Kbd,
   Listbox,
   ListboxOption,
@@ -334,6 +338,14 @@ function ConsumerApp() {
               <FieldLabel htmlFor="consumer-email">Email</FieldLabel>
               <Input fullWidth id="consumer-email" type="email" />
               <FieldDescription>Built through the published package exports.</FieldDescription>
+            </Field>
+            <Field>
+              <FieldLabel>Consumer URL</FieldLabel>
+              <InputGroup>
+                <InputGroupAddon>https://</InputGroupAddon>
+                <InputGroupInput defaultValue="yxgui.dev" />
+                <InputGroupButton>Visit</InputGroupButton>
+              </InputGroup>
             </Field>
             <Fieldset>
               <FieldsetLegend>Workspace</FieldsetLegend>

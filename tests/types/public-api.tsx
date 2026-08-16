@@ -103,6 +103,10 @@ import type {
   GridItemProps,
   GridProps,
   IconProps,
+  InputGroupAddonProps,
+  InputGroupButtonProps,
+  InputGroupInputProps,
+  InputGroupProps,
   InputProps,
   KbdProps,
   LinkProps,
@@ -243,6 +247,7 @@ import {
   FileUpload,
   Grid,
   Input,
+  InputGroup,
   Kbd,
   Link,
   Listbox,
@@ -377,6 +382,10 @@ type PublicProps =
   | GridItemProps
   | GridProps
   | IconProps
+  | InputGroupAddonProps
+  | InputGroupButtonProps
+  | InputGroupInputProps
+  | InputGroupProps
   | InputProps
   | KbdProps
   | LinkProps
@@ -515,6 +524,8 @@ const closedStyleApi = () => (
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
+    {/* @ts-expect-error grouped-input presentation remains internal */}
+    <InputGroup className="override" />
     {/* @ts-expect-error code presentation remains internal */}
     <CodeBlock className="override" code="const value = true;" />
     {/* @ts-expect-error color field presentation remains internal */}
