@@ -10,7 +10,9 @@ import {
   spacing
 } from '../../theme/foundations.stylex';
 
-type TextareaProps = Omit<ComponentProps<'textarea'>, 'className' | 'style'>;
+export type TextareaProps = Omit<ComponentProps<'textarea'>, 'className' | 'style'> & {
+  fullWidth?: boolean;
+};
 
 const styles = stylex.create({
   root: {
@@ -41,9 +43,27 @@ const styles = stylex.create({
         ':disabled': colors.textDisabled
       }
     }
+  },
+  fullWidth: {
+    width: '100%'
+  },
+  invalid: {
+    borderColor: colors.danger
   }
 });
 
-export function Textarea(props: TextareaProps) {
-  return <textarea {...props} {...stylex.props(styles.root)} />;
+export function Textarea({
+  'aria-invalid': ariaInvalid,
+  fullWidth = false,
+  ...props
+}: TextareaProps) {
+  const invalid = ariaInvalid !== undefined && ariaInvalid !== false && ariaInvalid !== 'false';
+
+  return (
+    <textarea
+      {...props}
+      aria-invalid={ariaInvalid}
+      {...stylex.props(styles.root, fullWidth && styles.fullWidth, invalid && styles.invalid)}
+    />
+  );
 }

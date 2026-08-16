@@ -11,5 +11,7 @@ export const palette = stylex.defineConsts({
   blue400: '#60a5fa',
   blue500: '#3b82f6',
   blue600: '#2563eb',
-  blue700: '#1d4ed8'
+  blue700: '#1d4ed8',
+  red400: '#f87171',
+  red600: '#dc2626'
 });

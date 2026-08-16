@@ -11,6 +11,7 @@ export const colors = stylex.defineVars({
   borderDisabled: palette.gray400,
   primary: palette.blue600,
   primaryHover: palette.blue700,
+  danger: palette.red600,
   onEmphasis: palette.gray50,
   surfaceDisabled: palette.gray50,
   textDisabled: palette.gray400

@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { spacing } from '../../theme/foundations.stylex';
 
-type CheckboxProps = Omit<ComponentProps<'input'>, 'className' | 'style' | 'type'>;
+export type CheckboxProps = Omit<ComponentProps<'input'>, 'className' | 'style' | 'type'>;
 
 const styles = stylex.create({
   root: {

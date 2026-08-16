@@ -4,7 +4,7 @@ import { spacing } from '../../theme/foundations.stylex';
 
 type Spacing = 'sm' | 'md' | 'lg';
 
-type FlexProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
+export type FlexProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
   direction?: 'row' | 'column';
   gap?: Spacing;
   padding?: Spacing;

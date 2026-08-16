@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { radii, spacing } from '../../theme/foundations.stylex';
 
-type CardProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
+export type CardProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {

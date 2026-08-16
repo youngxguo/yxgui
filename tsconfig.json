@@ -26,5 +26,6 @@
     "vitest*.config.ts",
     "playwright.config.ts",
     "tests"
-  ]
+  ],
+  "exclude": ["tests/consumer"]
 }

@@ -9,7 +9,7 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
-    ignores: ['dist/**', 'storybook-static/**']
+    ignores: ['**/dist/**', 'storybook-static/**']
   },
   {
     files: ['**/*.{js,ts,tsx}'],

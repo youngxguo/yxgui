@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { darkTheme, lightTheme } from '../../theme/themes';
 
-type ThemeProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
+export type ThemeProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
   mode?: 'light' | 'dark';
 };
 

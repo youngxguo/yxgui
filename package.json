@@ -1,6 +1,6 @@
 {
   "name": "yxgui",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     ".": {
@@ -20,13 +20,15 @@
     "THIRD_PARTY_NOTICES.md"
   ],
   "scripts": {
-    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:screenshots",
+    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:consumer && pnpm test:package && pnpm test:screenshots",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
+    "test:consumer": "tsc --project tests/consumer/tsconfig.json && vite build tests/consumer",
+    "test:package": "NPM_CONFIG_CACHE=${TMPDIR:-/tmp}/yxgui-npm-cache npm pack --dry-run --json",
     "test:screenshots": "pnpm build-storybook && playwright test",
     "test:screenshots:update": "pnpm build-storybook && playwright test --update-snapshots",
     "test:screenshots:install": "playwright install chromium",

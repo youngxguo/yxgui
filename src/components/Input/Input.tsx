@@ -10,7 +10,9 @@ import {
   spacing
 } from '../../theme/foundations.stylex';
 
-type InputProps = Omit<ComponentProps<'input'>, 'className' | 'style'>;
+export type InputProps = Omit<ComponentProps<'input'>, 'className' | 'style'> & {
+  fullWidth?: boolean;
+};
 
 const styles = stylex.create({
   root: {
@@ -41,9 +43,23 @@ const styles = stylex.create({
         ':disabled': colors.textDisabled
       }
     }
+  },
+  fullWidth: {
+    width: '100%'
+  },
+  invalid: {
+    borderColor: colors.danger
   }
 });
 
-export function Input(props: InputProps) {
-  return <input {...props} {...stylex.props(styles.root)} />;
+export function Input({ 'aria-invalid': ariaInvalid, fullWidth = false, ...props }: InputProps) {
+  const invalid = ariaInvalid !== undefined && ariaInvalid !== false && ariaInvalid !== 'false';
+
+  return (
+    <input
+      {...props}
+      aria-invalid={ariaInvalid}
+      {...stylex.props(styles.root, fullWidth && styles.fullWidth, invalid && styles.invalid)}
+    />
+  );
 }

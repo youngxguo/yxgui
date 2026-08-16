@@ -10,7 +10,7 @@ import {
   spacing
 } from '../../theme/foundations.stylex';
 
-type ButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
+export type ButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
@@ -31,9 +31,13 @@ const styles = stylex.create({
       default: colors.onEmphasis,
       ':disabled': colors.textDisabled
     },
+    alignItems: 'center',
+    display: 'inline-flex',
     fontFamily: fontFamilies.sans,
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.semibold,
+    gap: spacing.sm,
+    justifyContent: 'center',
     lineHeight: lineHeights.sm,
     paddingBlock: spacing.md,
     paddingInline: spacing.lg

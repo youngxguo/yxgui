@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const port = Number(process.env.STORYBOOK_TEST_PORT ?? 6006);
+const baseURL = `http://127.0.0.1:${port}`;
+
 export default defineConfig({
   testDir: './tests/screenshots',
   outputDir: 'test-results',
@@ -18,7 +21,7 @@ export default defineConfig({
     }
   },
   use: {
-    baseURL: 'http://127.0.0.1:6006',
+    baseURL,
     trace: 'retain-on-failure'
   },
   projects: [
@@ -31,9 +34,8 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command:
-      'pnpm exec vite preview --outDir storybook-static --host 127.0.0.1 --port 6006 --strictPort',
-    url: 'http://127.0.0.1:6006/index.json',
+    command: `pnpm exec vite preview --outDir storybook-static --host 127.0.0.1 --port ${port} --strictPort`,
+    url: `${baseURL}/index.json`,
     reuseExistingServer: false,
     timeout: 30_000
   }

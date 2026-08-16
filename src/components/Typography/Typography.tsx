@@ -3,7 +3,10 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { fontFamilies, fontSizes, fontWeights, lineHeights } from '../../theme/foundations.stylex';
 
-type TypographyProps = Omit<ComponentPropsWithoutRef<'p'>, 'className' | 'color' | 'style'> & {
+export type TypographyProps = Omit<
+  ComponentPropsWithoutRef<'p'>,
+  'className' | 'color' | 'style'
+> & {
   color?: 'default' | 'muted';
   variant?: 'body' | 'h1' | 'h2';
 };

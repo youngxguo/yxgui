@@ -1,1 +1,1 @@
-export { Theme } from './Theme';
+export { Theme, type ThemeProps } from './Theme';

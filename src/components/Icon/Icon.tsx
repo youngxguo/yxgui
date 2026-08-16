@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-type IconProps = {
+export type IconProps = {
   label?: string;
 };
 

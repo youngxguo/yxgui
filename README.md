@@ -1,0 +1,78 @@
+# yxgui
+
+A small, opinionated React component library for building personal interfaces. yxgui favors native HTML behavior, a closed visual system, and a compact set of first-class components over styling escape hatches or a large catalog.
+
+## Install
+
+```sh
+pnpm add yxgui react react-dom
+```
+
+Import the package stylesheet once at the application entry point:
+
+```tsx
+import 'yxgui/styles.css';
+```
+
+## Use
+
+```tsx
+import { Button, Card, Flex, Theme, Typography } from 'yxgui';
+
+export function App() {
+  return (
+    <Theme mode="light">
+      <Flex align="center" justify="center" minHeight="viewport" padding="lg">
+        <Card>
+          <Flex direction="column" gap="md">
+            <Typography variant="h1">Hello</Typography>
+            <Typography color="muted">A small interface built with yxgui.</Typography>
+            <Button type="button">Continue</Button>
+          </Flex>
+        </Card>
+      </Flex>
+    </Theme>
+  );
+}
+```
+
+## Components
+
+- Structure: `Theme`, `Flex`, `Card`
+- Typography and navigation: `Typography`, `Link`
+- Forms: `Button`, `Input`, `Textarea`, `Checkbox`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`
+- Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
+
+Native-element components preserve relevant element props and refs. `className` and `style` are intentionally unavailable: visual behavior belongs to the library, and new needs should become explicit component APIs. Field composition follows native `id`, `htmlFor`, `aria-describedby`, and `aria-invalid` relationships without hiding those browser contracts.
+
+Icons are decorative by default. Pass `label` only when the icon itself carries meaning; icons inside a labeled link or button should remain decorative.
+
+## Themes
+
+`Theme` applies the library's semantic light or dark colors to one element subtree:
+
+```tsx
+<Theme mode="dark">...</Theme>
+```
+
+Theme tokens are internal so the package can evolve as one visual system. Consumers choose supported semantic props instead of overriding generated styles.
+
+## Development
+
+```sh
+pnpm install
+pnpm test:screenshots:install
+pnpm check:quality
+```
+
+Storybook is the component catalog and visual test source:
+
+```sh
+pnpm storybook
+```
+
+The quality gate covers linting, formatting, unit and type contracts, production builds, a clean consumer build through the package exports, packed-file inspection, and every Storybook story in both themes.
+
+Intentional visual changes require reviewing and updating the committed Playwright snapshots with `pnpm test:screenshots:update`.
+
+Set `STORYBOOK_TEST_PORT` when the default screenshot-test port is already in use.
