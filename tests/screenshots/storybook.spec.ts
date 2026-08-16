@@ -77,3 +77,38 @@ test('switch supports pointer and keyboard interaction', async ({ page }) => {
   await control.press('Space');
   await expect(control).toHaveAttribute('aria-checked', 'false');
 });
+
+test('toggle supports pointer and keyboard interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-toggle--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const control = page.getByRole('button', { name: 'Bold' });
+
+  await expect(control).toHaveAttribute('aria-pressed', 'false');
+  await control.click();
+  await expect(control).toHaveAttribute('aria-pressed', 'true');
+  await control.press('Space');
+  await expect(control).toHaveAttribute('aria-pressed', 'false');
+});
+
+test('collapsible uses native disclosure interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-collapsible--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const details = page.locator('details');
+  const trigger = page.getByText('Advanced settings');
+
+  await expect(details).not.toHaveAttribute('open', '');
+  await trigger.click();
+  await expect(details).toHaveAttribute('open', '');
+  await trigger.press('Enter');
+  await expect(details).not.toHaveAttribute('open', '');
+});

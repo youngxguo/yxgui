@@ -8,21 +8,36 @@ import type {
   ButtonProps,
   CardProps,
   CheckboxProps,
+  CollapsibleContentProps,
+  CollapsibleProps,
+  CollapsibleTriggerProps,
+  EmptyDescriptionProps,
+  EmptyProps,
+  EmptyTitleProps,
   FieldDescriptionProps,
   FieldErrorProps,
   FieldLabelProps,
   FieldProps,
+  FieldsetDescriptionProps,
+  FieldsetLegendProps,
+  FieldsetProps,
   FlexProps,
   IconProps,
   InputProps,
   LinkProps,
+  MeterProps,
   ProgressProps,
+  RadioGroupLegendProps,
+  RadioGroupProps,
+  RadioProps,
+  SelectProps,
   SeparatorProps,
   SkeletonProps,
   SpinnerProps,
   SwitchProps,
   TextareaProps,
   ThemeProps,
+  ToggleProps,
   TypographyProps
 } from '../../src';
 import { Button, Card, Input, Link } from '../../src';
@@ -37,21 +52,36 @@ type PublicProps =
   | ButtonProps
   | CardProps
   | CheckboxProps
+  | CollapsibleContentProps
+  | CollapsibleProps
+  | CollapsibleTriggerProps
+  | EmptyDescriptionProps
+  | EmptyProps
+  | EmptyTitleProps
   | FieldDescriptionProps
   | FieldErrorProps
   | FieldLabelProps
   | FieldProps
+  | FieldsetDescriptionProps
+  | FieldsetLegendProps
+  | FieldsetProps
   | FlexProps
   | IconProps
   | InputProps
   | LinkProps
+  | MeterProps
   | ProgressProps
+  | RadioGroupLegendProps
+  | RadioGroupProps
+  | RadioProps
+  | SelectProps
   | SeparatorProps
   | SkeletonProps
   | SpinnerProps
   | SwitchProps
   | TextareaProps
   | ThemeProps
+  | ToggleProps
   | TypographyProps;
 
 const publicProps = undefined as PublicProps | undefined;

@@ -40,8 +40,9 @@ export function App() {
 
 - Structure: `Theme`, `Flex`, `Card`, `Separator`, `AspectRatio`
 - Typography and navigation: `Typography`, `Link`
-- Forms: `Button`, `Input`, `Textarea`, `Checkbox`, `Switch`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`
-- Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Progress`, `Skeleton`, `Spinner`
+- Forms: `Button`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch`, `Toggle`, `RadioGroup`, `Radio`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
+- Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
+- Disclosure: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`
 - Media: `Avatar`
 - Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
