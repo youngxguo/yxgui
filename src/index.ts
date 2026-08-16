@@ -338,6 +338,11 @@ export {
 export { Select, type SelectProps } from './components/Select';
 export { ScrollArea, type ScrollAreaProps } from './components/ScrollArea';
 export { SearchField, type SearchFieldProps } from './components/SearchField';
+export {
+  SegmentedControl,
+  type SegmentedControlOption,
+  type SegmentedControlProps
+} from './components/SegmentedControl';
 export { Separator, type SeparatorProps } from './components/Separator';
 export { Skeleton, type SkeletonProps } from './components/Skeleton';
 export { Slider, type SliderProps } from './components/Slider';

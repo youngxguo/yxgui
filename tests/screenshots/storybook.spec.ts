@@ -252,6 +252,22 @@ test('listbox uses native keyboard selection', async ({ page }) => {
   await expect(listbox).toHaveValue('button');
 });
 
+test('segmented control uses native radio keyboard selection', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-segmentedcontrol--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const list = page.getByRole('radio', { name: 'List' });
+  const board = page.getByRole('radio', { name: 'Board' });
+  await expect(list).toBeChecked();
+  await list.focus();
+  await list.press('ArrowRight');
+  await expect(board).toBeChecked();
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',

@@ -119,6 +119,7 @@ import {
   ResizablePanels,
   ScrollArea,
   SearchField,
+  SegmentedControl,
   Separator,
   Select,
   Skeleton,
@@ -354,6 +355,14 @@ function ConsumerApp() {
               <Radio defaultChecked label="Personal" name="consumer-plan" />
             </RadioGroup>
             <Rating defaultValue={4} label="Consumer rating" name="consumer-rating" />
+            <SegmentedControl
+              defaultValue="list"
+              label="Consumer view"
+              options={[
+                { label: 'List', value: 'list' },
+                { label: 'Board', value: 'board' }
+              ]}
+            />
             <CheckboxGroup>
               <CheckboxGroupLegend>Updates</CheckboxGroupLegend>
               <CheckboxItem label="Product" name="consumer-updates" />

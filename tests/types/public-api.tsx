@@ -159,6 +159,8 @@ import type {
   ResizablePanelsProps,
   ScrollAreaProps,
   SearchFieldProps,
+  SegmentedControlOption,
+  SegmentedControlProps,
   SelectProps,
   SeparatorProps,
   SkeletonProps,
@@ -251,6 +253,7 @@ import {
   ResizablePanels,
   ScrollArea,
   SearchField,
+  SegmentedControl,
   Slider,
   Stat,
   Stepper,
@@ -426,6 +429,8 @@ type PublicProps =
   | ResizablePanelsProps
   | ScrollAreaProps
   | SearchFieldProps
+  | SegmentedControlOption
+  | SegmentedControlProps
   | SelectProps
   | SeparatorProps
   | SkeletonProps
@@ -508,6 +513,8 @@ const closedStyleApi = () => (
     <PasswordField className="override" label="Password" />
     {/* @ts-expect-error search field presentation remains internal */}
     <SearchField style={{ width: 100 }} label="Search" />
+    {/* @ts-expect-error segmented-control presentation remains internal */}
+    <SegmentedControl className="override" label="View" options={[]} />
     {/* @ts-expect-error keyboard-token presentation remains internal */}
     <Kbd className="override">K</Kbd>
     {/* @ts-expect-error form layout remains a semantic API */}
