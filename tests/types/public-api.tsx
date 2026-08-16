@@ -85,6 +85,7 @@ import type {
   FieldsetDescriptionProps,
   FieldsetLegendProps,
   FieldsetProps,
+  FileUploadProps,
   FlexProps,
   FormActions,
   FormProps,
@@ -199,6 +200,7 @@ import {
   DialogContent,
   DrawerContent,
   Form,
+  FileUpload,
   Input,
   Grid,
   Link,
@@ -305,6 +307,7 @@ type PublicProps =
   | FieldsetDescriptionProps
   | FieldsetLegendProps
   | FieldsetProps
+  | FileUploadProps
   | FlexProps
   | FormActions
   | FormProps
@@ -422,6 +425,8 @@ const closedStyleApi = () => (
     <Input className="override" />
     {/* @ts-expect-error form layout remains a semantic API */}
     <Form className="override" />
+    {/* @ts-expect-error file upload presentation remains internal */}
+    <FileUpload className="override" label="Files" />
     {/* @ts-expect-error consumers cannot override link styles */}
     <Link href="#" style={{ color: 'red' }}>
       Link

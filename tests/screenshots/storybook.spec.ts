@@ -260,6 +260,26 @@ test('date field preserves native keyboard-editable values', async ({ page }) =>
   await expect(input).toHaveValue('2026-08-20');
 });
 
+test('file upload reports and clears native file selections', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-fileupload--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByLabel('Attachments');
+  await input.setInputFiles({
+    name: 'avatar.png',
+    mimeType: 'image/png',
+    buffer: Buffer.from('image')
+  });
+  await expect(page.getByText('avatar.png')).toBeVisible();
+  await page.getByRole('button', { name: 'Clear' }).click();
+  await expect(page.getByText('avatar.png')).toBeHidden();
+  expect(await input.evaluate((node: HTMLInputElement) => node.files?.length)).toBe(0);
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',

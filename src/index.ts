@@ -185,6 +185,7 @@ export {
   type FieldLabelProps,
   type FieldProps
 } from './components/Field';
+export { FileUpload, type FileUploadProps } from './components/FileUpload';
 export {
   Fieldset,
   FieldsetDescription,
