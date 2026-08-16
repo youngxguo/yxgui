@@ -336,6 +336,18 @@ export { Skeleton, type SkeletonProps } from './components/Skeleton';
 export { Slider, type SliderProps } from './components/Slider';
 export { Spinner, type SpinnerProps } from './components/Spinner';
 export {
+  Stat,
+  StatDescription,
+  StatLabel,
+  StatTrend,
+  StatValue,
+  type StatDescriptionProps,
+  type StatLabelProps,
+  type StatProps,
+  type StatTrendProps,
+  type StatValueProps
+} from './components/Stat';
+export {
   Stepper,
   type StepperOrientation,
   type StepperProps,

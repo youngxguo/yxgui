@@ -121,6 +121,11 @@ import {
   Skeleton,
   Slider,
   Spinner,
+  Stat,
+  StatDescription,
+  StatLabel,
+  StatTrend,
+  StatValue,
   Stepper,
   Switch,
   Table,
@@ -200,6 +205,13 @@ function ConsumerApp() {
                 </DataListItem>
               </DataList>
             </Container>
+            <Stat>
+              <StatLabel>Consumer checks</StatLabel>
+              <StatValue>100%</StatValue>
+              <StatDescription>
+                <StatTrend direction="up">Ready</StatTrend> for package verification
+              </StatDescription>
+            </Stat>
             <Carousel aria-label="Consumer carousel">
               <Card>
                 <Typography>First packaged slide</Typography>

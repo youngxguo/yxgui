@@ -161,6 +161,11 @@ import type {
   SkeletonProps,
   SliderProps,
   SpinnerProps,
+  StatDescriptionProps,
+  StatLabelProps,
+  StatProps,
+  StatTrendProps,
+  StatValueProps,
   StepperOrientation,
   StepperProps,
   StepperStep,
@@ -242,6 +247,7 @@ import {
   ScrollArea,
   SearchField,
   Slider,
+  Stat,
   Stepper,
   Table,
   TagInput,
@@ -417,6 +423,11 @@ type PublicProps =
   | SkeletonProps
   | SliderProps
   | SpinnerProps
+  | StatDescriptionProps
+  | StatLabelProps
+  | StatProps
+  | StatTrendProps
+  | StatValueProps
   | StepperOrientation
   | StepperProps
   | StepperStep
@@ -541,6 +552,8 @@ const closedStyleApi = () => (
     <ContextMenuContent style={{ padding: 0 }} />
     {/* @ts-expect-error application surfaces keep styling internal */}
     <ScrollArea className="override">Content</ScrollArea>
+    {/* @ts-expect-error stat presentation remains internal */}
+    <Stat className="override" />
     {/* @ts-expect-error resizable panel layout remains internal */}
     <ResizablePanels className="override" first="One" second="Two" />
     {/* @ts-expect-error native table styles remain closed */}

@@ -38,7 +38,7 @@ export function App() {
 
 ## Components
 
-- Structure: `Theme`, `Container`, `Flex`, `Grid`, `GridItem`, `Card`, `Carousel`, `DataList`, `DataTable`, `TreeView`, `ResizablePanels`, `Separator`, `AspectRatio`, `ScrollArea`, `Table`
+- Structure: `Theme`, `Container`, `Flex`, `Grid`, `GridItem`, `Card`, `Stat`, `Carousel`, `DataList`, `DataTable`, `TreeView`, `ResizablePanels`, `Separator`, `AspectRatio`, `ScrollArea`, `Table`
 - Typography and navigation: `Typography`, `Kbd`, `VisuallyHidden`, `Link`, `Breadcrumb`, `Pagination`, `Toolbar`, `NavigationMenu`
 - Forms: `Form`, `Button`, `CopyButton`, `Input`, `Textarea`, `SearchField`, `PasswordField`, `ColorField`, `Select`, `Autocomplete`, `Combobox`, `MultiSelect`, `TagInput`, `DateField`, `TimeField`, `DateTimeField`, `FileUpload`, `OTPField`, `Checkbox`, `CheckboxGroup`, `CheckboxItem`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Rating`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Stepper`, `Timeline`, `Empty`, `EmptyTitle`, `EmptyDescription`, `ToastProvider`, `useToast`
