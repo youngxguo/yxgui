@@ -15,8 +15,8 @@ yxgui is growing into a broad, styled React component system for personal applic
 ### Available
 
 - Foundations: `Theme`, `Typography`, `Flex`, `Card`
-- Actions and navigation: `Button`, `Link`
-- Forms: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Switch`, `Toggle`, `ToggleGroup`, `Slider`, `NumberField`
+- Actions and navigation: `Button`, `Link`, `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbCurrent`, `Pagination`, `PaginationList`, `PaginationItem`, `PaginationLink`, `Toolbar`, `ToolbarGroup`, `ToolbarButton`, `ToolbarLink`, `ToolbarInput`, `ToolbarSeparator`
+- Forms: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `Select`, `Checkbox`, `CheckboxGroup`, `CheckboxGroupLegend`, `CheckboxItem`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Switch`, `Toggle`, `ToggleGroup`, `Slider`, `NumberField`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
 - Media and structure: `Avatar`, `AspectRatio`, `Separator`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
@@ -24,16 +24,12 @@ yxgui is growing into a broad, styled React component system for personal applic
 
 ### Form controls
 
-- `CheckboxGroup`
 - `OTPField`
 - `Combobox`
 - `Autocomplete`
 
 ### Disclosure and navigation
 
-- `Breadcrumb`
-- `Pagination`
-- `Toolbar`
 - `NavigationMenu`
 
 ### Popups and overlays

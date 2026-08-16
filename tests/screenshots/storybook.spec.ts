@@ -174,3 +174,18 @@ test('accordion supports disclosure interaction', async ({ page }) => {
   await page.getByRole('button', { name: 'Does it support dark mode?' }).click();
   await expect(page.getByText(/Theme owns both light and dark/)).toBeVisible();
 });
+
+test('toolbar supports roving keyboard focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-toolbar--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const undo = page.getByRole('button', { name: 'Undo' });
+  const redo = page.getByRole('button', { name: 'Redo' });
+  await undo.focus();
+  await undo.press('ArrowRight');
+  await expect(redo).toBeFocused();
+});

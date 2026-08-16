@@ -10,9 +10,18 @@ import type {
   AspectRatioProps,
   AvatarProps,
   BadgeProps,
+  BreadcrumbCurrentProps,
+  BreadcrumbItemProps,
+  BreadcrumbLinkProps,
+  BreadcrumbListProps,
+  BreadcrumbProps,
+  BreadcrumbSeparatorProps,
   ButtonProps,
   CardProps,
   CheckboxProps,
+  CheckboxGroupLegendProps,
+  CheckboxGroupProps,
+  CheckboxItemProps,
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
@@ -33,6 +42,10 @@ import type {
   MeterProps,
   NumberFieldInputProps,
   NumberFieldProps,
+  PaginationItemProps,
+  PaginationLinkProps,
+  PaginationListProps,
+  PaginationProps,
   ProgressProps,
   RadioGroupLegendProps,
   RadioGroupProps,
@@ -51,9 +64,15 @@ import type {
   ThemeProps,
   ToggleProps,
   ToggleGroupProps,
+  ToolbarButtonProps,
+  ToolbarGroupProps,
+  ToolbarInputProps,
+  ToolbarLinkProps,
+  ToolbarProps,
+  ToolbarSeparatorProps,
   TypographyProps
 } from '../../src';
-import { Button, Card, Input, Link, Slider, Tabs } from '../../src';
+import { Button, Card, Input, Link, Slider, Tabs, Toolbar } from '../../src';
 
 type PublicProps =
   | AccordionHeaderProps
@@ -67,9 +86,18 @@ type PublicProps =
   | AspectRatioProps
   | AvatarProps
   | BadgeProps
+  | BreadcrumbCurrentProps
+  | BreadcrumbItemProps
+  | BreadcrumbLinkProps
+  | BreadcrumbListProps
+  | BreadcrumbProps
+  | BreadcrumbSeparatorProps
   | ButtonProps
   | CardProps
   | CheckboxProps
+  | CheckboxGroupLegendProps
+  | CheckboxGroupProps
+  | CheckboxItemProps
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
@@ -90,6 +118,10 @@ type PublicProps =
   | MeterProps
   | NumberFieldInputProps
   | NumberFieldProps
+  | PaginationItemProps
+  | PaginationLinkProps
+  | PaginationListProps
+  | PaginationProps
   | ProgressProps
   | RadioGroupLegendProps
   | RadioGroupProps
@@ -108,6 +140,12 @@ type PublicProps =
   | ThemeProps
   | ToggleProps
   | ToggleGroupProps
+  | ToolbarButtonProps
+  | ToolbarGroupProps
+  | ToolbarInputProps
+  | ToolbarLinkProps
+  | ToolbarProps
+  | ToolbarSeparatorProps
   | TypographyProps;
 
 const publicProps = undefined as PublicProps | undefined;
@@ -129,6 +167,8 @@ const closedStyleApi = () => (
     <Slider className="override" label="Volume" />
     {/* @ts-expect-error Base UI render hooks remain internal */}
     <Tabs render={<section />} />
+    {/* @ts-expect-error Base UI classes remain internal */}
+    <Toolbar className="override" />
   </>
 );
 void closedStyleApi;

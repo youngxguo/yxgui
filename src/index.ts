@@ -24,9 +24,31 @@ export {
 export { AspectRatio, type AspectRatioProps } from './components/AspectRatio';
 export { Avatar, type AvatarProps } from './components/Avatar';
 export { Badge, type BadgeProps } from './components/Badge';
+export {
+  Breadcrumb,
+  BreadcrumbCurrent,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+  type BreadcrumbCurrentProps,
+  type BreadcrumbItemProps,
+  type BreadcrumbLinkProps,
+  type BreadcrumbListProps,
+  type BreadcrumbProps,
+  type BreadcrumbSeparatorProps
+} from './components/Breadcrumb';
 export { Button, type ButtonProps } from './components/Button';
 export { Card, type CardProps } from './components/Card';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
+export {
+  CheckboxGroup,
+  CheckboxGroupLegend,
+  CheckboxItem,
+  type CheckboxGroupLegendProps,
+  type CheckboxGroupProps,
+  type CheckboxItemProps
+} from './components/CheckboxGroup';
 export {
   Collapsible,
   CollapsibleContent,
@@ -78,6 +100,16 @@ export {
   type NumberFieldInputProps,
   type NumberFieldProps
 } from './components/NumberField';
+export {
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationList,
+  type PaginationItemProps,
+  type PaginationLinkProps,
+  type PaginationListProps,
+  type PaginationProps
+} from './components/Pagination';
 export { Progress, type ProgressProps } from './components/Progress';
 export {
   Radio,
@@ -107,4 +139,18 @@ export { Textarea, type TextareaProps } from './components/Textarea';
 export { Theme, type ThemeProps } from './components/Theme';
 export { Toggle, type ToggleProps } from './components/Toggle';
 export { ToggleGroup, type ToggleGroupProps } from './components/ToggleGroup';
+export {
+  Toolbar,
+  ToolbarButton,
+  ToolbarGroup,
+  ToolbarInput,
+  ToolbarLink,
+  ToolbarSeparator,
+  type ToolbarButtonProps,
+  type ToolbarGroupProps,
+  type ToolbarInputProps,
+  type ToolbarLinkProps,
+  type ToolbarProps,
+  type ToolbarSeparatorProps
+} from './components/Toolbar';
 export { Typography, type TypographyProps } from './components/Typography';

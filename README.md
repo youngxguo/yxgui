@@ -39,8 +39,8 @@ export function App() {
 ## Components
 
 - Structure: `Theme`, `Flex`, `Card`, `Separator`, `AspectRatio`
-- Typography and navigation: `Typography`, `Link`
-- Forms: `Button`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
+- Typography and navigation: `Typography`, `Link`, `Breadcrumb`, `Pagination`, `Toolbar`
+- Forms: `Button`, `Input`, `Textarea`, `Select`, `Checkbox`, `CheckboxGroup`, `CheckboxItem`, `Switch`, `Toggle`, `ToggleGroup`, `RadioGroup`, `Radio`, `Slider`, `NumberField`, `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
 - Media: `Avatar`

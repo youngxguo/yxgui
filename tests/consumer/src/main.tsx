@@ -11,8 +11,17 @@ import {
   AlertTitle,
   Avatar,
   Badge,
+  Breadcrumb,
+  BreadcrumbCurrent,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
   Button,
   Card,
+  CheckboxGroup,
+  CheckboxGroupLegend,
+  CheckboxItem,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
@@ -29,6 +38,10 @@ import {
   MailIcon,
   Meter,
   NumberField,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationList,
   Progress,
   Radio,
   RadioGroup,
@@ -46,6 +59,9 @@ import {
   Theme,
   Toggle,
   ToggleGroup,
+  Toolbar,
+  ToolbarButton,
+  ToolbarSeparator,
   Typography
 } from 'yxgui';
 import 'yxgui/styles.css';
@@ -66,6 +82,17 @@ function ConsumerApp() {
               <AlertDescription>This renders from the built yxgui package.</AlertDescription>
             </Alert>
             <Separator />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#home">Home</BreadcrumbLink>
+                  <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <BreadcrumbCurrent>Consumer</BreadcrumbCurrent>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <Field>
               <FieldLabel htmlFor="consumer-email">Email</FieldLabel>
               <Input fullWidth id="consumer-email" type="email" />
@@ -81,6 +108,10 @@ function ConsumerApp() {
               <RadioGroupLegend>Plan</RadioGroupLegend>
               <Radio defaultChecked label="Personal" name="consumer-plan" />
             </RadioGroup>
+            <CheckboxGroup>
+              <CheckboxGroupLegend>Updates</CheckboxGroupLegend>
+              <CheckboxItem label="Product" name="consumer-updates" />
+            </CheckboxGroup>
             <Button type="button">
               <MailIcon />
               Continue
@@ -99,6 +130,11 @@ function ConsumerApp() {
               <Toggle value="left">Left</Toggle>
               <Toggle value="right">Right</Toggle>
             </ToggleGroup>
+            <Toolbar aria-label="Consumer actions">
+              <ToolbarButton>Undo</ToolbarButton>
+              <ToolbarSeparator />
+              <ToolbarButton>Redo</ToolbarButton>
+            </Toolbar>
             <Collapsible>
               <CollapsibleTrigger>Details</CollapsibleTrigger>
               <CollapsibleContent>Native disclosure behavior loaded.</CollapsibleContent>
@@ -119,6 +155,18 @@ function ConsumerApp() {
               <TabsPanel value="one">First panel.</TabsPanel>
               <TabsPanel value="two">Second panel.</TabsPanel>
             </Tabs>
+            <Pagination>
+              <PaginationList>
+                <PaginationItem>
+                  <PaginationLink current href="#1">
+                    1
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#2">2</PaginationLink>
+                </PaginationItem>
+              </PaginationList>
+            </Pagination>
             <Empty>
               <EmptyTitle>No more checks</EmptyTitle>
               <EmptyDescription>The consumer surface compiled successfully.</EmptyDescription>
