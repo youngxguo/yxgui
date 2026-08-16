@@ -55,6 +55,14 @@ import type {
   DialogProps,
   DialogTitleProps,
   DialogTriggerProps,
+  DrawerActionsProps,
+  DrawerCloseProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerProps,
+  DrawerSide,
+  DrawerTitleProps,
+  DrawerTriggerProps,
   EmptyDescriptionProps,
   EmptyProps,
   EmptyTitleProps,
@@ -155,6 +163,7 @@ import {
   Combobox,
   ContextMenuContent,
   DialogContent,
+  DrawerContent,
   Input,
   Link,
   MenuContent,
@@ -226,6 +235,14 @@ type PublicProps =
   | DialogProps
   | DialogTitleProps
   | DialogTriggerProps
+  | DrawerActionsProps
+  | DrawerCloseProps
+  | DrawerContentProps
+  | DrawerDescriptionProps
+  | DrawerProps
+  | DrawerSide
+  | DrawerTitleProps
+  | DrawerTriggerProps
   | EmptyDescriptionProps
   | EmptyProps
   | EmptyTitleProps
@@ -349,6 +366,8 @@ const closedStyleApi = () => (
     <NavigationMenuContent className="override" />
     {/* @ts-expect-error overlay classes remain internal */}
     <DialogContent className="override" />
+    {/* @ts-expect-error drawer surfaces keep styling internal */}
+    <DrawerContent style={{ width: 200 }} />
     {/* @ts-expect-error overlay inline styles remain internal */}
     <TooltipTrigger style={{ color: 'red' }}>Info</TooltipTrigger>
     {/* @ts-expect-error menu classes remain internal */}

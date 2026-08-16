@@ -43,6 +43,12 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+  DrawerTrigger,
   Empty,
   EmptyDescription,
   EmptyTitle,
@@ -227,6 +233,14 @@ function ConsumerApp() {
                 <DialogClose>Close</DialogClose>
               </DialogContent>
             </Dialog>
+            <Drawer>
+              <DrawerTrigger>Open drawer</DrawerTrigger>
+              <DrawerContent>
+                <DrawerTitle>Consumer drawer</DrawerTitle>
+                <DrawerDescription>Swipe behavior loaded through yxgui.</DrawerDescription>
+                <DrawerClose>Close</DrawerClose>
+              </DrawerContent>
+            </Drawer>
             <AlertDialog>
               <AlertDialogTrigger>Reset consumer</AlertDialogTrigger>
               <AlertDialogContent>

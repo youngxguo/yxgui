@@ -265,6 +265,27 @@ test('dialog traps focus, dismisses with Escape, and restores focus', async ({ p
   await expect(trigger).toBeFocused();
 });
 
+test('drawer traps focus, dismisses with Escape, and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-drawer--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'Open workspace drawer' });
+  await trigger.click();
+  const drawer = page.getByRole('dialog', { name: 'Workspace settings' });
+  await expect(drawer).toBeVisible();
+  await expect(drawer).toBeFocused();
+  await drawer.press('Tab');
+  await expect(page.getByRole('textbox', { name: 'Workspace name' })).toBeFocused();
+  await expect(drawer).toHaveAttribute('data-swipe-direction', 'right');
+  await page.keyboard.press('Escape');
+  await expect(drawer).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
 test('alert dialog requires a visible response and restores focus', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-alertdialog--default',
