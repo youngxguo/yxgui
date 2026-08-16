@@ -159,6 +159,20 @@ test('autocomplete filters and completes free-form input', async ({ page }) => {
   await expect(input).toHaveValue('Custom component');
 });
 
+test('form connects server errors to named fields', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-form--server-error',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('textbox', { name: 'Email' });
+  await expect(input).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByRole('alert')).toHaveText('That email address is already registered.');
+  await expect(input).toHaveAttribute('aria-describedby');
+});
+
 test('combobox filters and selects with the keyboard', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-combobox--default',

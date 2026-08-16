@@ -1,5 +1,6 @@
+import { Input as BaseInput } from '@base-ui/react/input';
 import * as stylex from '@stylexjs/stylex';
-import type { ComponentProps } from 'react';
+import type { Ref } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import {
   fontFamilies,
@@ -10,8 +11,9 @@ import {
   spacing
 } from '../../theme/foundations.stylex';
 
-export type InputProps = Omit<ComponentProps<'input'>, 'className' | 'style'> & {
+export type InputProps = Omit<BaseInput.Props, 'className' | 'render' | 'style'> & {
   fullWidth?: boolean;
+  ref?: Ref<HTMLInputElement>;
 };
 
 const styles = stylex.create({
@@ -52,14 +54,26 @@ const styles = stylex.create({
   }
 });
 
-export function Input({ 'aria-invalid': ariaInvalid, fullWidth = false, ...props }: InputProps) {
+export function Input({
+  'aria-invalid': ariaInvalid,
+  fullWidth = false,
+  ref,
+  ...props
+}: InputProps) {
   const invalid = ariaInvalid !== undefined && ariaInvalid !== false && ariaInvalid !== 'false';
 
   return (
-    <input
+    <BaseInput
       {...props}
       aria-invalid={ariaInvalid}
-      {...stylex.props(styles.root, fullWidth && styles.fullWidth, invalid && styles.invalid)}
+      className={(state) =>
+        stylex.props(
+          styles.root,
+          fullWidth && styles.fullWidth,
+          (invalid || state.valid === false) && styles.invalid
+        ).className
+      }
+      ref={ref as Ref<HTMLElement>}
     />
   );
 }

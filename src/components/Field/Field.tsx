@@ -1,5 +1,6 @@
+import { Field as BaseField } from '@base-ui/react/field';
 import * as stylex from '@stylexjs/stylex';
-import type { ComponentProps } from 'react';
+import { createContext, useContext, type ComponentProps } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import {
   fontFamilies,
@@ -9,10 +10,13 @@ import {
   spacing
 } from '../../theme/foundations.stylex';
 
-export type FieldProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
-export type FieldLabelProps = Omit<ComponentProps<'label'>, 'className' | 'style'>;
-export type FieldDescriptionProps = Omit<ComponentProps<'p'>, 'className' | 'style'>;
-export type FieldErrorProps = Omit<ComponentProps<'p'>, 'className' | 'style'>;
+export type FieldProps = Omit<BaseField.Root.Props, 'className' | 'render' | 'style'>;
+export type FieldLabelProps = Omit<BaseField.Label.Props, 'className' | 'render' | 'style'>;
+export type FieldDescriptionProps = Omit<
+  BaseField.Description.Props,
+  'className' | 'render' | 'style'
+>;
+export type FieldErrorProps = Omit<BaseField.Error.Props, 'className' | 'render' | 'style'>;
 
 const styles = stylex.create({
   field: {
@@ -39,18 +43,70 @@ const styles = stylex.create({
   }
 });
 
-export function Field(props: FieldProps) {
-  return <div {...props} {...stylex.props(styles.field)} />;
+const FieldContext = createContext(false);
+
+export function Field({ children, ...props }: FieldProps) {
+  return (
+    <BaseField.Root {...props} className={stylex.props(styles.field).className}>
+      <FieldContext.Provider value>{children}</FieldContext.Provider>
+    </BaseField.Root>
+  );
 }
 
 export function FieldLabel(props: FieldLabelProps) {
-  return <label {...props} {...stylex.props(styles.text, styles.label)} />;
+  const insideField = useContext(FieldContext);
+  if (!insideField) {
+    const { nativeLabel: _nativeLabel, ...nativeProps } = props;
+    void _nativeLabel;
+    return (
+      <label
+        {...(nativeProps as ComponentProps<'label'>)}
+        {...stylex.props(styles.text, styles.label)}
+      />
+    );
+  }
+
+  return (
+    <BaseField.Label {...props} className={stylex.props(styles.text, styles.label).className} />
+  );
 }
 
 export function FieldDescription(props: FieldDescriptionProps) {
-  return <p {...props} {...stylex.props(styles.text, styles.description)} />;
+  const insideField = useContext(FieldContext);
+  if (!insideField) {
+    return (
+      <p {...(props as ComponentProps<'p'>)} {...stylex.props(styles.text, styles.description)} />
+    );
+  }
+
+  return (
+    <BaseField.Description
+      {...props}
+      className={stylex.props(styles.text, styles.description).className}
+    />
+  );
 }
 
 export function FieldError({ role = 'alert', ...props }: FieldErrorProps) {
-  return <p {...props} role={role} {...stylex.props(styles.text, styles.error)} />;
+  const insideField = useContext(FieldContext);
+  if (!insideField) {
+    const { match: _match, ...nativeProps } = props;
+    void _match;
+    return (
+      <p
+        {...(nativeProps as ComponentProps<'p'>)}
+        role={role}
+        {...stylex.props(styles.text, styles.error)}
+      />
+    );
+  }
+
+  return (
+    <BaseField.Error
+      {...props}
+      className={stylex.props(styles.text, styles.error).className}
+      match={props.match ?? (props.children ? true : undefined)}
+      role={role}
+    />
+  );
 }

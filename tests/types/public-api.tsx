@@ -77,6 +77,9 @@ import type {
   FieldsetLegendProps,
   FieldsetProps,
   FlexProps,
+  FormActions,
+  FormProps,
+  FormValidationMode,
   GridItemProps,
   GridProps,
   IconProps,
@@ -178,6 +181,7 @@ import {
   ContextMenuContent,
   DialogContent,
   DrawerContent,
+  Form,
   Input,
   Grid,
   Link,
@@ -274,6 +278,9 @@ type PublicProps =
   | FieldsetLegendProps
   | FieldsetProps
   | FlexProps
+  | FormActions
+  | FormProps
+  | FormValidationMode
   | GridItemProps
   | GridProps
   | IconProps
@@ -381,6 +388,8 @@ const closedStyleApi = () => (
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
+    {/* @ts-expect-error form layout remains a semantic API */}
+    <Form className="override" />
     {/* @ts-expect-error consumers cannot override link styles */}
     <Link href="#" style={{ color: 'red' }}>
       Link

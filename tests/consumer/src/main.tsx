@@ -58,6 +58,7 @@ import {
   FieldDescription,
   FieldLabel,
   Flex,
+  Form,
   Grid,
   GridItem,
   Fieldset,
@@ -183,6 +184,12 @@ function ConsumerApp() {
                 { label: 'Alert', value: 'alert' }
               ]}
             />
+            <Form errors={{ packageName: 'Use a scoped package name.' }}>
+              <Field name="packageName">
+                <FieldLabel>Package name</FieldLabel>
+                <Input defaultValue="yxgui" fullWidth />
+              </Field>
+            </Form>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
