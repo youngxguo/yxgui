@@ -229,6 +229,26 @@ export {
   type InputGroupInputProps,
   type InputGroupProps
 } from './components/InputGroup';
+export {
+  Item,
+  ItemActions,
+  ItemButton,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemLink,
+  ItemMedia,
+  ItemTitle,
+  type ItemActionsProps,
+  type ItemButtonProps,
+  type ItemContentProps,
+  type ItemDescriptionProps,
+  type ItemGroupProps,
+  type ItemLinkProps,
+  type ItemMediaProps,
+  type ItemProps,
+  type ItemTitleProps
+} from './components/Item';
 export { Kbd, type KbdProps } from './components/Kbd';
 export { Link, type LinkProps } from './components/Link';
 export {

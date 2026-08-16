@@ -109,6 +109,15 @@ import type {
   InputGroupInputProps,
   InputGroupProps,
   InputProps,
+  ItemActionsProps,
+  ItemButtonProps,
+  ItemContentProps,
+  ItemDescriptionProps,
+  ItemGroupProps,
+  ItemLinkProps,
+  ItemMediaProps,
+  ItemProps,
+  ItemTitleProps,
   KbdProps,
   LinkProps,
   ListboxOptionProps,
@@ -250,6 +259,7 @@ import {
   Grid,
   Input,
   InputGroup,
+  Item,
   Kbd,
   Link,
   Listbox,
@@ -390,6 +400,15 @@ type PublicProps =
   | InputGroupInputProps
   | InputGroupProps
   | InputProps
+  | ItemActionsProps
+  | ItemButtonProps
+  | ItemContentProps
+  | ItemDescriptionProps
+  | ItemGroupProps
+  | ItemLinkProps
+  | ItemMediaProps
+  | ItemProps
+  | ItemTitleProps
   | KbdProps
   | LinkProps
   | ListboxOptionProps
@@ -531,6 +550,8 @@ const closedStyleApi = () => (
     <Input className="override" />
     {/* @ts-expect-error grouped-input presentation remains internal */}
     <InputGroup className="override" />
+    {/* @ts-expect-error item presentation remains internal */}
+    <Item className="override" />
     {/* @ts-expect-error code presentation remains internal */}
     <CodeBlock className="override" code="const value = true;" />
     {/* @ts-expect-error color field presentation remains internal */}

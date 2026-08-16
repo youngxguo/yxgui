@@ -83,6 +83,12 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
   Kbd,
   Listbox,
   ListboxOption,
@@ -216,6 +222,18 @@ function ConsumerApp() {
                 </DataListItem>
               </DataList>
             </Container>
+            <Item>
+              <ItemMedia>
+                <Avatar alt="yxgui consumer" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Consumer application</ItemTitle>
+                <ItemDescription>Built from the packaged Item exports.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Badge variant="success">Ready</Badge>
+              </ItemActions>
+            </Item>
             <Stat>
               <StatLabel>Consumer checks</StatLabel>
               <StatValue>100%</StatValue>
