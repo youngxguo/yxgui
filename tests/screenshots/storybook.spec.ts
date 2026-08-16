@@ -287,6 +287,23 @@ test('calendar supports grid keyboard navigation and selection', async ({ page }
   await expect(page.getByRole('grid', { name: 'September 2026' })).toBeVisible();
 });
 
+test('date picker selects a date, closes, and restores trigger focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-datepicker--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: /Release date Aug 16, 2026/ });
+  await trigger.click();
+  await expect(page.getByRole('dialog', { name: 'Release date calendar' })).toBeVisible();
+  await page.getByRole('button', { name: 'Monday, August 17, 2026' }).click();
+  await expect(page.getByRole('dialog', { name: 'Release date calendar' })).toBeHidden();
+  const updatedTrigger = page.getByRole('button', { name: /Release date Aug 17, 2026/ });
+  await expect(updatedTrigger).toBeFocused();
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',

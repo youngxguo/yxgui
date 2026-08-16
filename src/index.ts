@@ -145,6 +145,7 @@ export {
   type DateTimeFieldProps,
   type TimeFieldProps
 } from './components/DateTimeField';
+export { DatePicker, type DatePickerProps } from './components/DatePicker';
 export {
   Dialog,
   DialogActions,

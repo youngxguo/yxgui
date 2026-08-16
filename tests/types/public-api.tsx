@@ -68,6 +68,7 @@ import type {
   DataTableSort,
   DataTableSortDirection,
   DateFieldProps,
+  DatePickerProps,
   DateTimeFieldProps,
   DialogActionsProps,
   DialogCloseProps,
@@ -235,6 +236,7 @@ import {
   DataList,
   DataTable,
   DateField,
+  DatePicker,
   DialogContent,
   DrawerContent,
   Form,
@@ -340,6 +342,7 @@ type PublicProps =
   | DataTableSort
   | DataTableSortDirection
   | DateFieldProps
+  | DatePickerProps
   | DateTimeFieldProps
   | DialogActionsProps
   | DialogCloseProps
@@ -502,6 +505,8 @@ const closedStyleApi = () => (
     <Button className="override">Button</Button>
     {/* @ts-expect-error calendar presentation remains internal */}
     <Calendar className="override" />
+    {/* @ts-expect-error date-picker presentation remains internal */}
+    <DatePicker className="override" label="Release date" />
     {/* @ts-expect-error consumers cannot override component styles */}
     <Card style={{ padding: 0 }}>Card</Card>
     {/* @ts-expect-error copy feedback presentation remains internal */}
