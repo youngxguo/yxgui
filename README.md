@@ -1,6 +1,6 @@
 # yxgui
 
-A small, opinionated React component library for building personal interfaces. yxgui favors native HTML behavior, a closed visual system, and a compact set of first-class components over styling escape hatches or a large catalog.
+A broad, opinionated React component library for building personal interfaces. yxgui favors native HTML behavior, a closed visual system, and first-class component APIs over styling escape hatches.
 
 ## Install
 
@@ -83,4 +83,4 @@ Intentional visual changes require reviewing and updating the committed Playwrig
 
 Set `STORYBOOK_TEST_PORT` when the default screenshot-test port is already in use.
 
-See [the component coverage roadmap](./docs/roadmap.md) for the path toward a Base UI-scale catalog.
+See [the component coverage roadmap](./docs/roadmap.md) for the 1.0 baseline and post-1.0 direction.

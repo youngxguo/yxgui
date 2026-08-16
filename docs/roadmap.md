@@ -2,6 +2,10 @@
 
 yxgui is growing into a broad, styled React component system for personal applications. The coverage target is comparable to [Base UI](https://base-ui.com/react/components/accordion), while the product contract remains intentionally different: yxgui owns its visual language and does not expose `className` or `style` overrides.
 
+## 1.0 baseline
+
+Version 1.0 covers every primitive category in the installed Base UI release and adds first-class application patterns including autocomplete, multi-select, tag input, command menu, file upload, carousel, data table, tree view, and resizable panels. The available catalog below is the supported 1.0 surface; future components should remain additive and follow the same native-first, closed-style contract.
+
 ## Architecture
 
 - Prefer native HTML semantics and behavior when the platform already solves the interaction.
@@ -24,6 +28,6 @@ yxgui is growing into a broad, styled React component system for personal applic
 - Popups and overlays: `Dialog`, `DialogTrigger`, `DialogContent`, `DialogTitle`, `DialogDescription`, `DialogClose`, `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogCancel`, `AlertDialogAction`, `Drawer`, `DrawerTrigger`, `DrawerContent`, `DrawerTitle`, `DrawerDescription`, `DrawerActions`, `DrawerClose`, `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverTitle`, `PopoverDescription`, `PopoverClose`, `PreviewCard`, `PreviewCardTrigger`, `PreviewCardContent`, `PreviewCardTitle`, `PreviewCardDescription`, `PreviewCardImage`, `TooltipProvider`, `Tooltip`, `TooltipTrigger`, `TooltipContent`, `Menu`, `Menubar`, `MenuTrigger`, `MenuContent`, `MenuItem`, `MenuLinkItem`, `MenuCheckboxItem`, `MenuRadioGroup`, `MenuRadioItem`, `MenuGroup`, `MenuGroupLabel`, `MenuSeparator`, `MenuSubmenu`, `MenuSubmenuTrigger`, `ContextMenu`, `ContextMenuTrigger`, `ContextMenuContent`, `ContextMenuItem`, `CommandMenu`
 - Assets: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
-## Delivery order
+## Post-1.0 direction
 
 1. Expand cross-component examples and catalog-level accessibility audits.
