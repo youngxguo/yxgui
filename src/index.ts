@@ -353,6 +353,18 @@ export {
   type PaginationListProps,
   type PaginationProps
 } from './components/Pagination';
+export {
+  PageHeader,
+  PageHeaderActions,
+  PageHeaderContent,
+  PageHeaderDescription,
+  PageHeaderTitle,
+  type PageHeaderActionsProps,
+  type PageHeaderContentProps,
+  type PageHeaderDescriptionProps,
+  type PageHeaderProps,
+  type PageHeaderTitleProps
+} from './components/PageHeader';
 export { PasswordField, type PasswordFieldProps } from './components/PasswordField';
 export {
   Popover,

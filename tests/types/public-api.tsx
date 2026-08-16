@@ -161,6 +161,11 @@ import type {
   PaginationLinkProps,
   PaginationListProps,
   PaginationProps,
+  PageHeaderActionsProps,
+  PageHeaderContentProps,
+  PageHeaderDescriptionProps,
+  PageHeaderProps,
+  PageHeaderTitleProps,
   PasswordFieldProps,
   PopoverCloseProps,
   PopoverContentProps,
@@ -288,6 +293,7 @@ import {
   MultiSelect,
   NavigationMenuContent,
   OTPField,
+  PageHeader,
   PasswordField,
   PreviewCardContent,
   Rating,
@@ -473,6 +479,11 @@ type PublicProps =
   | PaginationLinkProps
   | PaginationListProps
   | PaginationProps
+  | PageHeaderActionsProps
+  | PageHeaderContentProps
+  | PageHeaderDescriptionProps
+  | PageHeaderProps
+  | PageHeaderTitleProps
   | PasswordFieldProps
   | PopoverCloseProps
   | PopoverContentProps
@@ -571,6 +582,8 @@ const closedStyleApi = () => (
   <>
     {/* @ts-expect-error application-shell layout remains internal */}
     <AppShell className="override" />
+    {/* @ts-expect-error page-header layout remains internal */}
+    <PageHeader className="override" />
     {/* @ts-expect-error autocomplete styling remains internal */}
     <Autocomplete className="override" label="Search" options={[]} />
     {/* @ts-expect-error consumers cannot override component classes */}

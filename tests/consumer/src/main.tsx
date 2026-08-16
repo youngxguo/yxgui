@@ -118,6 +118,10 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationList,
+  PageHeader,
+  PageHeaderContent,
+  PageHeaderDescription,
+  PageHeaderTitle,
   PasswordField,
   Popover,
   PopoverClose,
@@ -240,7 +244,14 @@ function ConsumerApp() {
                 </SidebarNav>
               </AppShellSidebar>
               <AppShellHeader>Consumer shell</AppShellHeader>
-              <AppShellMain>Packaged shell content</AppShellMain>
+              <AppShellMain>
+                <PageHeader>
+                  <PageHeaderContent>
+                    <PageHeaderTitle>Consumer overview</PageHeaderTitle>
+                    <PageHeaderDescription>Packaged shell content</PageHeaderDescription>
+                  </PageHeaderContent>
+                </PageHeader>
+              </AppShellMain>
               <AppShellFooter>Packaged shell footer</AppShellFooter>
             </AppShell>
             <Item>
