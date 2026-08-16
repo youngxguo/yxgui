@@ -56,6 +56,8 @@ import {
   FieldDescription,
   FieldLabel,
   Flex,
+  Grid,
+  GridItem,
   Fieldset,
   FieldsetLegend,
   Input,
@@ -160,6 +162,10 @@ function ConsumerApp() {
               <AlertDescription>This renders from the built yxgui package.</AlertDescription>
             </Alert>
             <Separator />
+            <Grid columns={2} gap="md">
+              <GridItem>Packaged grid item</GridItem>
+              <GridItem>Second grid item</GridItem>
+            </Grid>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>

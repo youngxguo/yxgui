@@ -14,7 +14,7 @@ yxgui is growing into a broad, styled React component system for personal applic
 
 ### Available
 
-- Foundations: `Theme`, `Typography`, `Flex`, `Card`
+- Foundations: `Theme`, `Typography`, `Flex`, `Grid`, `GridItem`, `Card`
 - Actions and navigation: `Button`, `Link`, `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbCurrent`, `Pagination`, `PaginationList`, `PaginationItem`, `PaginationLink`, `Toolbar`, `ToolbarGroup`, `ToolbarButton`, `ToolbarLink`, `ToolbarInput`, `ToolbarSeparator`, `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `NavigationMenuTriggerLink`
 - Forms: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `Fieldset`, `FieldsetLegend`, `FieldsetDescription`, `Input`, `Textarea`, `Select`, `Combobox`, `OTPField`, `Checkbox`, `CheckboxGroup`, `CheckboxGroupLegend`, `CheckboxItem`, `RadioGroup`, `RadioGroupLegend`, `Radio`, `Switch`, `Toggle`, `ToggleGroup`, `Slider`, `NumberField`
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Empty`, `EmptyTitle`, `EmptyDescription`, `ToastProvider`, `useToast`
@@ -30,7 +30,6 @@ yxgui is growing into a broad, styled React component system for personal applic
 
 ### Application surfaces
 
-- `Grid`
 - `Carousel`
 
 ## Delivery order

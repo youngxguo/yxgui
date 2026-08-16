@@ -74,6 +74,8 @@ import type {
   FieldsetLegendProps,
   FieldsetProps,
   FlexProps,
+  GridItemProps,
+  GridProps,
   IconProps,
   InputProps,
   LinkProps,
@@ -172,6 +174,7 @@ import {
   DialogContent,
   DrawerContent,
   Input,
+  Grid,
   Link,
   MenuContent,
   Menubar,
@@ -263,6 +266,8 @@ type PublicProps =
   | FieldsetLegendProps
   | FieldsetProps
   | FlexProps
+  | GridItemProps
+  | GridProps
   | IconProps
   | InputProps
   | LinkProps
@@ -368,6 +373,8 @@ const closedStyleApi = () => (
     <Link href="#" style={{ color: 'red' }}>
       Link
     </Link>
+    {/* @ts-expect-error grid layout remains an explicit semantic API */}
+    <Grid style={{ display: 'block' }} />
     {/* @ts-expect-error Base UI styling hooks remain internal */}
     <Slider className="override" label="Volume" />
     {/* @ts-expect-error Base UI render hooks remain internal */}

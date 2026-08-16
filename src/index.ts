@@ -164,6 +164,7 @@ export {
   type FieldsetProps
 } from './components/Fieldset';
 export { Flex, type FlexProps } from './components/Flex';
+export { Grid, GridItem, type GridItemProps, type GridProps } from './components/Grid';
 export {
   GitHubIcon,
   LinkedInIcon,
