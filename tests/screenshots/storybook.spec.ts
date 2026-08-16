@@ -189,6 +189,22 @@ test('stepper reports and changes the current workflow step', async ({ page }) =
   await expect(publish).toHaveAttribute('aria-current', 'step');
 });
 
+test('copy button writes to the clipboard and reports success', async ({ context, page }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const query = new URLSearchParams({
+    id: 'components-copybutton--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  await page.getByRole('button', { name: 'Copy' }).click();
+  await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible();
+  await expect
+    .poll(() => page.evaluate(() => navigator.clipboard.readText()))
+    .toBe('pnpm add yxgui');
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',

@@ -116,6 +116,7 @@ export {
   type ContextMenuSubmenuTriggerProps,
   type ContextMenuTriggerProps
 } from './components/ContextMenu';
+export { CopyButton, type CopyButtonProps, type CopyButtonStatus } from './components/CopyButton';
 export {
   DataList,
   DataListDescription,

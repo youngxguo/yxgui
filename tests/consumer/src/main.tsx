@@ -37,6 +37,7 @@ import {
   Combobox,
   CommandMenu,
   Container,
+  CopyButton,
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
@@ -214,6 +215,7 @@ function ConsumerApp() {
             />
             <SearchField defaultValue="dialog" label="Consumer search field" />
             <PasswordField defaultValue="consumer secret" label="Consumer password" />
+            <CopyButton value="pnpm add yxgui" />
             <Stepper
               defaultStep={1}
               label="Consumer setup"

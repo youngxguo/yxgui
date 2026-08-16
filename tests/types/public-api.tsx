@@ -41,6 +41,8 @@ import type {
   CommandMenuOption,
   CommandMenuProps,
   ContainerProps,
+  CopyButtonProps,
+  CopyButtonStatus,
   ContextMenuCheckboxItemProps,
   ContextMenuContentProps,
   ContextMenuGroupLabelProps,
@@ -212,6 +214,7 @@ import {
   Combobox,
   CommandMenu,
   Container,
+  CopyButton,
   ContextMenuContent,
   DataList,
   DataTable,
@@ -290,6 +293,8 @@ type PublicProps =
   | CommandMenuOption
   | CommandMenuProps
   | ContainerProps
+  | CopyButtonProps
+  | CopyButtonStatus
   | ContextMenuCheckboxItemProps
   | ContextMenuContentProps
   | ContextMenuGroupLabelProps
@@ -464,6 +469,8 @@ const closedStyleApi = () => (
     <Button className="override">Button</Button>
     {/* @ts-expect-error consumers cannot override component styles */}
     <Card style={{ padding: 0 }}>Card</Card>
+    {/* @ts-expect-error copy feedback presentation remains internal */}
+    <CopyButton className="override" value="text" />
     {/* @ts-expect-error carousel layout remains internal */}
     <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
