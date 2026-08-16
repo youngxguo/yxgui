@@ -4,7 +4,7 @@ The brand assets listed below are not covered by yxgui's MIT license. They remai
 
 ## GitHub
 
-- File: `github.svg`
+- Component: `GitHubIcon`
 - Official source: https://brand.github.com/GitHub_Logos.zip
 - Usage guidelines: https://brand.github.com/foundations/logo
 - Retrieved: 2026-08-14
@@ -13,7 +13,7 @@ GITHUB®, the GITHUB® logo design, the INVERTOCAT logo design, OCTOCAT®, and t
 
 ## LinkedIn
 
-- File: `linkedin.png`
+- Component: `LinkedInIcon`
 - Official source: https://content.linkedin.com/content/dam/me/business/en-us/amp/xbu/linkedin-revised-brand-guidelines/logos/in-logo.zip
 - Usage guidelines: https://brand.linkedin.com/in-logo
 - Retrieved: 2026-08-14
