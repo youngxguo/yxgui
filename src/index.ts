@@ -321,6 +321,7 @@ export {
   type RadioGroupProps,
   type RadioProps
 } from './components/RadioGroup';
+export { Rating, type RatingProps } from './components/Rating';
 export {
   ResizablePanels,
   type ResizablePanelsOrientation,

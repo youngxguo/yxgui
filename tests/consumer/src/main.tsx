@@ -111,6 +111,7 @@ import {
   Radio,
   RadioGroup,
   RadioGroupLegend,
+  Rating,
   ResizablePanels,
   ScrollArea,
   SearchField,
@@ -329,6 +330,7 @@ function ConsumerApp() {
               <RadioGroupLegend>Plan</RadioGroupLegend>
               <Radio defaultChecked label="Personal" name="consumer-plan" />
             </RadioGroup>
+            <Rating defaultValue={4} label="Consumer rating" name="consumer-rating" />
             <CheckboxGroup>
               <CheckboxGroupLegend>Updates</CheckboxGroupLegend>
               <CheckboxItem label="Product" name="consumer-updates" />

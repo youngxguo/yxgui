@@ -150,6 +150,7 @@ import type {
   RadioGroupLegendProps,
   RadioGroupProps,
   RadioProps,
+  RatingProps,
   ResizablePanelsOrientation,
   ResizablePanelsProps,
   ScrollAreaProps,
@@ -234,6 +235,7 @@ import {
   OTPField,
   PasswordField,
   PreviewCardContent,
+  Rating,
   ResizablePanels,
   ScrollArea,
   SearchField,
@@ -402,6 +404,7 @@ type PublicProps =
   | RadioGroupLegendProps
   | RadioGroupProps
   | RadioProps
+  | RatingProps
   | ResizablePanelsOrientation
   | ResizablePanelsProps
   | ScrollAreaProps
@@ -499,6 +502,8 @@ const closedStyleApi = () => (
     <DataTable className="override" columns={[]} getRowId={() => ''} label="Rows" rows={[]} />
     {/* @ts-expect-error native date field styles remain internal */}
     <DateField className="override" label="Date" />
+    {/* @ts-expect-error rating presentation remains internal */}
+    <Rating style={{ gap: 0 }} label="Rating" />
     {/* @ts-expect-error Base UI styling hooks remain internal */}
     <Slider className="override" label="Volume" />
     {/* @ts-expect-error Base UI render hooks remain internal */}

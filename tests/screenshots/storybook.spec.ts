@@ -205,6 +205,22 @@ test('copy button writes to the clipboard and reports success', async ({ context
     .toBe('pnpm add yxgui');
 });
 
+test('rating uses native radio-group keyboard interaction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-rating--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const third = page.getByRole('radio', { name: '3 stars' });
+  const fourth = page.getByRole('radio', { name: '4 stars' });
+  await expect(third).toBeChecked();
+  await third.focus();
+  await third.press('ArrowRight');
+  await expect(fourth).toBeChecked();
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',
