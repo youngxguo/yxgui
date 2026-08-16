@@ -26,6 +26,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
   Button,
+  Calendar,
   Card,
   Carousel,
   CheckboxGroup,
@@ -261,6 +262,7 @@ function ConsumerApp() {
               ]}
             />
             <TagInput defaultValue={['consumer']} label="Consumer tags" name="tags" />
+            <Calendar defaultValue="2026-08-16" label="Consumer release date" />
             <DateField defaultValue="2026-08-16" label="Consumer date" name="date" />
             <FileUpload label="Consumer files" name="files" />
             <TreeView

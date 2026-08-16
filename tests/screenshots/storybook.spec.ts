@@ -268,6 +268,25 @@ test('segmented control uses native radio keyboard selection', async ({ page }) 
   await expect(board).toBeChecked();
 });
 
+test('calendar supports grid keyboard navigation and selection', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-calendar--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const selected = page.getByRole('button', { name: 'Sunday, August 16, 2026' });
+  const next = page.getByRole('button', { name: 'Monday, August 17, 2026' });
+  await selected.focus();
+  await selected.press('ArrowRight');
+  await expect(next).toBeFocused();
+  await next.press('Enter');
+  await expect(next.locator('..')).toHaveAttribute('aria-selected', 'true');
+  await next.press('PageDown');
+  await expect(page.getByRole('grid', { name: 'September 2026' })).toBeVisible();
+});
+
 test('autocomplete filters and completes free-form input', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-autocomplete--default',
