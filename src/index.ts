@@ -127,6 +127,13 @@ export {
   type DataListTermProps
 } from './components/DataList';
 export {
+  DataTable,
+  type DataTableColumn,
+  type DataTableProps,
+  type DataTableSort,
+  type DataTableSortDirection
+} from './components/DataTable';
+export {
   DateField,
   DateTimeField,
   TimeField,

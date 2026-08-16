@@ -301,6 +301,23 @@ test('tree view supports branch and selection keyboard navigation', async ({ pag
   await expect(components).toBeFocused();
 });
 
+test('data table sorts native rows and exposes sort direction', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-datatable--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const header = page.getByRole('columnheader', { name: /Workspace/ });
+  await header.getByRole('button').click();
+  await expect(header).toHaveAttribute('aria-sort', 'ascending');
+  await expect(page.getByRole('row').nth(1)).toContainText('Operations');
+  await header.getByRole('button').click();
+  await expect(header).toHaveAttribute('aria-sort', 'descending');
+  await expect(page.getByRole('row').nth(1)).toContainText('Research');
+});
+
 test('OTP field filters invalid text and advances between slots', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-otpfield--default',

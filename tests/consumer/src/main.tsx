@@ -45,6 +45,7 @@ import {
   DataListDescription,
   DataListItem,
   DataListTerm,
+  DataTable,
   DateField,
   Dialog,
   DialogClose,
@@ -224,6 +225,19 @@ function ConsumerApp() {
                   label: 'Components'
                 }
               ]}
+            />
+            <DataTable
+              columns={[
+                {
+                  cell: (row) => row.name,
+                  header: 'Name',
+                  id: 'name',
+                  sortValue: (row) => row.name
+                }
+              ]}
+              getRowId={(row) => row.id}
+              label="Consumer data"
+              rows={[{ id: 'yxgui', name: 'yxgui' }]}
             />
             <CommandMenu
               onSelect={() => undefined}

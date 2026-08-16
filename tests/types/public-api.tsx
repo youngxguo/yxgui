@@ -58,6 +58,10 @@ import type {
   DataListItemProps,
   DataListProps,
   DataListTermProps,
+  DataTableColumn,
+  DataTableProps,
+  DataTableSort,
+  DataTableSortDirection,
   DateFieldProps,
   DateTimeFieldProps,
   DialogActionsProps,
@@ -198,6 +202,7 @@ import {
   Container,
   ContextMenuContent,
   DataList,
+  DataTable,
   DateField,
   DialogContent,
   DrawerContent,
@@ -283,6 +288,10 @@ type PublicProps =
   | DataListItemProps
   | DataListProps
   | DataListTermProps
+  | DataTableColumn<unknown>
+  | DataTableProps<unknown>
+  | DataTableSort
+  | DataTableSortDirection
   | DateFieldProps
   | DateTimeFieldProps
   | DialogActionsProps
@@ -442,6 +451,8 @@ const closedStyleApi = () => (
     <Container className="override" />
     {/* @ts-expect-error structured data presentation remains internal */}
     <DataList style={{ display: 'block' }} />
+    {/* @ts-expect-error data table presentation remains internal */}
+    <DataTable className="override" columns={[]} getRowId={() => ''} label="Rows" rows={[]} />
     {/* @ts-expect-error native date field styles remain internal */}
     <DateField className="override" label="Date" />
     {/* @ts-expect-error Base UI styling hooks remain internal */}
