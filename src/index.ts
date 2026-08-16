@@ -62,6 +62,7 @@ export {
   type BreadcrumbSeparatorProps
 } from './components/Breadcrumb';
 export { Button, type ButtonProps } from './components/Button';
+export { ButtonGroup, type ButtonGroupProps } from './components/ButtonGroup';
 export { Calendar, type CalendarProps } from './components/Calendar';
 export { Card, type CardProps } from './components/Card';
 export { Carousel, type CarouselProps } from './components/Carousel';

@@ -26,6 +26,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
   Button,
+  ButtonGroup,
   Calendar,
   Card,
   Carousel,
@@ -387,6 +388,10 @@ function ConsumerApp() {
               <MailIcon />
               Continue
             </Button>
+            <ButtonGroup aria-label="Consumer document actions">
+              <Button type="button">Save</Button>
+              <Button type="button">Archive</Button>
+            </ButtonGroup>
             <Progress aria-label="Consumer verification" value={100} />
             <Meter aria-label="Storage" fullWidth max={100} value={64} />
             <Slider defaultValue={64} label="Storage target" />

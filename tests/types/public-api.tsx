@@ -27,6 +27,7 @@ import type {
   BreadcrumbProps,
   BreadcrumbSeparatorProps,
   ButtonProps,
+  ButtonGroupProps,
   CalendarProps,
   CardProps,
   CarouselProps,
@@ -227,6 +228,7 @@ import type {
 import {
   Autocomplete,
   Button,
+  ButtonGroup,
   Calendar,
   Card,
   Carousel,
@@ -306,6 +308,7 @@ type PublicProps =
   | BreadcrumbProps
   | BreadcrumbSeparatorProps
   | ButtonProps
+  | ButtonGroupProps
   | CalendarProps
   | CardProps
   | CarouselProps
@@ -512,6 +515,8 @@ const closedStyleApi = () => (
     <Autocomplete className="override" label="Search" options={[]} />
     {/* @ts-expect-error consumers cannot override component classes */}
     <Button className="override">Button</Button>
+    {/* @ts-expect-error grouped-action presentation remains internal */}
+    <ButtonGroup className="override" />
     {/* @ts-expect-error calendar presentation remains internal */}
     <Calendar className="override" />
     {/* @ts-expect-error date-picker presentation remains internal */}
