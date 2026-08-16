@@ -33,6 +33,19 @@ import type {
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
+  ContextMenuCheckboxItemProps,
+  ContextMenuContentProps,
+  ContextMenuGroupLabelProps,
+  ContextMenuGroupProps,
+  ContextMenuItemProps,
+  ContextMenuLinkItemProps,
+  ContextMenuProps,
+  ContextMenuRadioGroupProps,
+  ContextMenuRadioItemProps,
+  ContextMenuSeparatorProps,
+  ContextMenuSubmenuProps,
+  ContextMenuSubmenuTriggerProps,
+  ContextMenuTriggerProps,
   DialogActionsProps,
   DialogCloseProps,
   DialogContentProps,
@@ -54,6 +67,19 @@ import type {
   IconProps,
   InputProps,
   LinkProps,
+  MenuCheckboxItemProps,
+  MenuContentProps,
+  MenuGroupLabelProps,
+  MenuGroupProps,
+  MenuItemProps,
+  MenuLinkItemProps,
+  MenuProps,
+  MenuRadioGroupProps,
+  MenuRadioItemProps,
+  MenuSeparatorProps,
+  MenuSubmenuProps,
+  MenuSubmenuTriggerProps,
+  MenuTriggerProps,
   MeterProps,
   NumberFieldInputProps,
   NumberFieldProps,
@@ -100,9 +126,11 @@ import type {
 import {
   Button,
   Card,
+  ContextMenuContent,
   DialogContent,
   Input,
   Link,
+  MenuContent,
   Slider,
   Tabs,
   Toolbar,
@@ -144,6 +172,19 @@ type PublicProps =
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
+  | ContextMenuCheckboxItemProps
+  | ContextMenuContentProps
+  | ContextMenuGroupLabelProps
+  | ContextMenuGroupProps
+  | ContextMenuItemProps
+  | ContextMenuLinkItemProps
+  | ContextMenuProps
+  | ContextMenuRadioGroupProps
+  | ContextMenuRadioItemProps
+  | ContextMenuSeparatorProps
+  | ContextMenuSubmenuProps
+  | ContextMenuSubmenuTriggerProps
+  | ContextMenuTriggerProps
   | DialogActionsProps
   | DialogCloseProps
   | DialogContentProps
@@ -165,6 +206,19 @@ type PublicProps =
   | IconProps
   | InputProps
   | LinkProps
+  | MenuCheckboxItemProps
+  | MenuContentProps
+  | MenuGroupLabelProps
+  | MenuGroupProps
+  | MenuItemProps
+  | MenuLinkItemProps
+  | MenuProps
+  | MenuRadioGroupProps
+  | MenuRadioItemProps
+  | MenuSeparatorProps
+  | MenuSubmenuProps
+  | MenuSubmenuTriggerProps
+  | MenuTriggerProps
   | MeterProps
   | NumberFieldInputProps
   | NumberFieldProps
@@ -233,6 +287,10 @@ const closedStyleApi = () => (
     <DialogContent className="override" />
     {/* @ts-expect-error overlay inline styles remain internal */}
     <TooltipTrigger style={{ color: 'red' }}>Info</TooltipTrigger>
+    {/* @ts-expect-error menu classes remain internal */}
+    <MenuContent className="override" />
+    {/* @ts-expect-error context menu styles remain internal */}
+    <ContextMenuContent style={{ padding: 0 }} />
   </>
 );
 void closedStyleApi;

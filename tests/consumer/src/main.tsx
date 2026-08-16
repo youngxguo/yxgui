@@ -32,6 +32,10 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
   Dialog,
   DialogClose,
   DialogContent,
@@ -49,6 +53,10 @@ import {
   FieldsetLegend,
   Input,
   MailIcon,
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuTrigger,
   Meter,
   NumberField,
   Pagination,
@@ -189,6 +197,18 @@ function ConsumerApp() {
                 <TooltipContent>Consumer tooltip</TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            <Menu>
+              <MenuTrigger>Consumer menu</MenuTrigger>
+              <MenuContent>
+                <MenuItem>Duplicate</MenuItem>
+              </MenuContent>
+            </Menu>
+            <ContextMenu>
+              <ContextMenuTrigger>Right click for consumer actions</ContextMenuTrigger>
+              <ContextMenuContent>
+                <ContextMenuItem>Open</ContextMenuItem>
+              </ContextMenuContent>
+            </ContextMenu>
             <Collapsible>
               <CollapsibleTrigger>Details</CollapsibleTrigger>
               <CollapsibleContent>Native disclosure behavior loaded.</CollapsibleContent>

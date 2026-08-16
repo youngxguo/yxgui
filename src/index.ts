@@ -76,6 +76,34 @@ export {
   type CollapsibleTriggerProps
 } from './components/Collapsible';
 export {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuGroupLabel,
+  ContextMenuItem,
+  ContextMenuLinkItem,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuSubmenu,
+  ContextMenuSubmenuTrigger,
+  ContextMenuTrigger,
+  type ContextMenuCheckboxItemProps,
+  type ContextMenuContentProps,
+  type ContextMenuGroupLabelProps,
+  type ContextMenuGroupProps,
+  type ContextMenuItemProps,
+  type ContextMenuLinkItemProps,
+  type ContextMenuProps,
+  type ContextMenuRadioGroupProps,
+  type ContextMenuRadioItemProps,
+  type ContextMenuSeparatorProps,
+  type ContextMenuSubmenuProps,
+  type ContextMenuSubmenuTriggerProps,
+  type ContextMenuTriggerProps
+} from './components/ContextMenu';
+export {
   Dialog,
   DialogActions,
   DialogClose,
@@ -128,6 +156,34 @@ export {
 } from './components/Icon';
 export { Input, type InputProps } from './components/Input';
 export { Link, type LinkProps } from './components/Link';
+export {
+  Menu,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuItem,
+  MenuLinkItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuSubmenu,
+  MenuSubmenuTrigger,
+  MenuTrigger,
+  type MenuCheckboxItemProps,
+  type MenuContentProps,
+  type MenuGroupLabelProps,
+  type MenuGroupProps,
+  type MenuItemProps,
+  type MenuLinkItemProps,
+  type MenuProps,
+  type MenuRadioGroupProps,
+  type MenuRadioItemProps,
+  type MenuSeparatorProps,
+  type MenuSubmenuProps,
+  type MenuSubmenuTriggerProps,
+  type MenuTriggerProps
+} from './components/Menu';
 export { Meter, type MeterProps } from './components/Meter';
 export {
   NumberField,

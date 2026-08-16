@@ -186,5 +186,81 @@ export const overlayStyles = stylex.create({
   },
   popoverArrow: { color: colors.surfaceElevated, display: 'flex' },
   tooltipArrow: { color: colors.text, display: 'flex' },
-  arrowSvg: { display: 'block' }
+  arrowSvg: { display: 'block' },
+  menuPopup: {
+    backgroundColor: colors.surfaceElevated,
+    borderColor: colors.borderMuted,
+    borderRadius: radii.md,
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    boxShadow: '0 12px 36px rgba(17, 24, 39, 0.2)',
+    boxSizing: 'border-box',
+    color: colors.text,
+    fontFamily: fontFamilies.sans,
+    maxHeight: 'min(320px, var(--available-height))',
+    minWidth: '200px',
+    outline: 'none',
+    overflowY: 'auto',
+    padding: spacing.sm
+  },
+  menuItem: {
+    alignItems: 'center',
+    borderRadius: radii.sm,
+    color: { default: colors.text, ':disabled': colors.textDisabled },
+    cursor: { default: 'default', ':disabled': 'not-allowed' },
+    display: 'flex',
+    fontFamily: fontFamilies.sans,
+    fontSize: fontSizes.sm,
+    gap: spacing.md,
+    justifyContent: 'space-between',
+    lineHeight: lineHeights.sm,
+    outline: 'none',
+    paddingBlock: spacing.md,
+    paddingInline: spacing.md,
+    position: 'relative',
+    textDecoration: 'none',
+    userSelect: 'none'
+  },
+  menuItemHighlighted: { backgroundColor: colors.surfaceSubtle },
+  menuItemDanger: { color: colors.danger },
+  checkableMenuItem: { paddingLeft: '28px' },
+  menuIndicator: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    left: spacing.md,
+    position: 'absolute'
+  },
+  menuGroupLabel: {
+    color: colors.textMuted,
+    fontFamily: fontFamilies.sans,
+    fontSize: fontSizes.xs,
+    fontWeight: fontWeights.semibold,
+    lineHeight: lineHeights.sm,
+    paddingBlock: spacing.sm,
+    paddingInline: spacing.md
+  },
+  menuSeparator: {
+    backgroundColor: colors.borderMuted,
+    height: '1px',
+    marginBlock: spacing.sm
+  },
+  submenuChevron: { marginLeft: spacing.lg },
+  contextTrigger: {
+    alignItems: 'center',
+    backgroundColor: colors.surfaceSubtle,
+    borderColor: colors.borderMuted,
+    borderRadius: radii.md,
+    borderStyle: 'dashed',
+    borderWidth: '1px',
+    color: colors.textMuted,
+    display: 'flex',
+    fontFamily: fontFamilies.sans,
+    fontSize: fontSizes.sm,
+    justifyContent: 'center',
+    lineHeight: lineHeights.sm,
+    minHeight: '120px',
+    padding: spacing.lg,
+    userSelect: 'none'
+  }
 });

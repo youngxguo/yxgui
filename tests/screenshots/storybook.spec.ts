@@ -257,3 +257,43 @@ test('tooltip opens on focus and dismisses with Escape', async ({ page }) => {
   await page.keyboard.press('Escape');
   await expect(tooltip).toBeHidden();
 });
+
+test('menu supports arrow-key selection and restores focus', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-menu--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const trigger = page.getByRole('button', { name: 'View options' });
+  await trigger.focus();
+  await trigger.press('ArrowDown');
+  const firstItem = page.getByRole('menuitemradio', { name: 'Date' });
+  await expect(firstItem).toBeFocused();
+  await firstItem.press('ArrowDown');
+  const nextItem = page.getByRole('menuitemradio', { name: 'Name' });
+  await expect(nextItem).toBeFocused();
+  await nextItem.press('Enter');
+  await expect(nextItem).toHaveAttribute('aria-checked', 'true');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('menu')).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('context menu opens from right click and dismisses with Escape', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-contextmenu--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  await page.getByText('Right click for project actions').click({ button: 'right' });
+  const menu = page.getByRole('menu');
+  await expect(menu).toBeVisible();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByRole('menuitem', { name: 'Open' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(menu).toBeHidden();
+});
