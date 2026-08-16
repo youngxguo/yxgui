@@ -141,6 +141,24 @@ test('number field supports stepper interaction', async ({ page }) => {
   await expect(input).toHaveValue('3');
 });
 
+test('autocomplete filters and completes free-form input', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-autocomplete--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const input = page.getByRole('combobox', { name: 'Component search' });
+  await input.fill('auto');
+  await expect(page.getByRole('option', { name: 'Autocomplete' })).toBeVisible();
+  await expect(page.getByRole('option', { name: 'Accordion' })).toBeHidden();
+  await input.press('Enter');
+  await expect(input).toHaveValue('Autocomplete');
+  await input.fill('Custom component');
+  await expect(input).toHaveValue('Custom component');
+});
+
 test('combobox filters and selects with the keyboard', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-combobox--default',

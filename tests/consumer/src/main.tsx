@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionTrigger,
+  Autocomplete,
   Alert,
   AlertDescription,
   AlertDialog,
@@ -175,6 +176,13 @@ function ConsumerApp() {
                 <Typography>Second packaged slide</Typography>
               </Card>
             </Carousel>
+            <Autocomplete
+              label="Consumer search"
+              options={[
+                { label: 'Accordion', value: 'accordion' },
+                { label: 'Alert', value: 'alert' }
+              ]}
+            />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>

@@ -4,6 +4,8 @@ import type {
   AccordionPanelProps,
   AccordionProps,
   AccordionTriggerProps,
+  AutocompleteOption,
+  AutocompleteProps,
   AlertDescriptionProps,
   AlertDialogActionProps,
   AlertDialogActionsProps,
@@ -168,6 +170,7 @@ import type {
   TypographyProps
 } from '../../src';
 import {
+  Autocomplete,
   Button,
   Card,
   Carousel,
@@ -198,6 +201,8 @@ type PublicProps =
   | AccordionPanelProps
   | AccordionProps
   | AccordionTriggerProps
+  | AutocompleteOption
+  | AutocompleteProps
   | AlertDescriptionProps
   | AlertDialogActionProps
   | AlertDialogActionsProps
@@ -366,6 +371,8 @@ void publicProps;
 
 const closedStyleApi = () => (
   <>
+    {/* @ts-expect-error autocomplete styling remains internal */}
+    <Autocomplete className="override" label="Search" options={[]} />
     {/* @ts-expect-error consumers cannot override component classes */}
     <Button className="override">Button</Button>
     {/* @ts-expect-error consumers cannot override component styles */}

@@ -14,6 +14,11 @@ export {
   type AccordionTriggerProps
 } from './components/Accordion';
 export {
+  Autocomplete,
+  type AutocompleteOption,
+  type AutocompleteProps
+} from './components/Autocomplete';
+export {
   Alert,
   AlertDescription,
   AlertTitle,
