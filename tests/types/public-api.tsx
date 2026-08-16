@@ -26,6 +26,7 @@ import type {
   BreadcrumbSeparatorProps,
   ButtonProps,
   CardProps,
+  CarouselProps,
   CheckboxProps,
   CheckboxGroupLegendProps,
   CheckboxGroupProps,
@@ -169,6 +170,7 @@ import type {
 import {
   Button,
   Card,
+  Carousel,
   Combobox,
   ContextMenuContent,
   DialogContent,
@@ -218,6 +220,7 @@ type PublicProps =
   | BreadcrumbSeparatorProps
   | ButtonProps
   | CardProps
+  | CarouselProps
   | CheckboxProps
   | CheckboxGroupLegendProps
   | CheckboxGroupProps
@@ -367,6 +370,8 @@ const closedStyleApi = () => (
     <Button className="override">Button</Button>
     {/* @ts-expect-error consumers cannot override component styles */}
     <Card style={{ padding: 0 }}>Card</Card>
+    {/* @ts-expect-error carousel layout remains internal */}
+    <Carousel className="override">Slide</Carousel>
     {/* @ts-expect-error consumers cannot override input classes */}
     <Input className="override" />
     {/* @ts-expect-error consumers cannot override link styles */}

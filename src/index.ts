@@ -58,6 +58,7 @@ export {
 } from './components/Breadcrumb';
 export { Button, type ButtonProps } from './components/Button';
 export { Card, type CardProps } from './components/Card';
+export { Carousel, type CarouselProps } from './components/Carousel';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
 export {
   CheckboxGroup,

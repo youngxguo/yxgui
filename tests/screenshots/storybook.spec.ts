@@ -433,6 +433,24 @@ test('scroll area provides a native scrolling viewport', async ({ page }) => {
   await expect.poll(() => viewport.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
 });
 
+test('carousel supports controls and keyboard navigation', async ({ page }) => {
+  const query = new URLSearchParams({
+    id: 'components-carousel--default',
+    viewMode: 'story',
+    globals: 'theme:light'
+  });
+
+  await page.goto(`/iframe.html?${query.toString()}`);
+  const viewport = page.getByRole('group', { name: 'Library tour slides' });
+  await expect(page.getByText('1 of 3')).toBeVisible();
+  await page.getByRole('button', { name: 'Next slide' }).click();
+  await expect(page.getByText('2 of 3')).toBeVisible();
+  await viewport.focus();
+  await viewport.press('End');
+  await expect(page.getByText('3 of 3')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Next slide' })).toBeDisabled();
+});
+
 test('toast announces feedback and supports actions and dismissal', async ({ page }) => {
   const query = new URLSearchParams({
     id: 'components-toast--default',

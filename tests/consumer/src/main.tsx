@@ -26,6 +26,7 @@ import {
   BreadcrumbSeparator,
   Button,
   Card,
+  Carousel,
   CheckboxGroup,
   CheckboxGroupLegend,
   CheckboxItem,
@@ -166,6 +167,14 @@ function ConsumerApp() {
               <GridItem>Packaged grid item</GridItem>
               <GridItem>Second grid item</GridItem>
             </Grid>
+            <Carousel aria-label="Consumer carousel">
+              <Card>
+                <Typography>First packaged slide</Typography>
+              </Card>
+              <Card>
+                <Typography>Second packaged slide</Typography>
+              </Card>
+            </Carousel>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
