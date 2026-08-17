@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionTrigger,
+  ActionRow,
   Autocomplete,
   Alert,
   AlertDescription,
@@ -527,6 +528,12 @@ function ConsumerApp() {
               <ButtonGroupSeparator />
               <Button type="button">Archive</Button>
             </ButtonGroup>
+            <ActionRow>
+              <Button type="button" variant="secondary">
+                Cancel
+              </Button>
+              <Button type="button">Save consumer</Button>
+            </ActionRow>
             <Progress aria-label="Consumer verification" value={100} />
             <CircularProgress aria-label="Consumer circular verification" showValue value={72} />
             <Meter aria-label="Storage" fullWidth max={100} value={64} />

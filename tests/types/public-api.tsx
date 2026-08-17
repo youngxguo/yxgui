@@ -4,6 +4,7 @@ import type {
   AccordionPanelProps,
   AccordionProps,
   AccordionTriggerProps,
+  ActionRowProps,
   AutocompleteOption,
   AutocompleteProps,
   AlertDescriptionProps,
@@ -295,6 +296,7 @@ import type {
 } from '../../src';
 import {
   AppShell,
+  ActionRow,
   Autocomplete,
   AvatarGroup,
   AvatarGroupOverflow,
@@ -378,6 +380,7 @@ type PublicProps =
   | AccordionPanelProps
   | AccordionProps
   | AccordionTriggerProps
+  | ActionRowProps
   | AutocompleteOption
   | AutocompleteProps
   | AlertDescriptionProps
@@ -674,6 +677,8 @@ const closedStyleApi = () => (
   <>
     {/* @ts-expect-error application-shell layout remains internal */}
     <AppShell className="override" />
+    {/* @ts-expect-error action-row layout remains internal */}
+    <ActionRow style={{ justifyContent: 'start' }} />
     {/* @ts-expect-error page-header layout remains internal */}
     <PageHeader className="override" />
     {/* @ts-expect-error page-section layout remains internal */}

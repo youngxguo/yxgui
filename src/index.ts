@@ -13,6 +13,7 @@ export {
   type AccordionProps,
   type AccordionTriggerProps
 } from './components/Accordion';
+export { ActionRow, type ActionRowProps } from './components/ActionRow';
 export {
   Autocomplete,
   type AutocompleteOption,
