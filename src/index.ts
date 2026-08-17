@@ -469,7 +469,12 @@ export {
   type PreviewCardTitleProps,
   type PreviewCardTriggerProps
 } from './components/PreviewCard';
-export { Progress, type ProgressProps } from './components/Progress';
+export {
+  CircularProgress,
+  Progress,
+  type CircularProgressProps,
+  type ProgressProps
+} from './components/Progress';
 export {
   Radio,
   RadioGroup,

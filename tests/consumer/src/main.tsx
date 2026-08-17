@@ -48,6 +48,7 @@ import {
   CheckboxGroup,
   CheckboxGroupLegend,
   CheckboxItem,
+  CircularProgress,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
@@ -527,6 +528,7 @@ function ConsumerApp() {
               <Button type="button">Archive</Button>
             </ButtonGroup>
             <Progress aria-label="Consumer verification" value={100} />
+            <CircularProgress aria-label="Consumer circular verification" showValue value={72} />
             <Meter aria-label="Storage" fullWidth max={100} value={64} />
             <Slider defaultValue={64} label="Storage target" />
             <NumberField defaultValue={2} label="Seats" min={1} />

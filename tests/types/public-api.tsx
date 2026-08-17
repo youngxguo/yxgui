@@ -54,6 +54,7 @@ import type {
   CheckboxGroupLegendProps,
   CheckboxGroupProps,
   CheckboxItemProps,
+  CircularProgressProps,
   CollapsibleContentProps,
   CollapsibleProps,
   CollapsibleTriggerProps,
@@ -309,6 +310,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  CircularProgress,
   Carousel,
   CodeBlock,
   ColorField,
@@ -426,6 +428,7 @@ type PublicProps =
   | CheckboxGroupLegendProps
   | CheckboxGroupProps
   | CheckboxItemProps
+  | CircularProgressProps
   | CollapsibleContentProps
   | CollapsibleProps
   | CollapsibleTriggerProps
@@ -691,6 +694,8 @@ const closedStyleApi = () => (
     <ButtonGroupText style={{ padding: 0 }}>View</ButtonGroupText>
     {/* @ts-expect-error calendar presentation remains internal */}
     <Calendar className="override" />
+    {/* @ts-expect-error circular progress presentation remains internal */}
+    <CircularProgress className="override" />
     {/* @ts-expect-error date-picker presentation remains internal */}
     <DatePicker className="override" label="Release date" />
     {/* @ts-expect-error consumers cannot override component styles */}
