@@ -73,7 +73,16 @@ export {
   type SidebarNavProps
 } from './components/AppShell';
 export { AspectRatio, type AspectRatioProps } from './components/AspectRatio';
-export { Avatar, type AvatarProps } from './components/Avatar';
+export {
+  Avatar,
+  AvatarGroup,
+  AvatarGroupOverflow,
+  type AvatarGroupOverflowProps,
+  type AvatarGroupProps,
+  type AvatarProps,
+  type AvatarShape,
+  type AvatarSize
+} from './components/Avatar';
 export { Badge, type BadgeProps } from './components/Badge';
 export {
   Breadcrumb,

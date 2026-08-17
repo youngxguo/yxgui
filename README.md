@@ -44,7 +44,7 @@ export function App() {
 - Status and feedback: `Alert`, `AlertTitle`, `AlertDescription`, `Badge`, `Status`, `Meter`, `Progress`, `Skeleton`, `Spinner`, `Stepper`, `Timeline`, `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, `EmptyContent`, `ToastProvider`, `useToast`
 - Disclosure and navigation: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`, `Accordion`, `AccordionItem`, `AccordionHeader`, `AccordionTrigger`, `AccordionPanel`, `Tabs`, `TabsList`, `Tab`, `TabsPanel`
 - Popups and overlays: `Dialog`, `AlertDialog`, `Drawer`, `Popover`, `PreviewCard`, `Tooltip`, `Menu`, `Menubar`, `ContextMenu`, `CommandMenu`
-- Media: `Avatar`
+- Media: `Avatar`, `AvatarGroup`, `AvatarGroupOverflow`
 - Icons: `GitHubIcon`, `LinkedInIcon`, `MailIcon`, `SunIcon`, `MoonIcon`
 
 Native-element components preserve relevant element props and refs. `className` and `style` are intentionally unavailable: visual behavior belongs to the library, and new needs should become explicit component APIs. Field composition follows native `id`, `htmlFor`, `aria-describedby`, and `aria-invalid` relationships without hiding those browser contracts.

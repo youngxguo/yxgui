@@ -23,6 +23,8 @@ import {
   AppShellMain,
   AppShellSidebar,
   Avatar,
+  AvatarGroup,
+  AvatarGroupOverflow,
   Badge,
   Breadcrumb,
   BreadcrumbCurrent,
@@ -232,6 +234,11 @@ function ConsumerApp() {
           <Flex direction="column" gap="lg">
             <Flex align="center" gap="md">
               <Avatar alt="Consumer build" />
+              <AvatarGroup aria-label="Consumer team" size="sm">
+                <Avatar alt="Ada Lovelace" />
+                <Avatar alt="Grace Hopper" />
+                <AvatarGroupOverflow count={2} />
+              </AvatarGroup>
               <Typography variant="h1">Consumer build</Typography>
               <Badge variant="success">Ready</Badge>
               <Kbd>⌘K</Kbd>

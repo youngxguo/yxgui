@@ -23,7 +23,11 @@ import type {
   AppShellProps,
   AppShellSidebarProps,
   AspectRatioProps,
+  AvatarGroupOverflowProps,
+  AvatarGroupProps,
   AvatarProps,
+  AvatarShape,
+  AvatarSize,
   BadgeProps,
   BreadcrumbCurrentProps,
   BreadcrumbItemProps,
@@ -281,6 +285,8 @@ import type {
 import {
   AppShell,
   Autocomplete,
+  AvatarGroup,
+  AvatarGroupOverflow,
   Button,
   ButtonGroup,
   ButtonGroupSeparator,
@@ -372,7 +378,11 @@ type PublicProps =
   | AppShellProps
   | AppShellSidebarProps
   | AspectRatioProps
+  | AvatarGroupOverflowProps
+  | AvatarGroupProps
   | AvatarProps
+  | AvatarShape
+  | AvatarSize
   | BadgeProps
   | BreadcrumbCurrentProps
   | BreadcrumbItemProps
@@ -640,6 +650,10 @@ const closedStyleApi = () => (
     <PageSection className="override" />
     {/* @ts-expect-error autocomplete styling remains internal */}
     <Autocomplete className="override" label="Search" options={[]} />
+    {/* @ts-expect-error avatar-group layout remains internal */}
+    <AvatarGroup className="override" />
+    {/* @ts-expect-error avatar overflow presentation remains internal */}
+    <AvatarGroupOverflow count={2} style={{ margin: 0 }} />
     {/* @ts-expect-error consumers cannot override component classes */}
     <Button className="override">Button</Button>
     {/* @ts-expect-error grouped-action presentation remains internal */}

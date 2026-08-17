@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Flex } from '../Flex';
-import { Avatar } from './Avatar';
+import { Avatar, AvatarGroup, AvatarGroupOverflow } from './Avatar';
 
 const meta = {
   title: 'Components/Avatar',
@@ -23,5 +23,16 @@ export const Sizes: Story = {
       <Avatar alt="Large avatar" fallback="L" size="lg" />
       <Avatar alt="Rounded avatar" fallback="YG" shape="rounded" size="lg" />
     </Flex>
+  )
+};
+
+export const Group: Story = {
+  render: () => (
+    <AvatarGroup aria-label="Release team" size="lg">
+      <Avatar alt="Ada Lovelace" />
+      <Avatar alt="Grace Hopper" />
+      <Avatar alt="Margaret Hamilton" />
+      <AvatarGroupOverflow count={4} />
+    </AvatarGroup>
   )
 };

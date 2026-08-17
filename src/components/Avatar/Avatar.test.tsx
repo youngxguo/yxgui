@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { Avatar } from './Avatar';
+import { Avatar, AvatarGroup, AvatarGroupOverflow } from './Avatar';
 
 describe('Avatar', () => {
   it('derives an accessible fallback from alt text', () => {
@@ -30,5 +30,21 @@ describe('Avatar', () => {
 
     expect(ref.current).toBe(screen.getByTestId('avatar'));
     expect(ref.current).toHaveAttribute('title', 'Profile');
+  });
+
+  it('groups inherited avatars with accessible overflow', () => {
+    const ref = createRef<HTMLDivElement>();
+    render(
+      <AvatarGroup aria-label="Release team" ref={ref} shape="rounded" size="lg">
+        <Avatar alt="Ada Lovelace" />
+        <Avatar alt="Grace Hopper" />
+        <AvatarGroupOverflow count={3} />
+      </AvatarGroup>
+    );
+
+    expect(ref.current).toBe(screen.getByRole('group', { name: 'Release team' }));
+    expect(screen.getByRole('img', { name: 'Ada Lovelace' })).toHaveTextContent('AL');
+    expect(screen.getByRole('img', { name: 'Grace Hopper' })).toHaveTextContent('GH');
+    expect(screen.getByRole('img', { name: '3 more' })).toHaveTextContent('+3');
   });
 });

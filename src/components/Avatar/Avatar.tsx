@@ -1,17 +1,37 @@
 import * as stylex from '@stylexjs/stylex';
-import { useState, type ComponentProps } from 'react';
+import { createContext, useContext, useState, type ComponentProps } from 'react';
 import { colors } from '../../theme/colors.stylex';
 import { fontFamilies, fontSizes, fontWeights, radii } from '../../theme/foundations.stylex';
 
+export type AvatarShape = 'circle' | 'rounded';
+export type AvatarSize = 'sm' | 'md' | 'lg';
 export type AvatarProps = Omit<ComponentProps<'span'>, 'children' | 'className' | 'style'> & {
   alt: string;
   fallback?: string;
   loading?: 'eager' | 'lazy';
   onImageError?: ComponentProps<'img'>['onError'];
-  shape?: 'circle' | 'rounded';
-  size?: 'sm' | 'md' | 'lg';
+  shape?: AvatarShape;
+  size?: AvatarSize;
   src?: string;
 };
+export type AvatarGroupProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & {
+  shape?: AvatarShape;
+  size?: AvatarSize;
+};
+export type AvatarGroupOverflowProps = Omit<
+  ComponentProps<'span'>,
+  'children' | 'className' | 'style'
+> & {
+  count: number;
+};
+
+type AvatarGroupContextValue = { grouped: boolean; shape: AvatarShape; size: AvatarSize };
+
+const AvatarGroupContext = createContext<AvatarGroupContextValue>({
+  grouped: false,
+  shape: 'circle',
+  size: 'md'
+});
 
 const styles = stylex.create({
   root: {
@@ -55,7 +75,15 @@ const styles = stylex.create({
     height: '100%',
     objectFit: 'cover',
     width: '100%'
-  }
+  },
+  grouped: { boxShadow: `0 0 0 2px ${colors.surfaceElevated}` },
+  group: { alignItems: 'center', display: 'inline-flex' },
+  groupSm: { paddingInlineStart: '6px' },
+  groupMd: { paddingInlineStart: '8px' },
+  groupLg: { paddingInlineStart: '10px' },
+  memberSm: { marginInlineStart: '-6px' },
+  memberMd: { marginInlineStart: '-8px' },
+  memberLg: { marginInlineStart: '-10px' }
 });
 
 function getInitials(value: string) {
@@ -73,20 +101,29 @@ export function Avatar({
   fallback,
   loading = 'lazy',
   onImageError,
-  shape = 'circle',
-  size = 'md',
+  shape,
+  size,
   src,
   ...props
 }: AvatarProps) {
+  const group = useContext(AvatarGroupContext);
   const [failedSrc, setFailedSrc] = useState<string>();
   const showImage = src !== undefined && failedSrc !== src;
+  const resolvedShape = shape ?? group.shape;
+  const resolvedSize = size ?? group.size;
 
   return (
     <span
       {...props}
       aria-label={showImage ? undefined : alt}
       role={showImage ? undefined : 'img'}
-      {...stylex.props(styles.root, styles[shape], styles[size])}
+      {...stylex.props(
+        styles.root,
+        styles[resolvedShape],
+        styles[resolvedSize],
+        group.grouped && styles.grouped,
+        group.grouped && styles[`member${capitalize(resolvedSize)}`]
+      )}
     >
       {showImage ? (
         <img
@@ -102,6 +139,52 @@ export function Avatar({
       ) : (
         <span aria-hidden="true">{fallback ?? getInitials(alt)}</span>
       )}
+    </span>
+  );
+}
+
+function capitalize(value: AvatarSize) {
+  return `${value[0].toUpperCase()}${value.slice(1)}` as 'Sm' | 'Md' | 'Lg';
+}
+
+export function AvatarGroup({
+  shape = 'circle',
+  size = 'md',
+  role = 'group',
+  ...props
+}: AvatarGroupProps) {
+  return (
+    <AvatarGroupContext.Provider value={{ grouped: true, shape, size }}>
+      <div
+        {...props}
+        role={role}
+        {...stylex.props(styles.group, styles[`group${capitalize(size)}`])}
+      />
+    </AvatarGroupContext.Provider>
+  );
+}
+
+export function AvatarGroupOverflow({
+  'aria-label': ariaLabel,
+  count,
+  role = 'img',
+  ...props
+}: AvatarGroupOverflowProps) {
+  const group = useContext(AvatarGroupContext);
+  return (
+    <span
+      {...props}
+      aria-label={ariaLabel ?? `${count} more`}
+      role={role}
+      {...stylex.props(
+        styles.root,
+        styles[group.shape],
+        styles[group.size],
+        group.grouped && styles.grouped,
+        group.grouped && styles[`member${capitalize(group.size)}`]
+      )}
+    >
+      <span aria-hidden="true">+{count}</span>
     </span>
   );
 }
