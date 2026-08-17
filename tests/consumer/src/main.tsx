@@ -92,6 +92,8 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
   Item,
   ItemActions,
   ItemContent,
@@ -415,6 +417,16 @@ function ConsumerApp() {
                 <InputGroupAddon>https://</InputGroupAddon>
                 <InputGroupInput defaultValue="yxgui.dev" />
                 <InputGroupButton>Visit</InputGroupButton>
+              </InputGroup>
+            </Field>
+            <Field>
+              <FieldLabel>Consumer message</FieldLabel>
+              <InputGroup fullWidth>
+                <InputGroupTextarea defaultValue="Packaged multiline input" />
+                <InputGroupAddon align="block-end">
+                  <InputGroupText>Markdown supported</InputGroupText>
+                  <InputGroupButton>Send</InputGroupButton>
+                </InputGroupAddon>
               </InputGroup>
             </Field>
             <Fieldset>

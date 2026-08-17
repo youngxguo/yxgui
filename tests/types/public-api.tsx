@@ -115,10 +115,13 @@ import type {
   GridProps,
   IconButtonProps,
   IconProps,
+  InputGroupAddonAlign,
   InputGroupAddonProps,
   InputGroupButtonProps,
   InputGroupInputProps,
   InputGroupProps,
+  InputGroupTextProps,
+  InputGroupTextareaProps,
   InputProps,
   ItemActionsProps,
   ItemButtonProps,
@@ -293,6 +296,7 @@ import {
   Grid,
   Input,
   InputGroup,
+  InputGroupTextarea,
   IconButton,
   Item,
   Kbd,
@@ -444,10 +448,13 @@ type PublicProps =
   | GridProps
   | IconButtonProps
   | IconProps
+  | InputGroupAddonAlign
   | InputGroupAddonProps
   | InputGroupButtonProps
   | InputGroupInputProps
   | InputGroupProps
+  | InputGroupTextProps
+  | InputGroupTextareaProps
   | InputProps
   | ItemActionsProps
   | ItemButtonProps
@@ -627,6 +634,8 @@ const closedStyleApi = () => (
     <Input className="override" />
     {/* @ts-expect-error grouped-input presentation remains internal */}
     <InputGroup className="override" />
+    {/* @ts-expect-error grouped-textarea presentation remains internal */}
+    <InputGroupTextarea className="override" />
     {/* @ts-expect-error icon-button sizing remains an explicit semantic API */}
     <IconButton className="override" label="Action">
       !
