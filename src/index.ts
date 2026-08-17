@@ -90,7 +90,14 @@ export {
   type BreadcrumbSeparatorProps
 } from './components/Breadcrumb';
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button';
-export { ButtonGroup, type ButtonGroupProps } from './components/ButtonGroup';
+export {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+  type ButtonGroupProps,
+  type ButtonGroupSeparatorProps,
+  type ButtonGroupTextProps
+} from './components/ButtonGroup';
 export { Calendar, type CalendarProps } from './components/Calendar';
 export { Card, type CardProps } from './components/Card';
 export { Carousel, type CarouselProps } from './components/Carousel';

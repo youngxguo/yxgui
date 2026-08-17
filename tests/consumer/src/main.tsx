@@ -32,6 +32,8 @@ import {
   BreadcrumbSeparator,
   Button,
   ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
   Calendar,
   Card,
   Carousel,
@@ -473,7 +475,9 @@ function ConsumerApp() {
               <MailIcon />
             </IconButton>
             <ButtonGroup aria-label="Consumer document actions">
+              <ButtonGroupText>Document</ButtonGroupText>
               <Button type="button">Save</Button>
+              <ButtonGroupSeparator />
               <Button type="button">Archive</Button>
             </ButtonGroup>
             <Progress aria-label="Consumer verification" value={100} />

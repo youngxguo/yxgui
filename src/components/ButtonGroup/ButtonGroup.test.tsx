@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from '../Button';
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from './ButtonGroup';
 
 describe('ButtonGroup', () => {
   it('groups native buttons without changing their event behavior', () => {
@@ -28,5 +28,19 @@ describe('ButtonGroup', () => {
     );
     expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Archive' })).toBeDisabled();
+  });
+
+  it('composes group-aware text and separators', () => {
+    render(
+      <ButtonGroup disabled orientation="vertical">
+        <ButtonGroupText>View</ButtonGroupText>
+        <ButtonGroupSeparator data-testid="separator" />
+        <Button>List</Button>
+      </ButtonGroup>
+    );
+
+    expect(screen.getByText('View')).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByTestId('separator')).toHaveAttribute('aria-orientation', 'horizontal');
+    expect(screen.getByRole('separator')).toBeInTheDocument();
   });
 });

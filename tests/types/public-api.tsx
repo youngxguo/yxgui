@@ -35,6 +35,8 @@ import type {
   ButtonSize,
   ButtonVariant,
   ButtonGroupProps,
+  ButtonGroupSeparatorProps,
+  ButtonGroupTextProps,
   CalendarProps,
   CardProps,
   CarouselProps,
@@ -275,6 +277,8 @@ import {
   Autocomplete,
   Button,
   ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
   Calendar,
   Card,
   Carousel,
@@ -368,6 +372,8 @@ type PublicProps =
   | ButtonSize
   | ButtonVariant
   | ButtonGroupProps
+  | ButtonGroupSeparatorProps
+  | ButtonGroupTextProps
   | CalendarProps
   | CardProps
   | CarouselProps
@@ -620,6 +626,10 @@ const closedStyleApi = () => (
     <Button className="override">Button</Button>
     {/* @ts-expect-error grouped-action presentation remains internal */}
     <ButtonGroup className="override" />
+    {/* @ts-expect-error grouped-action separator presentation remains internal */}
+    <ButtonGroupSeparator className="override" />
+    {/* @ts-expect-error grouped-action text presentation remains internal */}
+    <ButtonGroupText style={{ padding: 0 }}>View</ButtonGroupText>
     {/* @ts-expect-error calendar presentation remains internal */}
     <Calendar className="override" />
     {/* @ts-expect-error date-picker presentation remains internal */}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../Button';
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from './ButtonGroup';
 
 const meta = {
   title: 'Components/ButtonGroup',
@@ -39,4 +39,31 @@ export const FullWidth: Story = {
 export const Disabled: Story = {
   args: { disabled: true },
   render: Attached.render
+};
+
+export const WithText: Story = {
+  render: (args) => (
+    <ButtonGroup {...args}>
+      <ButtonGroupText>View</ButtonGroupText>
+      <Button type="button" variant="secondary">
+        List
+      </Button>
+      <Button type="button" variant="secondary">
+        Board
+      </Button>
+    </ButtonGroup>
+  )
+};
+
+export const SplitAction: Story = {
+  args: { attached: false },
+  render: (args) => (
+    <ButtonGroup {...args}>
+      <Button type="button">Publish</Button>
+      <ButtonGroupSeparator />
+      <Button type="button" variant="secondary">
+        Schedule
+      </Button>
+    </ButtonGroup>
+  )
 };
