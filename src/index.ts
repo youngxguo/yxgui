@@ -315,19 +315,27 @@ export {
   ItemButton,
   ItemContent,
   ItemDescription,
+  ItemFooter,
   ItemGroup,
+  ItemHeader,
   ItemLink,
   ItemMedia,
+  ItemSeparator,
   ItemTitle,
   type ItemActionsProps,
   type ItemButtonProps,
   type ItemContentProps,
   type ItemDescriptionProps,
+  type ItemFooterProps,
   type ItemGroupProps,
+  type ItemHeaderProps,
   type ItemLinkProps,
   type ItemMediaProps,
   type ItemProps,
-  type ItemTitleProps
+  type ItemSeparatorProps,
+  type ItemSize,
+  type ItemTitleProps,
+  type ItemVariant
 } from './components/Item';
 export { Kbd, type KbdProps } from './components/Kbd';
 export { Link, type LinkProps } from './components/Link';

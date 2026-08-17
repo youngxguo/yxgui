@@ -11,33 +11,42 @@ import {
 } from '../../theme/foundations.stylex';
 
 export type ItemGroupProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
-export type ItemProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
-export type ItemLinkProps = Omit<ComponentProps<'a'>, 'className' | 'style'>;
-export type ItemButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
+export type ItemSize = 'xs' | 'sm' | 'md';
+export type ItemVariant = 'default' | 'outline' | 'muted';
+type ItemOptions = { size?: ItemSize; variant?: ItemVariant };
+export type ItemProps = Omit<ComponentProps<'div'>, 'className' | 'style'> & ItemOptions;
+export type ItemLinkProps = Omit<ComponentProps<'a'>, 'className' | 'style'> & ItemOptions;
+export type ItemButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'> & ItemOptions;
 export type ItemMediaProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
 export type ItemContentProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
 export type ItemTitleProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
 export type ItemDescriptionProps = Omit<ComponentProps<'p'>, 'className' | 'style'>;
 export type ItemActionsProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
+export type ItemHeaderProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
+export type ItemFooterProps = Omit<ComponentProps<'div'>, 'className' | 'style'>;
+export type ItemSeparatorProps = Omit<ComponentProps<'div'>, 'children' | 'className' | 'style'>;
 
 const styles = stylex.create({
   group: { display: 'grid', gap: spacing.md },
   root: {
     alignItems: 'center',
-    backgroundColor: colors.surfaceElevated,
-    borderColor: colors.borderMuted,
     borderRadius: radii.md,
     borderStyle: 'solid',
     borderWidth: '1px',
     boxSizing: 'border-box',
     color: colors.text,
     display: 'flex',
+    flexWrap: 'wrap',
     fontFamily: fontFamilies.sans,
-    gap: spacing.lg,
     minWidth: 0,
-    padding: spacing.lg,
     width: '100%'
   },
+  default: { backgroundColor: 'transparent', borderColor: 'transparent' },
+  outline: { backgroundColor: colors.surfaceElevated, borderColor: colors.borderMuted },
+  muted: { backgroundColor: colors.surfaceSubtle, borderColor: 'transparent' },
+  xs: { gap: spacing.sm, padding: spacing.sm },
+  sm: { gap: spacing.md, padding: spacing.md },
+  md: { gap: spacing.lg, padding: spacing.lg },
   interactive: {
     appearance: 'none',
     cursor: { default: 'pointer', ':disabled': 'not-allowed' },
@@ -51,6 +60,20 @@ const styles = stylex.create({
     backgroundColor: {
       default: colors.surfaceElevated,
       ':hover': colors.surfaceSubtle,
+      ':disabled': colors.surfaceDisabled
+    }
+  },
+  interactiveDefault: {
+    backgroundColor: {
+      default: 'transparent',
+      ':hover': colors.surfaceSubtle,
+      ':disabled': colors.surfaceDisabled
+    }
+  },
+  interactiveMuted: {
+    backgroundColor: {
+      default: colors.surfaceSubtle,
+      ':hover': colors.surfaceElevated,
       ':disabled': colors.surfaceDisabled
     }
   },
@@ -80,31 +103,71 @@ const styles = stylex.create({
     display: 'flex',
     flexShrink: 0,
     gap: spacing.md
-  }
+  },
+  header: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: spacing.md,
+    flexBasis: '100%',
+    justifyContent: 'space-between',
+    minWidth: 0
+  },
+  footer: {
+    alignItems: 'center',
+    color: colors.textMuted,
+    display: 'flex',
+    fontSize: fontSizes.sm,
+    gap: spacing.md,
+    flexBasis: '100%',
+    justifyContent: 'space-between',
+    lineHeight: lineHeights.sm,
+    minWidth: 0
+  },
+  separator: { backgroundColor: colors.borderMuted, height: '1px', width: '100%' }
 });
 
 export function ItemGroup(props: ItemGroupProps) {
   return <div {...props} {...stylex.props(styles.group)} />;
 }
 
-export function Item(props: ItemProps) {
-  return <div {...props} {...stylex.props(styles.root)} />;
+export function Item({ size = 'md', variant = 'outline', ...props }: ItemProps) {
+  return <div {...props} {...stylex.props(styles.root, styles[variant], styles[size])} />;
 }
 
-export function ItemLink(props: ItemLinkProps) {
+export function ItemLink({ size = 'md', variant = 'outline', ...props }: ItemLinkProps) {
   return (
     <a
       {...props}
-      {...stylex.props(styles.root, styles.interactive, styles.interactiveBackground)}
+      {...stylex.props(
+        styles.root,
+        styles[variant],
+        styles[size],
+        styles.interactive,
+        variant === 'outline'
+          ? styles.interactiveBackground
+          : variant === 'muted'
+            ? styles.interactiveMuted
+            : styles.interactiveDefault
+      )}
     />
   );
 }
 
-export function ItemButton(props: ItemButtonProps) {
+export function ItemButton({ size = 'md', variant = 'outline', ...props }: ItemButtonProps) {
   return (
     <button
       {...props}
-      {...stylex.props(styles.root, styles.interactive, styles.interactiveBackground)}
+      {...stylex.props(
+        styles.root,
+        styles[variant],
+        styles[size],
+        styles.interactive,
+        variant === 'outline'
+          ? styles.interactiveBackground
+          : variant === 'muted'
+            ? styles.interactiveMuted
+            : styles.interactiveDefault
+      )}
     />
   );
 }
@@ -127,4 +190,27 @@ export function ItemDescription(props: ItemDescriptionProps) {
 
 export function ItemActions(props: ItemActionsProps) {
   return <div {...props} {...stylex.props(styles.actions)} />;
+}
+
+export function ItemHeader(props: ItemHeaderProps) {
+  return <div {...props} {...stylex.props(styles.header)} />;
+}
+
+export function ItemFooter(props: ItemFooterProps) {
+  return <div {...props} {...stylex.props(styles.footer)} />;
+}
+
+export function ItemSeparator({
+  'aria-orientation': ariaOrientation = 'horizontal',
+  role = 'separator',
+  ...props
+}: ItemSeparatorProps) {
+  return (
+    <div
+      {...props}
+      aria-orientation={ariaOrientation}
+      role={role}
+      {...stylex.props(styles.separator)}
+    />
+  );
 }

@@ -1,6 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { ItemButton, ItemContent, ItemDescription, ItemLink, ItemTitle } from './Item';
+import {
+  Item,
+  ItemButton,
+  ItemContent,
+  ItemDescription,
+  ItemFooter,
+  ItemHeader,
+  ItemLink,
+  ItemSeparator,
+  ItemTitle
+} from './Item';
 
 describe('Item', () => {
   it('preserves native link semantics', () => {
@@ -32,5 +42,25 @@ describe('Item', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Choose workspace' }));
     expect(onClick).toHaveBeenCalledOnce();
     expect(screen.getByRole('button', { name: 'Choose workspace' })).toBeDisabled();
+  });
+
+  it('composes full-width metadata and semantic separators', () => {
+    render(
+      <>
+        <Item size="xs" variant="muted">
+          <ItemHeader>Release</ItemHeader>
+          <ItemContent>
+            <ItemTitle>Version 1.0.0</ItemTitle>
+          </ItemContent>
+          <ItemFooter>All checks passed</ItemFooter>
+        </Item>
+        <ItemSeparator data-testid="separator" />
+      </>
+    );
+
+    expect(screen.getByText('Release')).toBeInTheDocument();
+    expect(screen.getByText('All checks passed')).toBeInTheDocument();
+    expect(screen.getByTestId('separator')).toHaveAttribute('aria-orientation', 'horizontal');
+    expect(screen.getByRole('separator')).toBeInTheDocument();
   });
 });

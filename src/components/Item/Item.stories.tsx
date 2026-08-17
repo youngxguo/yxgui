@@ -9,9 +9,12 @@ import {
   ItemButton,
   ItemContent,
   ItemDescription,
+  ItemFooter,
   ItemGroup,
+  ItemHeader,
   ItemLink,
   ItemMedia,
+  ItemSeparator,
   ItemTitle
 } from './Item';
 
@@ -92,5 +95,48 @@ export const Disabled: Story = {
         <ItemDescription>Ask an administrator for access.</ItemDescription>
       </ItemContent>
     </ItemButton>
+  )
+};
+
+export const RichMetadata: Story = {
+  render: () => (
+    <Item variant="muted">
+      <ItemHeader>
+        <Badge>Release</Badge>
+        <ItemDescription>Today at 10:42 AM</ItemDescription>
+      </ItemHeader>
+      <ItemMedia>
+        <Avatar alt="Young Guo" />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Version 1.0.0 is ready</ItemTitle>
+        <ItemDescription>All package, consumer, and browser checks passed.</ItemDescription>
+      </ItemContent>
+      <ItemFooter>
+        <span>8 components changed</span>
+        <Button type="button" variant="secondary">
+          Review
+        </Button>
+      </ItemFooter>
+    </Item>
+  )
+};
+
+export const Densities: Story = {
+  render: () => (
+    <ItemGroup>
+      <Item size="xs" variant="default">
+        <ItemContent>
+          <ItemTitle>Compact default item</ItemTitle>
+        </ItemContent>
+      </Item>
+      <ItemSeparator />
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Small outline item</ItemTitle>
+          <ItemDescription>Useful for settings and compact lists.</ItemDescription>
+        </ItemContent>
+      </Item>
+    </ItemGroup>
   )
 };

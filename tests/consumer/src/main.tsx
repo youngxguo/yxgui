@@ -112,7 +112,10 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
+  ItemFooter,
+  ItemHeader,
   ItemMedia,
+  ItemSeparator,
   ItemTitle,
   Kbd,
   Listbox,
@@ -293,7 +296,11 @@ function ConsumerApp() {
               </AppShellMain>
               <AppShellFooter>Packaged shell footer</AppShellFooter>
             </AppShell>
-            <Item>
+            <Item variant="muted">
+              <ItemHeader>
+                <Badge>Package surface</Badge>
+                <span>1.0.0</span>
+              </ItemHeader>
               <ItemMedia>
                 <Avatar alt="yxgui consumer" />
               </ItemMedia>
@@ -304,7 +311,9 @@ function ConsumerApp() {
               <ItemActions>
                 <Badge variant="success">Ready</Badge>
               </ItemActions>
+              <ItemFooter>Consumer metadata</ItemFooter>
             </Item>
+            <ItemSeparator />
             <Stat>
               <StatLabel>Consumer checks</StatLabel>
               <StatValue>100%</StatValue>

@@ -144,11 +144,16 @@ import type {
   ItemButtonProps,
   ItemContentProps,
   ItemDescriptionProps,
+  ItemFooterProps,
   ItemGroupProps,
+  ItemHeaderProps,
   ItemLinkProps,
   ItemMediaProps,
   ItemProps,
+  ItemSeparatorProps,
+  ItemSize,
   ItemTitleProps,
+  ItemVariant,
   KbdProps,
   LinkProps,
   ListboxOptionProps,
@@ -330,6 +335,9 @@ import {
   InputGroupTextarea,
   IconButton,
   Item,
+  ItemFooter,
+  ItemHeader,
+  ItemSeparator,
   Kbd,
   Link,
   Listbox,
@@ -508,11 +516,16 @@ type PublicProps =
   | ItemButtonProps
   | ItemContentProps
   | ItemDescriptionProps
+  | ItemFooterProps
   | ItemGroupProps
+  | ItemHeaderProps
   | ItemLinkProps
   | ItemMediaProps
   | ItemProps
+  | ItemSeparatorProps
+  | ItemSize
   | ItemTitleProps
+  | ItemVariant
   | KbdProps
   | LinkProps
   | ListboxOptionProps
@@ -718,6 +731,12 @@ const closedStyleApi = () => (
     </IconButton>
     {/* @ts-expect-error item presentation remains internal */}
     <Item className="override" />
+    {/* @ts-expect-error item header layout remains internal */}
+    <ItemHeader style={{ display: 'none' }} />
+    {/* @ts-expect-error item footer layout remains internal */}
+    <ItemFooter className="override" />
+    {/* @ts-expect-error item separator presentation remains internal */}
+    <ItemSeparator style={{ margin: 0 }} />
     {/* @ts-expect-error code presentation remains internal */}
     <CodeBlock className="override" code="const value = true;" />
     {/* @ts-expect-error color field presentation remains internal */}
