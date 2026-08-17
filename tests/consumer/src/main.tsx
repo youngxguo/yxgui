@@ -29,6 +29,7 @@ import {
   Badge,
   Breadcrumb,
   BreadcrumbCurrent,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -139,9 +140,12 @@ import {
   NumberField,
   OTPField,
   Pagination,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationList,
+  PaginationNext,
+  PaginationPrevious,
   PageHeader,
   PageHeaderContent,
   PageHeaderDescription,
@@ -432,6 +436,10 @@ function ConsumerApp() {
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
+                  <BreadcrumbEllipsis />
+                  <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
                   <BreadcrumbCurrent>Consumer</BreadcrumbCurrent>
                 </BreadcrumbItem>
               </BreadcrumbList>
@@ -675,12 +683,21 @@ function ConsumerApp() {
             <Pagination>
               <PaginationList>
                 <PaginationItem>
+                  <PaginationPrevious href="#previous-consumer" />
+                </PaginationItem>
+                <PaginationItem>
                   <PaginationLink current href="#1">
                     1
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#2">2</PaginationLink>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#12">12</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#next-consumer" />
                 </PaginationItem>
               </PaginationList>
             </Pagination>

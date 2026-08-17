@@ -16,6 +16,12 @@ export type PaginationLinkProps = Omit<
   ComponentProps<'a'>,
   'aria-current' | 'className' | 'style'
 > & { current?: boolean };
+export type PaginationPreviousProps = Omit<PaginationLinkProps, 'current'>;
+export type PaginationNextProps = Omit<PaginationLinkProps, 'current'>;
+export type PaginationEllipsisProps = Omit<
+  ComponentProps<'span'>,
+  'aria-hidden' | 'children' | 'className' | 'style'
+>;
 
 const styles = stylex.create({
   root: { fontFamily: fontFamilies.sans },
@@ -48,6 +54,17 @@ const styles = stylex.create({
     backgroundColor: colors.primary,
     borderColor: colors.primary,
     color: colors.onEmphasis
+  },
+  ellipsis: {
+    alignItems: 'center',
+    color: colors.textMuted,
+    display: 'inline-flex',
+    fontSize: fontSizes.sm,
+    justifyContent: 'center',
+    lineHeight: lineHeights.sm,
+    minHeight: '32px',
+    minWidth: '32px',
+    userSelect: 'none'
   }
 });
 
@@ -67,5 +84,37 @@ export function PaginationLink({ current = false, ...props }: PaginationLinkProp
       aria-current={current ? 'page' : undefined}
       {...stylex.props(styles.link, current && styles.current)}
     />
+  );
+}
+
+export function PaginationPrevious({
+  'aria-label': ariaLabel = 'Previous page',
+  children = 'Previous',
+  ...props
+}: PaginationPreviousProps) {
+  return (
+    <PaginationLink {...props} aria-label={ariaLabel}>
+      {children}
+    </PaginationLink>
+  );
+}
+
+export function PaginationNext({
+  'aria-label': ariaLabel = 'Next page',
+  children = 'Next',
+  ...props
+}: PaginationNextProps) {
+  return (
+    <PaginationLink {...props} aria-label={ariaLabel}>
+      {children}
+    </PaginationLink>
+  );
+}
+
+export function PaginationEllipsis(props: PaginationEllipsisProps) {
+  return (
+    <span {...props} aria-hidden="true" {...stylex.props(styles.ellipsis)}>
+      …
+    </span>
   );
 }

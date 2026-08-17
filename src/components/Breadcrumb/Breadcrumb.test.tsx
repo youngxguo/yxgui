@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   Breadcrumb,
   BreadcrumbCurrent,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -19,6 +20,10 @@ describe('Breadcrumb', () => {
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
           </BreadcrumbItem>
           <BreadcrumbItem>
+            <BreadcrumbEllipsis data-testid="ellipsis" />
+            <BreadcrumbSeparator>/</BreadcrumbSeparator>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
             <BreadcrumbCurrent>Settings</BreadcrumbCurrent>
           </BreadcrumbItem>
         </BreadcrumbList>
@@ -26,6 +31,8 @@ describe('Breadcrumb', () => {
     );
     expect(screen.getByRole('navigation', { name: 'Breadcrumb' })).toBeInTheDocument();
     expect(screen.getByText('Settings')).toHaveAttribute('aria-current', 'page');
-    expect(screen.getByText('/')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getAllByText('/')).toHaveLength(2);
+    expect(screen.getAllByText('/')[0]).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('ellipsis')).toHaveAttribute('aria-hidden', 'true');
   });
 });

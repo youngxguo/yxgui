@@ -88,11 +88,13 @@ export { Badge, type BadgeProps } from './components/Badge';
 export {
   Breadcrumb,
   BreadcrumbCurrent,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
   type BreadcrumbCurrentProps,
+  type BreadcrumbEllipsisProps,
   type BreadcrumbItemProps,
   type BreadcrumbLinkProps,
   type BreadcrumbListProps,
@@ -405,12 +407,18 @@ export {
 export { OTPField, type OTPFieldProps } from './components/OTPField';
 export {
   Pagination,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationList,
+  PaginationNext,
+  PaginationPrevious,
+  type PaginationEllipsisProps,
   type PaginationItemProps,
   type PaginationLinkProps,
   type PaginationListProps,
+  type PaginationNextProps,
+  type PaginationPreviousProps,
   type PaginationProps
 } from './components/Pagination';
 export {

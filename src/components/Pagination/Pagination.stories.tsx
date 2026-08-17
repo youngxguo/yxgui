@@ -1,5 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Pagination, PaginationItem, PaginationLink, PaginationList } from './Pagination';
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationList,
+  PaginationNext,
+  PaginationPrevious
+} from './Pagination';
 
 const meta = { title: 'Components/Pagination', component: Pagination } satisfies Meta<
   typeof Pagination
@@ -11,9 +19,7 @@ export const Default: Story = {
     <Pagination>
       <PaginationList>
         <PaginationItem>
-          <PaginationLink aria-label="Previous page" href="#previous">
-            Previous
-          </PaginationLink>
+          <PaginationPrevious href="#previous" />
         </PaginationItem>
         <PaginationItem>
           <PaginationLink href="#1">1</PaginationLink>
@@ -24,12 +30,13 @@ export const Default: Story = {
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#3">3</PaginationLink>
+          <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink aria-label="Next page" href="#next">
-            Next
-          </PaginationLink>
+          <PaginationLink href="#12">12</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#next" />
         </PaginationItem>
       </PaginationList>
     </Pagination>

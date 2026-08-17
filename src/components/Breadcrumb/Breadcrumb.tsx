@@ -15,6 +15,10 @@ export type BreadcrumbSeparatorProps = Omit<
   ComponentProps<'span'>,
   'aria-hidden' | 'className' | 'style'
 >;
+export type BreadcrumbEllipsisProps = Omit<
+  ComponentProps<'span'>,
+  'aria-hidden' | 'children' | 'className' | 'style'
+>;
 
 const styles = stylex.create({
   root: { fontFamily: fontFamilies.sans },
@@ -34,7 +38,8 @@ const styles = stylex.create({
     textDecoration: { default: 'none', ':hover': 'underline' }
   },
   current: { color: colors.text, fontWeight: 600 },
-  separator: { color: colors.textMuted, userSelect: 'none' }
+  separator: { color: colors.textMuted, userSelect: 'none' },
+  ellipsis: { color: colors.textMuted, letterSpacing: '0.08em', userSelect: 'none' }
 });
 
 export function Breadcrumb({ 'aria-label': ariaLabel = 'Breadcrumb', ...props }: BreadcrumbProps) {
@@ -54,4 +59,11 @@ export function BreadcrumbCurrent(props: BreadcrumbCurrentProps) {
 }
 export function BreadcrumbSeparator(props: BreadcrumbSeparatorProps) {
   return <span {...props} aria-hidden="true" {...stylex.props(styles.text, styles.separator)} />;
+}
+export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
+  return (
+    <span {...props} aria-hidden="true" {...stylex.props(styles.text, styles.ellipsis)}>
+      …
+    </span>
+  );
 }

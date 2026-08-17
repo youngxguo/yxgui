@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Breadcrumb,
   BreadcrumbCurrent,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -27,6 +28,26 @@ export const Default: Story = {
         </BreadcrumbItem>
         <BreadcrumbItem>
           <BreadcrumbCurrent>yxgui</BreadcrumbCurrent>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  )
+};
+
+export const Collapsed: Story = {
+  render: () => (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="#home">Home</BreadcrumbLink>
+          <BreadcrumbSeparator>/</BreadcrumbSeparator>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbEllipsis />
+          <BreadcrumbSeparator>/</BreadcrumbSeparator>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbCurrent>Release</BreadcrumbCurrent>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

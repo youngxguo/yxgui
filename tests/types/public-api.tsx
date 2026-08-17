@@ -31,6 +31,7 @@ import type {
   AvatarSize,
   BadgeProps,
   BreadcrumbCurrentProps,
+  BreadcrumbEllipsisProps,
   BreadcrumbItemProps,
   BreadcrumbLinkProps,
   BreadcrumbListProps,
@@ -188,8 +189,11 @@ import type {
   NumberFieldProps,
   OTPFieldProps,
   PaginationItemProps,
+  PaginationEllipsisProps,
   PaginationLinkProps,
   PaginationListProps,
+  PaginationNextProps,
+  PaginationPreviousProps,
   PaginationProps,
   PageHeaderActionsProps,
   PageHeaderContentProps,
@@ -305,6 +309,7 @@ import {
   ButtonGroupSeparator,
   ButtonGroupText,
   Calendar,
+  BreadcrumbEllipsis,
   Card,
   CardAction,
   CardContent,
@@ -350,6 +355,9 @@ import {
   MultiSelect,
   NavigationMenuContent,
   OTPField,
+  PaginationEllipsis,
+  PaginationNext,
+  PaginationPrevious,
   PageHeader,
   PageSection,
   PasswordField,
@@ -407,6 +415,7 @@ type PublicProps =
   | AvatarSize
   | BadgeProps
   | BreadcrumbCurrentProps
+  | BreadcrumbEllipsisProps
   | BreadcrumbItemProps
   | BreadcrumbLinkProps
   | BreadcrumbListProps
@@ -564,8 +573,11 @@ type PublicProps =
   | NumberFieldProps
   | OTPFieldProps
   | PaginationItemProps
+  | PaginationEllipsisProps
   | PaginationLinkProps
   | PaginationListProps
+  | PaginationNextProps
+  | PaginationPreviousProps
   | PaginationProps
   | PageHeaderActionsProps
   | PageHeaderContentProps
@@ -699,6 +711,8 @@ const closedStyleApi = () => (
     <ButtonGroupText style={{ padding: 0 }}>View</ButtonGroupText>
     {/* @ts-expect-error calendar presentation remains internal */}
     <Calendar className="override" />
+    {/* @ts-expect-error breadcrumb ellipsis presentation remains internal */}
+    <BreadcrumbEllipsis className="override" />
     {/* @ts-expect-error circular progress presentation remains internal */}
     <CircularProgress className="override" />
     {/* @ts-expect-error date-picker presentation remains internal */}
@@ -797,6 +811,12 @@ const closedStyleApi = () => (
     <OTPField className="override" label="Code" />
     {/* @ts-expect-error navigation menu surfaces keep styling internal */}
     <NavigationMenuContent className="override" />
+    {/* @ts-expect-error pagination ellipsis presentation remains internal */}
+    <PaginationEllipsis style={{ margin: 0 }} />
+    {/* @ts-expect-error previous-page presentation remains internal */}
+    <PaginationPrevious className="override" href="#previous" />
+    {/* @ts-expect-error next-page presentation remains internal */}
+    <PaginationNext style={{ color: 'red' }} href="#next" />
     {/* @ts-expect-error overlay classes remain internal */}
     <DialogContent className="override" />
     {/* @ts-expect-error drawer surfaces keep styling internal */}
