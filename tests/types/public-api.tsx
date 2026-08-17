@@ -111,10 +111,15 @@ import type {
   EmptyMediaProps,
   EmptyProps,
   EmptyTitleProps,
+  FieldContentProps,
   FieldDescriptionProps,
   FieldErrorProps,
+  FieldGroupProps,
   FieldLabelProps,
+  FieldOrientation,
   FieldProps,
+  FieldSeparatorProps,
+  FieldTitleProps,
   FieldsetDescriptionProps,
   FieldsetLegendProps,
   FieldsetProps,
@@ -316,6 +321,10 @@ import {
   Form,
   FileUpload,
   Grid,
+  FieldContent,
+  FieldGroup,
+  FieldSeparator,
+  FieldTitle,
   Input,
   InputGroup,
   InputGroupTextarea,
@@ -466,10 +475,15 @@ type PublicProps =
   | EmptyMediaProps
   | EmptyProps
   | EmptyTitleProps
+  | FieldContentProps
   | FieldDescriptionProps
   | FieldErrorProps
+  | FieldGroupProps
   | FieldLabelProps
+  | FieldOrientation
   | FieldProps
+  | FieldSeparatorProps
+  | FieldTitleProps
   | FieldsetDescriptionProps
   | FieldsetLegendProps
   | FieldsetProps
@@ -688,6 +702,14 @@ const closedStyleApi = () => (
     <Input className="override" />
     {/* @ts-expect-error grouped-input presentation remains internal */}
     <InputGroup className="override" />
+    {/* @ts-expect-error field-group layout remains internal */}
+    <FieldGroup className="override" />
+    {/* @ts-expect-error field-content layout remains internal */}
+    <FieldContent style={{ gap: 0 }} />
+    {/* @ts-expect-error field-title presentation remains internal */}
+    <FieldTitle className="override">Title</FieldTitle>
+    {/* @ts-expect-error field-separator presentation remains internal */}
+    <FieldSeparator style={{ margin: 0 }}>Or</FieldSeparator>
     {/* @ts-expect-error grouped-textarea presentation remains internal */}
     <InputGroupTextarea className="override" />
     {/* @ts-expect-error icon-button sizing remains an explicit semantic API */}

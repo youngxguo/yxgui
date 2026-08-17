@@ -87,8 +87,12 @@ import {
   EmptyMedia,
   EmptyTitle,
   Field,
+  FieldContent,
   FieldDescription,
+  FieldGroup,
   FieldLabel,
+  FieldSeparator,
+  FieldTitle,
   FileUpload,
   Flex,
   Form,
@@ -431,29 +435,39 @@ function ConsumerApp() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            <Field>
-              <FieldLabel htmlFor="consumer-email">Email</FieldLabel>
-              <Input fullWidth id="consumer-email" type="email" />
-              <FieldDescription>Built through the published package exports.</FieldDescription>
-            </Field>
-            <Field>
-              <FieldLabel>Consumer URL</FieldLabel>
-              <InputGroup>
-                <InputGroupAddon>https://</InputGroupAddon>
-                <InputGroupInput defaultValue="yxgui.dev" />
-                <InputGroupButton>Visit</InputGroupButton>
-              </InputGroup>
-            </Field>
-            <Field>
-              <FieldLabel>Consumer message</FieldLabel>
-              <InputGroup fullWidth>
-                <InputGroupTextarea defaultValue="Packaged multiline input" />
-                <InputGroupAddon align="block-end">
-                  <InputGroupText>Markdown supported</InputGroupText>
-                  <InputGroupButton>Send</InputGroupButton>
-                </InputGroupAddon>
-              </InputGroup>
-            </Field>
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="consumer-email">Email</FieldLabel>
+                <Input fullWidth id="consumer-email" type="email" />
+                <FieldDescription>Built through the published package exports.</FieldDescription>
+              </Field>
+              <Field>
+                <FieldLabel>Consumer URL</FieldLabel>
+                <InputGroup>
+                  <InputGroupAddon>https://</InputGroupAddon>
+                  <InputGroupInput defaultValue="yxgui.dev" />
+                  <InputGroupButton>Visit</InputGroupButton>
+                </InputGroup>
+              </Field>
+              <FieldSeparator>Message</FieldSeparator>
+              <Field>
+                <FieldLabel>Consumer message</FieldLabel>
+                <InputGroup fullWidth>
+                  <InputGroupTextarea defaultValue="Packaged multiline input" />
+                  <InputGroupAddon align="block-end">
+                    <InputGroupText>Markdown supported</InputGroupText>
+                    <InputGroupButton>Send</InputGroupButton>
+                  </InputGroupAddon>
+                </InputGroup>
+              </Field>
+              <Field orientation="horizontal">
+                <Switch aria-label="Consumer release updates" />
+                <FieldContent>
+                  <FieldTitle>Release updates</FieldTitle>
+                  <FieldDescription>Receive packaged component announcements.</FieldDescription>
+                </FieldContent>
+              </Field>
+            </FieldGroup>
             <Fieldset>
               <FieldsetLegend>Workspace</FieldsetLegend>
               <Select aria-label="Workspace" fullWidth>
