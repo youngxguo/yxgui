@@ -36,6 +36,12 @@ import {
   ButtonGroupText,
   Calendar,
   Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   Carousel,
   CheckboxGroup,
   CheckboxGroupLegend,
@@ -299,7 +305,17 @@ function ConsumerApp() {
             <CodeBlock code="pnpm add yxgui" label="Consumer install" language="shell" />
             <Carousel aria-label="Consumer carousel">
               <Card>
-                <Typography>First packaged slide</Typography>
+                <CardHeader>
+                  <CardTitle>First packaged slide</CardTitle>
+                  <CardDescription>Composed from the public package.</CardDescription>
+                  <CardAction>1 / 2</CardAction>
+                </CardHeader>
+                <CardContent>Consumer content</CardContent>
+                <CardFooter>
+                  <Button type="button" variant="secondary">
+                    Review
+                  </Button>
+                </CardFooter>
               </Card>
               <Card>
                 <Typography>Second packaged slide</Typography>

@@ -38,7 +38,13 @@ import type {
   ButtonGroupSeparatorProps,
   ButtonGroupTextProps,
   CalendarProps,
+  CardActionProps,
+  CardContentProps,
+  CardDescriptionProps,
+  CardFooterProps,
+  CardHeaderProps,
   CardProps,
+  CardTitleProps,
   CarouselProps,
   CheckboxProps,
   CheckboxGroupLegendProps,
@@ -281,6 +287,12 @@ import {
   ButtonGroupText,
   Calendar,
   Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   Carousel,
   CodeBlock,
   ColorField,
@@ -375,7 +387,13 @@ type PublicProps =
   | ButtonGroupSeparatorProps
   | ButtonGroupTextProps
   | CalendarProps
+  | CardActionProps
+  | CardContentProps
+  | CardDescriptionProps
+  | CardFooterProps
+  | CardHeaderProps
   | CardProps
+  | CardTitleProps
   | CarouselProps
   | CheckboxProps
   | CheckboxGroupLegendProps
@@ -636,6 +654,18 @@ const closedStyleApi = () => (
     <DatePicker className="override" label="Release date" />
     {/* @ts-expect-error consumers cannot override component styles */}
     <Card style={{ padding: 0 }}>Card</Card>
+    {/* @ts-expect-error card header layout remains internal */}
+    <CardHeader className="override" />
+    {/* @ts-expect-error card title presentation remains internal */}
+    <CardTitle style={{ margin: 1 }}>Title</CardTitle>
+    {/* @ts-expect-error card description presentation remains internal */}
+    <CardDescription className="override">Description</CardDescription>
+    {/* @ts-expect-error card action layout remains internal */}
+    <CardAction style={{ display: 'none' }} />
+    {/* @ts-expect-error card content layout remains internal */}
+    <CardContent className="override" />
+    {/* @ts-expect-error card footer layout remains internal */}
+    <CardFooter style={{ gap: 0 }} />
     {/* @ts-expect-error copy feedback presentation remains internal */}
     <CopyButton className="override" value="text" />
     {/* @ts-expect-error carousel layout remains internal */}

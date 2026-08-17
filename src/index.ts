@@ -99,7 +99,22 @@ export {
   type ButtonGroupTextProps
 } from './components/ButtonGroup';
 export { Calendar, type CalendarProps } from './components/Calendar';
-export { Card, type CardProps } from './components/Card';
+export {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  type CardActionProps,
+  type CardContentProps,
+  type CardDescriptionProps,
+  type CardFooterProps,
+  type CardHeaderProps,
+  type CardProps,
+  type CardTitleProps
+} from './components/Card';
 export { Carousel, type CarouselProps } from './components/Carousel';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
 export {
