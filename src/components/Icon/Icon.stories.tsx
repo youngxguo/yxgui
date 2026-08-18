@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { radii, spacing } from '../../theme/foundations.stylex';
-import { GitHubIcon, LinkedInIcon, MailIcon, MoonIcon, SunIcon } from './Icon';
+import { Icon } from './Icon';
 
 const styles = stylex.create({
   row: {
@@ -31,10 +31,10 @@ export const Brands: Story = {
   render: () => (
     <div {...stylex.props(styles.row)}>
       <div {...stylex.props(styles.tile)}>
-        <GitHubIcon />
+        <Icon name="github" />
       </div>
       <div {...stylex.props(styles.tile)}>
-        <LinkedInIcon />
+        <Icon name="linkedin" />
       </div>
     </div>
   )
@@ -44,13 +44,13 @@ export const Interface: Story = {
   render: () => (
     <div {...stylex.props(styles.row)}>
       <div {...stylex.props(styles.tile)}>
-        <MailIcon />
+        <Icon name="mail" />
       </div>
       <div {...stylex.props(styles.tile)}>
-        <SunIcon />
+        <Icon name="sun" />
       </div>
       <div {...stylex.props(styles.tile)}>
-        <MoonIcon />
+        <Icon name="moon" />
       </div>
     </div>
   )
