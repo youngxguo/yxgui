@@ -16,7 +16,8 @@
   "files": [
     "dist",
     "LICENSE",
-    "LICENSES"
+    "LICENSES",
+    "THIRD_PARTY_NOTICES.md"
   ],
   "scripts": {
     "check:quality": "pnpm check:static && pnpm test:screenshots",
