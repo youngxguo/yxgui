@@ -1,7 +1,14 @@
 import * as stylex from '@stylexjs/stylex';
-import type { ComponentProps } from 'react';
+import type { ReactNode } from 'react';
 
-export type IconSvgProps = ComponentProps<'svg'>;
+export type IconComponentProps = {
+  color?: string;
+  label?: string;
+};
+
+type IconSvgProps = IconComponentProps & {
+  children: ReactNode;
+};
 
 const styles = stylex.create({
   root: {
@@ -13,31 +20,22 @@ const styles = stylex.create({
   }
 });
 
-export function IconSvg({
-  fill = 'none',
-  height = '24',
-  stroke = 'currentColor',
-  strokeLinecap = 'round',
-  strokeLinejoin = 'round',
-  strokeWidth = '2',
-  viewBox = '0 0 24 24',
-  width = '24',
-  xmlns = 'http://www.w3.org/2000/svg',
-  ...props
-}: IconSvgProps) {
+export function IconSvg({ children, color, label }: IconSvgProps) {
   return (
     <svg
-      fill={fill}
-      height={height}
-      stroke={stroke}
-      strokeLinecap={strokeLinecap}
-      strokeLinejoin={strokeLinejoin}
-      strokeWidth={strokeWidth}
-      viewBox={viewBox}
-      width={width}
-      xmlns={xmlns}
-      {...props}
+      aria-hidden={label === undefined ? true : undefined}
+      aria-label={label}
+      color={color}
+      fill="currentColor"
+      focusable="false"
+      height="24"
+      role={label === undefined ? undefined : 'img'}
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
       {...stylex.props(styles.root)}
-    />
+    >
+      {children}
+    </svg>
   );
 }

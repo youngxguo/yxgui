@@ -1,10 +1,10 @@
-import { IconSvg, type IconSvgProps } from '../IconSvg';
+import { IconSvg, type IconComponentProps } from '../IconSvg';
 
-export function SunIcon(props: IconSvgProps) {
+export function SunIcon(props: IconComponentProps) {
   return (
     <IconSvg {...props}>
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
+      <circle cx="12" cy="12" r="4.5" />
+      <path d="M11 1h2v4h-2zM11 19h2v4h-2zM19 11h4v2h-4zM1 11h4v2H1zM18.36 4.22l1.42 1.42-2.83 2.83-1.42-1.42zM5.64 15.53l1.42 1.42-2.83 2.83-1.42-1.42zM19.78 18.36l-1.42 1.42-2.83-2.83 1.42-1.42zM8.47 7.05 7.05 8.47 4.22 5.64l1.42-1.42z" />
     </IconSvg>
   );
 }

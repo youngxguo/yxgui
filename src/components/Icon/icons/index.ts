@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { IconSvgProps } from '../IconSvg';
+import type { IconComponentProps } from '../IconSvg';
 import { GitHubIcon } from './GitHubIcon';
 import { LinkedInIcon } from './LinkedInIcon';
 import { MailIcon } from './MailIcon';
@@ -12,6 +12,6 @@ export const iconRegistry = {
   mail: MailIcon,
   moon: MoonIcon,
   sun: SunIcon
-} satisfies Record<string, ComponentType<IconSvgProps>>;
+} satisfies Record<string, ComponentType<IconComponentProps>>;
 
 export type IconName = keyof typeof iconRegistry;

@@ -1,10 +1,10 @@
-import { IconSvg, type IconSvgProps } from '../IconSvg';
+import { IconSvg, type IconComponentProps } from '../IconSvg';
 
-export function MailIcon(props: IconSvgProps) {
+export function MailIcon(props: IconComponentProps) {
   return (
     <IconSvg {...props}>
-      <rect height="14" rx="2" width="18" x="3" y="5" />
-      <path d="m3 7 9 6 9-6" />
+      <path d="M4.5 4A2.5 2.5 0 0 0 2 6.5v.36l10 6.67 10-6.67V6.5A2.5 2.5 0 0 0 19.5 4h-15Z" />
+      <path d="M22 9.26 12.55 15.6a1 1 0 0 1-1.1 0L2 9.26v8.24A2.5 2.5 0 0 0 4.5 20h15a2.5 2.5 0 0 0 2.5-2.5V9.26Z" />
     </IconSvg>
   );
 }
