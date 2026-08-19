@@ -19,7 +19,8 @@
     "LICENSES"
   ],
   "scripts": {
-    "check:quality": "pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:screenshots",
+    "check:quality": "pnpm check:static && pnpm test:screenshots",
+    "check:static": "pnpm lint && pnpm format:check && pnpm test && pnpm build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
