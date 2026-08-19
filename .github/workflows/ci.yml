@@ -7,10 +7,40 @@ on:
       - master
   pull_request:
 
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   checks:
     name: Quality Checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Quality checks
+        run: pnpm check:static
+
+  screenshots:
+    name: Screenshot Tests
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
 
     steps:
@@ -32,10 +62,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browser
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm exec playwright install --only-shell chromium
 
-      - name: Quality checks
-        run: pnpm check:quality
+      - name: Screenshot tests
+        run: pnpm test:screenshots
 
       - name: Upload screenshot test report
         if: failure()
