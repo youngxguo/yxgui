@@ -14,6 +14,7 @@ type ButtonProps = Omit<ComponentProps<'button'>, 'className' | 'style'>;
 
 const styles = stylex.create({
   root: {
+    alignItems: 'center',
     backgroundColor: {
       default: colors.primary,
       ':enabled:hover': colors.primaryHover,
@@ -31,9 +32,12 @@ const styles = stylex.create({
       default: colors.onEmphasis,
       ':disabled': colors.textDisabled
     },
+    display: 'inline-flex',
     fontFamily: fontFamilies.sans,
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.semibold,
+    gap: spacing.md,
+    justifyContent: 'center',
     lineHeight: lineHeights.sm,
     paddingBlock: spacing.md,
     paddingInline: spacing.lg
