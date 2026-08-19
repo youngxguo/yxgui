@@ -1,18 +1,8 @@
-import { IconSvg, type IconComponentProps } from '../IconSvg';
+import { IconSvg, type IconSvgProps } from '../IconSvg';
 
-export function MoonIcon({ label }: IconComponentProps) {
+export function MoonIcon(props: IconSvgProps) {
   return (
-    <IconSvg
-      fill="none"
-      height="24"
-      label={label}
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="24"
-    >
+    <IconSvg {...props}>
       <path d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6a8.5 8.5 0 1 0 11.6 11.6Z" />
     </IconSvg>
   );

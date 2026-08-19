@@ -1,27 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
-import type { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps } from 'react';
 
-export type IconSvgProps = Omit<
-  ComponentProps<'svg'>,
-  | 'aria-hidden'
-  | 'aria-label'
-  | 'children'
-  | 'className'
-  | 'focusable'
-  | 'height'
-  | 'role'
-  | 'style'
-  | 'viewBox'
-  | 'width'
-> & {
-  children: ReactNode;
-  height: string;
-  label?: string;
-  viewBox: string;
-  width: string;
-};
-
-export type IconComponentProps = Pick<IconSvgProps, 'label'>;
+export type IconSvgProps = ComponentProps<'svg'>;
 
 const styles = stylex.create({
   root: {
@@ -33,17 +13,31 @@ const styles = stylex.create({
   }
 });
 
-export function IconSvg({ children, label, ...props }: IconSvgProps) {
+export function IconSvg({
+  fill = 'none',
+  height = '24',
+  stroke = 'currentColor',
+  strokeLinecap = 'round',
+  strokeLinejoin = 'round',
+  strokeWidth = '2',
+  viewBox = '0 0 24 24',
+  width = '24',
+  xmlns = 'http://www.w3.org/2000/svg',
+  ...props
+}: IconSvgProps) {
   return (
     <svg
-      aria-hidden={label === undefined ? true : undefined}
-      aria-label={label}
-      focusable="false"
-      role={label === undefined ? undefined : 'img'}
+      fill={fill}
+      height={height}
+      stroke={stroke}
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      strokeWidth={strokeWidth}
+      viewBox={viewBox}
+      width={width}
+      xmlns={xmlns}
       {...props}
       {...stylex.props(styles.root)}
-    >
-      {children}
-    </svg>
+    />
   );
 }
