@@ -1,13 +1,7 @@
-import * as stylex from '@stylexjs/stylex';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 import { Card } from './Card';
-
-const styles = stylex.create({
-  example: {
-    width: '360px'
-  }
-});
 
 const meta = {
   title: 'Components/Card',
@@ -19,10 +13,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div {...stylex.props(styles.example)}>
+    <Flex align="start">
       <Card>
         <Typography>Card content</Typography>
       </Card>
-    </div>
+    </Flex>
   )
 };
