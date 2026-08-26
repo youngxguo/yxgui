@@ -1,0 +1,11 @@
+{
+  "name": "yxgui",
+  "install": "pnpm install --frozen-lockfile && pnpm exec playwright install --only-shell --with-deps chromium",
+  "terminals": [
+    {
+      "name": "storybook",
+      "command": "pnpm storybook --ci"
+    }
+  ],
+  "ports": [6006]
+}
