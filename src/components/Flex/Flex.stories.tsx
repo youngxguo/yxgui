@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card } from '../Card';
+import { Icon } from '../Icon';
 import { Typography } from '../Typography';
 import { Flex } from './Flex';
 
@@ -104,6 +105,24 @@ export const Alignment: Story = {
   )
 };
 
+const wrappedIconNames = [
+  'mail',
+  'sun',
+  'moon',
+  'github',
+  'linkedin',
+  'mail',
+  'sun',
+  'moon',
+  'github',
+  'linkedin',
+  'mail',
+  'sun',
+  'moon',
+  'github',
+  'linkedin'
+] as const;
+
 export const Wrapped: Story = {
   args: {
     gap: 'sm',
@@ -112,25 +131,9 @@ export const Wrapped: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      {[
-        'Item one',
-        'Item two',
-        'Item three',
-        'Item four',
-        'Item five',
-        'Item six',
-        'Item seven',
-        'Item eight',
-        'Item nine',
-        'Item ten',
-        'Item eleven',
-        'Item twelve',
-        'Item thirteen',
-        'Item fourteen',
-        'Item fifteen'
-      ].map((label) => (
-        <Card key={label}>
-          <Typography>{label}</Typography>
+      {wrappedIconNames.map((name, index) => (
+        <Card key={`${name}-${index}`}>
+          <Icon name={name} label={`Item ${index + 1}`} />
         </Card>
       ))}
     </Flex>
