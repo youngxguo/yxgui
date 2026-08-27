@@ -4,6 +4,7 @@ import { palette } from './palette.stylex';
 export const colors = stylex.defineVars({
   surface: palette.gray50,
   surfaceElevated: palette.white,
+  surfaceHover: palette.gray100,
   text: palette.gray900,
   textMuted: palette.gray600,
   border: palette.gray600,
