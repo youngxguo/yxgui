@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Flex } from '../Flex';
 import { Typography } from '../Typography';
 import { Card } from './Card';
 
@@ -13,10 +12,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Flex align="start">
-      <Card>
-        <Typography>Card content</Typography>
-      </Card>
-    </Flex>
+    <Card>
+      <Typography>Card content</Typography>
+    </Card>
   )
 };
