@@ -15,6 +15,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    children: 'Ghost'
+  }
+};
+
 export const LeadingIcon: Story = {
   args: {
     children: (
