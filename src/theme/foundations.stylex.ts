@@ -18,10 +18,10 @@ export const fontFamilies = stylex.defineConsts({
 });
 
 export const fontSizes = stylex.defineConsts({
-  sm: '13px',
-  md: '15px',
+  sm: '14px',
+  md: '16px',
   lg: '24px',
-  xl: '30px'
+  xl: '32px'
 });
 
 export const fontWeights = stylex.defineConsts({
@@ -33,6 +33,6 @@ export const fontWeights = stylex.defineConsts({
 export const lineHeights = stylex.defineConsts({
   sm: '20px',
   md: '24px',
-  lg: '30px',
-  xl: '38px'
+  lg: '32px',
+  xl: '40px'
 });
