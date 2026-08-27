@@ -22,7 +22,7 @@ const styles = stylex.create({
       default: colors.border,
       ':disabled': colors.borderDisabled
     },
-    borderRadius: radii.sm,
+    borderRadius: radii.md,
     borderStyle: 'solid',
     borderWidth: '1px',
     boxSizing: 'border-box',
@@ -34,7 +34,8 @@ const styles = stylex.create({
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.regular,
     lineHeight: lineHeights.sm,
-    padding: spacing.md,
+    paddingBlock: spacing.sm,
+    paddingInline: spacing.md,
     '::placeholder': {
       color: {
         default: colors.textMuted,

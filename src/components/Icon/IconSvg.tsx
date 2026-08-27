@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import type { ReactNode } from 'react';
+import { spacing } from '../../theme/foundations.stylex';
 
 export type IconComponentProps = {
   color?: string;
@@ -14,9 +15,9 @@ const styles = stylex.create({
   root: {
     display: 'block',
     flexShrink: 0,
-    height: '24px',
+    height: spacing.xl,
     objectFit: 'contain',
-    width: 'auto'
+    width: spacing.xl
   }
 });
 
@@ -28,10 +29,10 @@ export function IconSvg({ children, color, label }: IconSvgProps) {
       color={color}
       fill="currentColor"
       focusable="false"
-      height="24"
+      height={spacing.xl}
       role={label === undefined ? undefined : 'img'}
       viewBox="0 0 24 24"
-      width="24"
+      width={spacing.xl}
       xmlns="http://www.w3.org/2000/svg"
       {...stylex.props(styles.root)}
     >

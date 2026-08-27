@@ -1,9 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 
+/** Compact spacing scale shared by layout and components. */
 export const spacing = stylex.defineConsts({
   sm: '4px',
   md: '8px',
-  lg: '16px'
+  lg: '12px',
+  xl: '16px'
 });
 
 export const radii = stylex.defineConsts({
@@ -16,20 +18,21 @@ export const fontFamilies = stylex.defineConsts({
 });
 
 export const fontSizes = stylex.defineConsts({
-  sm: '14px',
-  md: '16px',
+  sm: '13px',
+  md: '15px',
   lg: '24px',
-  xl: '32px'
+  xl: '30px'
 });
 
 export const fontWeights = stylex.defineConsts({
   regular: 400,
+  medium: 500,
   semibold: 600
 });
 
 export const lineHeights = stylex.defineConsts({
   sm: '20px',
   md: '24px',
-  lg: '32px',
-  xl: '40px'
+  lg: '30px',
+  xl: '38px'
 });

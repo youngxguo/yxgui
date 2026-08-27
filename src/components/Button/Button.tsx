@@ -24,7 +24,7 @@ const styles = stylex.create({
       default: 'transparent',
       ':disabled': colors.borderDisabled
     },
-    borderRadius: radii.sm,
+    borderRadius: radii.md,
     borderStyle: 'solid',
     borderWidth: '1px',
     boxSizing: 'border-box',
@@ -35,12 +35,12 @@ const styles = stylex.create({
     display: 'inline-flex',
     fontFamily: fontFamilies.sans,
     fontSize: fontSizes.sm,
-    fontWeight: fontWeights.semibold,
-    gap: spacing.md,
+    fontWeight: fontWeights.medium,
+    gap: spacing.sm,
     justifyContent: 'center',
     lineHeight: lineHeights.sm,
-    paddingBlock: spacing.md,
-    paddingInline: spacing.lg
+    paddingBlock: spacing.sm,
+    paddingInline: spacing.md
   }
 });
 

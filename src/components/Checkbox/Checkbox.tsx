@@ -8,9 +8,10 @@ type CheckboxProps = Omit<ComponentProps<'input'>, 'className' | 'style' | 'type
 const styles = stylex.create({
   root: {
     accentColor: colors.primary,
-    height: spacing.lg,
+    flexShrink: 0,
+    height: spacing.xl,
     margin: 0,
-    width: spacing.lg
+    width: spacing.xl
   }
 });
 
